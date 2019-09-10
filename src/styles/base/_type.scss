@@ -3,12 +3,39 @@
 //== ======================================= ==//
 
 h1 {
-  margin: 0 0 0.5em;
+  margin: 0 0 0.75em;
   text-transform: uppercase;
   font-size: rem(30px);
   line-height: (34/30);
 }
 
 p {
-  margin: 0 0 1em;
+  margin: 0 0 0.6em;
+}
+
+.text-content {
+  text-transform: uppercase;
+}
+
+.requisites {
+  margin-top: 0.75em * 3;
+
+  &__title {
+    font-weight: bold;
+  }
+
+  &__items {
+    overflow: hidden;
+
+    > dt {
+      float: left;
+      clear: left;
+      padding-right: 0.5em;
+    }
+
+    > dd {
+      font-weight: bold;
+      margin: 0;
+    }
+  }
 }

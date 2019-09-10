@@ -1,0 +1,14 @@
+<!--
+  Lime project
+  File: IconYoutube.vue
+  (c) 2019 delphinpro <delphinpro@gmail.com>
+  licensed under the MIT license
+-->
+
+<template functional>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+        <g fill="currentColor">
+            <path d="M114,21.9c5.5,1.5,9.8,5.8,11.3,11.3C128,43.2,128,64,128,64s0,20.8-2.7,30.8c-1.5,5.5-5.8,9.8-11.3,11.3 c-10,2.7-50,2.7-50,2.7s-40,0-50-2.7c-5.5-1.5-9.8-5.8-11.3-11.3C0,84.8,0,64,0,64s0-20.8,2.7-30.8c1.5-5.5,5.8-9.8,11.3-11.3 c10-2.7,50-2.7,50-2.7S104,19.2,114,21.9z M84.4,63.4L51.2,44.8V82L84.4,63.4z"/>
+        </g>
+    </svg>
+</template>

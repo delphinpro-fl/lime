@@ -26,4 +26,4 @@ export default {
     </div>
 </template>
 
-<style lang="scss" src="../styles/AppLogo.scss"></style>
+<style lang="scss" src="../styles/components/AppLogo.scss"></style>

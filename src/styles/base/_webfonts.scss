@@ -1,0 +1,11 @@
+//==
+//== Web fonts
+//== ======================================= ==//
+
+$path: '../assets/fonts/Helvetica/';
+$prefix: 'subset-';
+$formats: (woff2, woff);
+@include use-webfont('Helvetica', 400, normal, 'Helvetica-Regular', $prefix, $path, $formats);
+@include use-webfont('Helvetica', 400, italic, 'Helvetica-Oblique', $prefix, $path, $formats);
+@include use-webfont('Helvetica', 700, normal, 'Helvetica-Bold', $prefix, $path, $formats);
+@include use-webfont('Helvetica', 700, italic, 'Helvetica-BoldOblique', $prefix, $path, $formats);

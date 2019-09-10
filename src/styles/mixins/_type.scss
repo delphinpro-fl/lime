@@ -1,0 +1,11 @@
+//==
+//== Typography
+//== ======================================= ==//
+
+@function rem($font-size) {
+  @return ($font-size / $root-font-size) * 1rem;
+}
+
+@function em($font-size, $base: $root-font-size) {
+  @return ($font-size / $base) * 1em;
+}

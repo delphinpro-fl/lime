@@ -10,8 +10,14 @@
 
 html {
   font-family: $font-stack-main;
+  font-size: percentage($root-font-size / 16px);
+  line-height: $base-line-height;
 }
 
 body {
+  color: #000;
+  background: #fff;
+  font-size: rem($base-font-size);
+  line-height: $base-line-height;
 
 }

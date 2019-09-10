@@ -4,6 +4,10 @@
 
 $font-stack-main: Helvetica, Arial, sans-serif;
 
+$root-font-size: 16px; // browser default
+$base-font-size: 12px;
+$base-line-height: 1.6; // 19.2
+
 $grid-columns: 12;
 $grid-gutter-width: 30px;
 
@@ -11,5 +15,6 @@ $grid-gutter-width: 30px;
 //== Mixins & functions
 //== ======================================= ==//
 
+@import "mixins/type";
 @import "mixins/use-webfont";
 @import "mixins/grid";

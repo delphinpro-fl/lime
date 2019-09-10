@@ -1,0 +1,35 @@
+//==
+//== Subscribe form
+//== ======================================= ==//
+
+.form-subscribe {
+  &__container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  &__label {
+    margin-bottom: rem(5px);
+    text-transform: uppercase;
+    color: $color-text;
+    font-weight: bold;
+  }
+
+  &__input {
+    width: 100%;
+    max-width: rem(270px);
+    height: rem(30px);
+    text-align: center;
+    text-transform: uppercase;
+    border: 0;
+    border-bottom: 1px solid $color-gray;
+    font-size: 100%;
+
+    &::placeholder {
+      opacity: 1;
+      color: $color-form-placeholder;
+    }
+  }
+}

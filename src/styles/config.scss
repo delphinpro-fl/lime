@@ -3,3 +3,13 @@
 //== ======================================= ==//
 
 $font-stack-main: Helvetica, Arial, sans-serif;
+
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+
+//==
+//== Mixins & functions
+//== ======================================= ==//
+
+@import "mixins/use-webfont";
+@import "mixins/grid";

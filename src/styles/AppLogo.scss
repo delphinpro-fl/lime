@@ -1,0 +1,19 @@
+//==
+//== Main logo
+//== ======================================= ==//
+
+.logo {
+  display: flex;
+  max-width: 220px;
+
+  &__link {
+    flex-shrink: 0;
+    max-width: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  svg {
+    width: 100%;
+  }
+}

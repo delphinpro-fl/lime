@@ -1,0 +1,8 @@
+//==
+//== Debug outline
+//== ======================================= ==//
+
+@mixin outline($color: red) {
+  outline: 1px dotted $color;
+  outline-offset: -1px;
+}

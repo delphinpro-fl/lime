@@ -10,6 +10,11 @@ $base-line-height: 1.6; // 19.2
 
 $grid-columns: 12;
 $grid-gutter-width: 30px;
+$grid-breakpoints: (
+  xs: 0,
+  md: 992px,
+  xl: 1850px,
+);
 
 //==
 //== Mixins & functions
@@ -17,5 +22,6 @@ $grid-gutter-width: 30px;
 
 @import "mixins/type";
 @import "mixins/use-webfont";
+@import "mixins/breakpoints";
 @import "mixins/grid";
 @import "mixins/outline";

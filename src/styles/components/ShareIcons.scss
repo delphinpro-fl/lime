@@ -1,0 +1,35 @@
+//==
+//== Component: ShareIcons.vue
+//== ======================================= ==//
+
+.share-icons {
+  display: flex;
+  justify-content: center;
+
+  &__item {
+    margin: 0 rem(15px);
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      color: #000;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    svg {
+      @include size(rem(20px));
+      display: block;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    justify-content: flex-end;
+  }
+}

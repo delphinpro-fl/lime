@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  color: #000;
+  color: $color-text;
   background: #fff;
   font-size: rem($base-font-size);
   line-height: $base-line-height;

@@ -6,11 +6,31 @@
 -->
 
 <script>
+import AppLogo   from '@/components/AppLogo';
+import AppFooter from '@/components/AppFooter';
+
+
+export default {
+    name: 'App',
+
+    components: {
+        AppLogo,
+        AppFooter,
+    },
+};
 </script>
 
 <template>
-    <div id="app">
-        <router-view/>
+    <div id="app" class="layout">
+        <div class="layout__container">
+            <div class="layout__navi">
+                <AppLogo/>
+            </div>
+            <router-view class="layout__main"/>
+            <aside class="layout__side">
+            </aside>
+        </div>
+        <AppFooter class="layout__footer"/>
     </div>
 </template>
 

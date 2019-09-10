@@ -1,9 +1,11 @@
-<script>/*!
- * Lime project
- * File: About.vue
- * (c) 2019 delphinpro <delphinpro@gmail.com>
- * licensed under the MIT license
- */
+<!--
+  Lime project
+  File: About.vue
+  (c) 2019 delphinpro <delphinpro@gmail.com>
+  licensed under the MIT license
+-->
+
+<script>
 
 export default {
     name: 'About',

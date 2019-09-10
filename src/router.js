@@ -1,4 +1,4 @@
-/*!
+/*
  * Lime project
  * File: router.js
  * (c) 2019 delphinpro <delphinpro@gmail.com>

@@ -1,4 +1,4 @@
-/*!
+/*
  * Lime project
  * File: store.js
  * (c) 2019 delphinpro <delphinpro@gmail.com>

@@ -1,14 +1,9 @@
-<script>/*!
- * Lime project
- * File: AppLogo.vue
- * (c) 2019 delphinpro <delphinpro@gmail.com>
- * licensed under the MIT license
- */
-
-export default {
-    name: 'AppLogo',
-};
-</script>
+<!--
+  Lime project
+  File: AppLogo.vue
+  (c) 2019 delphinpro <delphinpro@gmail.com>
+  licensed under the MIT license
+-->
 
 <template>
     <div class="logo">

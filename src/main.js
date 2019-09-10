@@ -5,6 +5,8 @@
  * licensed under the MIT license
  */
 
+import 'normalize.css/normalize.css';
+import '@/styles/main.scss';
 import Vue    from 'vue';
 import App    from './App.vue';
 import router from './router';

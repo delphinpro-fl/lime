@@ -1,0 +1,39 @@
+//==
+//== Component: MainMenu.vue
+//== ======================================= ==//
+
+.mainmenu {
+  text-transform: uppercase;
+  font-size: rem(24px);
+  font-weight: bold;
+  line-height: 85%;
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $color-text;
+
+    &:hover {
+      color: $color-gray;
+    }
+
+    &.highlight {
+      color: $color-highlight;
+    }
+
+    .router-link-active {
+    }
+  }
+
+  &__children {
+    display: none;
+  }
+}

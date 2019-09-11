@@ -8,6 +8,7 @@
 <script>
 import AppLogo   from '@/components/AppLogo';
 import AppFooter from '@/components/AppFooter';
+import MainMenu  from '@/components/MainMenu';
 
 
 export default {
@@ -16,6 +17,7 @@ export default {
     components: {
         AppLogo,
         AppFooter,
+        MainMenu,
     },
 };
 </script>
@@ -24,7 +26,8 @@ export default {
     <div id="app" class="layout">
         <div class="layout__container">
             <div class="layout__navi">
-                <AppLogo/>
+                <AppLogo class="layout__logo"/>
+                <MainMenu class="layout__mainmenu"/>
             </div>
             <router-view class="layout__main"/>
             <aside class="layout__side">

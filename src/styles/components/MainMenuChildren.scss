@@ -1,0 +1,24 @@
+//==
+//== Component: MainMenuChildren.vue
+//== ======================================= ==//
+
+.mainmenu-children {
+  margin: rem(15px) 0;
+  padding: 0 0 0 rem(24px);
+  list-style: none;
+  font-size: rem(14px);
+  font-weight: normal;
+  line-height: 122%;
+
+  &__item {
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $color-text;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

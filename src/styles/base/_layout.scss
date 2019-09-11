@@ -59,10 +59,13 @@
     @include media-breakpoint-up(md) {
       max-width: 175px;
       text-align: right;
+      padding-top: 120px;
     }
   }
 
   &__mainmenu {
     margin-top: rem(30px);
   }
+
+  &__search-box {}
 }

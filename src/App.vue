@@ -9,6 +9,7 @@
 import AppLogo   from '@/components/AppLogo';
 import AppFooter from '@/components/AppFooter';
 import MainMenu  from '@/components/MainMenu';
+import SearchBox from '@/components/SearchBox';
 
 
 export default {
@@ -18,6 +19,7 @@ export default {
         AppLogo,
         AppFooter,
         MainMenu,
+        SearchBox,
     },
 };
 </script>
@@ -33,6 +35,7 @@ export default {
             </div>
             <router-view class="layout__main"/>
             <aside class="layout__side">
+                <SearchBox class="layout__search-box"/>
             </aside>
         </div>
         <AppFooter class="layout__footer"/>

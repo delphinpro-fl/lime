@@ -1,0 +1,46 @@
+//==
+//== Component: SearchBox.vue
+//== ======================================= ==//
+
+$search-box-height: 24px;
+
+.search-box {
+  position: relative;
+  height: rem($search-box-height);
+
+  &__input {
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid transparent;
+    background: none;
+    font-size: rem(12px);
+    line-height: 170%;
+    height: rem($search-box-height);
+
+    &.fill,
+    &:hover,
+    &:focus {
+      border-bottom-color: $color-text;
+      outline: none;
+    }
+  }
+
+  &__button {
+    @include size(rem($search-box-height));
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+
+    svg {
+      @include size(rem(17px));
+      display: block;
+      margin: auto;
+    }
+  }
+}

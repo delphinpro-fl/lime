@@ -11,6 +11,8 @@ import { requestApi } from '@/lib';
 export default {
     state: {
         items: [],
+
+        filterOpen: false,
     },
 
     getters: {
@@ -35,6 +37,8 @@ export default {
                 );
             }
         },
+
+        toggleFilter: (state, status) => state.filterOpen = !!status,
     },
 
     actions: {

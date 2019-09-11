@@ -1,0 +1,55 @@
+//==
+//== Component: CatalogFilter.vue
+//== ======================================= ==//
+
+.filter {
+  position: fixed;
+  z-index: $z-overlay + 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  min-width: 270px;
+  min-width: 540px;
+  height: 100%;
+  padding: 25px 30px;
+  color: #000;
+  background: #fff;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__text {
+    text-transform: uppercase;
+    font-size: rem(30px);
+    font-weight: bold;
+    line-height: (34 / 30);
+  }
+
+  &__closer {
+    @include size(rem(14px));
+    cursor: pointer;
+
+    svg {
+      @include size(rem(14px));
+      display: block;
+    }
+  }
+
+  &__main {
+    margin-top: 40px;
+  }
+
+  &__group {
+    &:not(:first-child){
+      margin-top: 40px;
+    }
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}

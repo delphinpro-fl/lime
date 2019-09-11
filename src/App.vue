@@ -11,6 +11,7 @@ import AppFooter from '@/components/AppFooter';
 import MainMenu  from '@/components/MainMenu';
 import SearchBox from '@/components/SearchBox';
 import UserMenu  from '@/components/UserMenu';
+import FilterPane    from '@/components/FilterPane';
 
 
 export default {
@@ -22,6 +23,7 @@ export default {
         MainMenu,
         SearchBox,
         UserMenu,
+        FilterPane,
     },
 };
 </script>
@@ -38,6 +40,8 @@ export default {
             <router-view class="layout__main"/>
         </div>
         <AppFooter class="layout__footer"/>
+        <div class="overlay" v-if="$store.state.overlayActive"></div>
+        <FilterPane v-if="$store.state.catalog.filterOpen"/>
     </div>
 </template>
 

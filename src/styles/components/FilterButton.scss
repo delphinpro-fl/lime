@@ -1,0 +1,35 @@
+//==
+//== Component: FilterButton.vue
+//== ======================================= ==//
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  &__title {
+    margin-bottom: -1px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-bottom: 1px dotted transparent;
+    font-size: rem(14px);
+    font-weight: bold;
+
+    &:hover {
+      border-bottom-color: currentColor;
+    }
+  }
+
+  &__icon {
+    @include size(rem(14px));
+    flex-shrink: 0;
+    margin-left: 5px;
+    cursor: pointer;
+    color: #000;
+
+    svg {
+      @include size(rem(14px));
+      display: block;
+    }
+  }
+}

@@ -6,8 +6,9 @@
 -->
 
 <script>
-import SearchBox from '@/components/SearchBox';
-import UserMenu  from '@/components/UserMenu';
+import SearchBox    from '@/components/SearchBox';
+import UserMenu     from '@/components/UserMenu';
+import FilterButton from '@/components/FilterButton';
 
 
 export default {
@@ -16,6 +17,7 @@ export default {
     components: {
         SearchBox,
         UserMenu,
+        FilterButton,
     },
 
     props: {
@@ -27,6 +29,7 @@ export default {
 <template>
     <aside class="layout__side sidebar">
         <SearchBox class="sidebar__search-box"/>
+        <FilterButton class="sidebar__filter" v-if="showFilter"/>
         <UserMenu class="sidebar__usermenu"/>
     </aside>
 </template>

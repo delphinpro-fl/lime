@@ -17,11 +17,19 @@ const strict = process.env.NODE_ENV !== 'production';
 
 export default new Vuex.Store({
     strict,
-    modules  : {
+
+    modules: {
         about,
         catalog,
     },
-    state    : {},
-    mutations: {},
-    actions  : {},
+
+    state: {
+        overlayActive: false,
+    },
+
+    mutations: {
+        toggleOverlay: (state, status) => state.overlayActive = !!status,
+    },
+
+    actions: {},
 });

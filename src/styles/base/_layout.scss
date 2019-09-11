@@ -58,8 +58,8 @@
 
     @include media-breakpoint-up(md) {
       max-width: 175px;
-      text-align: right;
       padding-top: 120px;
+      text-align: right;
     }
   }
 
@@ -67,5 +67,10 @@
     margin-top: rem(30px);
   }
 
-  &__search-box {}
+  &__search-box {
+  }
+
+  &__usermenu {
+    margin-top: rem(30px);
+  }
 }

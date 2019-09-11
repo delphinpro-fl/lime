@@ -33,7 +33,7 @@ export default {
 
     async mounted() {
         let data = await this.$store.dispatch('getAboutPage');
-        if ('payload' in data) {
+        if (data && 'payload' in data) {
             this.$store.commit('updateAboutData', data.payload);
         }
     },

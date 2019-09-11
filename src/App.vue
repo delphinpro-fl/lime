@@ -28,6 +28,8 @@ export default {
             <div class="layout__navi">
                 <AppLogo class="layout__logo"/>
                 <MainMenu class="layout__mainmenu"/>
+
+                <div class="look-book">Lookbook</div>
             </div>
             <router-view class="layout__main"/>
             <aside class="layout__side">

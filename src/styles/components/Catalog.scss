@@ -1,0 +1,20 @@
+//==
+//== Component: Catalog.vue
+//== ======================================= ==//
+
+.catalog {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    width: calc(50% - 5px);
+    margin-right: 5px;
+  }
+
+  @include media-breakpoint-up(md) {
+    &__item {
+      width: calc(25% - 5px);
+      margin-right: 5px;
+    }
+  }
+}

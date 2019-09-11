@@ -1,0 +1,74 @@
+//==
+//== Component: DropdownList.vue
+//== ======================================= ==//
+
+$dropdown-list-height: 32px;
+
+.dropdown-list {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  height: rem($dropdown-list-height);
+  border: 1px solid #5a5a5a;
+  background: #fff;
+
+  &__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: rem($dropdown-list-height);
+    cursor: pointer;
+  }
+
+  &__selected {
+    font-size: 10px;
+    padding-left: 15px;
+  }
+
+  &__arrow {
+    @include size(6px, 4px);
+    position: absolute;
+    right: 10px;
+
+    svg {
+      @include size(6px, 4px);
+      display: block;
+    }
+  }
+
+  &__pane {
+    position: absolute;
+    top: 100%;
+    right: -1px;
+    left: -1px;
+    border: 1px solid #5a5a5a;
+    background: #fff;
+    display: none;
+  }
+
+  &__option {
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: rem($dropdown-list-height);
+    font-size: rem(12px);
+    cursor: pointer;
+
+    &:hover {
+      background: #eee;
+    }
+
+    &.disabled {
+      color: #9d9d9d;
+      cursor: default;
+      background: #fff;
+    }
+  }
+
+  &__title {
+  }
+
+  &__info {
+  }
+}

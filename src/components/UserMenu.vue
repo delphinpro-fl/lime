@@ -18,10 +18,10 @@ export default {
                 <router-link class="usermenu__link" to="/">личный кабинет</router-link>
             </li>
             <li class="usermenu__item">
-                <router-link class="usermenu__link" to="/">избранное (2)</router-link>
+                <router-link class="usermenu__link" to="/">избранное (0)</router-link>
             </li>
             <li class="usermenu__item">
-                <router-link class="usermenu__link" to="/">корзина (1)</router-link>
+                <router-link class="usermenu__link" to="/">корзина (0)</router-link>
             </li>
             <li class="usermenu__item">
                 <router-link class="usermenu__link" to="/">помощь</router-link>

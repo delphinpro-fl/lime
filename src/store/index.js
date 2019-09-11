@@ -5,9 +5,10 @@
  * licensed under the MIT license
  */
 
-import Vue  from 'vue';
-import Vuex from 'vuex';
-import about from './modules/about';
+import Vue     from 'vue';
+import Vuex    from 'vuex';
+import about   from './modules/about';
+import catalog from './modules/catalog';
 
 
 Vue.use(Vuex);
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     strict,
     modules  : {
         about,
+        catalog,
     },
     state    : {},
     mutations: {},

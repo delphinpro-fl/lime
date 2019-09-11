@@ -5,11 +5,11 @@
  * licensed under the MIT license
  */
 
-import Vue     from 'vue';
-import Router  from 'vue-router';
-import Home    from './views/Home.vue';
-import About   from '@/views/About';
-import Catalog from '@/views/Catalog';
+import Vue         from 'vue';
+import Router      from 'vue-router';
+import ViewHome    from '@/views/ViewHome';
+import ViewAbout   from '@/views/ViewAbout';
+import ViewCatalog from '@/views/ViewCatalog';
 
 
 Vue.use(Router);
@@ -21,17 +21,17 @@ export default new Router({
         {
             path     : '/',
             name     : 'home',
-            component: Home,
+            component: ViewHome,
         },
         {
             path     : '/catalog',
             name     : 'catalog',
-            component: Catalog,
+            component: ViewCatalog,
         },
         {
             path     : '/about',
             name     : 'about',
-            component: About,
+            component: ViewAbout,
         },
     ],
 });

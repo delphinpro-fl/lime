@@ -1,6 +1,6 @@
 <!--
   Lime project
-  File: Catalog.vue
+  File: ViewCatalog.vue
   (c) 2019 delphinpro <delphinpro@gmail.com>
   licensed under the MIT license
 -->
@@ -8,13 +8,15 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex';
 import CatalogCard                  from '@/components/CatalogCard';
+import Sidebar                      from '@/components/Sidebar';
 
 
 export default {
-    name: 'Catalog',
+    name: 'ViewCatalog',
 
     components: {
         CatalogCard,
+        Sidebar,
     },
 
     data: () => ({}),
@@ -46,14 +48,19 @@ export default {
 
 <template>
     <div>
-        <div class="catalog">
-            <CatalogCard class="catalog__item"
-                v-for="(item, index) in catalogItems"
-                :key="item.id"
-                :card="item"
-                @changeColor="changeColor(index, $event)"
-            />
+        <div class="layout__content">
+            <div class="catalog">
+                <CatalogCard class="catalog__item"
+                    v-for="(item, index) in catalogItems"
+                    :key="item.id"
+                    :card="item"
+                    @changeColor="changeColor(index, $event)"
+                />
+            </div>
         </div>
+        <Sidebar
+            :show-filter="true"
+        />
     </div>
 </template>
 

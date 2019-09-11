@@ -1,14 +1,21 @@
 <!--
   Lime project
-  File: About.vue
+  File: ViewAbout.vue
   (c) 2019 delphinpro <delphinpro@gmail.com>
   licensed under the MIT license
 -->
 
 <script>
 
+import Sidebar from '@/components/Sidebar';
+
+
 export default {
-    name: 'About',
+    name: 'ViewAbout',
+
+    components: {
+        Sidebar,
+    },
 
     computed: {
         requisitesReady() {
@@ -41,19 +48,20 @@ export default {
 </script>
 
 <template>
-    <div class="layout__main_text-page text-content">
-        <h1 v-if="title" v-text="title"></h1>
-
-        <div v-if="content" v-html="content"></div>
-
-        <div class="requisites" v-if="requisitesReady">
-            <p class="requisites__title" v-text="requisites.title"></p>
-            <dl class="requisites__items">
-                <template v-for="item in requisites.items">
-                    <dt v-text="item.term"></dt>
-                    <dd v-text="item.desc"></dd>
-                </template>
-            </dl>
+    <div class="layout__main_text-page">
+        <div class="layout__content text-content">
+            <h1 v-if="title" v-text="title"></h1>
+            <div v-if="content" v-html="content"></div>
+            <div class="requisites" v-if="requisitesReady">
+                <p class="requisites__title" v-text="requisites.title"></p>
+                <dl class="requisites__items">
+                    <template v-for="item in requisites.items">
+                        <dt v-text="item.term"></dt>
+                        <dd v-text="item.desc"></dd>
+                    </template>
+                </dl>
+            </div>
         </div>
+        <Sidebar/>
     </div>
 </template>

@@ -26,6 +26,7 @@
   }
 
   &__main {
+    display: flex;
     flex-grow: 1;
     flex-shrink: 1;
 
@@ -34,8 +35,6 @@
     //== ======================================= ==//
 
     &_text-page {
-      padding-top: rem(100px);
-
       @include media-breakpoint-up(md) {
         margin-left: percentage(1 / $grid-columns);
       }
@@ -52,6 +51,12 @@
     }
   }
 
+  &__content {
+    @include make-gutters();
+    flex-grow: 1;
+    padding-left: 0;
+  }
+
   &__side {
     @include make-gutters();
     flex-shrink: 0;
@@ -64,13 +69,6 @@
   }
 
   &__mainmenu {
-    margin-top: rem(30px);
-  }
-
-  &__search-box {
-  }
-
-  &__usermenu {
     margin-top: rem(30px);
   }
 }

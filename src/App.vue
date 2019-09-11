@@ -36,10 +36,6 @@ export default {
                 <div class="look-book">Lookbook</div>
             </div>
             <router-view class="layout__main"/>
-            <aside class="layout__side">
-                <SearchBox class="layout__search-box"/>
-                <UserMenu class="layout__usermenu"/>
-            </aside>
         </div>
         <AppFooter class="layout__footer"/>
     </div>

@@ -29,3 +29,7 @@
   z-index: $z-overlay;
   background: rgba(#000, 0.5);
 }
+
+.sr-only {
+  @include sr-only();
+}

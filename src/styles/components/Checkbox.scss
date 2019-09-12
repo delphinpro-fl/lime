@@ -1,0 +1,36 @@
+//==
+//== Component: Checkbox.vue
+//== ======================================= ==//
+
+.checkbox {
+  display: flex;
+
+  &__label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__element {
+    @include sr-only();
+  }
+
+  &__indicator {
+    @include size(11px);
+    transition: 0.3s ease;
+    border: 1px solid #000;
+  }
+
+  &__text {
+    margin-left: rem(9px);
+  }
+
+  &__label:hover &__indicator {
+    background: #ddd;
+  }
+
+  &__element:checked + &__indicator {
+    background: #000;
+  }
+}

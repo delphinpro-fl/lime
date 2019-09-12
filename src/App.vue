@@ -6,13 +6,13 @@
 -->
 
 <script>
-import AppLogo   from '@/components/AppLogo';
-import AppFooter from '@/components/AppFooter';
-import MainMenu  from '@/components/MainMenu';
-import SearchBox from '@/components/SearchBox';
-import UserMenu  from '@/components/UserMenu';
-import FilterPane    from '@/components/FilterPane';
-
+import AppFooter    from '@/components/AppFooter';
+import AppLogo      from '@/components/AppLogo';
+import FilterPane   from '@/components/FilterPane';
+import MainMenu     from '@/components/MainMenu';
+import SearchBox    from '@/components/SearchBox';
+import UserMenu     from '@/components/UserMenu';
+import { mapState } from 'vuex';
 
 export default {
     name: 'App',
@@ -24,6 +24,13 @@ export default {
         SearchBox,
         UserMenu,
         FilterPane,
+    },
+
+    computed: {
+        ...mapState({
+            overlayActive: state => state.overlayActive,
+            filterOpen   : state => state.catalog.filterOpen,
+        }),
     },
 };
 </script>
@@ -40,8 +47,8 @@ export default {
             <router-view class="layout__main"/>
         </div>
         <AppFooter class="layout__footer"/>
-        <div class="overlay" v-if="$store.state.overlayActive"></div>
-        <FilterPane v-if="$store.state.catalog.filterOpen"/>
+        <div class="overlay" v-if="overlayActive"></div>
+        <FilterPane v-if="filterOpen"/>
     </div>
 </template>
 

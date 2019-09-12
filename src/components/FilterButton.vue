@@ -6,8 +6,8 @@
 -->
 
 <script>
-import { mapMutations } from 'vuex';
-import IconCross        from '@/components/Icons/IconCross';
+import IconCross                    from '@/components/Icons/IconCross';
+import { mapGetters, mapMutations } from 'vuex';
 
 
 export default {
@@ -17,19 +17,34 @@ export default {
         IconCross,
     },
 
-    mounted(){
-      this.openFilter();
+    computed: {
+        ...mapGetters([
+            'filterCountTotal',
+        ]),
+    },
+
+    mounted() {
+        this.openFilter();
+    },
+
+    beforeDestroy() {
+        this.closeFilter();
     },
 
     methods: {
         ...mapMutations([
             'toggleOverlay',
-            'toggleFilter'
+            'toggleFilter',
         ]),
 
         openFilter() {
             this.toggleOverlay(true);
             this.toggleFilter(true);
+        },
+
+        closeFilter() {
+            this.toggleOverlay(false);
+            this.toggleFilter(false);
         },
     },
 };
@@ -37,7 +52,9 @@ export default {
 
 <template>
     <div class="filter-button">
-        <span class="filter-button__title" @click="openFilter">Фильтры (3)</span>
+        <span class="filter-button__title" @click="openFilter">
+            Фильтры <span v-if="filterCountTotal">({{filterCountTotal}})</span>
+        </span>
         <span class="filter-button__icon">
             <IconCross/>
         </span>

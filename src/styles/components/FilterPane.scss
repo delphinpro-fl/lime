@@ -8,10 +8,12 @@
   top: 0;
   right: 0;
   bottom: 0;
-  min-width: 270px;
-  min-width: 540px;
+  width: 100%;
+  max-width: 270px;
+  max-width: 540px;
   height: 100%;
   padding: 25px 30px;
+  text-transform: uppercase;
   color: #000;
   background: #fff;
 
@@ -43,13 +45,43 @@
   }
 
   &__group {
-    &:not(:first-child){
+    &:not(:first-child) {
       margin-top: 40px;
     }
   }
 
   &__title {
+  }
+}
+
+.filter-group {
+  $this: &;
+
+  &__title {
     text-transform: uppercase;
     font-weight: bold;
+  }
+
+  &__options {
+    margin-top: rem(8px);
+
+    &_view_columns {
+      column-count: 2;
+    }
+
+    &_view_inline {
+      display: flex;
+      flex-wrap: wrap;
+
+      #{$this}__option {
+        margin-right: rem(27px);
+        //page-break-inside: avoid;
+        //display: inline-block;
+      }
+    }
+  }
+
+  &__option {
+    margin: 1px 0;
   }
 }

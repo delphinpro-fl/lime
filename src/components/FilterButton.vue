@@ -26,10 +26,6 @@ export default {
         ]),
     },
 
-    mounted() {
-        this.openFilter();
-    },
-
     beforeDestroy() {
         this.closeFilter();
     },

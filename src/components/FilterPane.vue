@@ -59,7 +59,7 @@ export default {
 <template>
     <div class="filter">
         <div class="filter__header">
-            <span class="filter__text">Фильтр <span v-if="filterCountTotal">({{filterCountTotal}})</span></span>
+            <span class="filter__text">Фильтр</span>
             <span class="filter__closer" @click="closeFilter">
                 <IconCross/>
             </span>

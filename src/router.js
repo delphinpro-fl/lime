@@ -10,6 +10,7 @@ import Router      from 'vue-router';
 import ViewHome    from '@/views/ViewHome';
 import ViewAbout   from '@/views/ViewAbout';
 import ViewCatalog from '@/views/ViewCatalog';
+import View404     from '@/views/View404';
 
 
 Vue.use(Router);
@@ -32,6 +33,11 @@ export default new Router({
             path     : '/about',
             name     : 'about',
             component: ViewAbout,
+        },
+        {
+            path     : '*',
+            name     : 'error404',
+            component: View404,
         },
     ],
 });

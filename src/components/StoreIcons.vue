@@ -24,10 +24,10 @@ export default {
     <div class="store-icons">
         <div class="store-icons__title">Скачай приложение</div>
         <div class="store-icons__links">
-            <a href="#" class="store-icons__item store-icons__item_icon_google">
+            <a class="store-icons__item store-icons__item_icon_google" href="#">
                 <IconGoogle/>
             </a>
-            <a href="#" class="store-icons__item store-icons__item_icon_apple">
+            <a class="store-icons__item store-icons__item_icon_apple" href="#">
                 <IconApple/>
             </a>
         </div>

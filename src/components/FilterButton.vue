@@ -6,8 +6,11 @@
 -->
 
 <script>
-import IconCross                    from '@/components/Icons/IconCross';
-import { mapGetters, mapMutations } from 'vuex';
+import {
+    mapGetters,
+    mapMutations,
+}                from 'vuex';
+import IconCross from '@/components/Icons/IconCross';
 
 
 export default {

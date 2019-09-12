@@ -24,7 +24,11 @@ export default {
 <template>
     <div class="checkbox">
         <label class="checkbox__label">
-            <input class="checkbox__element" type="checkbox" :checked="checked" @change="$emit('change', $event.target.checked)">
+            <input class="checkbox__element"
+                type="checkbox"
+                :checked="checked"
+                @change="$emit('change', $event.target.checked)"
+            >
             <span class="checkbox__indicator"></span>
             <span class="checkbox__text">
                 <slot></slot>

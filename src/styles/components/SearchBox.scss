@@ -11,12 +11,12 @@ $search-box-height: 24px;
   &__input {
     display: block;
     width: 100%;
+    height: rem($search-box-height);
     border: none;
     border-bottom: 1px solid transparent;
     background: none;
     font-size: rem(12px);
     line-height: 170%;
-    height: rem($search-box-height);
 
     &.fill,
     &:hover,

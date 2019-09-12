@@ -6,9 +6,13 @@
 -->
 
 <script>
-import Checkbox                               from '@/components/Checkbox';
-import IconCross                              from '@/components/Icons/IconCross';
-import { mapGetters, mapMutations, mapState } from 'vuex';
+import {
+    mapGetters,
+    mapMutations,
+    mapState,
+}                from 'vuex';
+import Checkbox  from '@/components/Checkbox';
+import IconCross from '@/components/Icons/IconCross';
 
 
 export default {

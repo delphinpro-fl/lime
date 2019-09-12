@@ -16,8 +16,8 @@
   }
 
   &__link {
-    color: $color-text;
     text-decoration: none;
+    color: $color-text;
 
     &:hover {
       text-decoration: underline;

@@ -21,8 +21,8 @@ $dropdown-list-height: 32px;
   }
 
   &__selected {
-    font-size: 10px;
     padding-left: 15px;
+    font-size: 10px;
   }
 
   &__arrow {
@@ -41,27 +41,27 @@ $dropdown-list-height: 32px;
     top: 100%;
     right: -1px;
     left: -1px;
+    display: none;
     border: 1px solid #5a5a5a;
     background: #fff;
-    display: none;
   }
 
   &__option {
-    padding: 0 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: rem($dropdown-list-height);
-    font-size: rem(12px);
+    padding: 0 15px;
     cursor: pointer;
+    font-size: rem(12px);
 
     &:hover {
       background: #eee;
     }
 
     &.disabled {
-      color: #9d9d9d;
       cursor: default;
+      color: #9d9d9d;
       background: #fff;
     }
   }

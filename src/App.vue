@@ -14,6 +14,7 @@ import SearchBox    from '@/components/SearchBox';
 import UserMenu     from '@/components/UserMenu';
 import { mapState } from 'vuex';
 
+
 export default {
     name: 'App',
 
@@ -36,7 +37,7 @@ export default {
 </script>
 
 <template>
-    <div id="app" class="layout">
+    <div class="layout" id="app">
         <div class="layout__container">
             <div class="layout__navi">
                 <AppLogo class="layout__logo"/>

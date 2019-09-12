@@ -6,9 +6,12 @@
 -->
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
-import CatalogCard                  from '@/components/CatalogCard';
-import Sidebar                      from '@/components/Sidebar';
+import {
+    mapGetters,
+    mapMutations,
+}                  from 'vuex';
+import CatalogCard from '@/components/CatalogCard';
+import Sidebar     from '@/components/Sidebar';
 
 
 export default {

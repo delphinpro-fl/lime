@@ -12,11 +12,11 @@
 
   &__item {
     @include size(rem(16px));
-    background: none;
-    background-clip: padding-box;
-    border: 1px solid transparent;
     margin-right: 6px;
     cursor: pointer;
+    border: 1px solid transparent;
+    background: none;
+    background-clip: padding-box;
 
     &:focus {
       outline: none;

@@ -21,10 +21,10 @@ export default {
     <div class="form-subscribe">
         <form action="">
             <div class="form-subscribe__container">
-                <label :for="uid" class="form-subscribe__label">Подпишитесь на рассылку</label>
+                <label class="form-subscribe__label" :for="uid">Подпишитесь на рассылку</label>
                 <input class="form-subscribe__input"
-                    type="email"
                     name="email"
+                    type="email"
                     :id="uid"
                     placeholder="Введите ваш e-mail"
                 >

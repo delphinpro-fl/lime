@@ -7,7 +7,7 @@
 
 <template>
     <div class="logo">
-        <router-link :to="{name: 'home'}" class="logo__link">
+        <router-link class="logo__link" :to="{name: 'home'}">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 52">
                 <g fill="currentColor">
                     <path d="M3.4,48.9h26.2V52H0V17.1h3.4V48.9z"/>

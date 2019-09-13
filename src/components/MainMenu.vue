@@ -60,6 +60,9 @@ export default {
                 <MainMenuChildren class="mainmenu__children" :items="item.children"/>
             </li>
         </ul>
+        <div class="mainmenu__lookbook lookbook">
+            <router-link class="lookbook__link" :to="{name: 'look'}">Lookbook</router-link>
+        </div>
     </nav>
 </template>
 

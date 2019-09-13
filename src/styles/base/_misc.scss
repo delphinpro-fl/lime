@@ -2,22 +2,6 @@
 //== Misc.
 //== ======================================= ==//
 
-.look-book {
-  display: flex;
-  align-items: center;
-  margin-top: 22px;
-  text-transform: uppercase;
-  font-size: rem(14px);
-
-  &::before {
-    width: 9px;
-    height: 11px;
-    margin-right: 0.5em;
-    content: '';
-    background: currentColor;
-  }
-}
-
 .overlay {
   position: fixed;
   z-index: $z-overlay;

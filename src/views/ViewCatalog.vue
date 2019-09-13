@@ -11,7 +11,6 @@ import {
     mapMutations,
 }                  from 'vuex';
 import CatalogCard from '@/components/CatalogCard';
-import Sidebar     from '@/components/Sidebar';
 
 
 export default {
@@ -19,7 +18,6 @@ export default {
 
     components: {
         CatalogCard,
-        Sidebar,
     },
 
     data: () => ({}),

@@ -1,0 +1,65 @@
+//==
+//== Component: MobileMenuButton.vue
+//== ======================================= ==//
+
+$mobile-menu-button-line-height: 2px;
+
+.mobile-menu-button {
+  @include size($navbar-height);
+  position: relative;
+  display: flex;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  background: none;
+
+  &__text {
+    position: absolute;
+  }
+
+  &__lines {
+    @include size(36px);
+    position: relative;
+    margin: auto;
+  }
+
+  &__line {
+    position: absolute;
+    left: 0;
+    height: $mobile-menu-button-line-height;
+    transition: 0.15s linear;
+    transition-property: transform, width;
+    background: #000;
+
+    &_top {
+      top: 50%;
+      width: 36px;
+      margin-top: ($mobile-menu-button-line-height / -2) - 3px;
+    }
+
+    &_bottom {
+      bottom: 50%;
+      width: 24px;
+      margin-bottom: ($mobile-menu-button-line-height / -2) - 3px;
+    }
+  }
+
+  //==
+  //== State open
+  //== ======================================= ==//
+
+  &_open &__line {
+    width: 36px;
+  }
+
+  &_open &__line_top {
+    margin-top: ($mobile-menu-button-line-height / -2);
+    transform: rotate(45deg);
+  }
+
+  &_open &__line_bottom {
+    margin-bottom: ($mobile-menu-button-line-height / -2);
+    transform: rotate(-45deg);
+  }
+
+}

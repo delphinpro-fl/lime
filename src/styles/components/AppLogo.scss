@@ -4,9 +4,10 @@
 
 .logo {
   display: flex;
-  max-width: 220px;
+  max-width: $logo-width;
 
   &__link {
+    display: block;
     flex-shrink: 0;
     max-width: 100%;
     text-decoration: none;
@@ -14,6 +15,7 @@
   }
 
   svg {
+    display: block;
     width: 100%;
   }
 }

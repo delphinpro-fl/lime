@@ -5,6 +5,10 @@
   licensed under the MIT license
 -->
 
+<script>
+export default { name: 'AppLogo' };
+</script>
+
 <template>
     <div class="logo">
         <router-link class="logo__link" :to="{name: 'home'}">

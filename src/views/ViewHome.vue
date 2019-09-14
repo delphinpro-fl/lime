@@ -6,23 +6,60 @@
 -->
 
 <script>
+import { mapState } from 'vuex';
+import AppLogo      from '@/components/AppLogo';
+import HomeSlider   from '@/components/HomeSlider';
+
+
 export default {
-    name      : 'ViewHome',
-    components: {},
+    name: 'ViewHome',
+
+    components: {
+        AppLogo,
+        HomeSlider,
+    },
+
+    data: () => ({
+        isOpenFooter: false,
+    }),
+
+    computed: {
+        ...mapState({
+            layout: state => state.mq,
+        }),
+
+        computedClasses() {
+            return {
+                home_mobile: this.layout === 'mobile',
+            };
+        },
+        computedStyles() {
+            return {
+                backgroundImage: 'url(/images/home/home-1920.jpg)',
+            };
+        },
+    },
+
+    beforeDestroy() {
+        this.$emit('scrollUp');
+    },
+
+    methods: {
+        scrollScreen(e) {
+            if (e.deltaY > 0) this.$emit('scrollDown');
+            if (e.deltaY < 0) this.$emit('scrollUp');
+        },
+    },
 };
 </script>
 
 <template>
-    <div style="text-align:center;">
-        <div class="layout__content">
-            <img alt="Vue logo" src="../assets/logo.png">
-            <div>
-                <router-link to="/">Главная</router-link>
-                |
-                <router-link to="/catalog">Каталог</router-link>
-                |
-                <router-link to="/about">О компании</router-link>
-            </div>
+    <div class="home" :class="computedClasses" @wheel="scrollScreen">
+        <HomeSlider class="home__slider"/>
+        <div class="home__logo-box" v-if="this.layout==='desktop'">
+            <AppLogo class="home__logo"/>
         </div>
     </div>
 </template>
+
+<style lang="scss" src="../styles/views/ViewHome.scss"></style>

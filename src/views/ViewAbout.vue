@@ -44,20 +44,17 @@ export default {
 </script>
 
 <template>
-    <div class="layout__main_text-page">
-        <div class="layout__content text-content">
-            <h1 v-if="title" v-text="title"></h1>
-            <div v-if="content" v-html="content"></div>
-            <div class="requisites" v-if="requisitesReady">
-                <p class="requisites__title" v-text="requisites.title"></p>
-                <dl class="requisites__items">
-                    <template v-for="item in requisites.items">
-                        <dt v-text="item.term"></dt>
-                        <dd v-text="item.desc"></dd>
-                    </template>
-                </dl>
-            </div>
+    <div class="text-content">
+        <h1 v-if="title" v-text="title"></h1>
+        <div v-if="content" v-html="content"></div>
+        <div class="requisites" v-if="requisitesReady">
+            <p class="requisites__title" v-text="requisites.title"></p>
+            <dl class="requisites__items">
+                <template v-for="item in requisites.items">
+                    <dt v-text="item.term"></dt>
+                    <dd v-text="item.desc"></dd>
+                </template>
+            </dl>
         </div>
-        <Sidebar/>
     </div>
 </template>

@@ -28,6 +28,9 @@ export default new Router({
             path     : '/catalog',
             name     : 'catalog',
             component: ViewCatalog,
+            meta     : {
+                showFilter: true,
+            },
         },
         {
             path     : '/about',

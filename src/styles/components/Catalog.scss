@@ -11,7 +11,7 @@
     margin-right: 5px;
   }
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(desktop) {
     &__item {
       width: calc(25% - 5px);
       margin-right: 5px;

@@ -9,3 +9,20 @@
 @function em($font-size, $base: $root-font-size) {
   @return ($font-size / $base) * 1em;
 }
+
+@function rfs($font-size-min, $font-size-max, $screen-min, $screen-max) {
+  $k: ($font-size-max - $font-size-min)/($screen-max - $screen-min);
+  $b: rem($font-size-min - $k * $screen-min);
+
+  @return calc(#{$k} * 100vw + #{$b});
+}
+
+@mixin responsive-font-size($font-size-min, $font-size-max, $screen-min, $screen-max) {
+  font-size: rem($font-size-min);
+  @media (min-width: $screen-min) and (max-width: ($screen-max - 1)) {
+    font-size: rfs($font-size-min, $font-size-max, $screen-min, $screen-max);
+  }
+  @media (min-width: $screen-max) {
+    font-size: rem($font-size-max);
+  }
+}

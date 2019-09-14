@@ -18,10 +18,18 @@ $grid-columns: 12;
 $grid-gutter-width: 30px;
 $grid-breakpoints: (
   xs: 0,
-  md: 992px,
-  xl: 1850px,
+  desktop: 992px,
 );
+$grid-left-side-padding: 26px;
+$grid-right-side-padding: 15px;
+$max-container-width: 1920px;
 
+$logo-width: 220px;
+$logo-height: 60px;
+
+$navbar-height: 55px;
+
+$z-navbar: 900;
 $z-overlay: 1000;
 
 //==
@@ -32,5 +40,6 @@ $z-overlay: 1000;
 @import "mixins/use-webfont";
 @import "mixins/breakpoints";
 @import "mixins/grid";
+@import "mixins/layout";
 @import "mixins/helpers";
 @import "mixins/outline";

@@ -1,0 +1,34 @@
+//==
+//== Component: AppSideLeft.vue
+//== ======================================= ==//
+
+.app-side {
+  position: fixed;
+  top: 0;
+  padding-top: rem(25px);
+
+  &__top {
+    display: flex;
+    align-items: center;
+    height: rem($logo-height);
+    margin-bottom: rem(30px);
+
+    > * {
+      width: 100%;
+    }
+  }
+
+  &_on-homepage {
+    padding-top: 110px;
+  }
+}
+
+.app-side-left {
+  @include make-column-side-left();
+  left: 0;
+}
+
+.app-side-right {
+  @include make-column-side-right();
+  right: 0;
+}

@@ -47,7 +47,7 @@
     }
   }
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(desktop) {
     display: flex;
     align-items: center;
     justify-content: flex-end;

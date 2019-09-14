@@ -48,19 +48,12 @@ export default {
 </script>
 
 <template>
-    <div>
-        <div class="layout__content">
-            <div class="catalog">
-                <CatalogCard class="catalog__item"
-                    v-for="(item, index) in catalogItems"
-                    :key="item.id"
-                    :card="item"
-                    @changeColor="changeColor(index, $event)"
-                />
-            </div>
-        </div>
-        <Sidebar
-            :show-filter="true"
+    <div class="catalog">
+        <CatalogCard class="catalog__item"
+            v-for="(item, index) in catalogItems"
+            :key="item.id"
+            :card="item"
+            @changeColor="changeColor(index, $event)"
         />
     </div>
 </template>

@@ -1,0 +1,28 @@
+//==
+//== Component: AppNavber.vue
+//== ======================================= ==//
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #c4c4c4;
+  background: #fff;
+  z-index: $z-navbar;
+
+  &__menu {
+    flex-shrink: 0;
+  }
+
+  &__menu-button {
+
+  }
+
+  &__logo-box {
+
+  }
+
+  &__logo {
+    width: 86px;
+  }
+}

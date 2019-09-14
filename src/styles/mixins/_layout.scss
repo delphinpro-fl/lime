@@ -1,0 +1,19 @@
+//==
+//==
+//== ======================================= ==//
+
+@mixin make-column-side-left() {
+  padding-left: rem($grid-left-side-padding);
+  padding-right: rem($grid-left-side-padding);
+  width: percentage(2/12);
+  min-width: rem(200px);
+  flex-shrink: 0;
+}
+
+@mixin make-column-side-right() {
+  padding-left: rem($grid-left-side-padding);
+  padding-right: rem($grid-right-side-padding);
+  width: percentage(1.5/12);
+  min-width: rem(200px);
+  flex-shrink: 0;
+}

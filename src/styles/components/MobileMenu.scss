@@ -1,0 +1,32 @@
+//==
+//== Component: MobileMenu.vue
+//== ======================================= ==//
+
+.mobile-menu {
+  position: fixed;
+  z-index: 100;
+  top: $navbar-height;
+  bottom: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  height: calc(100vh - #{$navbar-height});
+  background: #fff;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 100%;
+    padding: 50px 34px;
+  }
+
+  &__main {
+  }
+
+  &__user {
+    margin-top: 50px;
+  }
+}

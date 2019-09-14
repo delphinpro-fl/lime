@@ -25,10 +25,12 @@ export default new Vuex.Store({
 
     state: {
         overlayActive: false,
+        mmOpen       : false,
     },
 
     mutations: {
-        toggleOverlay: (state, status) => state.overlayActive = !!status,
+        toggleOverlay   : (state, status) => state.overlayActive = !!status,
+        toggleMobileMenu: (state, value) => state.mmOpen = value,
     },
 
     actions: {},

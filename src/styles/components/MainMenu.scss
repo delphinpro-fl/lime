@@ -6,16 +6,32 @@
   text-transform: uppercase;
 
   &__list {
+    @include responsive-font-size(18px, 24px, map_get($grid-breakpoints, desktop), 1600px);
     margin: 0;
     padding: 0;
     list-style: none;
-    font-size: rem(24px);
     font-weight: bold;
     line-height: 85%;
+
+    @include media-breakpoint-down(xs) {
+      font-size: rem(24px);
+    }
   }
 
   &__item {
     margin: 4px 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include media-breakpoint-down(xs) {
+      margin: 14px 0;
+    }
   }
 
   &__link {

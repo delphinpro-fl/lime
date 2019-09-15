@@ -4,6 +4,7 @@
 
 .mainmenu {
   text-transform: uppercase;
+  color: currentColor;
 
   &__list {
     @include responsive-font-size(18px, 24px, map_get($grid-breakpoints, desktop), 1600px);
@@ -35,13 +36,6 @@
   }
 
   &__link {
-    text-decoration: none;
-    color: $color-text;
-
-    &:hover {
-      color: $color-gray;
-    }
-
     &.highlight {
       color: $color-highlight;
     }
@@ -74,12 +68,6 @@
   }
 
   &__link {
-    text-decoration: none;
-    color: inherit;
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 }
 

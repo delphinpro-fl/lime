@@ -19,5 +19,13 @@ body {
   background: #fff;
   font-size: rem($base-font-size);
   line-height: $base-line-height;
+}
 
+a {
+  text-decoration: none;
+  color: currentColor;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

@@ -74,16 +74,22 @@ export default {
                 backgroundImage: `url(${slide.images[this.imageSize]})`,
             };
         },
+        swipeHandler(direction) {
+            if (direction === 'right') this.slideToPrev();
+            if (direction === 'left') this.slideToNext();
+        },
     },
 };
 </script>
 
 <template>
-    <div class="slider">
+    <div class="slider"
+        v-touch:swipe="swipeHandler"
+    >
         <div class="slider__pane" :style="stylesPane">
             <div class="slider__slide slide"
                 :style="stylesSlide(slide)"
-                v-for="(slide, index) in slides"
+                v-for="slide in slides"
             >
                 <div class="slide__container">
                     <div class="slide__content">

@@ -29,15 +29,17 @@ export default new Vuex.Store({
         mq           : 'desktop',
         mmOpen       : false,
         isHomepage   : true,
+        isOpenFooter : false,
         homeSlider   : [],
     },
 
     mutations: {
-        toggleOverlay   : (state, status) => state.overlayActive = !!status,
-        toggleMobileMenu: (state, value) => state.mmOpen = value,
-        updateMq        : (state, value) => state.mq = value,
-        updateIsHomepage: (state, value) => state.isHomepage = !!value,
-        updateSlides    : (state, value) => state.homeSlider = value,
+        toggleOverlay     : (state, status) => state.overlayActive = !!status,
+        toggleMobileMenu  : (state, value) => state.mmOpen = value,
+        updateMq          : (state, value) => state.mq = value,
+        updateIsHomepage  : (state, value) => state.isHomepage = !!value,
+        updateIsOpenFooter: (state, value) => state.isOpenFooter = !!value,
+        updateSlides      : (state, value) => state.homeSlider = value,
     },
 
     actions: {

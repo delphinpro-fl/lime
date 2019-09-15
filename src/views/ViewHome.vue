@@ -6,12 +6,9 @@
 -->
 
 <script>
-import {
-    mapActions,
-    mapState,
-}                 from 'vuex';
-import AppLogo    from '@/components/AppLogo';
-import HomeSlider from '@/components/HomeSlider';
+import { mapState } from 'vuex';
+import AppLogo      from '@/components/AppLogo';
+import HomeSlider   from '@/components/HomeSlider';
 
 
 export default {
@@ -22,9 +19,7 @@ export default {
         HomeSlider,
     },
 
-    data: () => ({
-        isOpenFooter: false,
-    }),
+    data: () => ({}),
 
     computed: {
         ...mapState({
@@ -36,28 +31,23 @@ export default {
             return { home_mobile: this.layout === 'mobile' };
         },
 
+        isOpenFooter: {
+            get() { return this.$store.state.isOpenFooter; },
+            set(v) { this.$store.commit('updateIsOpenFooter', v); },
+        },
+
         slides() {return this.homeSlider; },
     },
 
     mounted() {
+        this.isOpenFooter = false;
         if (!this.slides.length) this.$store.dispatch('loadSlides');
-    },
-
-    beforeDestroy() {
-        this.$emit('scrollUp');
-    },
-
-    methods: {
-        scrollScreen(e) {
-            if (e.deltaY > 0) this.$emit('scrollDown');
-            if (e.deltaY < 0) this.$emit('scrollUp');
-        },
     },
 };
 </script>
 
 <template>
-    <div class="home" :class="computedClasses" @wheel="scrollScreen">
+    <div class="home" :class="computedClasses">
         <HomeSlider class="home__slider" :slides="slides"/>
         <div class="home__logo-box" v-if="layout==='desktop'">
             <AppLogo class="home__logo"/>

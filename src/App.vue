@@ -28,9 +28,7 @@ export default {
         MobileMenu,
     },
 
-    data: () => ({
-        isOpenFooter: false,
-    }),
+    data: () => ({}),
 
     computed: {
         ...mapState({
@@ -52,6 +50,11 @@ export default {
             get() { return this.$store.state.mmOpen; },
             set(value) { this.$store.commit('toggleMobileMenu', value); },
         },
+
+        isOpenFooter: {
+            get() { return this.$store.state.isOpenFooter; },
+            set(v) { this.$store.commit('updateIsOpenFooter', v); },
+        },
     },
 
     mounted() {
@@ -65,18 +68,29 @@ export default {
 
     methods: {
         scrollScreen(v) { this.isOpenFooter = !!v; },
+        wheelHandler(e) {
+            if (e.deltaY > 0) this.isOpenFooter = true;
+            if (e.deltaY < 0) this.isOpenFooter = false;
+        },
+        swipeHandler(direction) {
+            if (this.isHomepage) {
+                if (direction === 'top') this.isOpenFooter = true;
+                if (direction === 'bottom') this.isOpenFooter = false;
+            }
+        },
     },
 };
 </script>
 
 <template>
-    <div id="app" class="app">
-        <AppNavbar class="app__navbar" v-if="this.layout === 'mobile'"/>
+    <div id="app"
+        class="app"
+        v-touch:swipe="swipeHandler"
+        @wheel="wheelHandler"
+    >
+        <AppNavbar class="app__navbar" v-if="layout === 'mobile'"/>
         <div class="app__container">
-            <router-view class="app__main"
-                @scrollDown="scrollScreen(true)"
-                @scrollUp="scrollScreen(false)"
-            />
+            <router-view class="app__main"/>
         </div>
         <AppFooter class="app__footer" :class="footerClasses"/>
         <AppSideLeft :is-homepage="isHomepage" v-if="layout === 'desktop'"/>

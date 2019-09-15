@@ -28,6 +28,10 @@ export default {
                 'app-side_on-homepage': this.isHomepage,
             };
         },
+
+        theme() {
+            return this.isHomepage ? 'inverse' : '';
+        },
     },
 
     methods: {},
@@ -39,7 +43,9 @@ export default {
         <div class="app-side__top" v-if="!isHomepage">
             <AppLogo class=""/>
         </div>
-        <MainMenu class="app-side__content"/>
+        <MainMenu class="app-side__content"
+            :theme="theme"
+        />
     </div>
 </template>
 

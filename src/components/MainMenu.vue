@@ -9,11 +9,22 @@
 import MainMenuChildren from '@/components/MainMenuChildren';
 
 
+const THEME_INVERSE = 'inverse';
+
+const themeValidator = value => [
+    '',
+    THEME_INVERSE,
+].indexOf(value) !== -1;
+
 export default {
     name: 'MainMenu',
 
     components: {
         MainMenuChildren,
+    },
+
+    props: {
+        theme: { type: String, default: '', validator: themeValidator },
     },
 
     data: () => ({
@@ -45,11 +56,18 @@ export default {
         ],
     }),
 
+    computed: {
+        computedClasses() {
+            return {
+                mainmenu_theme_inverse: this.theme === THEME_INVERSE,
+            };
+        },
+    },
 };
 </script>
 
 <template>
-    <nav class="mainmenu" v-if="items.length">
+    <nav class="mainmenu" :class="computedClasses" v-if="items.length">
         <ul class="mainmenu__list">
             <li class="mainmenu__item" v-for="item in items">
                 <router-link class="mainmenu__link"

@@ -28,6 +28,8 @@ export default {
         showFilter() {
             return this.$route.meta.showFilter;
         },
+
+        theme() { return this.isHomepage ? 'inverse' : ''; },
     },
 };
 </script>
@@ -38,6 +40,8 @@ export default {
             <SearchBox class=""/>
         </div>
         <FilterButton class="app-side__filter" v-if="showFilter"/>
-        <UserMenu class="app-side__usermenu"/>
+        <UserMenu class="app-side__usermenu"
+            :theme="theme"
+        />
     </div>
 </template>

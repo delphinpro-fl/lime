@@ -6,13 +6,32 @@
 -->
 
 <script>
+const THEME_INVERSE = 'inverse';
+
+const themeValidator = value => [
+    '',
+    THEME_INVERSE,
+].indexOf(value) !== -1;
+
 export default {
     name: 'UserMenu',
+
+    props   : {
+        theme: { type: String, default: '', validator: themeValidator },
+    },
+
+    computed: {
+        computedClasses() {
+            return {
+                usermenu_theme_inverse: this.theme === THEME_INVERSE,
+            };
+        },
+    },
 };
 </script>
 
 <template>
-    <div class="usermenu">
+    <div class="usermenu" :class="computedClasses">
         <ul class="usermenu__list">
             <li class="usermenu__item">
                 <router-link class="usermenu__link" to="/">личный кабинет</router-link>

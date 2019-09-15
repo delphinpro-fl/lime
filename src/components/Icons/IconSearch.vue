@@ -4,7 +4,9 @@
   (c) 2019 delphinpro <delphinpro@gmail.com>
   licensed under the MIT license
 -->
-
+<script>
+export default { name: 'IconSearch' };
+</script>
 <template functional>
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
         <g fill="currentColor">

@@ -5,23 +5,27 @@
 $search-box-height: 24px;
 
 .search-box {
+  $this: &;
   position: relative;
   height: rem($search-box-height);
+  color: currentColor;
 
   &__input {
     display: block;
     width: 100%;
     height: rem($search-box-height);
+    color: currentColor;
     border: none;
     border-bottom: 1px solid transparent;
     background: none;
     font-size: rem(12px);
     line-height: 170%;
 
+    #{$this}__button:hover + &,
     &.fill,
     &:hover,
     &:focus {
-      border-bottom-color: $color-text;
+      border-bottom-color: currentColor;
       outline: none;
     }
   }
@@ -34,6 +38,8 @@ $search-box-height: 24px;
     display: flex;
     margin: 0;
     padding: 0;
+    cursor: pointer;
+    color: currentColor;
     border: none;
     background: none;
 
@@ -42,5 +48,13 @@ $search-box-height: 24px;
       display: block;
       margin: auto;
     }
+  }
+
+  //==
+  //== Inverse theme
+  //== ======================================= ==//
+
+  &_theme_inverse {
+    color: white;
   }
 }

@@ -37,7 +37,7 @@ export default {
 <template>
     <div class="app-side app-side-right">
         <div class="app-side__top">
-            <SearchBox class=""/>
+            <SearchBox class="" :theme="theme"/>
         </div>
         <FilterButton class="app-side__filter" v-if="showFilter"/>
         <UserMenu class="app-side__usermenu"

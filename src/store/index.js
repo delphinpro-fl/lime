@@ -5,10 +5,11 @@
  * licensed under the MIT license
  */
 
-import Vue     from 'vue';
-import Vuex    from 'vuex';
-import about   from './modules/about';
-import catalog from './modules/catalog';
+import Vue            from 'vue';
+import Vuex           from 'vuex';
+import about          from '@/store/modules/about';
+import catalog        from '@/store/modules/catalog';
+import { requestApi } from '@/lib';
 
 
 Vue.use(Vuex);
@@ -28,6 +29,7 @@ export default new Vuex.Store({
         mq           : 'desktop',
         mmOpen       : false,
         isHomepage   : true,
+        homeSlider   : [],
     },
 
     mutations: {
@@ -35,7 +37,13 @@ export default new Vuex.Store({
         toggleMobileMenu: (state, value) => state.mmOpen = value,
         updateMq        : (state, value) => state.mq = value,
         updateIsHomepage: (state, value) => state.isHomepage = !!value,
+        updateSlides    : (state, value) => state.homeSlider = value,
     },
 
-    actions: {},
+    actions: {
+        async loadSlides({ commit }) {
+            let slides = await requestApi('/mocks/slider.json');
+            commit('updateSlides', slides);
+        },
+    },
 });

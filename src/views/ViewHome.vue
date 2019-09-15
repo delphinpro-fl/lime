@@ -6,9 +6,12 @@
 -->
 
 <script>
-import { mapState } from 'vuex';
-import AppLogo      from '@/components/AppLogo';
-import HomeSlider   from '@/components/HomeSlider';
+import {
+    mapActions,
+    mapState,
+}                 from 'vuex';
+import AppLogo    from '@/components/AppLogo';
+import HomeSlider from '@/components/HomeSlider';
 
 
 export default {
@@ -25,19 +28,19 @@ export default {
 
     computed: {
         ...mapState({
-            layout: state => state.mq,
+            layout    : state => state.mq,
+            homeSlider: state => state.homeSlider,
         }),
 
         computedClasses() {
-            return {
-                home_mobile: this.layout === 'mobile',
-            };
+            return { home_mobile: this.layout === 'mobile' };
         },
-        computedStyles() {
-            return {
-                backgroundImage: 'url(/images/home/home-1920.jpg)',
-            };
-        },
+
+        slides() {return this.homeSlider; },
+    },
+
+    mounted() {
+        if (!this.slides.length) this.$store.dispatch('loadSlides');
     },
 
     beforeDestroy() {
@@ -55,8 +58,8 @@ export default {
 
 <template>
     <div class="home" :class="computedClasses" @wheel="scrollScreen">
-        <HomeSlider class="home__slider"/>
-        <div class="home__logo-box" v-if="this.layout==='desktop'">
+        <HomeSlider class="home__slider" :slides="slides"/>
+        <div class="home__logo-box" v-if="layout==='desktop'">
             <AppLogo class="home__logo"/>
         </div>
     </div>

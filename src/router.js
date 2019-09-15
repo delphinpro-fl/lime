@@ -15,7 +15,7 @@ import View404     from '@/views/View404';
 
 Vue.use(Router);
 
-export default new Router({
+let router = new Router({
     mode  : 'history',
     base  : process.env.BASE_URL,
     routes: [
@@ -44,3 +44,9 @@ export default new Router({
         },
     ],
 });
+
+router.afterEach((to) => {
+    store.commit('updateIsHomepage', to.name === 'home');
+});
+
+export default router;

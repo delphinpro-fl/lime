@@ -37,6 +37,7 @@ export default {
             overlayActive: state => state.overlayActive,
             filterOpen   : state => state.catalog.filterOpen,
             layout       : state => state.mq,
+            isHomepage   : state => state.isHomepage,
         }),
 
         footerClasses() {
@@ -46,7 +47,6 @@ export default {
             };
         },
 
-        isHomepage() { return this.$route.name === 'home'; },
 
         mmOpen: {
             get() { return this.$store.state.mmOpen; },
@@ -79,11 +79,12 @@ export default {
             />
         </div>
         <AppFooter class="app__footer" :class="footerClasses"/>
-        <AppSideLeft :is-homepage="isHomepage" v-if="this.layout === 'desktop'"/>
-        <AppSideRight :is-homepage="isHomepage" v-if="this.layout === 'desktop'"/>
-        <div class="overlay" v-if="this.overlayActive"></div>
-        <FilterPane v-if="this.filterOpen"/>
-        <MobileMenu v-if="this.mmOpen"/>
+        <AppSideLeft :is-homepage="isHomepage" v-if="layout === 'desktop'"/>
+        <AppSideRight :is-homepage="isHomepage" v-if="layout === 'desktop'"/>
+        <div class="overlay" v-if="isShowOverlay"></div>
+        <FilterPane v-if="filterOpen"/>
+        <FloatPanel/>
+        <MobileMenu v-if="mmOpen"/>
     </div>
 </template>
 

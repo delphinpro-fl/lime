@@ -7,54 +7,33 @@
 
 <script>
 
+import { mapState } from 'vuex';
+
+
 export default {
     name: 'ViewAbout',
 
-    components: {
-    },
-
     computed: {
-        requisitesReady() {
-            return this.$store.state.about.requisites
-                && this.$store.state.about.requisites.items
-                && Array.isArray(this.$store.state.about.requisites.items)
-                && this.$store.state.about.requisites.items.length > 0;
-        },
+        ...mapState({
+            pageData: state => state.pages.container.about,
+        }),
 
-        title() {
-            return this.$store.state.about.title;
-        },
-
-        content() {
-            return this.$store.state.about.content;
-        },
-
-        requisites() {
-            return this.$store.state.about.requisites;
+        pageContent() {
+            return this.pageData && this.pageData.content;
         },
     },
 
-    async mounted() {
-        let data = await this.$store.dispatch('getAboutPage');
-        if (data && 'payload' in data) {
-            this.$store.commit('updateAboutData', data.payload);
+    mounted() {
+        if (!this.pageData) {
+            this.$store.dispatch('loadPageData', { page: 'about', url: '/about/' });
         }
     },
 };
 </script>
 
 <template>
-    <div class="text-content">
-        <h1 v-if="title" v-text="title"></h1>
-        <div v-if="content" v-html="content"></div>
-        <div class="requisites" v-if="requisitesReady">
-            <p class="requisites__title" v-text="requisites.title"></p>
-            <dl class="requisites__items">
-                <template v-for="item in requisites.items">
-                    <dt v-text="item.term"></dt>
-                    <dd v-text="item.desc"></dd>
-                </template>
-            </dl>
-        </div>
+    <div class="text-content page-about">
+        <div v-if="pageContent" v-html="pageContent"></div>
+        <div v-else>Загрузка...</div>
     </div>
 </template>

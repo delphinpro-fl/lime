@@ -7,7 +7,7 @@
 
 import Vue            from 'vue';
 import Vuex           from 'vuex';
-import about          from '@/store/modules/about';
+import pages          from '@/store/modules/pages';
 import catalog        from '@/store/modules/catalog';
 import { requestApi } from '@/lib';
 
@@ -20,7 +20,7 @@ export default new Vuex.Store({
     strict,
 
     modules: {
-        about,
+        pages,
         catalog,
     },
 

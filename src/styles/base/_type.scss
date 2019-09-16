@@ -17,26 +17,3 @@ p {
   padding-top: rem(100px);
   text-transform: uppercase;
 }
-
-.requisites {
-  margin-top: 0.75em * 3;
-
-  &__title {
-    font-weight: bold;
-  }
-
-  &__items {
-    overflow: hidden;
-
-    > dt {
-      float: left;
-      clear: left;
-      padding-right: 0.5em;
-    }
-
-    > dd {
-      margin: 0;
-      font-weight: bold;
-    }
-  }
-}

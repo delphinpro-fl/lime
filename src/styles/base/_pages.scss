@@ -1,0 +1,20 @@
+//==
+//== Pages
+//== ======================================= ==//
+
+.page-about {
+  dl {
+    overflow: hidden;
+
+    > dt {
+      float: left;
+      clear: left;
+      padding-right: 0.5em;
+    }
+
+    > dd {
+      margin: 0;
+      font-weight: bold;
+    }
+  }
+}

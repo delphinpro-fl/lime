@@ -9,6 +9,7 @@
 import { mapState } from 'vuex';
 import AppLogo      from '@/components/AppLogo';
 import HomeSlider   from '@/components/HomeSlider';
+import { initPage } from '@/lib/init-page';
 
 
 export default {
@@ -40,6 +41,8 @@ export default {
     },
 
     mounted() {
+        initPage({ page: 'home', url: '/' });
+
         this.isOpenFooter = false;
         if (!this.slides.length) this.$store.dispatch('loadSlides');
     },

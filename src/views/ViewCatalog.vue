@@ -9,8 +9,9 @@
 import {
     mapGetters,
     mapMutations,
-}                  from 'vuex';
-import CatalogCard from '@/components/CatalogCard';
+}                   from 'vuex';
+import CatalogCard  from '@/components/CatalogCard';
+import { initPage } from '@/lib/init-page';
 
 
 export default {
@@ -29,6 +30,8 @@ export default {
     },
 
     async mounted() {
+        await initPage({ page: 'catalog', url: '/catalog/' });
+
         let data = await this.$store.dispatch('getCatalogItems');
         if (data && 'payload' in data) {
             this.$store.commit('updateCatalogData', data.payload);

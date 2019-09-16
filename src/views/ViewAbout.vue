@@ -8,6 +8,7 @@
 <script>
 
 import { mapState } from 'vuex';
+import { initPage } from '@/lib/init-page';
 
 
 export default {
@@ -24,9 +25,7 @@ export default {
     },
 
     mounted() {
-        if (!this.pageData) {
-            this.$store.dispatch('loadPageData', { page: 'about', url: '/about/' });
-        }
+        initPage({ page: 'about', url: '/about/' });
     },
 };
 </script>

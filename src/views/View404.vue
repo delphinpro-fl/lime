@@ -8,6 +8,10 @@
 <script>
 export default {
     name: 'View404',
+
+    mounted() {
+        this.$store.commit('setPageTitle', '404 страница не найдена');
+    },
 };
 </script>
 

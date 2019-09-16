@@ -18,7 +18,10 @@ $query = array_map(function ($item) {
 
 function getPageContent($page)
 {
-    $filename = str_replace(['/', '//', '.'], '', $page).'.json';
+    $filename = 'page-'.str_replace(['/', '//', '.'], '', $page).'.json';
+    if ($page === '') {
+        $filename = 'page-home.json';
+    }
     if (file_exists(__DIR__.'/'.$filename)) {
         readfile(__DIR__.'/'.$filename);
         die;
@@ -26,7 +29,7 @@ function getPageContent($page)
 }
 
 
-if ($urlPath === '/api/page' && array_key_exists('url', $query) && $query['url']) {
+if ($urlPath === '/api/page' && array_key_exists('url', $query)) {
     getPageContent($query['url']);
 }
 

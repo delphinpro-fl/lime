@@ -25,6 +25,8 @@ export default new Vuex.Store({
     },
 
     state: {
+        pageTitle: '',
+
         overlayActive: false,
         mq           : 'desktop',
         mmOpen       : false,
@@ -34,6 +36,8 @@ export default new Vuex.Store({
     },
 
     mutations: {
+        setPageTitle: (state, payload) => state.pageTitle = payload,
+
         toggleOverlay     : (state, status) => state.overlayActive = !!status,
         toggleMobileMenu  : (state, value) => state.mmOpen = value,
         updateMq          : (state, value) => state.mq = value,

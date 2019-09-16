@@ -57,6 +57,12 @@ export default {
         },
     },
 
+    watch: {
+        ['$store.state.pageTitle']() {
+            document.title = this.$store.state.pageTitle;
+        },
+    },
+
     mounted() {
         const mqDesktop = window.matchMedia('(min-width: 992px)');
         const mqMobile  = window.matchMedia('(max-width: 991px)');

@@ -38,9 +38,16 @@ export default {
             filterOpen   : state => state.catalog.filterOpen,
             layout       : state => state.mq,
             isHomepage   : state => state.isHomepage,
+            isOpenSearch : state => state.isOpenSearch,
             hashNav      : state => state.hashNav,
         }),
 
+        computedClasses() {
+            return {
+                locked      : this.isLockedViewport,
+                isOpenSearch: this.isOpenSearch,
+            };
+        },
         footerClasses() {
             return {
                 _home  : this.isHomepage,
@@ -105,7 +112,7 @@ export default {
 <template>
     <div id="app"
         class="app"
-        :class="{locked: isLockedViewport}"
+        :class="computedClasses"
         v-touch:swipe="swipeHandler"
         @wheel="wheelHandler"
     >

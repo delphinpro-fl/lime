@@ -21,7 +21,10 @@ export default {
     },
 
     methods: {
-        toggleMenu() { this.mmOpen = !this.mmOpen; },
+        toggleMenu() {
+            this.$store.commit('updateIsOpenSearch', false);
+            this.mmOpen = !this.mmOpen;
+        },
     },
 
 };

@@ -23,8 +23,18 @@
   &__container {
     display: flex;
     flex-grow: 1;
+    padding-top: ($navbar-height + 1px);
+    transition: 0.35s ease padding-top;
+
+    @include media-breakpoint-down(xs) {
+      .isOpenSearch & {
+        padding-top: ($navbar-height + 1px + $navbar-height);
+      }
+    }
 
     @include media-breakpoint-up(desktop) {
+      padding-top: 0;
+
       &::before {
         content: '';
         @include make-column-side-left();

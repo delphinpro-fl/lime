@@ -8,6 +8,7 @@ $search-box-height: 24px;
   $this: &;
   position: relative;
   height: rem($search-box-height);
+  transition: 0.35s ease transform;
   color: currentColor;
 
   &__input {
@@ -21,6 +22,11 @@ $search-box-height: 24px;
     font-size: rem(12px);
     line-height: 170%;
 
+    &::placeholder {
+      text-transform: uppercase;
+      font-size: rem(14px);
+    }
+
     #{$this}__button:hover + &,
     &.fill,
     &:hover,
@@ -29,6 +35,10 @@ $search-box-height: 24px;
       outline: none;
     }
   }
+
+  //==
+  //== Inverse theme
+  //== ======================================= ==//
 
   &__button {
     @include size(rem($search-box-height));
@@ -51,10 +61,39 @@ $search-box-height: 24px;
   }
 
   //==
-  //== Inverse theme
+  //== Mobile layout
   //== ======================================= ==//
 
   &_theme_inverse {
     color: white;
+  }
+
+  //==
+  //== Open/close state in mobile
+  //== ======================================= ==//
+
+  &_layout_mobile {
+    height: $navbar-height;
+
+    #{$this}__input {
+      height: rem($navbar-height);
+      padding: 0 20px;
+      border-bottom-color: transparent;
+      font-size: rem(12px);
+    }
+
+    #{$this}__button {
+      @include size(rem($navbar-height), rem($navbar-height - 1px));
+      display: none;
+      background: #fff;
+    }
+  }
+
+  &_closed {
+    transform: translateY(-100%);
+  }
+
+  &_open {
+    transform: translateY(0);
   }
 }

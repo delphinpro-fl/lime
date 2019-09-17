@@ -6,8 +6,10 @@
 -->
 
 <script>
-import AppLogo          from '@/components/AppLogo';
-import MobileMenuButton from '@/components/MobileMenuButton';
+import AppLogo            from '@/components/AppLogo';
+import MobileMenuButton   from '@/components/MobileMenuButton';
+import MobileSearchButton from '@/components/MobileSearchButton';
+import SearchBox          from '@/components/SearchBox';
 
 
 export default {
@@ -16,19 +18,26 @@ export default {
     components: {
         AppLogo,
         MobileMenuButton,
+        MobileSearchButton,
+        SearchBox,
     },
 };
 </script>
 
 <template>
     <div class="navbar">
-        <div class="navbar__menu">
-            <MobileMenuButton class="navbar__menu-button"/>
+        <div class="navbar__container">
+            <div class="navbar__menu">
+                <MobileMenuButton class="navbar__menu-button"/>
+            </div>
+            <div class="navbar__logo-box">
+                <AppLogo class="navbar__logo"/>
+            </div>
+            <div class="navbar__actions">
+                <MobileSearchButton class="navbar__search-button"/>
+            </div>
         </div>
-        <div class="navbar__logo-box">
-            <AppLogo class="navbar__logo"/>
-        </div>
-        <div class="navbar__actions"></div>
+        <SearchBox class="navbar__search-box" layout="mobile"/>
     </div>
 </template>
 

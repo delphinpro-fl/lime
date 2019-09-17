@@ -34,6 +34,7 @@ export default new Vuex.Store({
         mmOpen       : false,
         isHomepage   : true,
         isOpenFooter : false,
+        isOpenSearch : false,
         homeSlider   : [],
     },
 
@@ -47,6 +48,7 @@ export default new Vuex.Store({
         updateMq          : (state, value) => state.mq = value,
         updateIsHomepage  : (state, value) => state.isHomepage = !!value,
         updateIsOpenFooter: (state, value) => state.isOpenFooter = !!value,
+        updateIsOpenSearch: (state, value) => state.isOpenSearch = !!value,
         updateSlides      : (state, value) => state.homeSlider = value,
     },
 

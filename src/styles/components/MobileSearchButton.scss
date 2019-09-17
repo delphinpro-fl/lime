@@ -1,0 +1,19 @@
+//==
+//== Component: MobileSearchButton.vue
+//== ======================================= ==//
+
+.mobile-search-button {
+  @include size($navbar-height);
+  position: relative;
+  display: flex;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  background: none;
+
+  &__icon {
+    @include size(percentage(18 / 50));
+    flex-shrink: 0;
+    margin: auto;
+  }
+}

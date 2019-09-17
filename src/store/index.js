@@ -27,6 +27,8 @@ export default new Vuex.Store({
     state: {
         pageTitle: '',
 
+        hashNav: '',
+
         overlayActive: false,
         mq           : 'desktop',
         mmOpen       : false,
@@ -37,6 +39,8 @@ export default new Vuex.Store({
 
     mutations: {
         setPageTitle: (state, payload) => state.pageTitle = payload,
+
+        updateHashNavigation: (state, payload) => state.hashNav = payload.path === '#' ? '' : payload.path,
 
         toggleOverlay     : (state, status) => state.overlayActive = !!status,
         toggleMobileMenu  : (state, value) => state.mmOpen = value,
@@ -50,6 +54,10 @@ export default new Vuex.Store({
         async loadSlides({ commit }) {
             let slides = await requestApi('/mocks/slider.json');
             commit('updateSlides', slides);
+        },
+        navigateByHash({ commit }, payload) {
+            commit('updateHashNavigation', payload);
+            window.history.pushState(payload, payload.title, payload.path);
         },
     },
 });

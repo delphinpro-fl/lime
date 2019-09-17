@@ -25,9 +25,9 @@ export default {
         menu    : [
             { title: 'О компании', route: { name: 'about' } },
             { title: 'Контакты', route: { name: 'home' } },
-            { title: 'Руководство по покупке', route: { name: 'home' } },
+            { title: 'Руководство по покупке', route: { name: 'help' } },
             { title: 'Вакансии', route: { name: 'home' } },
-            { title: 'Партнерам', route: { name: 'home' } },
+            { title: 'Партнерам', route: { name: 'collaboration' } },
             { title: 'Disabled item', route: null },
         ],
     }),

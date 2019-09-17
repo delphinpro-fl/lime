@@ -13,6 +13,7 @@ import FilterPane   from '@/components/FilterPane';
 import AppSideLeft  from '@/components/AppSideLeft';
 import AppSideRight from '@/components/AppSideRight';
 import AppNavbar    from '@/components/AppNavbar';
+import FloatPanel   from '@/components/FloatPanel';
 import MobileMenu   from '@/components/MobileMenu';
 
 
@@ -26,6 +27,7 @@ export default {
         AppSideRight,
         FilterPane,
         MobileMenu,
+        FloatPanel,
     },
 
     data: () => ({}),
@@ -36,6 +38,7 @@ export default {
             filterOpen   : state => state.catalog.filterOpen,
             layout       : state => state.mq,
             isHomepage   : state => state.isHomepage,
+            hashNav      : state => state.hashNav,
         }),
 
         footerClasses() {
@@ -45,6 +48,10 @@ export default {
             };
         },
 
+        isShowOverlay() { return this.overlayActive || (this.hashNav !== '' && this.hashNav !== '#'); },
+        isLockedViewport() {
+            return this.isShowOverlay;
+        },
 
         mmOpen: {
             get() { return this.$store.state.mmOpen; },
@@ -70,9 +77,16 @@ export default {
         mqMobile.addListener(e => { if (e.matches) this.$store.commit('updateMq', 'mobile'); });
         if (mqDesktop.matches) this.$store.commit('updateMq', 'desktop');
         if (mqMobile.matches) this.$store.commit('updateMq', 'mobile');
+
+        window.addEventListener('popstate', this.historyHandler);
+        this.historyHandler();
     },
 
     methods: {
+        historyHandler() {
+            let urlHash = document.location.hash;
+            this.$store.commit('updateHashNavigation', { path: urlHash });
+        },
         scrollScreen(v) { this.isOpenFooter = !!v; },
         wheelHandler(e) {
             if (e.deltaY > 0) this.isOpenFooter = true;
@@ -91,6 +105,7 @@ export default {
 <template>
     <div id="app"
         class="app"
+        :class="{locked: isLockedViewport}"
         v-touch:swipe="swipeHandler"
         @wheel="wheelHandler"
     >

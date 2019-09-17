@@ -16,7 +16,7 @@ const themeValidator = value => [
 export default {
     name: 'UserMenu',
 
-    props   : {
+    props: {
         theme: { type: String, default: '', validator: themeValidator },
     },
 
@@ -27,6 +27,12 @@ export default {
             };
         },
     },
+
+    methods: {
+        hashNavigate(path, title = '') {
+            this.$store.dispatch('navigateByHash', { path, title });
+        },
+    },
 };
 </script>
 
@@ -34,16 +40,16 @@ export default {
     <div class="usermenu" :class="computedClasses">
         <ul class="usermenu__list">
             <li class="usermenu__item">
-                <router-link class="usermenu__link" to="/">личный кабинет</router-link>
+                <a class="usermenu__link" @click="hashNavigate('#lk')">Личный кабинет</a>
             </li>
             <li class="usermenu__item">
-                <router-link class="usermenu__link" to="/">избранное (0)</router-link>
+                <router-link class="usermenu__link" to="#favor">Избранное (0)</router-link>
             </li>
             <li class="usermenu__item">
-                <router-link class="usermenu__link" to="/">корзина (0)</router-link>
+                <router-link class="usermenu__link" to="/">Корзина (0)</router-link>
             </li>
             <li class="usermenu__item">
-                <router-link class="usermenu__link" to="/">помощь</router-link>
+                <router-link class="usermenu__link" :to="{name:'help'}">Помощь</router-link>
             </li>
         </ul>
     </div>

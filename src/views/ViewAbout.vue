@@ -31,7 +31,7 @@ export default {
 </script>
 
 <template>
-    <div class="text-content page-about">
+    <div class="text-content page-text page-about">
         <div v-if="pageContent" v-html="pageContent"></div>
         <div v-else>Загрузка...</div>
     </div>

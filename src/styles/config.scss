@@ -29,8 +29,11 @@ $logo-height: 60px;
 
 $navbar-height: 55px;
 
-$z-navbar: 900;
-$z-overlay: 1000;
+// @formatter:off
+$z-navbar               : 900;
+$z-overlay              : 1000;
+$z-float-panel          : 1100;
+// @formatter:on
 
 //==
 //== Mixins & functions

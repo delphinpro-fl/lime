@@ -5,12 +5,16 @@
  * licensed under the MIT license
  */
 
-import Vue         from 'vue';
-import Router      from 'vue-router';
-import ViewHome    from '@/views/ViewHome';
-import ViewAbout   from '@/views/ViewAbout';
-import ViewCatalog from '@/views/ViewCatalog';
-import View404     from '@/views/View404';
+import Vue               from 'vue';
+import Router            from 'vue-router';
+import store             from '@/store';
+import ViewHome          from '@/views/ViewHome';
+import ViewAbout         from '@/views/ViewAbout';
+import ViewCatalog       from '@/views/ViewCatalog';
+import View404           from '@/views/View404';
+import ViewLookBook      from '@/views/ViewLookBook';
+import ViewHelp          from '@/views/ViewHelp';
+import ViewCollaboration from '@/views/ViewCollaboration';
 
 
 Vue.use(Router);
@@ -37,6 +41,23 @@ let router = new Router({
             name     : 'about',
             component: ViewAbout,
         },
+        {
+            path     : '/lookbook',
+            name     : 'look',
+            component: ViewLookBook,
+        },
+
+        {
+            path     : '/collaboration',
+            name     : 'collaboration',
+            component: ViewCollaboration,
+        },
+        {
+            path     : '/help',
+            name     : 'help',
+            component: ViewHelp,
+        },
+
         {
             path     : '*',
             name     : 'error404',

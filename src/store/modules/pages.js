@@ -24,8 +24,10 @@ export default {
         async loadPageData({ commit, state }, payload) {
             if (!state.container[payload.page] || payload.force) {
                 let response = await Vue.axios.get('/page?url=' + encodeURIComponent(payload.url));
-                commit('updatePageData', { page: payload.page, data: response.data });
-                return response.data;
+                if (response.status === 200) {
+                    commit('updatePageData', { page: payload.page, data: response.data });
+                    return response.data;
+                }
             }
             return state.container[payload.page];
         },

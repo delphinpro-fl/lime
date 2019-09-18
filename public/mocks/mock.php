@@ -27,6 +27,14 @@ function getMenu($type){
     }
 }
 
+function getBanners($type){
+    $filename = 'banners-'.str_replace(['/', '//', '.'], '', $type).'.json';
+    if (file_exists(__DIR__.'/'.$filename)) {
+        readfile(__DIR__.'/'.$filename);
+        die;
+    }
+}
+
 
 $requestUri = $_SERVER['REQUEST_URI'];
 
@@ -48,6 +56,11 @@ switch ($object) {
     case 'menu':
         if (count($segments)) {
             getMenu($segments[0]);
+        }
+        break;
+    case 'banners':
+        if (count($segments)) {
+            getBanners($segments[0]);
         }
         break;
     default:

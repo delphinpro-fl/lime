@@ -5,11 +5,10 @@
  * licensed under the MIT license
  */
 
-import Vue            from 'vue';
-import Vuex           from 'vuex';
-import pages          from '@/store/modules/pages';
-import catalog        from '@/store/modules/catalog';
-import { requestApi } from '@/lib';
+import Vue     from 'vue';
+import Vuex    from 'vuex';
+import pages   from '@/store/modules/pages';
+import catalog from '@/store/modules/catalog';
 
 
 Vue.use(Vuex);
@@ -31,19 +30,24 @@ export default new Vuex.Store({
 
         menus: {},
 
+        banners: {},
+
         overlayActive: false,
         mq           : 'desktop',
         mmOpen       : false,
         isHomepage   : true,
         isOpenFooter : false,
         isOpenSearch : false,
-        homeSlider   : [],
-    },
+   },
 
     getters: {
-        leftMenu: state => state.menus.left,
+        leftMenu  : state => state.menus.left,
         bottomMenu: state => state.menus.bottom,
-        rightMenu: state => state.menus.right,
+        rightMenu : state => state.menus.right,
+
+        getBanners: state => id => {
+            return (state.banners[id] && state.banners[id].items || []);
+        },
     },
 
     mutations: {
@@ -53,20 +57,37 @@ export default new Vuex.Store({
 
         updateMenu: (state, payload) => Vue.set(state.menus, payload.menu, payload.data),
 
+        updateBanners: (state, payload) => Vue.set(state.banners, payload.banners, payload.data),
+
         toggleOverlay     : (state, status) => state.overlayActive = !!status,
         toggleMobileMenu  : (state, value) => state.mmOpen = value,
         updateMq          : (state, value) => state.mq = value,
         updateIsHomepage  : (state, value) => state.isHomepage = !!value,
         updateIsOpenFooter: (state, value) => state.isOpenFooter = !!value,
         updateIsOpenSearch: (state, value) => state.isOpenSearch = !!value,
-        updateSlides      : (state, value) => state.homeSlider = value,
     },
 
     actions: {
-        async loadSlides({ commit }) {
-            let slides = await requestApi('/mocks/slider.json');
-            commit('updateSlides', slides);
+
+        // {{protocol}}://{{host}}/api/banners/main
+        async loadBanners({ commit, state }, payload) {
+            if (!state.banners[payload.banners] || payload.force) {
+                let response = await Vue.axios.get('/banners/' + payload.banners);
+                if (response.status === 200) {
+                    let data = {
+                        ...response.data,
+                        items: response.data.items.map(item => {
+                            let pictures = {};
+                            for (let pic of item.pictures) pictures[pic.width] = pic;
+                            item.pictures = pictures;
+                            return item;
+                        }),
+                    };
+                    commit('updateBanners', { banners: payload.banners, data });
+                }
+            }
         },
+
         // {{protocol}}://{{host}}/api/menu/{type}
         async loadMenu({ commit, state }, payload) {
             if (!state.menus[payload.menu] || payload.force) {
@@ -76,6 +97,7 @@ export default new Vuex.Store({
                 }
             }
         },
+
         navigateByHash({ commit }, payload) {
             commit('updateHashNavigation', payload);
             window.history.pushState(payload, payload.title, payload.path);

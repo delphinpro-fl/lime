@@ -6,7 +6,10 @@
 -->
 
 <script>
-import { mapState } from 'vuex';
+import {
+    mapGetters,
+    mapState,
+}                   from 'vuex';
 import AppLogo      from '@/components/AppLogo';
 import HomeSlider   from '@/components/HomeSlider';
 import { initPage } from '@/lib/init-page';
@@ -23,9 +26,11 @@ export default {
     data: () => ({}),
 
     computed: {
+        ...mapGetters([
+            'getBanners',
+        ]),
         ...mapState({
-            layout    : state => state.mq,
-            homeSlider: state => state.homeSlider,
+            layout : state => state.mq,
         }),
 
         computedClasses() {
@@ -37,14 +42,14 @@ export default {
             set(v) { this.$store.commit('updateIsOpenFooter', v); },
         },
 
-        slides() {return this.homeSlider; },
+        slides() { return this.getBanners('main'); },
     },
 
     mounted() {
         initPage({ page: 'home', url: '/' });
 
         this.isOpenFooter = false;
-        if (!this.slides.length) this.$store.dispatch('loadSlides');
+        if (!this.slides.length) this.$store.dispatch('loadBanners', { banners: 'main' });
     },
 };
 </script>

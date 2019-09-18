@@ -1,0 +1,143 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "url": "/new/",
+      "content": "<h1>Открытие<br> магазина</h1> <p>г. Москва, ТЦ «Саларис», 1 этаж<br> 13 августа 2019г</p>",
+      "pictures": [
+        {
+          "width": 320,
+          "height": 550,
+          "src": "/images/home/home-320.jpg"
+        },
+        {
+          "width": 375,
+          "height": 640,
+          "src": "/images/home/home-375.jpg"
+        },
+        {
+          "width": 414,
+          "height": 640,
+          "src": "/images/home/home-414.jpg"
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "src": "/images/home/home-768.jpg"
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "src": "/images/home/home-1024.jpg"
+        },
+        {
+          "width": 1440,
+          "height": 860,
+          "src": "/images/home/home-1440.jpg"
+        },
+        {
+          "width": 1920,
+          "height": 1200,
+          "src": "/images/home/home-1920.jpg"
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "src": "/images/home/home-2560.jpg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "content": "<h1>Открытие<br> магазина</h1> <p>г. Москва, ТЦ «Саларис», 1 этаж<br> 13 августа 2019г</p>",
+      "pictures": [
+        {
+          "width": 320,
+          "height": 550,
+          "src": "/images/home/home-320.jpg"
+        },
+        {
+          "width": 375,
+          "height": 640,
+          "src": "/images/home/home-375.jpg"
+        },
+        {
+          "width": 414,
+          "height": 640,
+          "src": "/images/home/home-414.jpg"
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "src": "/images/home/home-768.jpg"
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "src": "/images/home/home-1024.jpg"
+        },
+        {
+          "width": 1440,
+          "height": 860,
+          "src": "/images/home/home-1440.jpg"
+        },
+        {
+          "width": 1920,
+          "height": 1200,
+          "src": "/images/home/home-1920.jpg"
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "src": "/images/home/home-2560.jpg"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "content": "<h1>Открытие<br> магазина</h1> <p>г. Москва, ТЦ «Саларис», 1 этаж<br> 13 августа 2019г</p>",
+      "pictures": [
+        {
+          "width": 320,
+          "height": 550,
+          "src": "/images/home/home-320.jpg"
+        },
+        {
+          "width": 375,
+          "height": 640,
+          "src": "/images/home/home-375.jpg"
+        },
+        {
+          "width": 414,
+          "height": 640,
+          "src": "/images/home/home-414.jpg"
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "src": "/images/home/home-768.jpg"
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "src": "/images/home/home-1024.jpg"
+        },
+        {
+          "width": 1440,
+          "height": 860,
+          "src": "/images/home/home-1440.jpg"
+        },
+        {
+          "width": 1920,
+          "height": 1200,
+          "src": "/images/home/home-1920.jpg"
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "src": "/images/home/home-2560.jpg"
+        }
+      ]
+    }
+  ]
+}

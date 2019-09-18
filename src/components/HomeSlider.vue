@@ -71,7 +71,7 @@ export default {
         stylesSlide(slide) {
             return {
                 width          : `${100 / this.slidesCount}%`,
-                backgroundImage: `url(${slide.images[this.imageSize]})`,
+                backgroundImage: `url(${slide.pictures[this.imageSize].src})`,
             };
         },
         swipeHandler(direction) {

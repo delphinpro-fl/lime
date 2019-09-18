@@ -7,15 +7,6 @@
  * @license     licensed under the MIT license
  */
 
-$requestUri = $_SERVER['REQUEST_URI'];
-
-$parsedUrl = parse_url($requestUri);
-parse_str($parsedUrl['query'], $query);
-$urlPath = $parsedUrl['path'];
-$query = array_map(function ($item) {
-    return trim($item, '/');
-}, $query);
-
 function getPageContent($page)
 {
     $filename = 'page-'.str_replace(['/', '//', '.'], '', $page).'.json';
@@ -28,9 +19,39 @@ function getPageContent($page)
     }
 }
 
+function getMenu($type){
+    $filename = 'menu-'.str_replace(['/', '//', '.'], '', $type).'.json';
+    if (file_exists(__DIR__.'/'.$filename)) {
+        readfile(__DIR__.'/'.$filename);
+        die;
+    }
+}
 
-if ($urlPath === '/api/page' && array_key_exists('url', $query)) {
-    getPageContent($query['url']);
+
+$requestUri = $_SERVER['REQUEST_URI'];
+
+$parsedUrl = parse_url($requestUri);
+parse_str($parsedUrl['query'], $query);
+$urlPath = trim(str_replace('/api', '', $parsedUrl['path']), '/');
+$query = array_map(function ($item) {
+    return trim($item, '/');
+}, $query);
+$segments = explode('/', $urlPath);
+$object = array_shift($segments);
+
+switch ($object) {
+    case 'page':
+        if (array_key_exists('url', $query)) {
+            getPageContent($query['url']);
+        }
+        break;
+    case 'menu':
+        if (count($segments)) {
+            getMenu($segments[0]);
+        }
+        break;
+    default:
+        // nop
 }
 
 header('Not found', true, 404);
@@ -38,5 +59,7 @@ echo json_encode([
     'url'        => $requestUri,
     'parsed_url' => $parsedUrl,
     'query'      => $query,
-    'server'     => $_SERVER,
+    'urlPath'    => $urlPath,
+    'object'    => $object,
+    'segments'    => $segments,
 ]);

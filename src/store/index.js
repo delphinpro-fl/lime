@@ -29,6 +29,8 @@ export default new Vuex.Store({
 
         hashNav: '',
 
+        menus: {},
+
         overlayActive: false,
         mq           : 'desktop',
         mmOpen       : false,
@@ -38,10 +40,18 @@ export default new Vuex.Store({
         homeSlider   : [],
     },
 
+    getters: {
+        leftMenu: state => state.menus.left,
+        bottomMenu: state => state.menus.bottom,
+        rightMenu: state => state.menus.right,
+    },
+
     mutations: {
         setPageTitle: (state, payload) => state.pageTitle = payload,
 
         updateHashNavigation: (state, payload) => state.hashNav = payload.path === '#' ? '' : payload.path,
+
+        updateMenu: (state, payload) => Vue.set(state.menus, payload.menu, payload.data),
 
         toggleOverlay     : (state, status) => state.overlayActive = !!status,
         toggleMobileMenu  : (state, value) => state.mmOpen = value,
@@ -56,6 +66,15 @@ export default new Vuex.Store({
         async loadSlides({ commit }) {
             let slides = await requestApi('/mocks/slider.json');
             commit('updateSlides', slides);
+        },
+        // {{protocol}}://{{host}}/api/menu/{type}
+        async loadMenu({ commit, state }, payload) {
+            if (!state.menus[payload.menu] || payload.force) {
+                let response = await Vue.axios.get('/menu/' + payload.menu);
+                if (response.status === 200) {
+                    commit('updateMenu', { menu: payload.menu, data: response.data });
+                }
+            }
         },
         navigateByHash({ commit }, payload) {
             commit('updateHashNavigation', payload);

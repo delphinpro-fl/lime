@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "О компании",
+      "url": "/about/",
+      "items": null
+    },
+    {
+      "id": 2,
+      "name": "Контакты",
+      "url": "",
+      "items": null
+    },
+    {
+      "id": 3,
+      "name": "Руководство по покупке",
+      "url": "/help/",
+      "items": null
+    },
+    {
+      "id": 4,
+      "name": "Вакансии",
+      "url": "",
+      "items": null
+    },
+    {
+      "id": 5,
+      "name": "Партнерам",
+      "url": "/collaboration/",
+      "items": null
+    }
+  ]
+}

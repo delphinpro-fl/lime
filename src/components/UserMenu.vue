@@ -6,6 +6,9 @@
 -->
 
 <script>
+import { mapGetters } from 'vuex';
+
+
 const THEME_INVERSE = 'inverse';
 
 const themeValidator = value => [
@@ -21,10 +24,17 @@ export default {
     },
 
     computed: {
+        ...mapGetters([
+            'rightMenu',
+        ]),
         computedClasses() {
             return {
                 usermenu_theme_inverse: this.theme === THEME_INVERSE,
             };
+        },
+        items: {
+            get() { return this.rightMenu && this.rightMenu.items || []; },
+            set(v) {},
         },
     },
 
@@ -32,24 +42,19 @@ export default {
         hashNavigate(path, title = '') {
             this.$store.dispatch('navigateByHash', { path, title });
         },
+        isHashLink(url) {
+            return /^#/.test(url);
+        },
     },
 };
 </script>
 
 <template>
     <div class="usermenu" :class="computedClasses">
-        <ul class="usermenu__list">
-            <li class="usermenu__item">
-                <a class="usermenu__link" @click="hashNavigate('#lk')">Личный кабинет</a>
-            </li>
-            <li class="usermenu__item">
-                <router-link class="usermenu__link" to="#favor">Избранное (0)</router-link>
-            </li>
-            <li class="usermenu__item">
-                <router-link class="usermenu__link" to="/">Корзина (0)</router-link>
-            </li>
-            <li class="usermenu__item">
-                <router-link class="usermenu__link" :to="{name:'help'}">Помощь</router-link>
+        <ul class="usermenu__list" v-if="items.length">
+            <li class="usermenu__item" v-for="item in items">
+                <a class="usermenu__link" @click="hashNavigate(item.url)" v-if="isHashLink(item.url)">{{item.name}}</a>
+                <router-link class="usermenu__link" :to="{path:item.url}" v-else>{{item.name}}</router-link>
             </li>
         </ul>
     </div>

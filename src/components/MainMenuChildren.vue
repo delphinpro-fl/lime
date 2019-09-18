@@ -19,8 +19,8 @@ export default {
     <ul class="mainmenu-children" v-if="items && items.length">
         <li class="mainmenu-children__item" v-for="item in items">
             <router-link class="mainmenu-children__link"
-                :to="item.route"
-                v-text="item.title"
+                :to="{path: item.url}"
+                v-text="item.name"
             />
         </li>
     </ul>

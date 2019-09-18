@@ -86,6 +86,10 @@ export default {
         if (mqDesktop.matches) this.$store.commit('updateMq', 'desktop');
         if (mqMobile.matches) this.$store.commit('updateMq', 'mobile');
 
+        this.$store.dispatch('loadMenu', { menu: 'left' });
+        this.$store.dispatch('loadMenu', { menu: 'right' });
+        this.$store.dispatch('loadMenu', { menu: 'bottom' });
+
         window.addEventListener('popstate', this.historyHandler);
         this.historyHandler();
     },

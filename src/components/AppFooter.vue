@@ -5,9 +5,10 @@
  * licensed under the MIT license
  */
 
-import FormSubscribe from '@/components/FormSubscribe';
-import ShareIcons    from '@/components/ShareIcons';
-import StoreIcons    from '@/components/StoreIcons';
+import FormSubscribe  from '@/components/FormSubscribe';
+import ShareIcons     from '@/components/ShareIcons';
+import StoreIcons     from '@/components/StoreIcons';
+import { mapGetters } from 'vuex';
 
 
 export default {
@@ -22,15 +23,17 @@ export default {
     data: () => ({
         phone   : '8 800 333 47 35',
         worktime: '10:00 – 18:00',
-        menu    : [
-            { title: 'О компании', route: { name: 'about' } },
-            { title: 'Контакты', route: { name: 'home' } },
-            { title: 'Руководство по покупке', route: { name: 'help' } },
-            { title: 'Вакансии', route: { name: 'home' } },
-            { title: 'Партнерам', route: { name: 'collaboration' } },
-            { title: 'Disabled item', route: null },
-        ],
     }),
+
+    computed:{
+        ...mapGetters([
+            'bottomMenu',
+        ]),
+        menu: {
+            get() { return this.bottomMenu && this.bottomMenu.items || []; },
+            set(v) {},
+        },
+    }
 };
 </script>
 
@@ -48,10 +51,10 @@ export default {
                 <div class="app-footer__phone">{{ phone }}</div>
                 <div class="app-footer__worktime">{{ worktime }}</div>
                 <ul class="app-footer__menu footer-menu" v-if="menu.length">
-                    <li class="footer-menu__item" v-for="item in menu" v-if="item.route">
+                    <li class="footer-menu__item" v-for="item in menu">
                         <router-link class="footer-menu__link"
-                            :to="item.route"
-                            v-text="item.title"
+                            :to="{path: item.url}"
+                            v-text="item.name"
                         />
                     </li>
                 </ul>

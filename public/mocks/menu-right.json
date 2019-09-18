@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Личный кабинет",
+      "url": "#lk",
+      "items": null
+    },
+    {
+      "id": 2,
+      "name": "Избранное",
+      "url": "#favorites",
+      "items": null
+    },
+    {
+      "id": 3,
+      "name": "Корзина",
+      "url": "/help/",
+      "items": null
+    },
+    {
+      "id": 4,
+      "name": "Помощь",
+      "url": "/help/",
+      "items": null
+    }
+  ]
+}

@@ -48,10 +48,9 @@ export default {
                 <div class="app-footer__phone">{{ phone }}</div>
                 <div class="app-footer__worktime">{{ worktime }}</div>
                 <ul class="app-footer__menu footer-menu" v-if="menu.length">
-                    <li class="footer-menu__item" v-for="item in menu">
+                    <li class="footer-menu__item" v-for="item in menu" v-if="item.route">
                         <router-link class="footer-menu__link"
                             :to="item.route"
-                            v-if="item.route"
                             v-text="item.title"
                         />
                     </li>

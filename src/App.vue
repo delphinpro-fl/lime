@@ -52,6 +52,7 @@ export default {
             return {
                 _home  : this.isHomepage,
                 _active: this.isOpenFooter,
+                _mobile: this.layout === 'mobile',
             };
         },
 

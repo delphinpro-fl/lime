@@ -64,6 +64,10 @@
       &._active {
         transform: translateY(-100%);
       }
+
+      &._mobile {
+        height: calc(100vh - #{$navbar-height});
+      }
     }
   }
 }

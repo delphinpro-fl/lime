@@ -67,7 +67,7 @@ export default {
         },
 
         isOpenFooter: {
-            get() { return this.$store.state.isOpenFooter; },
+            get() { return this.$store.state.isOpenFooter && !this.mmOpen; },
             set(v) { this.$store.commit('updateIsOpenFooter', v); },
         },
     },

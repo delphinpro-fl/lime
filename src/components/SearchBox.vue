@@ -59,6 +59,12 @@ export default {
     mounted() {
         this.$store.commit('updateIsOpenSearch', false);
     },
+
+    methods: {
+        focusHandler() {
+            this.$store.commit('updateIsOpenFooter', false);
+        },
+    },
 };
 </script>
 
@@ -72,6 +78,7 @@ export default {
             type="text"
             v-model="text"
             :placeholder="placeholder"
+            @focus="focusHandler"
         >
     </div>
 </template>

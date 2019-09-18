@@ -23,6 +23,7 @@ export default {
     methods: {
         toggleMenu() {
             this.$store.commit('updateIsOpenSearch', false);
+            this.$store.commit('updateIsOpenFooter', false);
             this.mmOpen = !this.mmOpen;
         },
     },

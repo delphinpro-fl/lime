@@ -38,7 +38,7 @@ export default new Vuex.Store({
         isHomepage   : true,
         isOpenFooter : false,
         isOpenSearch : false,
-   },
+    },
 
     getters: {
         leftMenu  : state => state.menus.left,
@@ -55,7 +55,12 @@ export default new Vuex.Store({
 
         updateHashNavigation: (state, payload) => state.hashNav = payload.path === '#' ? '' : payload.path,
 
-        updateMenu: (state, payload) => Vue.set(state.menus, payload.menu, payload.data),
+        updateMenu    : (state, payload) => Vue.set(state.menus, payload.menu, payload.data),
+        updateMenuItem: (state, payload) => {
+            let item = { ...state.menus[payload.menu].items[payload.itemIndex] };
+            Vue.set(item, payload.itemProp, payload.open);
+            Vue.set(state.menus[payload.menu].items, payload.itemIndex, item);
+        },
 
         updateBanners: (state, payload) => Vue.set(state.banners, payload.banners, payload.data),
 
@@ -93,6 +98,13 @@ export default new Vuex.Store({
             if (!state.menus[payload.menu] || payload.force) {
                 let response = await Vue.axios.get('/menu/' + payload.menu);
                 if (response.status === 200) {
+                    let data = {
+                        ...response.data,
+                        items: response.data.items.map(item => {
+                            item.isOpen = false;
+                            return item;
+                        }),
+                    };
                     commit('updateMenu', { menu: payload.menu, data: response.data });
                 }
             }

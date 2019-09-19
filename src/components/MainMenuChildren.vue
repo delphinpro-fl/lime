@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-    <ul class="mainmenu-children" v-if="items && items.length">
+    <ul class="mainmenu-children">
         <li class="mainmenu-children__item" v-for="item in items">
             <router-link class="mainmenu-children__link"
                 :to="{path: item.url}"

@@ -39,6 +39,7 @@ export default {
 
 <template>
     <footer class="app-footer">
+        <div class="app-footer__handler"></div>
         <div class="app-footer__container">
             <div class="app-footer__form">
                 <FormSubscribe/>

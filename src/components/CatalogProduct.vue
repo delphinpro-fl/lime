@@ -6,6 +6,7 @@
 -->
 
 <script>
+import { mapActions }   from 'vuex';
 import BookmarkButton   from '@/components/BookmarkButton';
 import ColorSelector    from '@/components/ColorSelector';
 import DropdownList     from '@/components/DropdownList';
@@ -74,8 +75,21 @@ export default {
     },
 
     methods: {
+        ...mapActions({
+            postToggleBookmark: 'toggleBookmark',
+        }),
+
         pickColor(colorIndex) {
             this.modelIndex = colorIndex;
+        },
+
+        toggleBookmark() {
+            // todo: Пока фейк
+            this.fakeBookmarkActive = !this.fakeBookmarkActive;
+            this.postToggleBookmark({
+                id      : this.entity.id,
+                favorite: this.fakeBookmarkActive,
+            });
         },
     },
 };
@@ -92,7 +106,7 @@ export default {
                 class="CatalogProduct__bookmark"
                 :active="isBookmarkActive"
                 :hover="isBookmarkHover"
-                @click="fakeBookmarkActive=!fakeBookmarkActive"
+                @click="toggleBookmark"
             />
         </div>
         <div class="CatalogProduct__content">

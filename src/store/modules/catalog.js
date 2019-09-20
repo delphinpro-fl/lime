@@ -112,5 +112,10 @@ export default {
             }
             return state.container[payload.id];
         },
+
+        // POST {{protocol}}://{{host}}/api/favorites
+        toggleBookmark({}, payload) {
+            return Vue.axios.post('/favorites/', payload);
+        },
     },
 };

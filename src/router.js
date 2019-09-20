@@ -37,21 +37,52 @@ let router = new Router({
             },
         },
         {
-            path     : '/about',
-            name     : 'about',
-            component: ViewAbout,
+            path     : '/catalog/:id',
+            name     : 'catalog',
+            component: ViewCatalog,
+            meta     : {
+                showFilter: true,
+            },
         },
+
         {
-            path     : '/lookbook',
+            path     : '/art-space',
             name     : 'look',
             component: ViewLookBook,
         },
 
+        //==
+        //== About menu
+        //== ======================================= ==//
+
         {
-            path     : '/collaboration',
+            path     : '/about',
+            name     : 'about',
+            component: ViewAbout,
+        },
+        /*
+        {
+            path     : '/contacts',
+            name     : 'contacts',
+            component: ViewContacts,
+        },
+        {
+            path     : '/exchange',
+            name     : 'exchange',
+            component: ViewExchange,
+        },
+        {
+            path     : '/about/jobs',
+            name     : 'jobs',
+            component: ViewJobs,
+        },
+        */
+        {
+            path     : '/partners',
             name     : 'collaboration',
             component: ViewCollaboration,
         },
+
         {
             path     : '/help',
             name     : 'help',

@@ -7,36 +7,16 @@
       "items": [
         {
           "id": 8,
-          "name": "Костюмы",
-          "url": "/catalog/platya/"
-        },
-        {
-          "id": 9,
-          "name": "Верхняя одежда",
-          "url": "/catalog/verhnaja-odejda/"
-        },
-        {
-          "id": 10,
-          "name": "Куртки",
-          "url": "/catalog/kurtki/"
-        },
-        {
-          "id": 11,
-          "name": "Блейзеры",
-          "url": "/catalog/bleizery/"
-        },
-        {
-          "id": 12,
-          "name": "Трикотаж",
-          "url": "/catalog/trikotazh/"
-        },
-        {
-          "id": 13,
           "name": "Платья",
           "url": "/catalog/platya/"
         },
         {
-          "id": 14,
+          "id": 9,
+          "name": "Блейзеры",
+          "url": "/catalog/bleizery/"
+        },
+        {
+          "id": 10,
           "name": "Жакеты",
           "url": "/catalog/zhakety/"
         }

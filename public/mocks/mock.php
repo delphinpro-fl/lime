@@ -7,64 +7,37 @@
  * @license     licensed under the MIT license
  */
 
-function getPageContent($page)
-{
-    $filename = 'page-'.str_replace(['/', '//', '.'], '', $page).'.json';
-    if ($page === '') {
-        $filename = 'page-home.json';
-    }
-    if (file_exists(__DIR__.'/'.$filename)) {
-        readfile(__DIR__.'/'.$filename);
-        die;
-    }
-}
-
-function getMenu($type){
-    $filename = 'menu-'.str_replace(['/', '//', '.'], '', $type).'.json';
-    if (file_exists(__DIR__.'/'.$filename)) {
-        readfile(__DIR__.'/'.$filename);
-        die;
-    }
-}
-
-function getBanners($type){
-    $filename = 'banners-'.str_replace(['/', '//', '.'], '', $type).'.json';
-    if (file_exists(__DIR__.'/'.$filename)) {
-        readfile(__DIR__.'/'.$filename);
-        die;
-    }
-}
-
-
 $requestUri = $_SERVER['REQUEST_URI'];
 
 $parsedUrl = parse_url($requestUri);
-parse_str($parsedUrl['query'], $query);
 $urlPath = trim(str_replace('/api', '', $parsedUrl['path']), '/');
-$query = array_map(function ($item) {
-    return trim($item, '/');
-}, $query);
+
+parse_str($parsedUrl['query'], $query);
+$query = array_map(function ($item) { return trim($item, '/'); }, $query);
+
 $segments = explode('/', $urlPath);
 $object = array_shift($segments);
+$path = '';
+$filename = '';
 
 switch ($object) {
     case 'page':
         if (array_key_exists('url', $query)) {
-            getPageContent($query['url']);
-        }
-        break;
-    case 'menu':
-        if (count($segments)) {
-            getMenu($segments[0]);
-        }
-        break;
-    case 'banners':
-        if (count($segments)) {
-            getBanners($segments[0]);
+            $path = str_replace(['\\', '.'], '', $query['url']);
+            $path = $path ?: 'index';
+            $filename = 'page/'.$path.'.json';
         }
         break;
     default:
-        // nop
+        if (count($segments)) {
+            $path = str_replace(['\\', '.'], '', $urlPath);
+            $filename = $path.'.json';
+        }
+}
+
+if ($filename && file_exists(__DIR__.'/'.$filename)) {
+    readfile(__DIR__.'/'.$filename);
+    die;
 }
 
 header('Not found', true, 404);
@@ -73,6 +46,8 @@ echo json_encode([
     'parsed_url' => $parsedUrl,
     'query'      => $query,
     'urlPath'    => $urlPath,
-    'object'    => $object,
-    'segments'    => $segments,
+    'object'     => $object,
+    'segments'   => $segments,
+    'path'       => $path,
+    'mock_file'   => $filename,
 ]);

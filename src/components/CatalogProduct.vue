@@ -23,7 +23,8 @@ export default {
     },
 
     props: {
-        card: { type: Object },
+        card    : { type: Object },
+        isMobile: Boolean,
     },
 
     data: () => ({
@@ -97,6 +98,7 @@ export default {
 
 <template>
     <div class="CatalogProduct"
+        :class="{CatalogProduct_isMobile: isMobile}"
         @mouseenter="isBookmarkHover=true"
         @mouseleave="isBookmarkHover=false"
     >
@@ -113,7 +115,7 @@ export default {
             <div class="CatalogProduct__title">{{title}}</div>
             <div class="CatalogProduct__price" v-if="price" v-html="price"></div>
         </div>
-        <div class="CatalogProduct__footer">
+        <div class="CatalogProduct__footer" v-if="!isMobile">
             <ColorSelector class="CatalogProduct__colors"
                 v-if="colors.length"
                 :colors="colors"

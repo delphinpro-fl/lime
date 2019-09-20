@@ -24,7 +24,8 @@ export default {
     },
 
     props: {
-        card: { type: Object },
+        card    : { type: Object },
+        isMobile: Boolean,
     },
 
     computed: {
@@ -44,6 +45,7 @@ export default {
     <component
         v-if="viewComponent"
         :is="viewComponent"
+        :is-mobile="isMobile"
         :card="card"
     />
 </template>

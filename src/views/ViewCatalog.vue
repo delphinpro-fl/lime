@@ -9,8 +9,10 @@
 import {
     mapGetters,
     mapMutations,
+    mapState,
 }                   from 'vuex';
 import CatalogRow   from '@/components/CatalogRow';
+import CatalogCard  from '@/components/CatalogCard';
 import { initPage } from '@/lib/init-page';
 
 
@@ -19,13 +21,18 @@ export default {
 
     components: {
         CatalogRow,
+        CatalogCard,
     },
 
     data: () => ({}),
 
     computed: {
+        ...mapState({
+            layout: state => state.mq,
+        }),
         ...mapGetters([
             'catalogRows',
+            'catalogCards',
         ]),
 
         catalogId() {
@@ -34,6 +41,10 @@ export default {
 
         rows() {
             return this.catalogRows(this.catalogId);
+        },
+
+        cards() {
+            return this.catalogCards(this.catalogId);
         },
     },
 
@@ -56,11 +67,20 @@ export default {
 
 <template>
     <div>
-        <div class="catalog">
+        <div class="catalog" v-if="layout==='desktop'">
             <CatalogRow
                 v-for="row in rows"
                 :key="row.id"
                 :cells="row.cells"
+            />
+        </div>
+        <div class="CatalogFlat" v-else>
+            <CatalogCard
+                class="CatalogFlat__item"
+                v-for="cell in cards"
+                :key="cell.id"
+                :is-mobile="layout==='mobile'"
+                :card="cell"
             />
         </div>
     </div>

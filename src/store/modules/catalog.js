@@ -59,8 +59,16 @@ export default {
     },
 
     getters: {
-        catalogRows: state => id => {
+        catalogRows : state => id => {
             return (state.container[id] && state.container[id].rows || []);
+        },
+        catalogCards: (state, getters) => id => {
+            return getters.catalogRows(id).reduce((acc, row) => {
+                return [
+                    ...acc,
+                    ...row.cells,
+                ];
+            }, []);
         },
 
         filterCountTotal: state => {

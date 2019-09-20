@@ -76,18 +76,18 @@ export default {
     },
 
     methods: {
-        ...mapActions({
-            postToggleBookmark: 'toggleBookmark',
-        }),
+        ...mapActions([
+            'toggleBookmark',
+        ]),
 
         pickColor(colorIndex) {
             this.modelIndex = colorIndex;
         },
 
-        toggleBookmark() {
+        toggleBookmarkHandler() {
             // todo: Пока фейк
             this.fakeBookmarkActive = !this.fakeBookmarkActive;
-            this.postToggleBookmark({
+            this.toggleBookmark({
                 id      : this.entity.id,
                 favorite: this.fakeBookmarkActive,
             });
@@ -108,7 +108,7 @@ export default {
                 class="CatalogProduct__bookmark"
                 :active="isBookmarkActive"
                 :hover="isBookmarkHover"
-                @click="toggleBookmark"
+                @click="toggleBookmarkHandler"
             />
         </div>
         <div class="CatalogProduct__content">

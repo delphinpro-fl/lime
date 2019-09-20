@@ -19,7 +19,7 @@ module.exports = {
     assetsDir          : 'design',
     runtimeCompiler    : false,
     parallel           : undefined,
-    integrity: true,
+    integrity          : true,
 
     devServer: {
         proxy: {
@@ -30,6 +30,10 @@ module.exports = {
             },
         },
     },
+
+    configureWebpack: () => ({
+        devtool: NODE_ENV === 'development' ? 'cheap-module-eval-source-map' : false,
+    }),
 
     chainWebpack: config => {
         config
@@ -42,8 +46,8 @@ module.exports = {
     },
 
     css: {
-        sourceMap: false,
-        extract: NODE_ENV === 'production',
+        sourceMap    : NODE_ENV === 'development',
+        extract      : NODE_ENV === 'production',
         loaderOptions: {
             sass: {
                 data: '@import "@/styles/config.scss";',

@@ -1,0 +1,21 @@
+//==
+//== Component: CatalogModel.vue
+//== ======================================= ==//
+
+.CatalogModel {
+  position: relative;
+  text-transform: uppercase;
+  background: #fff;
+  font-size: 12px;
+
+  &__imageBox {
+    position: relative;
+    background: #eee;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}

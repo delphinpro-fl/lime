@@ -1,0 +1,115 @@
+<!--
+  Lime project
+  File: CatalogProduct.vue
+  (c) 2019 delphinpro <delphinpro@gmail.com>
+  licensed under the MIT license
+-->
+
+<script>
+import BookmarkButton   from '@/components/BookmarkButton';
+import ColorSelector    from '@/components/ColorSelector';
+import DropdownList     from '@/components/DropdownList';
+import { splitByThree } from '@/lib';
+
+
+export default {
+    name: 'CatalogProduct',
+
+    components: {
+        BookmarkButton,
+        ColorSelector,
+        DropdownList,
+    },
+
+    props: {
+        card: { type: Object },
+    },
+
+    data: () => ({
+        modelIndex     : 0,
+        isBookmarkHover: false,
+
+        fakeBookmarkActive: false,
+    }),
+
+    computed: {
+        entity() {
+            if (this.card && this.card.entity) {
+                return this.card.entity;
+            }
+        },
+
+        pickedModel() {
+            if (this.modelIndex in this.entity.models) {
+                return this.entity.models[this.modelIndex];
+            }
+        },
+
+        title() {
+            return this.pickedModel && this.pickedModel.product.name;
+        },
+
+        image() {
+            return this.pickedModel && this.pickedModel.photo.url;
+        },
+
+        price() {
+            if (this.pickedModel
+                && this.pickedModel.skus
+                && this.pickedModel.skus.length
+            ) {
+                return splitByThree(this.pickedModel.skus[0].price) + ' ₽';
+            }
+
+            return '&nbsp;';
+        },
+
+        colors() {
+            return this.entity.models.map(model => model.color);
+        },
+
+        isBookmarkActive() {
+            return this.fakeBookmarkActive;
+        },
+    },
+
+    methods: {
+        pickColor(colorIndex) {
+            this.modelIndex = colorIndex;
+        },
+    },
+};
+</script>
+
+<template>
+    <div class="CatalogProduct"
+        @mouseenter="isBookmarkHover=true"
+        @mouseleave="isBookmarkHover=false"
+    >
+        <div class="CatalogProduct__imageBox">
+            <img class="CatalogProduct__image" :src="image" alt="" v-if="image">
+            <BookmarkButton
+                class="CatalogProduct__bookmark"
+                :active="isBookmarkActive"
+                :hover="isBookmarkHover"
+                @click="fakeBookmarkActive=!fakeBookmarkActive"
+            />
+        </div>
+        <div class="CatalogProduct__content">
+            <div class="CatalogProduct__title">{{title}}</div>
+            <div class="CatalogProduct__price" v-if="price" v-html="price"></div>
+        </div>
+        <div class="CatalogProduct__footer">
+            <ColorSelector class="CatalogProduct__colors"
+                v-if="colors.length"
+                :colors="colors"
+                :selected="modelIndex"
+                @change="pickColor"
+            />
+            <DropdownList class="CatalogProduct__sizes"/>
+            <button class="CatalogProduct__cartButton">В корзину</button>
+        </div>
+    </div>
+</template>
+
+<style lang="scss" src="../styles/components/CatalogProduct.scss"></style>

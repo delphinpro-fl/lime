@@ -5,13 +5,11 @@
  * licensed under the MIT license
  */
 
-import { requestApi } from '@/lib';
+import Vue from 'vue';
 
 
 export default {
     state: {
-        items: [],
-
         filterOpen         : false,
         filterSelectedCount: 0,
         filter             : {
@@ -56,10 +54,14 @@ export default {
                 ],
             },
         },
+
+        container: {},
     },
 
     getters: {
-        catalogItems: state => [...state.items],
+        catalogRows: state => id => {
+            return (state.container[id] && state.container[id].rows || []);
+        },
 
         filterCountTotal: state => {
             return Object.values(state.filter).reduce((acc, group) => {
@@ -74,7 +76,7 @@ export default {
 
     mutations: {
         updateCatalogData: (state, payload) => {
-            if (payload && 'items' in payload) state.items = payload.items;
+            Vue.set(state.container, payload.id, payload.data);
         },
 
         updateCatalogItem: (state, payload) => {
@@ -99,8 +101,16 @@ export default {
     },
 
     actions: {
-        getCatalogItems() {
-            return requestApi('/mocks/catalog.json');
+        // {{protocol}}://{{host}}/api/section/{{name}}
+        async getCatalogItems({ commit, state }, payload) {
+            if (!state.container[payload.id] || payload.force) {
+                let response = await Vue.axios.get('/section/' + payload.id + '/');
+                if (response.status === 200) {
+                    commit('updateCatalogData', { id: payload.id, data: response.data });
+                    return response.data;
+                }
+            }
+            return state.container[payload.id];
         },
     },
 };

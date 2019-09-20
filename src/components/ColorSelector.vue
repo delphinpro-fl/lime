@@ -15,9 +15,14 @@ export default {
     },
 
     computed: {
+        picked() {
+            if (this.selected in this.colors) {
+                return this.colors[this.selected];
+            }
+        },
         selectedName() {
-            if (this.selected > -1 && this.selected in this.colors) {
-                return this.colors[this.selected].title;
+            if (this.picked) {
+                return this.picked.name;
             }
             return 'Не выбран';
         },
@@ -31,12 +36,13 @@ export default {
             <strong>Цвет:</strong> {{ selectedName }}
         </div>
         <div class="color-selector__items">
-            <button class="color-selector__item"
+            <button
+                v-for="(item, index) in colors"
+                :key="item.id"
+                class="color-selector__item"
                 :class="{'color-selector__item_selected': selected === index}"
                 type="button"
-                v-for="(item, index) in colors"
-                :key="index"
-                :style="{backgroundColor: item.hex}"
+                :style="{backgroundColor: `#${item.hex}`}"
                 @click="$emit('change', index)"
             ></button>
         </div>

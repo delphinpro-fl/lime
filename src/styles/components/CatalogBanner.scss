@@ -1,0 +1,21 @@
+//==
+//== Component: CatalogBanner.vue
+//== ======================================= ==//
+
+.CatalogBanner {
+  position: relative;
+  background: #fff;
+
+  &__content {
+    position: relative;
+    display: block;
+    text-decoration: none;
+  }
+
+  &__image {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}

@@ -1,0 +1,14 @@
+//==
+//== Component: CatalogRow.vue
+//== ======================================= ==//
+
+.CatalogRow {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__cell {
+    flex-shrink: 0;
+    width: 25%;
+    margin: 0 3px 3px;
+  }
+}

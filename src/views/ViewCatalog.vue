@@ -10,7 +10,7 @@ import {
     mapGetters,
     mapMutations,
 }                   from 'vuex';
-import CatalogCard  from '@/components/CatalogCard';
+import CatalogRow   from '@/components/CatalogRow';
 import { initPage } from '@/lib/init-page';
 
 
@@ -18,24 +18,28 @@ export default {
     name: 'ViewCatalog',
 
     components: {
-        CatalogCard,
+        CatalogRow,
     },
 
     data: () => ({}),
 
     computed: {
         ...mapGetters([
-            'catalogItems',
+            'catalogRows',
         ]),
+
+        catalogId() {
+            return this.$route.params.id;
+        },
+
+        rows() {
+            return this.catalogRows(this.catalogId);
+        },
     },
 
     async mounted() {
-        await initPage({ page: 'catalog', url: '/catalog/' });
-
-        let data = await this.$store.dispatch('getCatalogItems');
-        if (data && 'payload' in data) {
-            this.$store.commit('updateCatalogData', data.payload);
-        }
+        await initPage({ page: 'catalog', url: this.$route.fullPath });
+        await this.$store.dispatch('getCatalogItems', { id: this.catalogId });
     },
 
     methods: {
@@ -51,13 +55,14 @@ export default {
 </script>
 
 <template>
-    <div class="catalog">
-        <CatalogCard class="catalog__item"
-            v-for="(item, index) in catalogItems"
-            :key="item.id"
-            :card="item"
-            @changeColor="changeColor(index, $event)"
-        />
+    <div>
+        <div class="catalog">
+            <CatalogRow
+                v-for="row in rows"
+                :key="row.id"
+                :cells="row.cells"
+            />
+        </div>
     </div>
 </template>
 

@@ -1,0 +1,381 @@
+{
+  "id": 1,
+  "active": true,
+  "name": "Одежда",
+  "code": "asas",
+  "level": 1,
+  "parent_id": null,
+  "rows": [
+    {
+      "id": 1,
+      "sort": 500,
+      "cells": [
+        {
+          "id": 6,
+          "type": "model",
+          "product": {
+            "id": 1,
+            "active": true,
+            "name": "Жакет",
+            "name_custom": "Классический жакет с карманами",
+            "code": "klassicheskii_zhaket_s_karmanami",
+            "description": "Платье от компании LIME",
+            "article": "432|4212|412",
+            "composition": "Основная ткань: 81% полиэстер/18% вискоза/1% эластан\nПодкладка: 55% полиэстер/45% вискоза",
+            "care": "Стирать в холодной воде"
+          },
+          "photo": {
+            "id": 1,
+            "active": true,
+            "title": "Вид спереди",
+            "url": "/images/look1.jpg",
+            "slot": 1,
+            "heigth": 1500,
+            "width": 1000,
+            "type": 1
+          },
+          "entity": {
+            "id": 5,
+            "color": {
+              "id": 34,
+              "hex": "397ed5",
+              "name": "Миндаль Крайола"
+            },
+            "skus": [
+              {
+                "id": 24,
+                "size": {
+                  "id": 360,
+                  "unit": "pieces",
+                  "value": "0"
+                },
+                "rests": [
+                  {
+                    "id": 24,
+                    "store": 927,
+                    "stock": 33
+                  }
+                ],
+                "price": 4117,
+                "old_price": 6000
+              },
+              {
+                "id": 182,
+                "size": {
+                  "id": 194,
+                  "unit": "pieces",
+                  "value": "2"
+                },
+                "rests": [
+                  {
+                    "id": 182,
+                    "store": 375,
+                    "stock": 23
+                  }
+                ],
+                "price": 23126,
+                "old_price": null
+              }
+            ]
+          }
+        },
+        {
+          "id": 1,
+          "type": "product",
+          "entity": {
+            "id": 1,
+            "name": "Продукт Кристина Евгеньевна Давыдова",
+            "name_custom": "Продукт ",
+            "article": "487|4119|352",
+            "code": "illo-minus-maiores-blanditiis-qui-eum",
+            "description": "Описание 7",
+            "composition": "Состав 7",
+            "care": "Уход 7",
+            "models": [
+              {
+                "id": 1,
+                "color": {
+                  "id": 18,
+                  "hex": "6437c8",
+                  "name": "Каштановый"
+                },
+                "product": {
+                  "id": 1,
+                  "name": "Продукт Кристина Евгеньевна Давыдова",
+                  "article": "487|4119|352",
+                  "code": "illo-minus-maiores-blanditiis-qui-eum",
+                  "description": "Описание 7",
+                  "composition": "Состав 7",
+                  "care": "Уход 7"
+                },
+                "photo": {
+                  "id": 1,
+                  "active": true,
+                  "title": "Вид спереди",
+                  "url": "/images/1.jpg",
+                  "slot": 1,
+                  "heigth": 1500,
+                  "width": 1000,
+                  "type": 1
+                },
+                "skus": [
+                  {
+                    "id": 221,
+                    "size": {
+                      "id": 132,
+                      "unit": "pieces",
+                      "value": "2"
+                    },
+                    "rests": [
+                      {
+                        "id": 221,
+                        "store": 583,
+                        "stock": 37
+                      }
+                    ],
+                    "price": 28624,
+                    "old_price": null
+                  },
+                  {
+                    "id": 57,
+                    "size": {
+                      "id": 257,
+                      "unit": "pieces",
+                      "value": "0"
+                    },
+                    "rests": [
+                      {
+                        "id": 57,
+                        "store": 392,
+                        "stock": 37
+                      }
+                    ],
+                    "price": 4290,
+                    "old_price": null
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": 2,
+          "type": "product",
+          "entity": {
+            "id": 2,
+            "name": "Продукт Валентин Владимирович Ситников",
+            "name_custom": "Продукт ",
+            "article": "633|5160|111",
+            "code": "nulla-labore-neque-aliquam-sequi-et-quaerat",
+            "description": "Описание 51",
+            "composition": "Состав 51",
+            "care": "Уход 51",
+            "models": [
+              {
+                "id": 4,
+                "color": {
+                  "id": 7,
+                  "hex": "df292b",
+                  "name": "Мышьяковый"
+                },
+                "product": {
+                  "id": 2,
+                  "name": "Продукт Валентин Владимирович Ситников",
+                  "name_custom": "Продукт ",
+                  "article": "633|5160|111",
+                  "code": "nulla-labore-neque-aliquam-sequi-et-quaerat",
+                  "description": "Описание 51",
+                  "composition": "Состав 51",
+                  "care": "Уход 51"
+                },
+                "photo": {
+                  "id": 1,
+                  "active": true,
+                  "title": "Вид спереди",
+                  "url": "/images/2.jpg",
+                  "slot": 1,
+                  "heigth": 1500,
+                  "width": 1000,
+                  "type": 1
+                },
+                "skus": []
+              },
+              {
+                "id": 5,
+                "color": {
+                  "id": 34,
+                  "hex": "397ed5",
+                  "name": "Миндаль Крайола"
+                },
+                "product": {
+                  "id": 2,
+                  "name": "Продукт Валентин Владимирович Ситников",
+                  "name_custom": "Продукт ",
+                  "article": "633|5160|111",
+                  "code": "nulla-labore-neque-aliquam-sequi-et-quaerat",
+                  "description": "Описание 51",
+                  "composition": "Состав 51",
+                  "care": "Уход 51"
+                },
+                "photo": {
+                  "id": 1,
+                  "active": true,
+                  "title": "Вид спереди",
+                  "url": "/images/1.jpg",
+                  "slot": 1,
+                  "heigth": 1500,
+                  "width": 1000,
+                  "type": 1
+                },
+                "skus": [
+                  {
+                    "id": 24,
+                    "size": {
+                      "id": 360,
+                      "unit": "pieces",
+                      "value": "0"
+                    },
+                    "rests": [
+                      {
+                        "id": 24,
+                        "store": 927,
+                        "stock": 33
+                      }
+                    ],
+                    "price": 4117,
+                    "old_price": null
+                  },
+                  {
+                    "id": 182,
+                    "size": {
+                      "id": 194,
+                      "unit": "pieces",
+                      "value": "2"
+                    },
+                    "rests": [
+                      {
+                        "id": 182,
+                        "store": 375,
+                        "stock": 23
+                      }
+                    ],
+                    "price": 23126,
+                    "old_price": null
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "sort": 500,
+      "cells": [
+        {
+          "id": 5,
+          "type": "model",
+          "photo": {
+            "id": 1,
+            "active": true,
+            "title": "Вид спереди",
+            "url": "/images/look1.jpg",
+            "slot": 1,
+            "heigth": 1500,
+            "width": 1000,
+            "type": 1
+          },
+          "product": {
+            "id": 1,
+            "active": true,
+            "name": "Жакет",
+            "name_custom": "Классический жакет с карманами",
+            "code": "klassicheskii_zhaket_s_karmanami",
+            "description": "Платье от компании LIME",
+            "article": "432|4212|412",
+            "composition": "Основная ткань: 81% полиэстер/18% вискоза/1% эластан\nПодкладка: 55% полиэстер/45% вискоза",
+            "care": "Стирать в холодной воде"
+          },
+          "entity": {
+            "id": 4,
+            "color": {
+              "id": 7,
+              "hex": "df292b",
+              "name": "Мышьяковый"
+            },
+            "skus": []
+          }
+        },
+        {
+          "id": 4,
+          "type": "model",
+          "product": {
+            "id": 1,
+            "active": true,
+            "name": "Жакет",
+            "name_custom": "Классический жакет с карманами",
+            "code": "klassicheskii_zhaket_s_karmanami",
+            "description": "Платье от компании LIME",
+            "article": "432|4212|412",
+            "composition": "Основная ткань: 81% полиэстер/18% вискоза/1% эластан\nПодкладка: 55% полиэстер/45% вискоза",
+            "care": "Стирать в холодной воде"
+          },
+          "photo": {
+            "id": 1,
+            "active": true,
+            "title": "Вид спереди",
+            "url": "/images/look1.jpg",
+            "slot": 1,
+            "heigth": 1500,
+            "width": 1000,
+            "type": 1
+          },
+          "entity": {
+            "id": 3,
+            "color": {
+              "id": 50,
+              "hex": "3f5ee7",
+              "name": "Белокурый"
+            },
+            "skus": []
+          }
+        },
+        {
+          "id": 3,
+          "type": "banner",
+          "photo": {
+            "id": 1,
+            "active": true,
+            "title": "Вид спереди",
+            "url": "https://alexlnos.ru/testData/img/image.jpg",
+            "slot": 1,
+            "heigth": 1500,
+            "width": 1000,
+            "type": 1
+          },
+          "entity": {
+            "id": 1,
+            "created_at": null,
+            "updated_at": null,
+            "active": true,
+            "url": "http://ya.ru",
+            "width": 100,
+            "height": 200,
+            "type": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "sort": 500,
+      "cells": []
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "items": 15,
+    "total": 1
+  }
+}

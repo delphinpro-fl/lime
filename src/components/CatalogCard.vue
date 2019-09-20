@@ -6,22 +6,34 @@
 -->
 
 <script>
-import IconStar      from '@/components/Icons/IconStar';
-import ColorSelector from '@/components/ColorSelector';
-import DropdownList  from '@/components/DropdownList';
+import CatalogModel   from '@/components/CatalogModel';
+import CatalogProduct from '@/components/CatalogProduct';
+import CatalogBanner  from '@/components/CatalogBanner';
+import { ucfirst }    from '@/lib';
 
+
+const cardTypes = ['product', 'model', 'banner'];
 
 export default {
     name: 'CatalogCard',
 
     components: {
-        IconStar,
-        ColorSelector,
-        DropdownList,
+        CatalogModel,
+        CatalogProduct,
+        CatalogBanner,
     },
 
     props: {
         card: { type: Object },
+    },
+
+    computed: {
+        viewComponent() {
+            if (this.card && this.card.type && cardTypes.indexOf(this.card.type.toString()) !== -1) {
+                return `Catalog${ucfirst(this.card.type)}`;
+            }
+            return null;
+        },
     },
 
     methods: {},
@@ -29,29 +41,9 @@ export default {
 </script>
 
 <template>
-    <div class="catalog-card">
-        <div class="catalog-card__image-box">
-            <img class="catalog-card__image" :src="card.image" alt="">
-            <div class="catalog-card__bookmark">
-                <IconStar/>
-            </div>
-        </div>
-        <div class="catalog-card__content">
-            <div class="catalog-card__title">{{ card.title }}</div>
-            <div class="catalog-card__price">{{ card.price }}</div>
-        </div>
-        <div class="catalog-card__footer">
-            <ColorSelector class="catalog-card__colors"
-                v-if="card.colors"
-                :colors="card.colors"
-                :selected="card.colorIndex"
-                @change="$emit('changeColor', $event)"
-            />
-            <DropdownList class="catalog-card__sizes"/>
-
-            <button class="catalog-card__cart-button">В корзину</button>
-        </div>
-    </div>
+    <component
+        v-if="viewComponent"
+        :is="viewComponent"
+        :card="card"
+    />
 </template>
-
-<style lang="scss" src="../styles/components/CatalogCard.scss"></style>

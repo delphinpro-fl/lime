@@ -38,7 +38,7 @@ let router = new Router({
         },
         {
             path     : '/catalog/:id',
-            name     : 'catalog',
+            name     : 'section',
             component: ViewCatalog,
             meta     : {
                 showFilter: true,

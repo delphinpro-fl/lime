@@ -62,7 +62,7 @@ export default {
                 v-for="(item, index) in items" :key="item.id"
             >
                 <a v-if="item.items && item.items.length"
-                    class="mainmenu__link"
+                    class="mainmenu__link has-children"
                     :class="{highlight:item.highlight}"
                     :href="item.url"
                     v-text="item.name"

@@ -20,7 +20,7 @@ export default {
 
     methods: {
         closeMobileMenu(e) {
-            if (e.target.tagName === 'A') {
+            if (e.target.tagName.toUpperCase() === 'A' && !e.target.classList.contains('has-children')) {
                 this.$store.commit('toggleMobileMenu', false);
             }
         },

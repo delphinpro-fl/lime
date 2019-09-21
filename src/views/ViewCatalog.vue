@@ -35,22 +35,22 @@ export default {
             'catalogCards',
         ]),
 
-        catalogId() {
-            return this.$route.params.id;
+        catalogSection() {
+            return this.$route.params.section;
         },
 
         rows() {
-            return this.catalogRows(this.catalogId);
+            return this.catalogRows(this.catalogSection);
         },
 
         cards() {
-            return this.catalogCards(this.catalogId);
+            return this.catalogCards(this.catalogSection);
         },
     },
 
     async mounted() {
         await initPage({ page: 'catalog', url: this.$route.fullPath });
-        await this.$store.dispatch('getCatalogItems', { id: this.catalogId });
+        await this.$store.dispatch('getCatalogItems', { id: this.catalogSection });
     },
 
     methods: {

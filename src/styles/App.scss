@@ -70,4 +70,11 @@
       }
     }
   }
+
+  &__cart-notify {
+    position: fixed;
+    //top: 12px;
+    top: 205px;
+    right: 12px;
+  }
 }

@@ -56,6 +56,9 @@ export default {
         },
 
         container: {},
+
+        isShowCartNotify: false,
+        newCartItem     : null,
     },
 
     getters: {
@@ -106,6 +109,15 @@ export default {
             let { group, index, value }                = payload;
             state.filter[group].options[index].checked = value;
         },
+
+        showCartNotify: (state, payload) => {
+            state.isShowCartNotify = true;
+            state.newCartItem      = payload.card;
+        },
+        hideCartNotify: (state) => {
+            state.isShowCartNotify = false;
+            state.newCartItem      = null;
+        },
     },
 
     actions: {
@@ -124,6 +136,11 @@ export default {
         // POST {{protocol}}://{{host}}/api/favorites
         toggleBookmark({}, payload) {
             return Vue.axios.post('/favorites/', payload);
+        },
+
+        // POST {{protocol}}://{{host}}/api/cart
+        toggleCart({}, payload) {
+            return Vue.axios.post('/cart/', payload);
         },
     },
 };

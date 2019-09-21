@@ -15,6 +15,7 @@ import AppSideRight from '@/components/AppSideRight';
 import AppNavbar    from '@/components/AppNavbar';
 import FloatPanel   from '@/components/FloatPanel';
 import MobileMenu   from '@/components/MobileMenu';
+import CartNotify   from '@/components/CartNotify';
 
 
 export default {
@@ -28,6 +29,7 @@ export default {
         FilterPane,
         MobileMenu,
         FloatPanel,
+        CartNotify,
     },
 
     data: () => ({}),
@@ -40,6 +42,9 @@ export default {
             isHomepage   : state => state.isHomepage,
             isOpenSearch : state => state.isOpenSearch,
             hashNav      : state => state.hashNav,
+
+            isShowCartNotify: state => state.catalog.isShowCartNotify,
+            newCartItem     : state => state.catalog.newCartItem,
         }),
 
         computedClasses() {
@@ -132,6 +137,13 @@ export default {
         <FilterPane v-if="filterOpen"/>
         <FloatPanel/>
         <MobileMenu v-if="mmOpen"/>
+
+        <transition name="fade-in-out">
+            <CartNotify class="app__cart-notify"
+                v-if="isShowCartNotify"
+                :card="newCartItem"
+            />
+        </transition>
     </div>
 </template>
 

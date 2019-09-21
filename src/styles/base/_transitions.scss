@@ -16,3 +16,23 @@
 
 .menu-leave-to {
 }
+
+.fade-in-out {
+  &-enter-active {
+    transition: all .3s ease;
+  }
+
+  &-enter {
+    transform: translateX(25%);
+    opacity: 0;
+  }
+
+  &-leave-active {
+    transition: all .3s ease;
+  }
+
+  &-leave-to {
+    transform: translateX(25%);
+    opacity: 0;
+  }
+}

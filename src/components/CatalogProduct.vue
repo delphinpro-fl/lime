@@ -6,12 +6,17 @@
 -->
 
 <script>
-import { mapActions }   from 'vuex';
+import {
+    mapActions,
+    mapMutations,
+}                       from 'vuex';
 import BookmarkButton   from '@/components/BookmarkButton';
 import ColorSelector    from '@/components/ColorSelector';
 import DropdownList     from '@/components/DropdownList';
 import { splitByThree } from '@/lib';
 
+
+let tm;
 
 export default {
     name: 'CatalogProduct',
@@ -78,6 +83,12 @@ export default {
     methods: {
         ...mapActions([
             'toggleBookmark',
+            'toggleCart',
+        ]),
+
+        ...mapMutations([
+            'showCartNotify',
+            'hideCartNotify',
         ]),
 
         pickColor(colorIndex) {
@@ -91,6 +102,17 @@ export default {
                 id      : this.entity.id,
                 favorite: this.fakeBookmarkActive,
             });
+        },
+
+        async toggleCartHandler() {
+            // todo: fake
+            await this.toggleCart({
+                id : this.entity.id,
+                add: true,
+            });
+            this.showCartNotify({card: this.pickedModel});
+            clearTimeout(tm);
+            tm = setTimeout(() => this.hideCartNotify(), 3000);
         },
     },
 };
@@ -123,7 +145,9 @@ export default {
                 @change="pickColor"
             />
             <DropdownList class="CatalogProduct__sizes"/>
-            <button class="CatalogProduct__cartButton">В корзину</button>
+            <button class="CatalogProduct__cartButton"
+                @click="toggleCartHandler"
+            >В корзину</button>
         </div>
     </div>
 </template>

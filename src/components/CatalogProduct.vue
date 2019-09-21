@@ -78,6 +78,16 @@ export default {
         isBookmarkActive() {
             return this.fakeBookmarkActive;
         },
+
+        detailUrl() {
+            return {
+                name  : 'product',
+                params: {
+                    section  : this.$route.params.section,
+                    code: this.pickedModel.product.code,
+                },
+            };
+        },
     },
 
     methods: {
@@ -110,7 +120,7 @@ export default {
                 id : this.entity.id,
                 add: true,
             });
-            this.showCartNotify({card: this.pickedModel});
+            this.showCartNotify({ card: this.pickedModel });
             clearTimeout(tm);
             tm = setTimeout(() => this.hideCartNotify(), 3000);
         },
@@ -134,7 +144,9 @@ export default {
             />
         </div>
         <div class="CatalogProduct__content">
-            <div class="CatalogProduct__title">{{title}}</div>
+            <div class="CatalogProduct__title">
+                <router-link :to="detailUrl">{{title}}</router-link>
+            </div>
             <div class="CatalogProduct__price" v-if="price" v-html="price"></div>
         </div>
         <div class="CatalogProduct__footer" v-if="!isMobile">

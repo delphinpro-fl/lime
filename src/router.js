@@ -15,6 +15,7 @@ import View404           from '@/views/View404';
 import ViewLookBook      from '@/views/ViewLookBook';
 import ViewHelp          from '@/views/ViewHelp';
 import ViewCollaboration from '@/views/ViewCollaboration';
+import ViewProduct       from '@/views/ViewProduct';
 
 
 Vue.use(Router);
@@ -43,6 +44,11 @@ let router = new Router({
             meta     : {
                 showFilter: true,
             },
+        },
+        {
+            path     : '/catalog/:section/:code',
+            name     : 'product',
+            component: ViewProduct,
         },
 
         {

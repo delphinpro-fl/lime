@@ -59,7 +59,7 @@ export default {
         },
 
         title() {
-            return this.pickedModel && this.pickedModel.product.name;
+            return this.entity.name_custom || this.entity.name;
         },
 
         image() {
@@ -124,8 +124,8 @@ export default {
             return {
                 name  : 'product',
                 params: {
-                    section  : this.$route.params.section,
-                    code: this.pickedModel.product.code,
+                    section: this.$route.params.section,
+                    code   : this.entity.code,
                 },
             };
         },

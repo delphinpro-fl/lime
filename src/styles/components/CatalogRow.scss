@@ -6,6 +6,7 @@
   $this: &;
   position: relative;
   display: flex;
+  margin-bottom: rem(20px);
 
   &__cell {
     flex-shrink: 0;
@@ -34,6 +35,7 @@
   //== 1 banner, 1 product
   &_type_3 {
     justify-content: space-between;
+    margin-bottom: rem(148px);
 
     .CatalogBanner {
       width: calc(50% - 6px);
@@ -73,15 +75,15 @@
   //== 6 product - 1 большой и другие поменьше
   &_type_7 {
     #{$this}__cell {
+      flex-grow: 1;
       width: calc(14% - 6px);
       max-width: calc(23.5% - 6px);
-      flex-grow: 1;
 
 
       &:first-child {
+        flex-grow: 0;
         width: calc(30% - 6px);
         max-width: none;
-        flex-grow: 0;
       }
     }
   }

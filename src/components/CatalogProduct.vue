@@ -37,8 +37,8 @@ export default {
     },
 
     data: () => ({
-        modelIndex     : 0,
-        isBookmarkHover: false,
+        modelIndex: 0,
+        isHoverMe : false,
 
         selectedSize: -1,
 
@@ -176,15 +176,15 @@ export default {
 <template>
     <div class="CatalogProduct"
         :class="{CatalogProduct_isMobile: isMobile}"
-        @mouseenter="isBookmarkHover=true"
-        @mouseleave="isBookmarkHover=false"
+        @mouseenter="isHoverMe=true"
+        @mouseleave="isHoverMe=false"
     >
         <div class="CatalogProduct__imageBox">
             <img class="CatalogProduct__image" :src="image" alt="" v-if="image">
             <BookmarkButton
                 class="CatalogProduct__bookmark"
                 :active="isBookmarkActive"
-                :hover="isBookmarkHover"
+                :hover="isHoverMe"
                 @click="toggleBookmarkHandler"
             />
         </div>

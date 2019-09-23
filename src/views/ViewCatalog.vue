@@ -72,6 +72,7 @@ export default {
                 v-for="row in rows"
                 :key="row.id"
                 :cells="row.cells"
+                :type="row.type"
             />
         </div>
         <div class="CatalogFlat" v-else>

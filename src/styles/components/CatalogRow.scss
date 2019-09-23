@@ -3,12 +3,66 @@
 //== ======================================= ==//
 
 .CatalogRow {
+  $this: &;
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
 
   &__cell {
     flex-shrink: 0;
-    width: 25%;
     margin: 0 3px 3px;
   }
+
+  //==
+  //== Типы строк
+  //== ======================================= ==//
+
+  //== 4 product в ряд
+  &_type_1 {
+    #{$this}__cell {
+      width: calc(25% - 6px);
+    }
+  }
+
+  //== 3 product с отступом между 2 и 3 ячейками
+  &_type_2 {
+    #{$this}__cell {
+      width: calc(25% - 6px);
+
+      &:nth-child(3) {
+        margin-left: auto;
+      }
+    }
+  }
+
+  //== 1 banner, 1 product
+  &_type_3 {
+    justify-content: space-between;
+
+    .CatalogBanner {
+      width: calc(50% - 6px);
+    }
+
+    .CatalogProduct {
+      width: calc(25% - 6px);
+    }
+  }
+
+  //== 3 product с отступами
+  &_type_4 {
+    #{$this}__cell {
+      width: calc(25% - 6px);
+
+      &:nth-child(2) {
+        margin-left: (25% / 3);
+      }
+
+      &:nth-child(3) {
+        margin-left: auto;
+      }
+    }
+  }
+
+  //== 3 product - 1 большой и 2 поменьше
+  //== 3 product + 1 banner в ряд
+  //== 6 product - 1 большой и другие поменьше
 }

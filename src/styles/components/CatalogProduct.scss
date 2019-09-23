@@ -72,5 +72,10 @@
     border: none;
     background: #5a5a5a;
     font-size: 10px;
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
   }
 }

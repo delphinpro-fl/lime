@@ -16,6 +16,10 @@ import SizeSelector     from '@/components/SizeSelector';
 import { splitByThree } from '@/lib';
 
 
+const STOCK_NOT_AVAILABLE = 0;
+const STOCK_LAST_PRODUCT  = 1;
+const STOCK_AVAILABLE     = 2;
+
 let tm;
 
 export default {
@@ -35,6 +39,8 @@ export default {
     data: () => ({
         modelIndex     : 0,
         isBookmarkHover: false,
+
+        selectedSize: -1,
 
         fakeBookmarkActive: false,
     }),
@@ -75,6 +81,41 @@ export default {
             return this.entity.models.map(model => model.color);
         },
 
+        sizes() {
+            return this.pickedModel.skus.map(sku => {
+                let stock    = sku.rests[0].stock;
+                let store    = sku.rests[0].store;
+                let text     = null,
+                    url      = null,
+                    disabled = false;
+                if (stock === STOCK_LAST_PRODUCT) {
+                    text = 'Последний';
+                }
+                if (stock === STOCK_NOT_AVAILABLE) {
+                    text     = 'Подписка';
+                    url      = '#';
+                    disabled = true;
+                    if (store) {
+                        text = 'Есть в магазине';
+                        url  = '#';
+                    }
+                }
+                return {
+                    id   : sku.id,
+                    title: sku.size.value,
+                    size : sku.size.value,
+                    stock,
+                    store,
+                    disabled,
+                    meta : {
+                        url,
+                        text,
+                    },
+                    // sku,
+                };
+            });
+        },
+
         isBookmarkActive() {
             return this.fakeBookmarkActive;
         },
@@ -103,6 +144,10 @@ export default {
 
         pickColor(colorIndex) {
             this.modelIndex = colorIndex;
+        },
+
+        pickSize(sizeIndex) {
+            this.selectedSize = sizeIndex;
         },
 
         toggleBookmarkHandler() {
@@ -156,8 +201,13 @@ export default {
                 :selected="modelIndex"
                 @change="pickColor"
             />
-            <SizeSelector class="CatalogProduct__sizes"/>
+            <SizeSelector class="CatalogProduct__sizes"
+                :options="sizes"
+                :selected="selectedSize"
+                @change="pickSize"
+            />
             <button class="CatalogProduct__cartButton"
+                :disabled="selectedSize===-1"
                 @click="toggleCartHandler"
             >В корзину</button>
         </div>

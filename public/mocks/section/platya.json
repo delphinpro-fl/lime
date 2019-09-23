@@ -52,7 +52,7 @@
                       {
                         "id": 221,
                         "store": 583,
-                        "stock": 2
+                        "stock": 0
                       }
                     ],
                     "price": 2862,
@@ -64,6 +64,40 @@
                       "id": 257,
                       "unit": "int",
                       "value": "S"
+                    },
+                    "rests": [
+                      {
+                        "id": 57,
+                        "store": 0,
+                        "stock": 0
+                      }
+                    ],
+                    "price": 4290,
+                    "old_price": null
+                  },
+                  {
+                    "id": 222,
+                    "size": {
+                      "id": 132,
+                      "unit": "int",
+                      "value": "M"
+                    },
+                    "rests": [
+                      {
+                        "id": 221,
+                        "store": 583,
+                        "stock": 2
+                      }
+                    ],
+                    "price": 2862,
+                    "old_price": null
+                  },
+                  {
+                    "id": 58,
+                    "size": {
+                      "id": 257,
+                      "unit": "int",
+                      "value": "L"
                     },
                     "rests": [
                       {
@@ -141,7 +175,7 @@
                   "id": 1,
                   "active": true,
                   "title": "Вид спереди",
-                  "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/aba35a9ad30b11e99d1600155d011401_2.jpeg",
+                  "url": "/images/1.jpg",
                   "slot": 1,
                   "heigth": 1500,
                   "width": 1000,

@@ -10,18 +10,12 @@ export default {
     name: 'SizeSelector',
 
     props: {
-        options: { type: Array, default: null },
+        options : { type: Array, default: null },
+        selected: { type: Number, default: -1 },
     },
 
     data: () => ({
-        isOpen  : false,
-        selected: -1,
-        // options : [
-        //     { title: 'XS', value: 'XS', info: 'Есть в магазине', disabled: true },
-        //     { title: 'S', value: 'S', info: 'Подписка', disabled: true },
-        //     { title: 'M', value: 'M', info: '', disabled: false },
-        //     { title: 'L', value: 'L', info: 'Последний', disabled: false },
-        // ],
+        isOpen: false,
     }),
 
     computed: {
@@ -37,9 +31,8 @@ export default {
 
         pick(opt, index) {
             if (!opt.disabled) {
-                console.log(opt);
-                this.selected = index;
-                this.isOpen   = false;
+                this.$emit('change', index);
+                this.isOpen = false;
             }
         },
     },
@@ -48,7 +41,10 @@ export default {
 
 <template>
     <div class="SizeSelector">
-        <div class="SizeSelector__header">
+        <div class="SizeSelector__header"
+            tabindex="0"
+            @click="toggle"
+        >
             <div class="SizeSelector__selected">{{ selectedText }}</div>
             <div class="SizeSelector__arrow">
                 <svg width="6" height="4" viewBox="0 0 6 4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -56,13 +52,17 @@ export default {
                 </svg>
             </div>
         </div>
-        <div class="SizeSelector__pane">
+        <div class="SizeSelector__pane" v-if="isOpen">
             <div class="SizeSelector__option"
-                :class="{disabled:opt.disabled}"
-                v-for="opt in options"
+                :class="{disabled:opt.disabled, selected:index===selected}"
+                v-for="(opt, index) in options"
+                @click="pick(opt, index)"
             >
                 <span class="SizeSelector__title">{{opt.title}}</span>
-                <span class="SizeSelector__info">{{opt.info}}</span>
+                <span class="SizeSelector__info" v-if="opt.meta.text">
+                    <a :href="opt.meta.url" v-if="opt.meta.url">{{opt.meta.text}}</a>
+                    <span v-else>{{opt.meta.text}}</span>
+                </span>
             </div>
         </div>
     </div>

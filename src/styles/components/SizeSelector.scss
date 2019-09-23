@@ -62,6 +62,7 @@ $SizeSelector-height: 32px;
     cursor: pointer;
     font-size: rem(12px);
 
+    &.selected,
     &:hover {
       background: #eee;
     }
@@ -77,5 +78,11 @@ $SizeSelector-height: 32px;
   }
 
   &__info {
+    a {
+      &:hover {
+        color: $color-text;
+        text-decoration: underline;
+      }
+    }
   }
 }

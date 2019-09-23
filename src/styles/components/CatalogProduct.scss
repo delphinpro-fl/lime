@@ -49,6 +49,7 @@
     opacity: 0;
   }
 
+  &__footer_freeze,
   &:hover &__footer {
     opacity: 1;
   }

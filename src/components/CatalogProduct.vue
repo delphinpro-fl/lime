@@ -120,6 +120,10 @@ export default {
             return this.fakeBookmarkActive;
         },
 
+        isFooterFreeze() {
+            return this.selectedSize !== -1;
+        },
+
         detailUrl() {
             return {
                 name  : 'product',
@@ -194,7 +198,10 @@ export default {
             </div>
             <div class="CatalogProduct__price" v-if="price" v-html="price"></div>
         </div>
-        <div class="CatalogProduct__footer" v-if="!isMobile">
+        <div class="CatalogProduct__footer"
+            :class="{CatalogProduct__footer_freeze:isFooterFreeze}"
+            v-if="!isMobile"
+        >
             <ColorSelector class="CatalogProduct__colors"
                 v-if="colors.length"
                 :colors="colors"

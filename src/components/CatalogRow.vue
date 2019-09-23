@@ -41,10 +41,12 @@ export default {
 
     methods: {
         showInThisRow(cellIndex) {
-            if (this.type === rowTypes.TYPE_2 && cellIndex > 2) return false;
-            if (this.type === rowTypes.TYPE_3 && cellIndex > 1) return false;
-            if (this.type === rowTypes.TYPE_4 && cellIndex > 2) return false;
-            return true;
+            if (this.type === rowTypes.TYPE_2) return cellIndex < 3;
+            if (this.type === rowTypes.TYPE_3) return cellIndex < 2;
+            if (this.type === rowTypes.TYPE_4) return cellIndex < 3;
+            if (this.type === rowTypes.TYPE_5) return cellIndex < 3;
+            if (this.type === rowTypes.TYPE_7) return cellIndex < 6;
+            return cellIndex < 4;
         },
     },
 };

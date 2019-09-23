@@ -12,7 +12,7 @@ import {
 }                       from 'vuex';
 import BookmarkButton   from '@/components/BookmarkButton';
 import ColorSelector    from '@/components/ColorSelector';
-import DropdownList     from '@/components/DropdownList';
+import SizeSelector     from '@/components/SizeSelector';
 import { splitByThree } from '@/lib';
 
 
@@ -24,7 +24,7 @@ export default {
     components: {
         BookmarkButton,
         ColorSelector,
-        DropdownList,
+        SizeSelector,
     },
 
     props: {
@@ -156,7 +156,7 @@ export default {
                 :selected="modelIndex"
                 @change="pickColor"
             />
-            <DropdownList class="CatalogProduct__sizes"/>
+            <SizeSelector class="CatalogProduct__sizes"/>
             <button class="CatalogProduct__cartButton"
                 @click="toggleCartHandler"
             >В корзину</button>

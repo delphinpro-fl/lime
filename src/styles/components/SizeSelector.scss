@@ -2,13 +2,14 @@
 //== Component: DropdownList.vue
 //== ======================================= ==//
 
-$dropdown-list-height: 32px;
+$SizeSelector-height: 32px;
 
-.dropdown-list {
+.SizeSelector {
   position: relative;
   z-index: 100;
   width: 100%;
-  height: rem($dropdown-list-height);
+  height: rem($SizeSelector-height);
+  user-select: none;
   border: 1px solid #5a5a5a;
   background: #fff;
 
@@ -16,8 +17,14 @@ $dropdown-list-height: 32px;
     position: relative;
     display: flex;
     align-items: center;
-    height: rem($dropdown-list-height);
+    height: 100%;
     cursor: pointer;
+    outline: 1px solid transparent;
+    outline-offset: -1px;
+
+    &:focus {
+      outline-color: -webkit-focus-ring-color;
+    }
   }
 
   &__selected {
@@ -41,7 +48,7 @@ $dropdown-list-height: 32px;
     top: 100%;
     right: -1px;
     left: -1px;
-    display: none;
+    //display: none;
     border: 1px solid #5a5a5a;
     background: #fff;
   }
@@ -50,7 +57,7 @@ $dropdown-list-height: 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: rem($dropdown-list-height);
+    height: rem($SizeSelector-height);
     padding: 0 15px;
     cursor: pointer;
     font-size: rem(12px);

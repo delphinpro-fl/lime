@@ -2,6 +2,22 @@
 //== Component: ColorSelector.vue
 //== ======================================= ==//
 
+.color-indicator {
+  @include size(rem(16px));
+  border: 1px solid transparent;
+  background: none;
+  background-clip: padding-box;
+
+  &:focus {
+    outline: none;
+  }
+
+  &_selected {
+    border-width: 2px;
+    border-color: #c4c4c4;
+  }
+}
+
 .color-selector {
   &__title {
   }
@@ -11,20 +27,7 @@
   }
 
   &__item {
-    @include size(rem(16px));
     margin-right: 6px;
     cursor: pointer;
-    border: 1px solid transparent;
-    background: none;
-    background-clip: padding-box;
-
-    &:focus {
-      outline: none;
-    }
-
-    &_selected {
-      border-width: 2px;
-      border-color: #c4c4c4;
-    }
   }
 }

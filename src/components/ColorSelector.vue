@@ -39,8 +39,8 @@ export default {
             <button
                 v-for="(item, index) in colors"
                 :key="item.id"
-                class="color-selector__item"
-                :class="{'color-selector__item_selected': selected === index}"
+                class="color-selector__item color-indicator"
+                :class="{'color-indicator_selected': selected === index}"
                 type="button"
                 :style="{backgroundColor: `#${item.hex}`}"
                 @click="$emit('change', index)"

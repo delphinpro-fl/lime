@@ -11,9 +11,9 @@
 }
 
 @mixin make-column-side-right() {
-  padding-left: rem($grid-left-side-padding);
+  padding-left: rem($grid-right-side-padding);
   padding-right: rem($grid-right-side-padding);
-  width: percentage(1.5/12);
-  min-width: rem(200px);
+  width: percentage(1.6/12);
+  min-width: rem(165px);
   flex-shrink: 0;
 }

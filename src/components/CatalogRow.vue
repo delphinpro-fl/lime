@@ -53,16 +53,14 @@ export default {
 </script>
 
 <template>
-    <div>
-        <div class="CatalogRow" :class="computedClasses">
-            <CatalogCard
-                class="CatalogRow__cell"
-                v-for="(cell, index) in cells"
-                v-if="showInThisRow(index)"
-                :key="cell.id"
-                :card="cell"
-            />
-        </div>
+    <div class="CatalogRow" :class="computedClasses">
+        <CatalogCard
+            class="CatalogRow__cell"
+            v-for="(cell, index) in cells"
+            v-if="showInThisRow(index)"
+            :key="cell.id"
+            :card="cell"
+        />
     </div>
 </template>
 

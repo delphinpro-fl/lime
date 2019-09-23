@@ -58,6 +58,11 @@ export default {
             }
         },
 
+        pickedSize() {
+            if (this.selectedSize === -1) return null;
+            return this.pickedModel.skus[this.selectedSize].size;
+        },
+
         title() {
             return this.entity.name_custom || this.entity.name;
         },
@@ -169,7 +174,16 @@ export default {
                 id : this.entity.id,
                 add: true,
             });
-            this.showCartNotify({ card: this.pickedModel });
+            this.showCartNotify({
+                goods: {
+                    title   : this.title,
+                    article : this.entity.article,
+                    color   : this.pickedModel.color,
+                    size    : this.pickedSize,
+                    photo   : this.pickedModel.photo,
+                    quantity: 1,
+                },
+            });
             clearTimeout(tm);
             tm = setTimeout(() => this.hideCartNotify(), 3000);
         },

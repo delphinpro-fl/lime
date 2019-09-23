@@ -112,7 +112,7 @@ export default {
 
         showCartNotify: (state, payload) => {
             state.isShowCartNotify = true;
-            state.newCartItem      = payload.card;
+            state.newCartItem      = payload.goods;
         },
         hideCartNotify: (state) => {
             state.isShowCartNotify = false;

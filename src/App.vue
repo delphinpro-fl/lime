@@ -141,7 +141,7 @@ export default {
         <transition name="fade-in-out">
             <CartNotify class="app__cart-notify"
                 v-if="isShowCartNotify"
-                :card="newCartItem"
+                :goods="newCartItem"
             />
         </transition>
     </div>

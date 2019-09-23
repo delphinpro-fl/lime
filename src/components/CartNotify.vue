@@ -10,7 +10,7 @@ export default {
     name: 'CartNotify',
 
     props: {
-        card: { type: Object, default: null },
+        goods: { type: Object, default: null },
     },
 };
 </script>
@@ -18,19 +18,22 @@ export default {
 <template>
     <div class="CartNotify">
         <div class="CartNotify__header">Товар добавлен в корзину</div>
-        <div class="CartNotify__body" v-if="card">
+        <div class="CartNotify__body" v-if="goods">
             <div class="CartNotify__preview">
-                <img class="CartNotify__image" :src="card.photo.url" alt="">
+                <img class="CartNotify__image" :src="goods.photo.url" :alt="goods.title">
             </div>
             <div class="CartNotify__main">
-                <div class="CartNotify__title">{{card.product.name}}</div>
-                <div class="CartNotify__param">Арт. {{card.product.article}}</div>
-                <div class="CartNotify__param"><b>Цвет:</b> {{card.color.name}}</div>
-                <div class="CartNotify__param"><b>Размер:</b> XS</div>
-                <div class="CartNotify__param"><b>Количество:</b> 1</div>
+                <div class="CartNotify__title">{{goods.title}}</div>
+                <div class="CartNotify__param">Арт. {{goods.article}}</div>
+                <div class="CartNotify__param"><b>Цвет:</b> {{goods.color.name}}</div>
+                <div class="CartNotify__param">
+                    <div class="color-indicator" :style="{backgroundColor: `#${goods.color.hex}`}"></div>
+                </div>
+                <div class="CartNotify__param"><b>Размер:</b> {{goods.size.value}}</div>
+                <div class="CartNotify__param"><b>Количество:</b> {{goods.quantity}}</div>
             </div>
         </div>
-        <div class="CartNotify__footer" v-if="card">
+        <div class="CartNotify__footer" v-if="goods">
             <a class="CartNotify__button">Перейти</a>
         </div>
     </div>

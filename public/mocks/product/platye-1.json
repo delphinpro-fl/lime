@@ -28,7 +28,14 @@
           "slot": 1,
           "height": 1500,
           "width": 1000,
-          "type": 1
+          "type": 1,
+          "thumbs": [
+            {
+              "width": 80,
+              "height": 120,
+              "url": "/images/1-thumb.jpg"
+            }
+          ]
         },
         {
           "id": 2,
@@ -38,7 +45,14 @@
           "slot": 2,
           "height": 1500,
           "width": 1000,
-          "type": 2
+          "type": 2,
+          "thumbs": [
+            {
+              "width": 80,
+              "height": 120,
+              "url": "/images/2-thumb.jpg"
+            }
+          ]
         },
         {
           "id": 3,
@@ -48,7 +62,14 @@
           "slot": 2,
           "height": 1500,
           "width": 1000,
-          "type": 2
+          "type": 2,
+          "thumbs": [
+            {
+              "width": 80,
+              "height": 120,
+              "url": "/images/3-thumb.jpg"
+            }
+          ]
         }
       ],
       "skus": [
@@ -107,7 +128,14 @@
           "slot": 1,
           "height": 1500,
           "width": 1000,
-          "type": 1
+          "type": 1,
+          "thumbs": [
+            {
+              "width": 80,
+              "height": 120,
+              "url": "/images/4-thumb.jpg"
+            }
+          ]
         },
         {
           "id": 2,
@@ -117,7 +145,14 @@
           "slot": 2,
           "height": 1500,
           "width": 1000,
-          "type": 2
+          "type": 2,
+          "thumbs": [
+            {
+              "width": 80,
+              "height": 120,
+              "url": "/images/3-thumb.jpg"
+            }
+          ]
         },
         {
           "id": 3,
@@ -127,7 +162,14 @@
           "slot": 2,
           "height": 1500,
           "width": 1000,
-          "type": 2
+          "type": 2,
+          "thumbs": [
+            {
+              "width": 80,
+              "height": 120,
+              "url": "/images/2-thumb.jpg"
+            }
+          ]
         },
         {
           "id": 4,
@@ -137,7 +179,14 @@
           "slot": 2,
           "height": 1500,
           "width": 1000,
-          "type": 2
+          "type": 2,
+          "thumbs": [
+            {
+              "width": 80,
+              "height": 120,
+              "url": "/images/1-thumb.jpg"
+            }
+          ]
         }
       ],
       "skus": [

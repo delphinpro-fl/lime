@@ -36,3 +36,21 @@
     opacity: 0;
   }
 }
+
+.fade-in-out {
+  &-enter-active {
+    transition: all .3s ease;
+  }
+
+  &-enter {
+    opacity: 0;
+  }
+
+  &-leave-active {
+    transition: all .3s ease;
+  }
+
+  &-leave-to {
+    opacity: 0;
+  }
+}

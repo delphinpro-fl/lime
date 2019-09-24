@@ -6,7 +6,10 @@
 -->
 
 <script>
-import { mapActions }     from 'vuex';
+import {
+    mapActions,
+    mapMutations,
+}                         from 'vuex';
 import SizeSelector       from '@/components/SizeSelector';
 import ColorSelector      from '@/components/ColorSelector';
 import { makeSizesArray } from '@/lib';
@@ -59,6 +62,7 @@ export default {
     },
 
     mounted() {
+        this.updateCurrentSKU(this.sku);
         this.$nextTick(() => {
             this.updateMediaElements();
             this.updateIndexVisibleMedia();
@@ -68,6 +72,9 @@ export default {
     methods: {
         ...mapActions([
             'navigateByHash',
+        ]),
+        ...mapMutations([
+            'updateCurrentSKU',
         ]),
 
         scrollHandler() {
@@ -171,6 +178,9 @@ export default {
 
                 <div class="product__links info-links">
                     <ul class="info-links__col">
+                    </ul>
+                    <ul class="info-links__col">
+                        <li><a href="#availability" @click.prevent="navigateByHash({path:'#availability'})">Наличие в магазинах</a></li>
                         <li><a href="#delivery" @click.prevent="navigateByHash({path:'#delivery'})">Доставка и возврат</a></li>
                     </ul>
                 </div>

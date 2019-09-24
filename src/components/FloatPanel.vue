@@ -8,14 +8,19 @@
 <script>
 import { mapState } from 'vuex';
 import PageContent  from '@/components/PageContent';
+import Availability from '@/components/Availability';
 
 
 const hashRoutes = {
-    '#delivery': {
+    '#delivery'    : {
         component: 'PageContent',
         params   : {
             url: '/delivery/',
         },
+    },
+    '#availability': {
+        component: 'Availability',
+        params   : {},
     },
 };
 
@@ -24,6 +29,7 @@ export default {
 
     components: {
         PageContent,
+        Availability,
     },
 
     computed: {

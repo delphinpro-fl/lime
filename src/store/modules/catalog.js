@@ -59,6 +59,8 @@ export default {
 
         isShowCartNotify: false,
         newCartItem     : null,
+
+        currentSKU: null,
     },
 
     getters: {
@@ -73,6 +75,8 @@ export default {
                 ];
             }, []);
         },
+
+        currentSKU: state => state.currentSKU,
 
         filterCountTotal: state => {
             return Object.values(state.filter).reduce((acc, group) => {
@@ -103,6 +107,8 @@ export default {
                 );
             }
         },
+
+        updateCurrentSKU: (state, payload) => state.currentSKU = payload,
 
         toggleFilter      : (state, status) => state.filterOpen = !!status,
         updateFilterOption: (state, payload) => {

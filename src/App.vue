@@ -138,7 +138,7 @@ export default {
         <FloatPanel/>
         <MobileMenu v-if="mmOpen"/>
 
-        <transition name="fade-in-out">
+        <transition name="fade-slide-right">
             <CartNotify class="app__cart-notify"
                 v-if="isShowCartNotify"
                 :goods="newCartItem"

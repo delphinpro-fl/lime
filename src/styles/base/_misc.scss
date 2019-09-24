@@ -17,3 +17,38 @@
 .sr-only {
   @include sr-only();
 }
+
+:root {
+  --scrollbar-track-color: transparent;
+  --scrollbar-color: rgba(0, 0, 0, .4);
+  --scrollbar-width: thin; // or `auto` or `none`
+  --scrollbar-size: 0.375rem;
+  --scrollbar-minlength: 1.5rem; // Минимальная длина бегунка скроллбара (ширина горизонтального, высота вертикального)
+}
+
+.add-scrollbar {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  &::-webkit-scrollbar {
+    width: var(--scrollbar-size);
+    height: var(--scrollbar-size);
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track-color);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-color); // Если нужно - добавьте :hover и:active
+  }
+
+  &::-webkit-scrollbar-thumb:vertical {
+    min-height: var(--scrollbar-minlength);
+  }
+
+  &::-webkit-scrollbar-thumb:horizontal {
+    min-width: var(--scrollbar-minlength);
+  }
+}

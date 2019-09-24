@@ -7,10 +7,24 @@
 
 <script>
 import { mapState } from 'vuex';
+import PageContent  from '@/components/PageContent';
 
+
+const hashRoutes = {
+    '#delivery': {
+        component: 'PageContent',
+        params   : {
+            url: '/delivery/',
+        },
+    },
+};
 
 export default {
     name: 'FloatPanel',
+
+    components: {
+        PageContent,
+    },
 
     computed: {
         ...mapState({
@@ -19,6 +33,11 @@ export default {
 
         isActive() {
             return this.hashNav !== '';
+        },
+
+        componentData() {
+            if (this.hashNav in hashRoutes) return hashRoutes[this.hashNav];
+            return undefined;
         },
     },
 
@@ -31,8 +50,13 @@ export default {
 </script>
 
 <template>
-    <div class="float-panel" v-if="isActive">
+    <div class="float-panel add-scrollbar" v-if="isActive">
         <div class="float-panel__close" @click="selfClose">&times;</div>
+        <component
+            v-if="componentData"
+            :is="componentData.component"
+            v-bind="componentData.params"
+        />
     </div>
 </template>
 

@@ -127,4 +127,36 @@ $thumb-width: 40px;
   &__colors {
     margin-bottom: rem(6px);
   }
+
+  &__sizes {
+  }
+
+  &__actions {
+  }
+
+  &__links {
+    margin-top: 1rem;
+  }
+}
+
+.info-links {
+  display: flex;
+  justify-content: space-between;
+  line-height: 1.6;
+
+  &__col {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &:last-child {
+      text-align: right;
+
+      a {
+        &::after {
+          content: ' +';
+        }
+      }
+    }
+  }
 }

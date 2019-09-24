@@ -6,6 +6,7 @@
 -->
 
 <script>
+import { mapActions }     from 'vuex';
 import SizeSelector       from '@/components/SizeSelector';
 import ColorSelector      from '@/components/ColorSelector';
 import { makeSizesArray } from '@/lib';
@@ -65,6 +66,10 @@ export default {
     },
 
     methods: {
+        ...mapActions([
+            'navigateByHash',
+        ]),
+
         scrollHandler() {
             this.updateMediaElements();
             this.updateIndexVisibleMedia();
@@ -162,6 +167,12 @@ export default {
                             @change="pickSize"
                         />
                     </div>
+                </div>
+
+                <div class="product__links info-links">
+                    <ul class="info-links__col">
+                        <li><a href="#delivery" @click.prevent="navigateByHash({path:'#delivery'})">Доставка и возврат</a></li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -14,11 +14,11 @@ import BookmarkButton   from '@/components/BookmarkButton';
 import ColorSelector    from '@/components/ColorSelector';
 import SizeSelector     from '@/components/SizeSelector';
 import { splitByThree } from '@/lib';
+import {
+    STOCK_LAST_PRODUCT,
+    STOCK_NOT_AVAILABLE,
+}                       from '@/constants';
 
-
-const STOCK_NOT_AVAILABLE = 0;
-const STOCK_LAST_PRODUCT  = 1;
-const STOCK_AVAILABLE     = 2;
 
 let tm;
 

@@ -1,0 +1,59 @@
+//==
+//== Component: Availability.vue
+//== ======================================= ==//
+
+.Availability {
+  text-transform: uppercase;
+
+  &__city-selector,
+  &__switch-links,
+  &__shops,
+  &__note,
+  &__indicator {
+    width: 360px;
+    max-width: 100%;
+    margin-top: 2rem;
+  }
+}
+
+.shop-list {
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+
+    &:nth-child(n + 2) {
+      margin-top: rem(9px);
+    }
+  }
+
+  &__row {
+    width: 100%;
+
+    &:nth-child(1) {
+      width: 50%;
+    }
+
+    &:nth-child(2) {
+      width: 50%;
+      text-align: right;
+    }
+  }
+}
+
+.switch-links {
+  display: flex;
+  padding: 0;
+  list-style: none;
+
+  &__delimiter {
+    margin: 0 .25em;
+  }
+
+  &__item {
+    cursor: pointer;
+
+    &.active {
+      font-weight: bold;
+    }
+  }
+}

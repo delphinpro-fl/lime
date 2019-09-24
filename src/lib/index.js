@@ -23,6 +23,12 @@ export function splitByThree(str) {
     return str.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1\u202f');
 }
 
+export function telephoneAsLink(str) {
+    if (typeof str !== 'string') return str;
+    let plus = str.length && str[0] === '+' ? '+' : '';
+    return `tel:${plus}${str.replace(/\D/g, '')}`;
+}
+
 export function makeSizesArray(skuList, restIndex = 0) {
     return skuList.map(sku => {
         let stock    = sku.rests[restIndex].stock;

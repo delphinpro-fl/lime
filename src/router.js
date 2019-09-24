@@ -108,6 +108,7 @@ let router = new Router({
 
 router.afterEach((to) => {
     store.commit('updateIsHomepage', to.name === 'home');
+    store.commit('updateCountJumps', +1);
 });
 
 export default router;

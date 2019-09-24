@@ -43,7 +43,6 @@ export default {
             filterOpen   : state => state.catalog.filterOpen,
             isHomepage   : state => state.isHomepage,
             isOpenSearch : state => state.isOpenSearch,
-            hashNav      : state => state.hashNav,
 
             isShowCartNotify: state => state.catalog.isShowCartNotify,
             newCartItem     : state => state.catalog.newCartItem,
@@ -51,6 +50,7 @@ export default {
         ...mapGetters([
             'isMobileDevice',
             'isDesktopDevice',
+            'hashNav',
         ]),
 
         computedClasses() {

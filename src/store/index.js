@@ -26,7 +26,8 @@ export default new Vuex.Store({
     state: {
         pageTitle: '',
 
-        hashNav: '',
+        hashNav   : '',
+        countJumps: 0, // Счетчик внутренних переходов, для корректной работы попапов (см. FloatPanel.vue)
 
         menus: {},
 
@@ -44,6 +45,9 @@ export default new Vuex.Store({
         isMobileDevice : state => state.mq === 'mobile',
         isDesktopDevice: state => state.mq === 'desktop',
 
+        hashNav   : state => state.hashNav,
+        countJumps: state => state.countJumps,
+
         leftMenu  : state => state.menus.left,
         bottomMenu: state => state.menus.bottom,
         rightMenu : state => state.menus.right,
@@ -57,6 +61,7 @@ export default new Vuex.Store({
         setPageTitle: (state, payload) => state.pageTitle = payload,
 
         updateHashNavigation: (state, payload) => state.hashNav = payload.path === '#' ? '' : payload.path,
+        updateCountJumps    : (state, payload) => state.countJumps += payload,
 
         updateMenu    : (state, payload) => Vue.set(state.menus, payload.menu, payload.data),
         updateMenuItem: (state, payload) => {

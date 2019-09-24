@@ -6,9 +6,9 @@
 -->
 
 <script>
-import { mapState } from 'vuex';
-import PageContent  from '@/components/PageContent';
-import Availability from '@/components/Availability';
+import { mapGetters } from 'vuex';
+import PageContent    from '@/components/PageContent';
+import Availability   from '@/components/Availability';
 
 
 const hashRoutes = {
@@ -33,9 +33,10 @@ export default {
     },
 
     computed: {
-        ...mapState({
-            hashNav: state => state.hashNav,
-        }),
+        ...mapGetters([
+            'hashNav',
+            'countJumps',
+        ]),
 
         isActive() {
             return this.hashNav !== '';
@@ -49,7 +50,23 @@ export default {
 
     methods: {
         selfClose() {
-            this.$router.back();
+            if (history.length === 1) {
+                this.replaceRoute();
+            } else {
+                if (this.countJumps < 2) {
+                    this.replaceRoute();
+                } else {
+                    this.$router.back();
+                }
+            }
+        },
+
+        replaceRoute() {
+            this.$router.replace({
+                name  : this.$route.name,
+                params: this.$route.params,
+            });
+            this.$store.commit('updateHashNavigation', { path: document.location.hash });
         },
     },
 };

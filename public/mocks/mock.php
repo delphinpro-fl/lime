@@ -32,6 +32,8 @@ switch ($object) {
         if (count($segments)) {
             $path = str_replace(['\\', '.'], '', $urlPath);
             $filename = $path.'.json';
+        } else {
+            $filename = $object.'.json';
         }
 }
 

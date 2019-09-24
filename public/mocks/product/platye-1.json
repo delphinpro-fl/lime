@@ -90,9 +90,43 @@
               "sizes": ["XS", "S"]
             },
             {
-              "id": 2,
+              "id": 426,
               "store": 2,
-              "shop": 1,
+              "shop": 426,
+              "stock": 0,
+              "sizes": ["XS", "S", "M"]
+            },
+            {
+              "id": 3,
+              "store": 3,
+              "shop": 2,
+              "stock": 4,
+              "sizes": ["XS", "S", "M"]
+            }
+          ],
+          "price": 3500,
+          "oldPrice": 5500
+        },
+        {
+          "id": 2,
+          "active": true,
+          "size": {
+            "id": 2,
+            "unit": 1,
+            "value": "M"
+          },
+          "rests": [
+            {
+              "id": 1,
+              "store": 1,
+              "shop": null,
+              "stock": 1,
+              "sizes": ["XS", "S"]
+            },
+            {
+              "id": 426,
+              "store": 2,
+              "shop": 426,
               "stock": 0,
               "sizes": ["XS", "S", "M"]
             },
@@ -207,9 +241,9 @@
               "sizes": ["XS", "S"]
             },
             {
-              "id": 2,
+              "id": 426,
               "store": 2,
-              "shop": 1,
+              "shop": 426,
               "stock": 0,
               "sizes": ["XS", "S", "M"]
             },

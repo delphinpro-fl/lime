@@ -9,15 +9,14 @@
 import {
     mapActions,
     mapMutations,
-}                       from 'vuex';
-import BookmarkButton   from '@/components/BookmarkButton';
-import ColorSelector    from '@/components/ColorSelector';
-import SizeSelector     from '@/components/SizeSelector';
-import { splitByThree } from '@/lib';
+}                     from 'vuex';
+import BookmarkButton from '@/components/BookmarkButton';
+import ColorSelector  from '@/components/ColorSelector';
+import SizeSelector   from '@/components/SizeSelector';
 import {
-    STOCK_LAST_PRODUCT,
-    STOCK_NOT_AVAILABLE,
-}                       from '@/constants';
+    makeSizesArray,
+    splitByThree,
+}                     from '@/lib';
 
 
 let tm;
@@ -87,38 +86,7 @@ export default {
         },
 
         sizes() {
-            return this.pickedModel.skus.map(sku => {
-                let stock    = sku.rests[0].stock;
-                let store    = sku.rests[0].store;
-                let text     = null,
-                    url      = null,
-                    disabled = false;
-                if (stock === STOCK_LAST_PRODUCT) {
-                    text = 'Последний';
-                }
-                if (stock === STOCK_NOT_AVAILABLE) {
-                    text     = 'Подписка';
-                    url      = '#';
-                    disabled = true;
-                    if (store) {
-                        text = 'Есть в магазине';
-                        url  = '#';
-                    }
-                }
-                return {
-                    id   : sku.id,
-                    title: sku.size.value,
-                    size : sku.size.value,
-                    stock,
-                    store,
-                    disabled,
-                    meta : {
-                        url,
-                        text,
-                    },
-                    // sku,
-                };
-            });
+            return makeSizesArray(this.pickedModel.skus, 0);
         },
 
         isBookmarkActive() {

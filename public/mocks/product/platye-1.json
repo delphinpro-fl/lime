@@ -1,0 +1,181 @@
+{
+  "id": 1,
+  "active": true,
+  "name": "Жакет",
+  "name_custom": "Классический жакет с карманами",
+  "code": "platye_1",
+  "description": "Платье свободного кроя с отложным воротником и V-образным вырезом. Застежка на пуговицы. Рукав короткий с патами. Снизу изделия рюши.<br><br>Рост модели 175 см.<br>Размер на модели S.",
+  "article": "432|4212|412",
+  "composition": "Основная ткань: 81% полиэстер/18% вискоза/1% эластан\nПодкладка: 55% полиэстер/45% вискоза",
+  "care": "Стирать в холодной воде",
+  "models": [
+    {
+      "id": 1,
+      "active": true,
+      "color": {
+        "id": 1,
+        "name": "Черный",
+        "hex": "000000",
+        "picture": null,
+        "sort": 1
+      },
+      "medias": [
+        {
+          "id": 1,
+          "active": true,
+          "title": "Вид спереди",
+          "url": "/images/1.jpg",
+          "slot": 1,
+          "height": 1500,
+          "width": 1000,
+          "type": 1
+        },
+        {
+          "id": 2,
+          "active": true,
+          "title": "Видео товара",
+          "url": "/images/2.jpg",
+          "slot": 2,
+          "height": 1500,
+          "width": 1000,
+          "type": 2
+        },
+        {
+          "id": 3,
+          "active": true,
+          "title": "Видео товара",
+          "url": "/images/3.jpg",
+          "slot": 2,
+          "height": 1500,
+          "width": 1000,
+          "type": 2
+        }
+      ],
+      "skus": [
+        {
+          "id": 1,
+          "active": true,
+          "size": {
+            "id": 1,
+            "unit": 1,
+            "value": "S"
+          },
+          "rests": [
+            {
+              "id": 1,
+              "store": 1,
+              "shop": null,
+              "stock": 2,
+              "sizes": ["XS", "S"]
+            },
+            {
+              "id": 2,
+              "store": 2,
+              "shop": 1,
+              "stock": 0,
+              "sizes": ["XS", "S", "M"]
+            },
+            {
+              "id": 3,
+              "store": 3,
+              "shop": 2,
+              "stock": 4,
+              "sizes": ["XS", "S", "M"]
+            }
+          ],
+          "price": 3500,
+          "oldPrice": 5500
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "active": true,
+      "color": {
+        "id": 2,
+        "name": "Красный",
+        "hex": "ff0000",
+        "picture": null,
+        "sort": 1
+      },
+      "medias": [
+        {
+          "id": 1,
+          "active": true,
+          "title": "Вид спереди",
+          "url": "/images/4.jpg",
+          "slot": 1,
+          "height": 1500,
+          "width": 1000,
+          "type": 1
+        },
+        {
+          "id": 2,
+          "active": true,
+          "title": "Видео товара",
+          "url": "/images/3.jpg",
+          "slot": 2,
+          "height": 1500,
+          "width": 1000,
+          "type": 2
+        },
+        {
+          "id": 3,
+          "active": true,
+          "title": "Видео товара",
+          "url": "/images/2.jpg",
+          "slot": 2,
+          "height": 1500,
+          "width": 1000,
+          "type": 2
+        },
+        {
+          "id": 4,
+          "active": true,
+          "title": "Видео товара",
+          "url": "/images/1.jpg",
+          "slot": 2,
+          "height": 1500,
+          "width": 1000,
+          "type": 2
+        }
+      ],
+      "skus": [
+        {
+          "id": 1,
+          "active": true,
+          "size": {
+            "id": 1,
+            "unit": 1,
+            "value": "S"
+          },
+          "rests": [
+            {
+              "id": 1,
+              "store": 1,
+              "shop": null,
+              "stock": 2,
+              "sizes": ["XS", "S"]
+            },
+            {
+              "id": 2,
+              "store": 2,
+              "shop": 1,
+              "stock": 0,
+              "sizes": ["XS", "S", "M"]
+            },
+            {
+              "id": 3,
+              "store": 3,
+              "shop": 2,
+              "stock": 4,
+              "sizes": ["XS", "S", "M"]
+            }
+          ],
+          "price": 3500,
+          "oldPrice": 5500
+        }
+      ]
+    }
+  ]
+}

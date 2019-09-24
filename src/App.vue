@@ -7,7 +7,10 @@
 
 <!--suppress JSDeprecatedSymbols -->
 <script>
-import { mapState } from 'vuex';
+import {
+    mapGetters,
+    mapState,
+}                   from 'vuex';
 import AppFooter    from '@/components/AppFooter';
 import FilterPane   from '@/components/FilterPane';
 import AppSideLeft  from '@/components/AppSideLeft';
@@ -38,7 +41,6 @@ export default {
         ...mapState({
             overlayActive: state => state.overlayActive,
             filterOpen   : state => state.catalog.filterOpen,
-            layout       : state => state.mq,
             isHomepage   : state => state.isHomepage,
             isOpenSearch : state => state.isOpenSearch,
             hashNav      : state => state.hashNav,
@@ -46,6 +48,10 @@ export default {
             isShowCartNotify: state => state.catalog.isShowCartNotify,
             newCartItem     : state => state.catalog.newCartItem,
         }),
+        ...mapGetters([
+            'isMobileDevice',
+            'isDesktopDevice',
+        ]),
 
         computedClasses() {
             return {
@@ -57,7 +63,7 @@ export default {
             return {
                 _home  : this.isHomepage,
                 _active: this.isOpenFooter,
-                _mobile: this.layout === 'mobile',
+                _mobile: this.isMobileDevice,
             };
         },
 
@@ -126,13 +132,13 @@ export default {
         v-touch:swipe="swipeHandler"
         @wheel="wheelHandler"
     >
-        <AppNavbar class="app__navbar" v-if="layout === 'mobile'"/>
+        <AppNavbar class="app__navbar" v-if="isMobileDevice"/>
         <div class="app__container">
             <router-view class="app__main"/>
         </div>
         <AppFooter class="app__footer" :class="footerClasses"/>
-        <AppSideLeft :is-homepage="isHomepage" v-if="layout === 'desktop'"/>
-        <AppSideRight :is-homepage="isHomepage" v-if="layout === 'desktop'"/>
+        <AppSideLeft :is-homepage="isHomepage" v-if="isDesktopDevice"/>
+        <AppSideRight :is-homepage="isHomepage" v-if="isDesktopDevice"/>
         <div class="overlay" v-if="isShowOverlay"></div>
         <FilterPane v-if="filterOpen"/>
         <FloatPanel/>

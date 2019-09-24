@@ -6,13 +6,10 @@
 -->
 
 <script>
-import {
-    mapGetters,
-    mapState,
-}                   from 'vuex';
-import AppLogo      from '@/components/AppLogo';
-import HomeSlider   from '@/components/HomeSlider';
-import { initPage } from '@/lib/init-page';
+import { mapGetters } from 'vuex';
+import AppLogo        from '@/components/AppLogo';
+import HomeSlider     from '@/components/HomeSlider';
+import { initPage }   from '@/lib/init-page';
 
 
 export default {
@@ -27,14 +24,13 @@ export default {
 
     computed: {
         ...mapGetters([
+            'isMobileDevice',
+            'isDesktopDevice',
             'getBanners',
         ]),
-        ...mapState({
-            layout : state => state.mq,
-        }),
 
         computedClasses() {
-            return { home_mobile: this.layout === 'mobile' };
+            return { home_mobile: this.isMobileDevice };
         },
 
         isOpenFooter: {
@@ -57,7 +53,7 @@ export default {
 <template>
     <div class="home" :class="computedClasses">
         <HomeSlider class="home__slider" :slides="slides"/>
-        <div class="home__logo-box" v-if="layout==='desktop'">
+        <div class="home__logo-box" v-if="this.isDesktopDevice">
             <AppLogo class="home__logo"/>
         </div>
     </div>

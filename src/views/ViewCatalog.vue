@@ -9,7 +9,6 @@
 import {
     mapGetters,
     mapMutations,
-    mapState,
 }                   from 'vuex';
 import CatalogRow   from '@/components/CatalogRow';
 import CatalogCard  from '@/components/CatalogCard';
@@ -27,13 +26,15 @@ export default {
     data: () => ({}),
 
     computed: {
-        ...mapState({
-            layout: state => state.mq,
-        }),
         ...mapGetters([
+            'isMobileDevice',
             'catalogRows',
             'catalogCards',
         ]),
+
+        isFlatLayout() {
+            return this.isMobileDevice;
+        },
 
         catalogSection() {
             return this.$route.params.section;
@@ -67,7 +68,7 @@ export default {
 
 <template>
     <div>
-        <div class="catalog" v-if="layout==='desktop'">
+        <div class="catalog" v-if="!isFlatLayout">
             <CatalogRow
                 v-for="row in rows"
                 :key="row.id"
@@ -80,7 +81,7 @@ export default {
                 class="CatalogFlat__item"
                 v-for="cell in cards"
                 :key="cell.id"
-                :is-mobile="layout==='mobile'"
+                :is-mobile="this.isMobileDevice"
                 :card="cell"
             />
         </div>

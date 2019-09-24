@@ -41,6 +41,9 @@ export default new Vuex.Store({
     },
 
     getters: {
+        isMobileDevice : state => state.mq === 'mobile',
+        isDesktopDevice: state => state.mq === 'desktop',
+
         leftMenu  : state => state.menus.left,
         bottomMenu: state => state.menus.bottom,
         rightMenu : state => state.menus.right,

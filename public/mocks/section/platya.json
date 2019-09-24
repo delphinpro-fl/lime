@@ -439,7 +439,7 @@
       "type": 2,
       "cells": [
         {
-          "id": 1,
+          "id": 5,
           "type": "product",
           "entity": {
             "id": 1,
@@ -543,7 +543,7 @@
           }
         },
         {
-          "id": 2,
+          "id": 6,
           "type": "product",
           "entity": {
             "id": 2,
@@ -650,7 +650,7 @@
           }
         },
         {
-          "id": 3,
+          "id": 7,
           "type": "product",
           "entity": {
             "id": 3,
@@ -761,7 +761,7 @@
       "sort": 500,
       "cells": [
         {
-          "id": 3,
+          "id": 8,
           "type": "banner",
           "photo": {
             "id": 1,
@@ -785,7 +785,7 @@
           }
         },
         {
-          "id": 2,
+          "id": 9,
           "type": "product",
           "entity": {
             "id": 2,
@@ -898,7 +898,7 @@
       "type": 4,
       "cells": [
         {
-          "id": 1,
+          "id": 10,
           "type": "product",
           "entity": {
             "id": 1,
@@ -1002,7 +1002,7 @@
           }
         },
         {
-          "id": 2,
+          "id": 11,
           "type": "product",
           "entity": {
             "id": 2,
@@ -1109,7 +1109,7 @@
           }
         },
         {
-          "id": 3,
+          "id": 12,
           "type": "product",
           "entity": {
             "id": 3,
@@ -1219,7 +1219,7 @@
       "type": 5,
       "cells": [
         {
-          "id": 1,
+          "id": 13,
           "type": "product",
           "entity": {
             "id": 1,
@@ -1323,7 +1323,7 @@
           }
         },
         {
-          "id": 2,
+          "id": 14,
           "type": "product",
           "entity": {
             "id": 2,
@@ -1430,7 +1430,7 @@
           }
         },
         {
-          "id": 3,
+          "id": 15,
           "type": "product",
           "entity": {
             "id": 3,
@@ -1540,7 +1540,7 @@
       "type": 6,
       "cells": [
         {
-          "id": 1,
+          "id": 16,
           "type": "product",
           "entity": {
             "id": 1,
@@ -1644,7 +1644,7 @@
           }
         },
         {
-          "id": 2,
+          "id": 17,
           "type": "product",
           "entity": {
             "id": 2,
@@ -1751,7 +1751,7 @@
           }
         },
         {
-          "id": 3,
+          "id": 18,
           "type": "product",
           "entity": {
             "id": 3,
@@ -1855,7 +1855,7 @@
           }
         },
         {
-          "id": 4,
+          "id": 19,
           "type": "banner",
           "photo": {
             "id": 1,
@@ -1885,7 +1885,7 @@
       "type": 7,
       "cells": [
         {
-          "id": 1,
+          "id": 20,
           "type": "product",
           "entity": {
             "id": 1,
@@ -1989,7 +1989,7 @@
           }
         },
         {
-          "id": 2,
+          "id": 21,
           "type": "product",
           "entity": {
             "id": 2,
@@ -2096,7 +2096,7 @@
           }
         },
         {
-          "id": 3,
+          "id": 22,
           "type": "product",
           "entity": {
             "id": 3,
@@ -2200,7 +2200,7 @@
           }
         },
         {
-          "id": 4,
+          "id": 23,
           "type": "product",
           "entity": {
             "id": 4,
@@ -2304,7 +2304,7 @@
           }
         },
         {
-          "id": 5,
+          "id": 24,
           "type": "product",
           "entity": {
             "id": 5,
@@ -2411,7 +2411,7 @@
           }
         },
         {
-          "id": 6,
+          "id": 25,
           "type": "product",
           "entity": {
             "id": 6,

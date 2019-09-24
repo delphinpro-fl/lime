@@ -29,3 +29,31 @@ api.getPageContent = async function (payload) {
 
     console.error('api/getPageContent(): Неверный параметр');
 };
+
+/**
+ * Запрос списка городов
+ *
+ * Формат запроса:
+ * GET {{protocol}}://{{host}}/api/city?query=моск
+ *
+ * @param payload
+ * @returns {Promise<*>}
+ */
+api.getCityList = async function (payload) {
+    let response = await Vue.axios.get('/city/');
+    return response.data;
+};
+
+/**
+ * Запрос списка магазинов города
+ *
+ * Формат запроса:
+ * GET {{protocol}}://{{host}}/api/shop?city_id=1
+ *
+ * @param payload
+ * @returns {Promise<*>}
+ */
+api.getShopList = async function (payload) {
+    let response = await Vue.axios.get('/shop/?city_id=' + encodeURIComponent(payload.cityId));
+    return response.data;
+};

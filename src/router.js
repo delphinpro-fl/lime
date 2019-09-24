@@ -49,6 +49,9 @@ let router = new Router({
             path     : '/catalog/:section/:code',
             name     : 'product',
             component: ViewProduct,
+            meta     : {
+                showSearch: false,
+            },
         },
 
         {

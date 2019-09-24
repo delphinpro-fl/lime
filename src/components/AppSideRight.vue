@@ -29,6 +29,10 @@ export default {
             return this.$route.meta.showFilter;
         },
 
+        showSearch() {
+            return !(this.$route.meta.showSearch === false);
+        },
+
         theme() { return this.isHomepage ? 'inverse' : ''; },
     },
 };
@@ -36,7 +40,7 @@ export default {
 
 <template>
     <div class="app-side app-side-right">
-        <div class="app-side__top">
+        <div class="app-side__top" v-if="showSearch">
             <SearchBox class="" :theme="theme"/>
         </div>
         <FilterButton class="app-side__filter" v-if="showFilter"/>

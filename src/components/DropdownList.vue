@@ -1,6 +1,6 @@
 <!--
   Lime project
-  File: SizeSelector.vue
+  File: DropdownList.vue
   (c) 2019 delphinpro <delphinpro@gmail.com>
   licensed under the MIT license
 -->
@@ -8,17 +8,18 @@
 <script>
 import IconDropdown from '@/components/Icons/IconDropdown';
 
-// TODO: Переделать на основе компонента DropdownList
+
 export default {
-    name: 'SizeSelector',
+    name: 'DropdownList',
 
     components: {
         IconDropdown,
     },
 
     props: {
-        options : { type: Array, default: null },
-        selected: { type: Number, default: -1 },
+        options    : { type: Array, default: null },
+        selected   : { type: Number, default: null },
+        placeholder: { type: String, default: '' },
     },
 
     data: () => ({
@@ -26,8 +27,16 @@ export default {
     }),
 
     computed: {
+        isCorrect() {
+            return this.selected !== null
+                && this.options !== null
+                && this.selected in this.options;
+        },
+
         selectedText() {
-            return this.selected === -1 ? 'Выберите размер' : this.options[this.selected].title;
+            return this.isCorrect
+                ? this.options[this.selected].title
+                : this.placeholder;
         },
     },
 
@@ -47,30 +56,26 @@ export default {
 </script>
 
 <template>
-    <div class="SizeSelector">
-        <div class="SizeSelector__header"
+    <div class="DropdownList">
+        <div class="DropdownList__header"
             tabindex="0"
             @click="toggle"
         >
-            <div class="SizeSelector__selected">{{ selectedText }}</div>
-            <div class="SizeSelector__arrow">
+            <div class="DropdownList__selected">{{ selectedText }}</div>
+            <div class="DropdownList__arrow">
                 <IconDropdown/>
             </div>
         </div>
-        <div class="SizeSelector__pane" v-if="isOpen">
-            <div class="SizeSelector__option"
+        <div class="DropdownList__pane add-scrollbar" v-if="isOpen">
+            <div class="DropdownList__option"
                 :class="{disabled:opt.disabled, selected:index===selected}"
                 v-for="(opt, index) in options"
                 @click="pick(opt, index)"
             >
-                <span class="SizeSelector__title">{{opt.title}}</span>
-                <span class="SizeSelector__info" v-if="opt.meta.text">
-                    <a :href="opt.meta.url" v-if="opt.meta.url">{{opt.meta.text}}</a>
-                    <span v-else>{{opt.meta.text}}</span>
-                </span>
+                <span class="DropdownList__title">{{opt.title}}</span>
             </div>
         </div>
     </div>
 </template>
 
-<style lang="scss" src="../styles/components/SizeSelector.scss"></style>
+<style lang="scss" src="../styles/components/DropdownList.scss"></style>

@@ -1,0 +1,83 @@
+//==
+//== Component: DropdownList.vue
+//== ======================================= ==//
+
+$DropdownList-height: 32px;
+
+.DropdownList {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  height: rem($DropdownList-height);
+  user-select: none;
+  border: 1px solid #5a5a5a;
+  background: #fff;
+
+  &__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+    outline: 1px solid transparent;
+    outline-offset: -1px;
+
+    &:focus {
+      outline-color: -webkit-focus-ring-color;
+    }
+  }
+
+  &__selected {
+    padding-left: 15px;
+    font-size: 10px;
+  }
+
+  &__arrow {
+    @include size(6px, 4px);
+    position: absolute;
+    right: 10px;
+
+    svg {
+      @include size(6px, 4px);
+      display: block;
+    }
+  }
+
+  &__pane {
+    position: absolute;
+    top: 100%;
+    right: -1px;
+    left: -1px;
+    //display: none;
+    overflow: auto;
+    max-height: ($DropdownList-height * 7);
+
+    border: 1px solid #5a5a5a;
+    background: #fff;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: rem($DropdownList-height);
+    padding: 0 15px;
+    cursor: pointer;
+    font-size: rem(12px);
+
+    &.selected,
+    &:hover {
+      background: #eee;
+    }
+
+    &.disabled {
+      cursor: default;
+      color: #9d9d9d;
+      background: #fff;
+    }
+  }
+
+  &__title {
+  }
+}

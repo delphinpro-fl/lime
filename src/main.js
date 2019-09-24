@@ -19,6 +19,7 @@ import {
     requestSuccess,
     responseSuccess,
 }                      from '@/lib/axios-interceptors';
+import vScroll         from '@/lib/directives/v-scroll';
 
 
 Vue.config.productionTip = false;
@@ -53,6 +54,12 @@ Vue.use(VueAxiosBridge, axios.create({
 
 Vue.axios.interceptors.request.use(requestSuccess, requestFailed);
 Vue.axios.interceptors.response.use(responseSuccess, responseSuccess);
+
+//==
+//== Custom scroll directive
+//== ======================================= ==//
+
+Vue.directive('scroll', vScroll);
 
 //==
 //== Main app

@@ -6,8 +6,11 @@
 -->
 
 <script>
+import {
+    mapActions,
+    mapGetters,
+}                       from 'vuex';
 import LoadingIndicator from '@/components/LoadingIndicator';
-import { api }          from '@/lib/api';
 
 
 export default {
@@ -21,24 +24,39 @@ export default {
         url: String,
     },
 
-    data: () => ({
-        page: null,
-    }),
+    data: () => ({}),
+
+    computed: {
+        ...mapGetters([
+            'page',
+        ]),
+
+        pageData() {
+            return this.url
+                ? this.page(this.url)
+                : '@@';
+        },
+    },
 
     async mounted() {
         if (this.url) {
-            this.page = await api.getPageContent({ url: this.url });
-        } else {
-            this.page = { content: 'Error: url is empty' };
+            this.getPageContent({ url: this.url });
         }
+    },
+
+    methods: {
+        ...mapActions([
+            'getPageContent',
+        ]),
     },
 };
 </script>
 
 <template>
-    <div class="PageContent" v-if="page">
-        <h1 v-if="page.name">{{page.name}}</h1>
-        <div v-html="page.content"></div>
+    <div class="PageContent" v-if="pageData">
+        <pre>{{pageData}}</pre>
+        <h1 v-if="pageData.name">{{pageData.name}}</h1>
+        <div v-html="pageData.content"></div>
     </div>
     <LoadingIndicator v-else/>
 </template>

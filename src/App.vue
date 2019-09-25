@@ -49,6 +49,7 @@ export default {
             'pageTitle',
             'isOpenMobileMenu',
             'isOpenSearch',
+            'isFullscreen',
         ]),
 
         ...mapState({
@@ -78,6 +79,7 @@ export default {
                 isOpenSearch: this.isOpenSearch,
                 isHomepage  : this.isHomepage,
                 isMobile    : this.isMobileDevice,
+                isFullscreen: this.isFullscreen,
             };
         },
 

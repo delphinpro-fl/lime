@@ -9,6 +9,7 @@
 import {
     mapActions,
     mapMutations,
+    mapState,
 }                         from 'vuex';
 import Availability       from '@/components/Availability';
 import CareComposition    from '@/components/CareComposition';
@@ -64,6 +65,10 @@ export default {
     }),
 
     computed: {
+        ...mapState([
+            'isFullscreen',
+        ]),
+
         isOpenPopup() {
             return this.isOpenSizes
                 || this.isOpenPayment
@@ -125,6 +130,7 @@ export default {
     methods: {
         ...mapMutations([
             'toggleOverlay',
+            'toggleFullscreen',
             'showCartNotify',
             'hideCartNotify',
         ]),
@@ -224,6 +230,10 @@ export default {
                 this.closePopup();
             }
         },
+
+        toggleFullscreenView() {
+            this.toggleFullscreen();
+        },
     },
 };
 </script>
@@ -244,9 +254,14 @@ export default {
             </div>
             <div class="CardProduct__media-tape media-tape" v-if="medias" ref="tape">
                 <div class="media-tape__item" v-for="item in medias">
-                    <img class="media-tape__object" :src="item.url" :alt="item.title">
+                    <img class="media-tape__object"
+                        :src="item.url"
+                        :alt="item.title"
+                        @click="toggleFullscreenView"
+                    >
                 </div>
             </div>
+            <CloseButton class="CardProduct__closer" @click="toggleFullscreenView" v-if="isFullscreen"/>
         </div>
         <div class="CardProduct__side">
             <div class="product">

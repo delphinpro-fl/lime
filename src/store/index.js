@@ -59,11 +59,18 @@ getters.isMobileDevice  = state => state.breakpoint === 'mobile';
 getters.isDesktopDevice = state => state.breakpoint === 'desktop';
 mutations.setBreakpoint = (state, value) => state.breakpoint = value;
 
-state.activeOverlay   = false;
+state.activeOverlay     = false;
 getters.isActiveOverlay = state => state.activeOverlay || (state.hashNav !== '' && state.hashNav !== '#');
 mutations.toggleOverlay = (state, value) => (typeof value === 'boolean')
     ? state.activeOverlay = value
     : state.activeOverlay = !state.activeOverlay;
+
+//==
+//== Fullscreen product view
+//== ======================================= ==//
+
+state.isFullscreen         = false;
+mutations.toggleFullscreen = state => state.isFullscreen = !state.isFullscreen;
 
 //==
 //== Navigation

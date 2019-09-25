@@ -72,6 +72,22 @@
     top: 205px;
     right: 12px;
   }
+
+  &.isFullscreen {
+    .App {
+      &__sideLeft,
+      &__sideRight {
+        overflow: hidden;
+        width: 0;
+        min-width: 0;
+        padding: 0;
+      }
+
+      &__footer {
+        display: none;
+      }
+    }
+  }
 }
 
 .AppSide {

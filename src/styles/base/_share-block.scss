@@ -1,0 +1,84 @@
+.share-block {
+  position: relative;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    svg {
+      position: relative;
+      top: -3px;
+      display: block;
+      flex-shrink: 0;
+      width: 11px;
+      height: 14px;
+      margin-right: 5px;
+    }
+
+    &:hover {
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__pane {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 260px;
+    padding: 20px 25px;
+    border: 1px solid #5a5a5a;
+    background: #fff;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: em(12px, 14px);
+  }
+
+  &__content {
+    margin-top: 10px;
+
+    input {
+      overflow: hidden;
+      width: 100%;
+      text-overflow: ellipsis;
+      border: none;
+      background: none;
+    }
+  }
+
+  &__content + &__title {
+    margin-top: 10px;
+  }
+
+  &__social {
+    color: #5a5a5a;
+  }
+
+  &__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    background: none;
+    opacity: 0.7;
+
+    svg {
+      @include size(14px);
+      flex-shrink: 0;
+    }
+  }
+}

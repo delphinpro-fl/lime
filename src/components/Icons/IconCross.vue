@@ -5,6 +5,7 @@
   licensed under the MIT license
 -->
 
+<script>export default { name: 'IconCross' };</script>
 <template functional>
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
         <g fill="currentColor">

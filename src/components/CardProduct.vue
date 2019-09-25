@@ -13,12 +13,18 @@ import {
 import SizeSelector       from '@/components/SizeSelector';
 import ColorSelector      from '@/components/ColorSelector';
 import { makeSizesArray } from '@/lib';
+import IconShare          from '@/components/Icons/IconShare';
+import IconCross          from '@/components/Icons/IconCross';
+import ShareIcons         from '@/components/ShareIcons';
 
 
 export default {
     name: 'CardProduct',
 
     components: {
+        ShareIcons,
+        IconCross,
+        IconShare,
         ColorSelector,
         SizeSelector,
     },
@@ -33,10 +39,12 @@ export default {
 
         modelIndex: 0,
         skuIndex  : 0,//-1,
+
+        openShare: false,
     }),
 
     computed: {
-        productName(){
+        productName() {
             return this.card.name_custom || this.card.name;
         },
 
@@ -63,6 +71,10 @@ export default {
         thumbs() {
             return this.medias.map(media => media.thumbs.find(item => item.width === 80));
         },
+
+        linkThisPage(){
+            return location.href;
+        }
     },
 
     mounted() {
@@ -183,8 +195,28 @@ export default {
                 </div>
 
                 <div class="product__links info-links">
-                    <ul class="info-links__col">
-                    </ul>
+                    <div class="info-links__col">
+                        <div class="share-block">
+                            <div class="share-block__link" @click.prevent="openShare=!openShare">
+                                <IconShare/>
+                                <a href="#" class="" @click.prevent>Поделиться</a>
+                            </div>
+                            <div class="share-block__pane" v-if="openShare">
+                                <div class="share-block__title">скопировать ссылку</div>
+                                <div class="share-block__content">
+                                    <input type="text" :value="linkThisPage" @focus="$event.target.select()">
+                                </div>
+                                <div class="share-block__title">поделиться</div>
+                                <div class="share-block__content">
+                                    <ShareIcons class="share-block__social"/>
+                                </div>
+
+                                <button class="share-block__close" @click="openShare=false">
+                                    <IconCross/>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                     <ul class="info-links__col">
                         <li><a href="#availability" @click.prevent="navigateByHash({path:'#availability'})">Наличие в магазинах</a></li>
                         <li><a href="#care" @click.prevent="navigateByHash({path:'#care'})">Состав и уход</a></li>

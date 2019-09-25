@@ -10,7 +10,7 @@ export default {
     name: 'View404',
 
     mounted() {
-        this.$store.commit('setPageTitle', '404 страница не найдена');
+        // this.$store.commit('setPageTitle', '404 страница не найдена');
     },
 };
 </script>
@@ -30,5 +30,12 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
+
+        h1 {
+            font-size: 20vw;
+            @media (min-width: 992px) {
+                font-size: rem(200px);
+            }
+        }
     }
 </style>

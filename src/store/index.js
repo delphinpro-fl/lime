@@ -58,7 +58,7 @@ export default new Vuex.Store({
     },
 
     mutations: {
-        setPageTitle: (state, payload) => state.pageTitle = payload,
+        setPageTitle: (state, value) => state.pageTitle = value,
 
         updateHashNavigation: (state, payload) => state.hashNav = payload.path === '#' ? '' : payload.path,
         updateCountJumps    : (state, payload) => state.countJumps += payload,

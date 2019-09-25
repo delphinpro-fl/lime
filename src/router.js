@@ -99,9 +99,13 @@ let router = new Router({
         },
 
         {
-            path     : '*',
-            name     : 'error404',
-            component: View404,
+            path       : '*',
+            name       : 'error404',
+            component  : View404,
+            beforeEnter: (to, from, next) => {
+                store.commit('setPageTitle', 'Ресурс не найден');
+                next();
+            },
         },
     ],
 });

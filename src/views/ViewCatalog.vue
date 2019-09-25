@@ -7,23 +7,30 @@
 
 <script>
 import {
+    mapActions,
     mapGetters,
     mapMutations,
-}                   from 'vuex';
-import CatalogRow   from '@/components/CatalogRow';
-import CatalogCard  from '@/components/CatalogCard';
-import { initPage } from '@/lib/init-page';
+}                       from 'vuex';
+import LoadingIndicator from '@/components/LoadingIndicator';
+import CatalogRow       from '@/components/CatalogRow';
+import CatalogCard      from '@/components/CatalogCard';
+import View404          from '@/views/View404';
 
 
 export default {
     name: 'ViewCatalog',
 
     components: {
+        View404,
+        LoadingIndicator,
         CatalogRow,
         CatalogCard,
     },
 
-    data: () => ({}),
+    data: () => ({
+        isReady   : false,
+        isNotFound: false,
+    }),
 
     computed: {
         ...mapGetters([
@@ -36,28 +43,37 @@ export default {
             return this.isMobileDevice;
         },
 
-        catalogSection() {
+        catalogSectionId() {
             return this.$route.params.section;
-        },
-
-        rows() {
-            return this.catalogRows(this.catalogSection);
-        },
-
-        cards() {
-            return this.catalogCards(this.catalogSection);
         },
     },
 
-    async mounted() {
-        await initPage({ page: 'catalog', url: this.$route.fullPath });
-        await this.$store.dispatch('getCatalogItems', { id: this.catalogSection });
+     mounted() {
+        this.loadItems(this.$route);
+    },
+
+    beforeRouteUpdate(to, from, next) {
+        next();
+        this.loadItems(to);
     },
 
     methods: {
         ...mapMutations([
             'updateCatalogItem',
         ]),
+        ...mapActions([
+            'getCatalogSection',
+        ]),
+
+        async loadItems(route) {
+            this.isReady    = false;
+            this.isNotFound = false;
+            let response    = await this.getCatalogSection({ id: route.params.section });
+            if (response.status === 404) {
+                this.isNotFound = true;
+            }
+            this.isReady = true;
+        },
 
         changeColor(cardIndex, colorIndex) {
             this.updateCatalogItem({ cardIndex, card: { colorIndex } });
@@ -68,23 +84,29 @@ export default {
 
 <template>
     <div>
-        <div class="catalog" v-if="!isFlatLayout">
-            <CatalogRow
-                v-for="row in rows"
-                :key="row.id"
-                :cells="row.cells"
-                :type="row.type"
-            />
-        </div>
-        <div class="CatalogFlat" v-else>
-            <CatalogCard
-                class="CatalogFlat__item"
-                v-for="cell in cards"
-                :key="cell.id"
-                :is-mobile="this.isMobileDevice"
-                :card="cell"
-            />
-        </div>
+        <template v-if="isReady">
+            <template v-if="!isNotFound">
+                <div class="catalog" v-if="!isFlatLayout">
+                    <CatalogRow
+                        v-for="row in catalogRows"
+                        :key="row.id"
+                        :cells="row.cells"
+                        :type="row.type"
+                    />
+                </div>
+                <div class="CatalogFlat" v-else>
+                    <CatalogCard
+                        class="CatalogFlat__item"
+                        v-for="cell in catalogCards"
+                        :key="cell.id"
+                        :is-mobile="isMobileDevice"
+                        :card="cell"
+                    />
+                </div>
+            </template>
+            <View404 v-else/>
+        </template>
+        <LoadingIndicator v-else/>
     </div>
 </template>
 

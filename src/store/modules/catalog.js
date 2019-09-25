@@ -5,7 +5,8 @@
  * licensed under the MIT license
  */
 
-import Vue from 'vue';
+import Vue     from 'vue';
+import { api } from '@/lib/api';
 
 
 export default {
@@ -55,7 +56,7 @@ export default {
             },
         },
 
-        container: {},
+        container: null,
 
         isShowCartNotify: false,
         newCartItem     : null,
@@ -65,11 +66,10 @@ export default {
     },
 
     getters: {
-        catalogRows : state => id => {
-            return (state.container[id] && state.container[id].rows || []);
-        },
-        catalogCards: (state, getters) => id => {
-            return getters.catalogRows(id).reduce((acc, row) => {
+        catalogRows: state => state.container ? state.container.rows : [],
+
+        catalogCards: (state, getters) => {
+            return getters.catalogRows.reduce((acc, row) => {
                 return [
                     ...acc,
                     ...row.cells,
@@ -92,9 +92,7 @@ export default {
     },
 
     mutations: {
-        updateCatalogData: (state, payload) => {
-            Vue.set(state.container, payload.id, payload.data);
-        },
+        updateCatalogSection: (state, data) => state.container = data,
 
         updateCatalogItem: (state, payload) => {
             let card = { ...state.items[payload.cardIndex] };
@@ -138,16 +136,16 @@ export default {
     },
 
     actions: {
-        // {{protocol}}://{{host}}/api/section/{{name}}
-        async getCatalogItems({ commit, state }, payload) {
-            if (!state.container[payload.id] || payload.force) {
-                let response = await Vue.axios.get('/section/' + payload.id + '/');
-                if (response.status === 200) {
-                    commit('updateCatalogData', { id: payload.id, data: response.data });
-                    return response.data;
-                }
+        async getCatalogSection({ commit, state }, payload) {
+            let response = await api.getCatalogSection(payload);
+            if (response.status === 200) {
+                commit('setPageTitle', response.data.name);
+                commit('updateCatalogSection', response.data);
+            } else {
+                commit('setPageTitle', response.data.errors[0].text);
+                commit('updateCatalogSection', null);
             }
-            return state.container[payload.id];
+            return response;
         },
 
         // POST {{protocol}}://{{host}}/api/favorites

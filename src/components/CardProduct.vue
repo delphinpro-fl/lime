@@ -16,12 +16,14 @@ import { makeSizesArray } from '@/lib';
 import IconShare          from '@/components/Icons/IconShare';
 import IconCross          from '@/components/Icons/IconCross';
 import ShareIcons         from '@/components/ShareIcons';
+import IconDropdown       from '@/components/Icons/IconDropdown';
 
 
 export default {
     name: 'CardProduct',
 
     components: {
+        IconDropdown,
         ShareIcons,
         IconCross,
         IconShare,
@@ -72,9 +74,9 @@ export default {
             return this.medias.map(media => media.thumbs.find(item => item.width === 80));
         },
 
-        linkThisPage(){
+        linkThisPage() {
             return location.href;
-        }
+        },
     },
 
     mounted() {
@@ -144,6 +146,10 @@ export default {
                 });
             }
         },
+
+        showSizes() {
+            this.navigateByHash({ path: '#sizes' });
+        },
     },
 };
 </script>
@@ -182,8 +188,11 @@ export default {
                 />
                 <div class="product__sizes product-sizes">
                     <div class="product-sizes__header">
-                        <span>Размер</span>
-                        <span>Руководство по размерам</span>
+                        <span class="product-sizes__title">Размер</span>
+                        <span class="product-sizes__sizes-book" @click="showSizes">
+                            <span>Руководство по размерам</span>
+                            <IconDropdown/>
+                        </span>
                     </div>
                     <div class="product-sizes__selector">
                         <SizeSelector

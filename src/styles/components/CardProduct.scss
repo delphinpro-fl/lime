@@ -87,7 +87,26 @@ $thumb-width: 40px;
 }
 
 .product-sizes {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
 
+  &__title {
+    font-weight: bold;
+  }
+
+  &__sizes-book {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    svg {
+      flex-shrink: 0;
+      margin-left: 5px;
+      transform: rotate(-90deg);
+    }
+  }
 }
 
 .product {

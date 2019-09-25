@@ -25,6 +25,12 @@ const hashRoutes = {
             url: '/payment/',
         },
     },
+    '#sizes'    : {
+        component: 'PageContent',
+        params   : {
+            url: '/sizes/',
+        },
+    },
     '#availability': {
         component: 'Availability',
         params   : {},

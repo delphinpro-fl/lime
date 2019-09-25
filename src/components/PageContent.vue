@@ -54,7 +54,6 @@ export default {
 
 <template>
     <div class="PageContent" v-if="pageData">
-        <pre>{{pageData}}</pre>
         <h1 v-if="pageData.name">{{pageData.name}}</h1>
         <div v-html="pageData.content"></div>
     </div>

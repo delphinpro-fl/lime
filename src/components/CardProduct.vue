@@ -23,6 +23,7 @@ import ShareIcons         from '@/components/ShareIcons';
 import SidePopup          from '@/components/SidePopup';
 import SizeSelector       from '@/components/SizeSelector';
 import { makeSizesArray } from '@/lib';
+import SubscribeSize      from '@/components/SubscribeSize';
 
 
 let tm;
@@ -31,6 +32,7 @@ export default {
     name: 'CardProduct',
 
     components: {
+        SubscribeSize,
         Availability,
         CareComposition,
         CloseButton,
@@ -62,6 +64,7 @@ export default {
         isOpenDelivery    : false,
         isOpenCare        : false,
         isOpenAvailability: false,
+        isOpenSubscribe   : false,
     }),
 
     computed: {
@@ -74,7 +77,8 @@ export default {
                 || this.isOpenPayment
                 || this.isOpenDelivery
                 || this.isOpenCare
-                || this.isOpenAvailability;
+                || this.isOpenAvailability
+                || this.isOpenSubscribe;
         },
 
         productName() {
@@ -218,12 +222,15 @@ export default {
         toggleDelivery() { this.isOpenDelivery = !this.isOpenDelivery; },
         toggleCare() { this.isOpenCare = !this.isOpenCare; },
         toggleAvailability() { this.isOpenAvailability = !this.isOpenAvailability; },
+        toggleSubscribe() { this.isOpenSubscribe = !this.isOpenSubscribe; },
+        showSubscribe() { this.isOpenSubscribe = true; },
         closePopup() {
             this.isOpenSizes        = false;
             this.isOpenPayment      = false;
             this.isOpenDelivery     = false;
             this.isOpenCare         = false;
             this.isOpenAvailability = false;
+            this.isOpenSubscribe    = false;
             this.toggleOverlay(false);
         },
         keyDown(e) {
@@ -289,6 +296,7 @@ export default {
                             :options="sizes"
                             :selected="skuIndex"
                             @change="pickSize"
+                            @subscribe="showSubscribe"
                         />
                     </div>
                 </div>
@@ -347,6 +355,7 @@ export default {
             <PageContent class="popup-sizes" url="/sizes/" v-if="isOpenSizes"/>
             <CareComposition class="popup-care" :product="card" v-if="isOpenCare"/>
             <Availability class="popup-availability" :sku="sku" v-if="isOpenAvailability"/>
+            <SubscribeSize class="popup-subscribe-size" v-if="isOpenSubscribe"/>
         </SidePopup>
     </div>
 </template>

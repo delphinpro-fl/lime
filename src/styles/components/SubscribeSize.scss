@@ -1,0 +1,15 @@
+//==
+//== Component: SubscribeSize.vue
+//== ======================================= ==//
+
+.SubscribeSize {
+  text-transform: uppercase;
+
+  h1 {
+    padding-right: 40px;
+  }
+
+  &__content {
+    max-width: 350px;
+  }
+}

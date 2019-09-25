@@ -1,0 +1,18 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1px solid #5a5a5a;
+  background: #5a5a5a;
+  font-size: 12px;
+}
+
+.btn-block {
+  display: flex;
+  width: 100%;
+}

@@ -42,6 +42,15 @@ export default {
                 this.isOpen = false;
             }
         },
+
+        onClick(e, opt) {
+            console.log('onClick: ', opt, e);
+            if (opt.meta.event) {
+                e.preventDefault();
+                this.$emit(opt.meta.event);
+                this.isOpen = false;
+            }
+        },
     },
 };
 </script>
@@ -65,7 +74,11 @@ export default {
             >
                 <span class="SizeSelector__title">{{opt.title}}</span>
                 <span class="SizeSelector__info" v-if="opt.meta.text">
-                    <a :href="opt.meta.url" v-if="opt.meta.url">{{opt.meta.text}}</a>
+                    <a
+                        v-if="opt.meta.url"
+                        :href="opt.meta.url"
+                        @click="onClick($event, opt)"
+                    >{{opt.meta.text}}</a>
                     <span v-else>{{opt.meta.text}}</span>
                 </span>
             </div>

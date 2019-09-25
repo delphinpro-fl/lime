@@ -18,12 +18,12 @@ export default {
 </script>
 
 <template>
-    <div class="inputbox">
-        <div class="inputbox__header">
-            <span class="inputbox__prompt">{{prompt}}</span>
-            <span class="inputbox__label">{{label}}</span>
+    <div class="Inputbox">
+        <div class="Inputbox__header">
+            <span class="Inputbox__prompt">{{prompt}}</span>
+            <span class="Inputbox__label">{{label}}</span>
         </div>
-        <input type="text" class="inputbox__input" :value="value" @input="this.$emit('input', $event)">
+        <input type="text" class="Inputbox__input" :value="value" @input="this.$emit('input', $event)">
     </div>
 </template>
 

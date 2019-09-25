@@ -84,4 +84,15 @@ export const api = {
 
     //== ИЗБРАННОЕ
     //== ======================================= ==//
+
+    //== ДРУГОЕ
+    //== ======================================= ==//
+
+    /**
+     * Подписка на размер
+     * POST {{protocol}}://{{host}}/api/subscribe/{type}
+     */
+    postSubscribeSize(payload) {
+        return Vue.axios.post('/subscribe/' + payload.type, payload.data);
+    },
 };

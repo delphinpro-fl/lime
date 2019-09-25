@@ -94,3 +94,20 @@
 .popup-care {
   max-width: 575px - 40px;
 }
+.popup-subscribe-size {
+  width: 575px - 40px;
+  max-width: 100%;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.note {
+  text-transform: none;
+  color: #5a5a5a;
+
+  a {
+    color: #000;
+  }
+}

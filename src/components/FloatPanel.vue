@@ -18,6 +18,12 @@ const hashRoutes = {
             url: '/delivery/',
         },
     },
+    '#payment'    : {
+        component: 'PageContent',
+        params   : {
+            url: '/payment/',
+        },
+    },
     '#availability': {
         component: 'Availability',
         params   : {},

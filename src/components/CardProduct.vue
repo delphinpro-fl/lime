@@ -182,6 +182,7 @@ export default {
                     <ul class="info-links__col">
                         <li><a href="#availability" @click.prevent="navigateByHash({path:'#availability'})">Наличие в магазинах</a></li>
                         <li><a href="#delivery" @click.prevent="navigateByHash({path:'#delivery'})">Доставка и возврат</a></li>
+                        <li><a href="#payment" @click.prevent="navigateByHash({path:'#payment'})">Оплата</a></li>
                     </ul>
                 </div>
             </div>

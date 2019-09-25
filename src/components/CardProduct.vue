@@ -36,6 +36,10 @@ export default {
     }),
 
     computed: {
+        productName(){
+            return this.card.name_custom || this.card.name;
+        },
+
         colors() {
             return this.card.models.map(model => model.color);
         },
@@ -152,7 +156,7 @@ export default {
         </div>
         <div class="CardProduct__side">
             <div class="product">
-                <h1 class="product__title">{{card.name}}</h1>
+                <h1 class="product__title">{{productName}}</h1>
                 <div class="product__price" v-if="sku.price">{{sku.price}} ₽</div>
                 <div class="product__article" v-if="card.article">Арт. {{card.article}}</div>
                 <div class="product__description" v-html="card.description"></div>

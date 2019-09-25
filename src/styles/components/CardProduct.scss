@@ -103,10 +103,10 @@ $thumb-width: 40px;
   line-height: 2;
 
   &__title {
-    overflow: hidden;
+    //overflow: hidden;
     margin-bottom: rem(22px);
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    //white-space: nowrap;
+    //text-overflow: ellipsis;
   }
 
   &__price {

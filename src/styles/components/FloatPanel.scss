@@ -8,21 +8,26 @@
   top: 0;
   right: 0;
   bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
   width: 575px;
   height: 100vh;
   padding: 15px 20px;
   background: #fff;
-  overflow-x: hidden;
-  overflow-y: auto;
 
   &__close {
-    @include size(24px);
+    @include size(40px);
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 3px;
     cursor: pointer;
     text-align: center;
+    background: #fff;
     font-size: 24px;
-    line-height: 0.75;
+    line-height: 0;
   }
 }

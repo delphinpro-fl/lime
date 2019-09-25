@@ -6,9 +6,10 @@
 -->
 
 <script>
-import { mapGetters } from 'vuex';
-import PageContent    from '@/components/PageContent';
-import Availability   from '@/components/Availability';
+import { mapGetters }  from 'vuex';
+import PageContent     from '@/components/PageContent';
+import Availability    from '@/components/Availability';
+import CareComposition from '@/components/CareComposition';
 
 
 const hashRoutes = {
@@ -28,6 +29,10 @@ const hashRoutes = {
         component: 'Availability',
         params   : {},
     },
+    '#care': {
+        component: 'CareComposition',
+        params   : {},
+    },
 };
 
 export default {
@@ -36,6 +41,7 @@ export default {
     components: {
         PageContent,
         Availability,
+        CareComposition,
     },
 
     computed: {

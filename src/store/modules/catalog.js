@@ -60,7 +60,8 @@ export default {
         isShowCartNotify: false,
         newCartItem     : null,
 
-        currentSKU: null,
+        currentSKU    : null,
+        currentProduct: null,
     },
 
     getters: {
@@ -76,7 +77,8 @@ export default {
             }, []);
         },
 
-        currentSKU: state => state.currentSKU,
+        currentSKU    : state => state.currentSKU,
+        currentProduct: state => state.currentProduct,
 
         filterCountTotal: state => {
             return Object.values(state.filter).reduce((acc, group) => {
@@ -108,7 +110,16 @@ export default {
             }
         },
 
-        updateCurrentSKU: (state, payload) => state.currentSKU = payload,
+        updateCurrentSKU    : (state, payload) => state.currentSKU = payload,
+        updateCurrentProduct: (state, payload) => {
+            state.currentProduct = {};
+            for (let key in payload) {
+                if (!payload.hasOwnProperty(key)) continue;
+                if (key !== 'models') {
+                    state.currentProduct[key] = payload[key];
+                }
+            }
+        },
 
         toggleFilter      : (state, status) => state.filterOpen = !!status,
         updateFilterOption: (state, payload) => {

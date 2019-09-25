@@ -67,6 +67,7 @@ export default {
 
     mounted() {
         this.updateCurrentSKU(this.sku);
+        this.updateCurrentProduct(this.card);
         this.$nextTick(() => {
             this.updateMediaElements();
             this.updateIndexVisibleMedia();
@@ -79,6 +80,7 @@ export default {
         ]),
         ...mapMutations([
             'updateCurrentSKU',
+            'updateCurrentProduct',
         ]),
 
         scrollHandler() {
@@ -185,6 +187,7 @@ export default {
                     </ul>
                     <ul class="info-links__col">
                         <li><a href="#availability" @click.prevent="navigateByHash({path:'#availability'})">Наличие в магазинах</a></li>
+                        <li><a href="#care" @click.prevent="navigateByHash({path:'#care'})">Состав и уход</a></li>
                         <li><a href="#delivery" @click.prevent="navigateByHash({path:'#delivery'})">Доставка и возврат</a></li>
                         <li><a href="#payment" @click.prevent="navigateByHash({path:'#payment'})">Оплата</a></li>
                     </ul>

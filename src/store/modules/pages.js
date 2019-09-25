@@ -5,7 +5,8 @@
  * licensed under the MIT license
  */
 
-import Vue from 'vue';
+import Vue     from 'vue';
+import { api } from '@/lib/api';
 
 
 export default {
@@ -13,23 +14,45 @@ export default {
         container: {},
     },
 
-    mutations: {
-        updatePageData(state, payload) {
-            Vue.set(state.container, payload.page, payload.data);
+    getters: {
+        page: state => id => {
+            if (id in state.container) return state.container[id];
+            return null;
         },
     },
 
+    mutations: {
+        updatePageContent: (state, payload) => Vue.set(state.container, payload.page, payload.data),
+    },
+
     actions: {
-        //{{protocol}}://{{host}}/api/page?url={url}
-        async loadPageData({ commit, state }, payload) {
-            if (!state.container[payload.page] || payload.force) {
-                let response = await Vue.axios.get('/page?url=' + encodeURIComponent(payload.url));
-                if (response.status === 200) {
-                    commit('updatePageData', { page: payload.page, data: response.data });
-                    return response.data;
-                }
+        async getPageContent({ commit, state }, payload) {
+            if (state.container[payload.url] && !payload.force) {
+                commit('setPageTitle', state.container[payload.url].name);
+                return;
             }
-            return state.container[payload.page];
+
+            let data, title;
+
+            let response = await api.getPageContent(payload);
+            if (response.status === 200) {
+                title = response.data.name;
+                data  = {
+                    ...response.data,
+                    status: 200,
+                    error : null,
+                };
+            } else {
+                title = response.data.errors[0].text;
+                data  = {
+                    name   : response.data.errors[0].text,
+                    content: response.data.errors[0].text,
+                    status : response.status,
+                    error  : response.data.errors[0],
+                };
+            }
+            commit('updatePageContent', { page: payload.url, data });
+            commit('setPageTitle', title);
         },
     },
 };

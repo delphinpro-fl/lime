@@ -6,10 +6,12 @@
 -->
 
 <script>
-import { mapGetters } from 'vuex';
-import AppLogo        from '@/components/AppLogo';
-import HomeSlider     from '@/components/HomeSlider';
-import { initPage }   from '@/lib/init-page';
+import {
+    mapActions,
+    mapGetters,
+}                 from 'vuex';
+import AppLogo    from '@/components/AppLogo';
+import HomeSlider from '@/components/HomeSlider';
 
 
 export default {
@@ -42,10 +44,15 @@ export default {
     },
 
     mounted() {
-        initPage({ page: 'home', url: '/' });
-
+        this.getPageContent({ url: '/' });
         this.isOpenFooter = false;
         if (!this.slides.length) this.$store.dispatch('loadBanners', { banners: 'main' });
+    },
+
+    methods: {
+        ...mapActions([
+            'getPageContent',
+        ]),
     },
 };
 </script>

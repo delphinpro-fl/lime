@@ -9,11 +9,10 @@ import Vue               from 'vue';
 import Router            from 'vue-router';
 import store             from '@/store';
 import ViewHome          from '@/views/ViewHome';
-import ViewAbout         from '@/views/ViewAbout';
+import ViewStaticPage    from '@/views/ViewStaticPage';
 import ViewCatalog       from '@/views/ViewCatalog';
 import View404           from '@/views/View404';
 import ViewLookBook      from '@/views/ViewLookBook';
-import ViewHelp          from '@/views/ViewHelp';
 import ViewCollaboration from '@/views/ViewCollaboration';
 import ViewProduct       from '@/views/ViewProduct';
 
@@ -64,38 +63,36 @@ let router = new Router({
         //== About menu
         //== ======================================= ==//
 
+
         {
             path     : '/about',
             name     : 'about',
-            component: ViewAbout,
+            component: ViewStaticPage,
         },
-        /*
         {
             path     : '/contacts',
             name     : 'contacts',
-            component: ViewContacts,
+            component: ViewStaticPage,
         },
         {
-            path     : '/exchange',
-            name     : 'exchange',
-            component: ViewExchange,
+            path     : '/payment',
+            name     : 'payment',
+            component: ViewStaticPage,
         },
         {
-            path     : '/about/jobs',
+            path     : '/jobs',
             name     : 'jobs',
-            component: ViewJobs,
+            component: ViewStaticPage,
         },
-        */
-        {
-            path     : '/partners',
-            name     : 'collaboration',
-            component: ViewCollaboration,
-        },
-
         {
             path     : '/help',
             name     : 'help',
-            component: ViewHelp,
+            component: ViewStaticPage,
+        },
+        {
+            path     : '/partners',
+            name     : 'partners',
+            component: ViewStaticPage,
         },
 
         {

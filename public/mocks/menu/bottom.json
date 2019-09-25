@@ -9,25 +9,25 @@
     {
       "id": 2,
       "name": "Контакты",
-      "url": "",
+      "url": "/contacts/",
       "items": null
     },
     {
       "id": 3,
       "name": "Руководство по покупке",
-      "url": "/help/",
+      "url": "/payment/",
       "items": null
     },
     {
       "id": 4,
       "name": "Вакансии",
-      "url": "",
+      "url": "/jobs/",
       "items": null
     },
     {
       "id": 5,
       "name": "Партнерам",
-      "url": "/collaboration/",
+      "url": "/partners/",
       "items": null
     }
   ]

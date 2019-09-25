@@ -7,7 +7,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import { initPage } from '@/lib/init-page';
+// import { initPage } from '@/lib/init-page';
 
 
 export default {
@@ -24,7 +24,7 @@ export default {
     },
 
     mounted() {
-        initPage({ page: 'collaboration', url: '/collaboration/' });
+        // initPage({ page: 'collaboration', url: '/collaboration/' });
     },
 };
 </script>

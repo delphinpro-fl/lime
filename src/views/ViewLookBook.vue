@@ -6,14 +6,14 @@
 -->
 
 <script>
-import { initPage } from '@/lib/init-page';
+// import { initPage } from '@/lib/init-page';
 
 
 export default {
     name: 'ViewLookBook',
 
     mounted() {
-        initPage({ page: 'lookbook', url: '/lookbook/' });
+        // initPage({ page: 'lookbook', url: '/lookbook/' });
     },
 };
 </script>

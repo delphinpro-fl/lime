@@ -8,52 +8,53 @@
 import Vue from 'vue';
 
 
-export const api = {};
+export const api = {
 
-/**
- * Запрос содержимого статичной страницы
- *
- * Формат запроса:
- * GET {{protocol}}://{{host}}/api/page?url={url}
- *
- * @param payload
- * @returns {Promise<*>}
- */
-api.getPageContent = async function (payload) {
-    if (typeof payload === 'object' && 'url' in payload) {
-        let response = await Vue.axios.get('/page?url=' + encodeURIComponent(payload.url));
-        if (response.status === 200) {
-            return response.data;
-        }
-    }
+    //== КАТАЛОГ
+    //== ======================================= ==//
 
-    console.error('api/getPageContent(): Неверный параметр');
-};
+    /**
+     * Запрос раздела каталога
+     *
+     * Формат запроса:
+     * {{protocol}}://{{host}}/api/section/{{name}}
+     */
+    getCatalogSection(payload) {
+        return Vue.axios.get(`/section/${encodeURIComponent(payload.id)}/`);
+    },
 
-/**
- * Запрос списка городов
- *
- * Формат запроса:
- * GET {{protocol}}://{{host}}/api/city?query=моск
- *
- * @param payload
- * @returns {Promise<*>}
- */
-api.getCityList = async function (payload) {
-    let response = await Vue.axios.get('/city/');
-    return response.data;
-};
+    //== СТРУКТУРА
+    //== ======================================= ==//
 
-/**
- * Запрос списка магазинов города
- *
- * Формат запроса:
- * GET {{protocol}}://{{host}}/api/shop?city_id=1
- *
- * @param payload
- * @returns {Promise<*>}
- */
-api.getShopList = async function (payload) {
-    let response = await Vue.axios.get('/shop/?city_id=' + encodeURIComponent(payload.cityId));
-    return response.data;
+    /**
+     * Запрос содержимого статичной страницы
+     *
+     * Формат запроса:
+     * GET {{protocol}}://{{host}}/api/page?url={url}
+     */
+    getPageContent(payload) {
+        return Vue.axios.get('/page?url=' + encodeURIComponent(payload.url));
+    },
+
+    /**
+     * Запрос списка городов
+     *
+     * Формат запроса:
+     * GET {{protocol}}://{{host}}/api/city?query=моск
+     */
+    async getCityList(payload) {
+        let response = await Vue.axios.get('/city/');
+        return response.data;
+    },
+
+    /**
+     * Запрос списка магазинов города
+     *
+     * Формат запроса:
+     * GET {{protocol}}://{{host}}/api/shop?city_id=1
+     */
+    async getShopList(payload) {
+        let response = await Vue.axios.get('/shop/?city_id=' + encodeURIComponent(payload.cityId));
+        return response.data;
+    },
 };

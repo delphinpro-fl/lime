@@ -44,18 +44,20 @@ if ($filename && file_exists(__DIR__.'/'.$filename)) {
 
 header('Not found', true, 404);
 echo json_encode([
-    "errors"     => [
+    'errors'     => [
         [
-            "text" => "Ресурс не найден",
-            "code" => "404",
+            'text' => 'Ресурс не найден',
+            'code' => 404,
         ],
     ],
-    'url'        => $requestUri,
-    'parsed_url' => $parsedUrl,
-    'query'      => $query,
-    'urlPath'    => $urlPath,
-    'object'     => $object,
-    'segments'   => $segments,
-    'path'       => $path,
-    'mock_file'  => $filename,
+    'debug_info' => [
+        'url'        => $requestUri,
+        'parsed_url' => $parsedUrl,
+        'query'      => $query,
+        'urlPath'    => $urlPath,
+        'object'     => $object,
+        'segments'   => $segments,
+        'path'       => $path,
+        'mock_file'  => $filename,
+    ],
 ]);

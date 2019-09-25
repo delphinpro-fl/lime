@@ -5,9 +5,11 @@
  * licensed under the MIT license
  */
 
-const warnConsole   = 'background-color:#363005;color:#FDDF9D';
-const infoConsole   = 'color:#3B85CE';
-const dangerConsole = 'color:#E33730';
+import {
+    infoConsole,
+    warnConsole,
+} from '@/constants';
+
 
 export function requestSuccess(config) {
     if (process.env.NODE_ENV === 'development') {

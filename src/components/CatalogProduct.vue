@@ -166,7 +166,9 @@ export default {
         @mouseleave="isHoverMe=false"
     >
         <div class="CatalogProduct__imageBox">
-            <img class="CatalogProduct__image" :src="image" alt="" v-if="image">
+            <router-link class="CatalogProduct__image-link" :to="detailUrl">
+                <img class="CatalogProduct__image" :src="image" alt="" v-if="image">
+            </router-link>
             <BookmarkButton
                 class="CatalogProduct__bookmark"
                 :active="isBookmarkActive"

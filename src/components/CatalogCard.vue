@@ -6,7 +6,6 @@
 -->
 
 <script>
-import CatalogModel   from '@/components/CatalogModel';
 import CatalogProduct from '@/components/CatalogProduct';
 import CatalogBanner  from '@/components/CatalogBanner';
 import { ucfirst }    from '@/lib';
@@ -18,7 +17,6 @@ export default {
     name: 'CatalogCard',
 
     components: {
-        CatalogModel,
         CatalogProduct,
         CatalogBanner,
     },

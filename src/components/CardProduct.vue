@@ -146,6 +146,7 @@ export default {
         },
 
         pickColor(modelIndex) {
+            this.skuIndex   = -1;
             this.modelIndex = modelIndex;
         },
 

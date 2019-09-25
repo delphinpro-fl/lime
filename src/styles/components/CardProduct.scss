@@ -109,6 +109,22 @@ $thumb-width: 40px;
   }
 }
 
+.actions {
+  display: flex;
+  height: 32px;
+
+  &__cart {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  &__fav {
+    display: flex;
+    flex-shrink: 0;
+    margin-left: 10px;
+  }
+}
+
 .product {
   position: sticky;
   top: 0;
@@ -151,6 +167,7 @@ $thumb-width: 40px;
   }
 
   &__actions {
+    margin-top: 18px;
   }
 
   &__links {

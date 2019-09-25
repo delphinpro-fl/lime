@@ -52,3 +52,34 @@
     min-width: var(--scrollbar-minlength);
   }
 }
+
+%gray-button {
+  text-transform: uppercase;
+  color: #fff;
+  border: none;
+  background: #5a5a5a;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.btn-cart {
+  @extend %gray-button;
+  width: 100%;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.btn-fav {
+  @extend %gray-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  padding: 0;
+
+  svg {
+    @include size(18px);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+}

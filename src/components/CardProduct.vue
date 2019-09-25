@@ -17,12 +17,16 @@ import IconShare          from '@/components/Icons/IconShare';
 import IconCross          from '@/components/Icons/IconCross';
 import ShareIcons         from '@/components/ShareIcons';
 import IconDropdown       from '@/components/Icons/IconDropdown';
+import IconStar           from '@/components/Icons/IconStar';
 
+
+let tm;
 
 export default {
     name: 'CardProduct',
 
     components: {
+        IconStar,
         IconDropdown,
         ShareIcons,
         IconCross,
@@ -91,10 +95,15 @@ export default {
     methods: {
         ...mapActions([
             'navigateByHash',
+            'toggleBookmark',
+            'toggleCart',
         ]),
+
         ...mapMutations([
             'updateCurrentSKU',
             'updateCurrentProduct',
+            'showCartNotify',
+            'hideCartNotify',
         ]),
 
         scrollHandler() {
@@ -150,6 +159,28 @@ export default {
         showSizes() {
             this.navigateByHash({ path: '#sizes' });
         },
+
+        async clickCartHandler() {
+            // todo: fake
+            await this.toggleCart({
+                id : this.pickedModel.id,
+                add: true,
+            });
+            this.showCartNotify({
+                goods: {
+                    title   : this.productName,
+                    article : this.card.article,
+                    color   : this.pickedModel.color,
+                    size    : this.sku,
+                    photo   : {
+                        url: this.medias[0].url,
+                    },
+                    quantity: 1,
+                },
+            });
+            clearTimeout(tm);
+            tm = setTimeout(() => this.hideCartNotify(), 3000);
+        },
     },
 };
 </script>
@@ -200,6 +231,18 @@ export default {
                             :selected="skuIndex"
                             @change="pickSize"
                         />
+                    </div>
+                </div>
+
+                <div class="product__actions actions">
+                    <div class="actions__cart">
+                        <button class="btn-cart" @click="clickCartHandler">Добавить в корзину</button>
+                    </div>
+                    <div class="actions__fav">
+                        <button class="btn-fav">
+                            <IconStar/>
+                            <span class="sr-only">Favorite</span>
+                        </button>
                     </div>
                 </div>
 

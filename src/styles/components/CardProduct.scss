@@ -16,12 +16,12 @@ $thumb-width: 40px;
   &__main {
     position: relative;
     display: flex;
-    width: percentage(2/3);
+    width: 65%;
   }
 
   &__side {
     position: relative;
-    width: percentage(1/3);
+    width: 35%;
   }
 
   &__media-tape {

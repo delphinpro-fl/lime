@@ -9,7 +9,6 @@
 import {
     mapGetters,
     mapMutations,
-    mapState,
 }                from 'vuex';
 import Checkbox  from '@/components/Checkbox';
 import IconCross from '@/components/Icons/IconCross';
@@ -23,15 +22,9 @@ export default {
         Checkbox,
     },
 
-    data: () => ({
-        isOpen: true,
-    }),
-
     computed: {
-        ...mapState({
-            filter: state => state.catalog.filter,
-        }),
         ...mapGetters([
+            'filter',
             'filterCountTotal',
             'filterCountGroup',
         ]),
@@ -65,17 +58,17 @@ export default {
             </span>
         </div>
         <div class="filter__main">
-            <div class="filter__group filter-group" v-for="(group, name) in filter">
+            <div class="filter__group filter-group" v-for="(group, key) in filter">
                 <div class="filter-group__title">
-                    {{group.title}}
-                    <span v-if="filterCountGroup(name)">({{filterCountGroup(name)}})</span>
+                    {{group.name}}
+                    <span v-if="filterCountGroup(key)">({{filterCountGroup(key)}})</span>
                 </div>
-                <div class="filter-group__options" :class="group.view">
+                <div class="filter-group__options" :class="group.type">
                     <div class="filter-group__option" v-for="(item, index) in group.options">
                         <Checkbox
                             :checked="item.checked"
                             :value="item.checked"
-                            @change="switchOption(name, index, $event)"
+                            @change="switchOption(key, index, $event)"
                         >{{ item.text }}
                         </Checkbox>
                     </div>

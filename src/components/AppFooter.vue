@@ -5,10 +5,10 @@
  * licensed under the MIT license
  */
 
+import { mapGetters } from 'vuex';
 import FormSubscribe  from '@/components/FormSubscribe';
 import ShareIcons     from '@/components/ShareIcons';
 import StoreIcons     from '@/components/StoreIcons';
-import { mapGetters } from 'vuex';
 
 
 export default {
@@ -27,33 +27,33 @@ export default {
 
     computed:{
         ...mapGetters([
-            'bottomMenu',
+            'getMenuItems',
         ]),
-        menu: {
-            get() { return this.bottomMenu && this.bottomMenu.items || []; },
-            set(v) {},
+
+        items(){
+            return this.getMenuItems('bottom');
         },
-    }
+   }
 };
 </script>
 
 <template>
-    <footer class="app-footer">
-        <div class="app-footer__handler"></div>
-        <div class="app-footer__container">
-            <div class="app-footer__form">
+    <footer class="AppFooter">
+        <div class="AppFooter__handler"></div>
+        <div class="AppFooter__container">
+            <div class="AppFooter__form">
                 <FormSubscribe/>
             </div>
-            <div class="app-footer__contacts">
-                <ShareIcons class="app-footer__share"/>
-                <StoreIcons class="app-footer__store"/>
+            <div class="AppFooter__contacts">
+                <ShareIcons class="AppFooter__share"/>
+                <StoreIcons class="AppFooter__store"/>
             </div>
-            <div class="app-footer__navi">
-                <div class="app-footer__phone">{{ phone }}</div>
-                <div class="app-footer__worktime">{{ worktime }}</div>
-                <ul class="app-footer__menu footer-menu" v-if="menu.length">
-                    <li class="footer-menu__item" v-for="item in menu">
-                        <router-link class="footer-menu__link"
+            <div class="AppFooter__navi">
+                <div class="AppFooter__phone">{{ phone }}</div>
+                <div class="AppFooter__worktime">{{ worktime }}</div>
+                <ul class="AppFooter__menu FooterMenu" v-if="items.length">
+                    <li class="FooterMenu__item" v-for="item in items">
+                        <router-link class="FooterMenu__link"
                             :to="{path: item.url}"
                             v-text="item.name"
                         />

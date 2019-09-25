@@ -2,49 +2,42 @@
 //== Global app layout
 //== ======================================= ==//
 
-.app {
+.App {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
-
-  &.locked {
-    overflow: hidden;
-  }
+  min-height: 100vh;
 
   &__navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: $navbar-height + 1px;
+    background: yellow;
   }
 
   &__container {
     display: flex;
     flex-grow: 1;
-    padding-top: ($navbar-height + 1px);
-    transition: 0.35s ease padding-top;
+  }
 
-    @include media-breakpoint-down(xs) {
-      .isOpenSearch & {
-        padding-top: ($navbar-height + 1px + $navbar-height);
-      }
-    }
+  &__sideLeft {
+    @include make-column-side-left();
+    position: relative;
+    z-index: $z-sidebars;
+    pointer-events: none;
 
-    @include media-breakpoint-up(desktop) {
-      padding-top: 0;
+  }
 
-      &::before {
-        content: '';
-        @include make-column-side-left();
-      }
+  &__sideRight {
+    @include make-column-side-right();
+    position: relative;
+    z-index: $z-sidebars;
+    pointer-events: none;
+  }
 
-      &::after {
-        content: '';
-        @include make-column-side-right();
-      }
-    }
+  &__sideContent {
+    position: sticky;
+    top: 0;
+    pointer-events: all;
   }
 
   &__main {
@@ -55,27 +48,47 @@
   &__footer {
     flex-shrink: 0;
 
-    &._home {
+    &.onHome {
       position: fixed;
       top: 100%;
       left: 0;
       width: 100%;
       transition: transform 0.3s ease;
 
-      &._active {
+      &.isActive {
         transform: translateY(-100%);
       }
 
-      &._mobile {
+      &.isMobile {
         height: calc(100vh - #{$navbar-height});
       }
     }
   }
 
-  &__cart-notify {
+  &__cartNotify {
     position: fixed;
+    z-index: $z-cart-notify;
     //top: 12px;
     top: 205px;
     right: 12px;
+  }
+}
+
+.AppSide {
+  padding-top: rem(25px);
+
+  &__top {
+    display: flex;
+    align-items: center;
+    height: rem($logo-height);
+    margin-bottom: rem(30px);
+
+    > * {
+      width: 100%;
+    }
+  }
+
+  .isHomepage & {
+    padding-top: 110px;
   }
 }

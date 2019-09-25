@@ -6,7 +6,7 @@ $DropdownList-height: 32px;
 
 .DropdownList {
   position: relative;
-  z-index: 100;
+  z-index: $z-dropdown;
   width: 100%;
   height: rem($DropdownList-height);
   user-select: none;

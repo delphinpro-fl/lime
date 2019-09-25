@@ -6,7 +6,8 @@
 -->
 
 <script>
-import IconSearch from '@/components/Icons/IconSearch';
+import { mapMutations } from 'vuex';
+import IconSearch       from '@/components/Icons/IconSearch';
 
 
 export default {
@@ -17,16 +18,23 @@ export default {
     },
 
     methods: {
-        toggleSearch() {
-            this.$store.commit('toggleMobileMenu', false);
-            this.$store.commit('updateIsOpenSearch', !this.$store.state.isOpenSearch);
+        ...mapMutations([
+            'closeMobileMenu',
+            'closeFooter',
+            'toggleSearch',
+        ]),
+
+        toggleSearchBox() {
+            this.closeMobileMenu();
+            this.closeFooter();
+            this.toggleSearch();
         },
     },
 };
 </script>
 
 <template>
-    <button class="mobile-search-button" @click="toggleSearch">
+    <button class="mobile-search-button" @click="toggleSearchBox">
         <span class="mobile-search-button__icon">
             <IconSearch/>
         </span>

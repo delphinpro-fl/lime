@@ -22,6 +22,8 @@ $grid-breakpoints: (
 );
 $grid-left-side-padding: 26px;
 $grid-right-side-padding: 15px;
+$grid-left-side-width: 200px;
+$grid-right-side-width: 165px;
 $max-container-width: 1920px;
 
 $logo-width: 220px;
@@ -31,9 +33,14 @@ $navbar-height: 55px;
 $navbar-border-color: #c4c4c4;
 
 // @formatter:off
+$z-sidebars             : 1;
+$z-dropdown             : 100;
+$z-cart-notify          : 150;
+$z-mobile-menu          : 200;
 $z-navbar               : 900;
 $z-overlay              : 1000;
 $z-float-panel          : 1100;
+$z-popup                : 1200;
 // @formatter:on
 
 //==

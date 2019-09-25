@@ -4,7 +4,7 @@
 
 .mobile-menu {
   position: fixed;
-  z-index: 100;
+  z-index: $z-mobile-menu;
   top: $navbar-height;
   bottom: 0;
   left: 0;

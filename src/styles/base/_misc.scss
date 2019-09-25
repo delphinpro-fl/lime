@@ -54,12 +54,12 @@
 }
 
 %gray-button {
+  cursor: pointer;
   text-transform: uppercase;
   color: #fff;
   border: none;
   background: #5a5a5a;
   font-size: 12px;
-  cursor: pointer;
 }
 
 .btn-cart {
@@ -67,6 +67,10 @@
   width: 100%;
   padding: 0;
   line-height: 1.6;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 .btn-fav {
@@ -82,4 +86,11 @@
     flex-shrink: 0;
     line-height: 1;
   }
+}
+
+.popup-payment,
+.popup-delivery,
+.popup-sizes,
+.popup-care {
+  max-width: 575px - 40px;
 }

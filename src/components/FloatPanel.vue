@@ -6,49 +6,13 @@
 -->
 
 <script>
-import { mapGetters }  from 'vuex';
-import PageContent     from '@/components/PageContent';
-import Availability    from '@/components/Availability';
-import CareComposition from '@/components/CareComposition';
+import { mapGetters } from 'vuex';
 
 
-const hashRoutes = {
-    '#delivery'    : {
-        component: 'PageContent',
-        params   : {
-            url: '/delivery/',
-        },
-    },
-    '#payment'    : {
-        component: 'PageContent',
-        params   : {
-            url: '/payment/',
-        },
-    },
-    '#sizes'    : {
-        component: 'PageContent',
-        params   : {
-            url: '/sizes/',
-        },
-    },
-    '#availability': {
-        component: 'Availability',
-        params   : {},
-    },
-    '#care': {
-        component: 'CareComposition',
-        params   : {},
-    },
-};
+const hashRoutes = {};
 
 export default {
     name: 'FloatPanel',
-
-    components: {
-        PageContent,
-        Availability,
-        CareComposition,
-    },
 
     computed: {
         ...mapGetters([

@@ -3,5 +3,18 @@
 //== ======================================= ==//
 
 .PageContent {
-  text-transform: uppercase;
+  &__content {
+    text-transform: uppercase;
+  }
+
+  &__loadingBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .LoadingIndicator {
+      width: auto;
+      background: none;
+    }
+  }
 }

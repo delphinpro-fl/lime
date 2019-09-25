@@ -6,8 +6,9 @@
 -->
 
 <script>
-import MainMenu from '@/components/MainMenu';
-import UserMenu from '@/components/UserMenu';
+import { mapMutations } from 'vuex';
+import MainMenu         from '@/components/MainMenu';
+import UserMenu         from '@/components/UserMenu';
 
 
 export default {
@@ -19,9 +20,13 @@ export default {
     },
 
     methods: {
-        closeMobileMenu(e) {
+        ...mapMutations([
+            'closeMobileMenu',
+        ]),
+
+        selfClose(e) {
             if (e.target.tagName.toUpperCase() === 'A' && !e.target.classList.contains('has-children')) {
-                this.$store.commit('toggleMobileMenu', false);
+                this.closeMobileMenu();
             }
         },
     },
@@ -30,7 +35,7 @@ export default {
 
 <template>
     <div class="mobile-menu">
-        <div class="mobile-menu__container" @click="closeMobileMenu">
+        <div class="mobile-menu__container" @click="selfClose">
             <MainMenu class="mobile-menu__main"/>
             <UserMenu class="mobile-menu__user"/>
         </div>

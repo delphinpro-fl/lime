@@ -9,32 +9,16 @@
 import { mapGetters } from 'vuex';
 
 
-const THEME_INVERSE = 'inverse';
-
-const themeValidator = value => [
-    '',
-    THEME_INVERSE,
-].indexOf(value) !== -1;
-
 export default {
     name: 'UserMenu',
 
-    props: {
-        theme: { type: String, default: '', validator: themeValidator },
-    },
-
     computed: {
         ...mapGetters([
-            'rightMenu',
+            'getMenuItems',
         ]),
-        computedClasses() {
-            return {
-                usermenu_theme_inverse: this.theme === THEME_INVERSE,
-            };
-        },
-        items: {
-            get() { return this.rightMenu && this.rightMenu.items || []; },
-            set(v) {},
+
+        items() {
+            return this.getMenuItems('right');
         },
     },
 
@@ -42,6 +26,7 @@ export default {
         hashNavigate(path, title = '') {
             this.$store.dispatch('navigateByHash', { path, title });
         },
+
         isHashLink(url) {
             return /^#/.test(url);
         },
@@ -50,7 +35,7 @@ export default {
 </script>
 
 <template>
-    <div class="usermenu" :class="computedClasses">
+    <div class="usermenu">
         <ul class="usermenu__list" v-if="items.length">
             <li class="usermenu__item" v-for="item in items">
                 <a class="usermenu__link" @click="hashNavigate(item.url)" v-if="isHashLink(item.url)">{{item.name}}</a>

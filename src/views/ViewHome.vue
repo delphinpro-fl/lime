@@ -9,6 +9,7 @@
 import {
     mapActions,
     mapGetters,
+    mapMutations,
 }                 from 'vuex';
 import AppLogo    from '@/components/AppLogo';
 import HomeSlider from '@/components/HomeSlider';
@@ -32,26 +33,30 @@ export default {
         ]),
 
         computedClasses() {
-            return { home_mobile: this.isMobileDevice };
+            return {
+                home_mobile: this.isMobileDevice,
+            };
         },
 
-        isOpenFooter: {
-            get() { return this.$store.state.isOpenFooter; },
-            set(v) { this.$store.commit('updateIsOpenFooter', v); },
+        slides() {
+            return this.getBanners('main');
         },
-
-        slides() { return this.getBanners('main'); },
     },
 
     mounted() {
         this.getPageContent({ url: '/' });
-        this.isOpenFooter = false;
-        if (!this.slides.length) this.$store.dispatch('loadBanners', { banners: 'main' });
+        this.closeFooter();
+        if (!this.slides.length) this.loadBanners({ banners: 'main' });
     },
 
     methods: {
+        ...mapMutations([
+            'closeFooter',
+        ]),
+
         ...mapActions([
             'getPageContent',
+            'loadBanners',
         ]),
     },
 };

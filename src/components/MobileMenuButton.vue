@@ -6,25 +6,36 @@
 -->
 
 <script>
+import {
+    mapMutations,
+    mapState,
+} from 'vuex';
+
+
 export default {
     name: 'MobileMenuButton',
 
     computed: {
-        mmOpen: {
-            get() { return this.$store.state.mmOpen; },
-            set(value) { this.$store.commit('toggleMobileMenu', value); },
-        },
+        ...mapState([
+            'isOpenMobileMenu',
+        ]),
     },
 
     beforeDestroy() {
-        this.mmOpen = false;
+        this.toggleMobileMenu(false);
     },
 
     methods: {
+        ...mapMutations([
+            'closeFooter',
+            'closeSearch',
+            'toggleMobileMenu',
+        ]),
+
         toggleMenu() {
-            this.$store.commit('updateIsOpenSearch', false);
-            this.$store.commit('updateIsOpenFooter', false);
-            this.mmOpen = !this.mmOpen;
+            this.closeSearch();
+            this.closeFooter();
+            this.toggleMobileMenu(!this.isOpenMobileMenu);
         },
     },
 
@@ -32,7 +43,7 @@ export default {
 </script>
 
 <template>
-    <button class="mobile-menu-button" :class="{'mobile-menu-button_open': this.mmOpen}" @click="toggleMenu">
+    <button class="mobile-menu-button" :class="{'mobile-menu-button_open': isOpenMobileMenu}" @click="toggleMenu">
         <span class="mobile-menu-button__text sr-only">Меню</span>
         <span class="mobile-menu-button__lines">
             <span class="mobile-menu-button__line mobile-menu-button__line_top"></span>

@@ -6,16 +6,11 @@
 -->
 
 <script>
-import { mapGetters } from 'vuex';
-
-
 export default {
     name: 'CareComposition',
 
-    computed: {
-        ...mapGetters([
-            'currentProduct',
-        ]),
+    props: {
+        product: Object,
     },
 };
 </script>
@@ -23,12 +18,16 @@ export default {
 <template>
     <div class="CareComposition">
         <h1>Состав и уход</h1>
-        <template v-if="currentProduct">
-            <p><strong>Состав</strong></p>
-            <div v-html="currentProduct.composition"></div>
-            <p>&nbsp;</p>
-            <p><strong>Уход за товаром</strong></p>
-            <div v-html="currentProduct.care"></div>
+        <template v-if="product">
+            <template v-if="product.composition">
+                <p><strong>Состав</strong></p>
+                <div v-html="product.composition"></div>
+                <p>&nbsp;</p>
+            </template>
+            <template v-if="product.care">
+                <p><strong>Уход за товаром</strong></p>
+                <div v-html="product.care"></div>
+            </template>
         </template>
     </div>
 </template>

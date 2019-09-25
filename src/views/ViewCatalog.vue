@@ -48,13 +48,15 @@ export default {
         },
     },
 
-     mounted() {
+    mounted() {
         this.loadItems(this.$route);
+        this.loadFilter();
     },
 
     beforeRouteUpdate(to, from, next) {
         next();
         this.loadItems(to);
+        this.loadFilter();
     },
 
     methods: {
@@ -63,6 +65,7 @@ export default {
         ]),
         ...mapActions([
             'getCatalogSection',
+            'getFilter',
         ]),
 
         async loadItems(route) {
@@ -73,6 +76,10 @@ export default {
                 this.isNotFound = true;
             }
             this.isReady = true;
+        },
+
+        loadFilter() {
+            this.getFilter({ id: 1 });
         },
 
         changeColor(cardIndex, colorIndex) {

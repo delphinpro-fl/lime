@@ -56,7 +56,7 @@
   //== Inverse theme
   //== ======================================= ==//
 
-  &_theme_inverse {
+  .isHomepage:not(.isMobile) & {
     color: white;
   }
 }

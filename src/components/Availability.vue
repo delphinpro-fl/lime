@@ -6,10 +6,9 @@
 -->
 
 <script>
-import { mapGetters }      from 'vuex';
+import { mapActions }      from 'vuex';
 import LoadingIndicator    from '@/components/LoadingIndicator';
 import DropdownList        from '@/components/DropdownList';
-import { api }             from '@/lib/api';
 import { telephoneAsLink } from '@/lib';
 
 
@@ -19,6 +18,10 @@ export default {
     components: {
         LoadingIndicator,
         DropdownList,
+    },
+
+    props: {
+        sku: Object,
     },
 
     data: () => ({
@@ -33,10 +36,6 @@ export default {
     }),
 
     computed: {
-        ...mapGetters([
-            'currentSKU',
-        ]),
-
         selectedCity() {
             if (this.cityIndex in this.cities) return this.cities[this.cityIndex];
             return null;
@@ -44,7 +43,8 @@ export default {
 
         shopList() {
             return this.shops.map(shop => {
-                let s = this.currentSKU.rests.find(item => item.shop === shop.id);
+                if (!this.sku || !this.sku.rests || !Array.isArray(this.sku.rests)) return shop;
+                let s = this.sku.rests.find(item => item.shop === shop.id);
                 return {
                     ...shop,
                     sizes: s ? s.sizes : [],
@@ -64,8 +64,7 @@ export default {
 
     async mounted() {
         this.citiesReady = false;
-        let response     = await api.getCityList({});
-        this.cities      = response.items;
+        this.cities      = await this.getCityList({});
         if (this.cities.length) this.cityIndex = 0;
         this.citiesReady = true;
 
@@ -77,15 +76,19 @@ export default {
     },
 
     methods: {
+        ...mapActions([
+            'getCityList',
+            'getShopList',
+        ]),
+
         pickCity(cityIndex) {
             this.cityIndex = cityIndex;
-            console.log('pick');
             this.updateShopList(this.selectedCity.id);
         },
 
         async updateShopList(cityId) {
             this.shopsReady = false;
-            let response    = await api.getShopList({ cityId });
+            let response    = await this.getShopList({ cityId });
             this.shops      = response.items;
             this.shopsReady = true;
         },
@@ -101,7 +104,7 @@ export default {
     <div class="Availability" v-if="citiesReady">
         <h1>Наличие в магазинах</h1>
         <p><strong>Этот товар вы сможете приобрести в магазинах LIMÉ:</strong></p>
-        <div class="Availability__city-selector" v-if="cities.length">
+        <div class="Availability__citySelector" v-if="cities.length">
             <p><strong>Выберите город</strong></p>
             <DropdownList
                 placeholder="Город не выбран"
@@ -112,7 +115,7 @@ export default {
         </div>
 
         <template v-if="shopsReady">
-            <ul class="Availability__switch-links switch-links">
+            <ul class="Availability__switchLinks switch-links">
                 <li class="switch-links__item" :class="{active:isListView}" @click="isListView=true">Список</li>
                 <li class="switch-links__delimiter">|</li>
                 <li class="switch-links__item" :class="{active:!isListView}" @click="isListView=false">Карта</li>

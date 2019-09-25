@@ -10,10 +10,6 @@ import { mapGetters }   from 'vuex';
 import MainMenuChildren from '@/components/MainMenuChildren';
 
 
-const THEME_INVERSE = 'inverse';
-
-const themeValidator = value => ['', THEME_INVERSE].indexOf(value) !== -1;
-
 export default {
     name: 'MainMenu',
 
@@ -21,52 +17,44 @@ export default {
         MainMenuChildren,
     },
 
-    props: {
-        theme: { type: String, default: '', validator: themeValidator },
-    },
-
-    data: () => ({}),
+    data: () => ({
+        openItems: {},
+    }),
 
     computed: {
         ...mapGetters([
-            'leftMenu',
+            'getMenuItems',
         ]),
-        computedClasses() {
-            return {
-                mainmenu_theme_inverse: this.theme === THEME_INVERSE,
-            };
-        },
-        items: {
-            get() { return this.leftMenu && this.leftMenu.items || []; },
-            set(v) {},
+
+        items() {
+            return this.getMenuItems('left');
         },
     },
 
     methods: {
-        expandChildren(itemIndex) {
-            this.$store.commit('updateMenuItem', {
-                menu    : 'left',
-                itemIndex,
-                itemProp: 'isOpen',
-                open    : !this.items[itemIndex].isOpen,
-            });
+        isOpenItem(item) {
+            return item.items && item.items.length && !!this.openItems[item.id];
+        },
+
+        toggleChildren(item) {
+            this.$set(this.openItems, item.id, !this.openItems[item.id]);
         },
     },
 };
 </script>
 
 <template>
-    <nav class="mainmenu" :class="computedClasses" v-if="items.length">
+    <nav class="mainmenu" v-if="items.length">
         <ul class="mainmenu__list">
             <li class="mainmenu__item"
-                v-for="(item, index) in items" :key="item.id"
+                v-for="item in items" :key="item.id"
             >
                 <a v-if="item.items && item.items.length"
                     class="mainmenu__link has-children"
                     :class="{highlight:item.highlight}"
                     :href="item.url"
                     v-text="item.name"
-                    @click.prevent="expandChildren( index)"
+                    @click.prevent="toggleChildren(item)"
                 ></a>
                 <router-link v-else
                     class="mainmenu__link"
@@ -75,7 +63,7 @@ export default {
                     v-text="item.name"
                 />
                 <transition name="menu">
-                    <MainMenuChildren v-if="item.items && item.items.length && item.isOpen"
+                    <MainMenuChildren v-if="isOpenItem(item)"
                         class="mainmenu__children"
                         :items="item.items"
                     />

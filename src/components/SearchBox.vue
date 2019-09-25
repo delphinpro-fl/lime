@@ -6,14 +6,14 @@
 -->
 
 <script>
-import IconSearch   from '@/components/Icons/IconSearch';
-import { mapState } from 'vuex';
+import {
+    mapMutations,
+    mapState,
+}                 from 'vuex';
+import IconSearch from '@/components/Icons/IconSearch';
 
 
-const THEME_INVERSE = 'inverse';
 const LAYOUT_MOBILE = 'mobile';
-
-const themeValidator = value => ['', THEME_INVERSE].indexOf(value) !== -1;
 
 const layoutValidator = value => ['', LAYOUT_MOBILE].indexOf(value) !== -1;
 
@@ -25,7 +25,6 @@ export default {
     },
 
     props: {
-        theme : { type: String, default: '', validator: themeValidator },
         layout: { type: String, default: '', validator: layoutValidator },
     },
 
@@ -34,9 +33,9 @@ export default {
     }),
 
     computed: {
-        ...mapState({
-            isOpenSearch: state => state.isOpenSearch,
-        }),
+        ...mapState([
+            'isOpenSearch',
+        ]),
 
         isFill() {
             return !!this.text;
@@ -44,7 +43,6 @@ export default {
 
         computedClasses() {
             return {
-                'search-box_theme_inverse': this.theme === THEME_INVERSE,
                 'search-box_layout_mobile': this.layout === LAYOUT_MOBILE,
                 'search-box_closed'       : !this.isOpenSearch,
                 'search-box_open'         : this.isOpenSearch,
@@ -57,12 +55,17 @@ export default {
     },
 
     mounted() {
-        this.$store.commit('updateIsOpenSearch', false);
+        this.closeSearch();
     },
 
     methods: {
+        ...mapMutations([
+            'closeFooter',
+            'closeSearch',
+        ]),
+
         focusHandler() {
-            this.$store.commit('updateIsOpenFooter', false);
+            this.closeFooter();
         },
     },
 };

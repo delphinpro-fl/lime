@@ -8,117 +8,148 @@
 <!--suppress JSDeprecatedSymbols -->
 <script>
 import {
+    mapActions,
     mapGetters,
+    mapMutations,
     mapState,
 }                   from 'vuex';
 import AppFooter    from '@/components/AppFooter';
-import FilterPane   from '@/components/FilterPane';
-import AppSideLeft  from '@/components/AppSideLeft';
-import AppSideRight from '@/components/AppSideRight';
+import AppLogo      from '@/components/AppLogo';
 import AppNavbar    from '@/components/AppNavbar';
-import FloatPanel   from '@/components/FloatPanel';
-import MobileMenu   from '@/components/MobileMenu';
 import CartNotify   from '@/components/CartNotify';
+import FilterButton from '@/components/FilterButton';
+import FilterPane   from '@/components/FilterPane';
+import FloatPanel   from '@/components/FloatPanel';
+import MainMenu     from '@/components/MainMenu';
+import MobileMenu   from '@/components/MobileMenu';
+import SearchBox    from '@/components/SearchBox';
+import UserMenu     from '@/components/UserMenu';
 
 
 export default {
     name: 'App',
 
     components: {
-        AppNavbar,
         AppFooter,
-        AppSideLeft,
-        AppSideRight,
-        FilterPane,
-        MobileMenu,
-        FloatPanel,
+        AppLogo,
+        AppNavbar,
         CartNotify,
+        FilterButton,
+        FilterPane,
+        FloatPanel,
+        MainMenu,
+        MobileMenu,
+        SearchBox,
+        UserMenu,
     },
 
-    data: () => ({}),
-
     computed: {
-        ...mapState({
-            overlayActive: state => state.overlayActive,
-            filterOpen   : state => state.catalog.filterOpen,
-            isHomepage   : state => state.isHomepage,
-            isOpenSearch : state => state.isOpenSearch,
+        ...mapState([
+            'isHomepage',
+            'pageTitle',
+            'isOpenMobileMenu',
+            'isOpenSearch',
+        ]),
 
+        ...mapState({
             isShowCartNotify: state => state.catalog.isShowCartNotify,
             newCartItem     : state => state.catalog.newCartItem,
         }),
+
         ...mapGetters([
             'isMobileDevice',
             'isDesktopDevice',
             'hashNav',
+            'isOpenFooter',
+            'isOpenFilter',
+            'isActiveOverlay',
         ]),
+
+        showFilter() {
+            return this.$route.meta.showFilter;
+        },
+
+        showSearch() {
+            return !(this.$route.meta.showSearch === false);
+        },
 
         computedClasses() {
             return {
-                locked      : this.isLockedViewport,
                 isOpenSearch: this.isOpenSearch,
+                isHomepage  : this.isHomepage,
+                isMobile    : this.isMobileDevice,
             };
         },
+
         footerClasses() {
             return {
-                _home  : this.isHomepage,
-                _active: this.isOpenFooter,
-                _mobile: this.isMobileDevice,
+                onHome  : this.isHomepage,
+                isActive: this.isOpenFooter,
+                isMobile: this.isMobileDevice,
             };
         },
 
-        isShowOverlay() { return this.overlayActive || (this.hashNav !== '' && this.hashNav !== '#'); },
         isLockedViewport() {
-            return this.isShowOverlay;
-        },
-
-        mmOpen: {
-            get() { return this.$store.state.mmOpen; },
-            set(value) { this.$store.commit('toggleMobileMenu', value); },
-        },
-
-        isOpenFooter: {
-            get() { return this.$store.state.isOpenFooter && !this.mmOpen; },
-            set(v) { this.$store.commit('updateIsOpenFooter', v); },
+            return this.isActiveOverlay;
         },
     },
 
     watch: {
         ['$store.state.pageTitle']() {
-            document.title = this.$store.state.pageTitle;
+            document.title = this.pageTitle;
+        },
+
+        ['isLockedViewport']() {
+            document.body.classList.toggle('isLocked', this.isLockedViewport);
         },
     },
 
     mounted() {
         const mqDesktop = window.matchMedia('(min-width: 992px)');
         const mqMobile  = window.matchMedia('(max-width: 991px)');
-        mqDesktop.addListener(e => { if (e.matches) this.$store.commit('updateMq', 'desktop');});
-        mqMobile.addListener(e => { if (e.matches) this.$store.commit('updateMq', 'mobile'); });
-        if (mqDesktop.matches) this.$store.commit('updateMq', 'desktop');
-        if (mqMobile.matches) this.$store.commit('updateMq', 'mobile');
+        mqDesktop.addListener(e => { if (e.matches) this.setBreakpoint('desktop');});
+        mqMobile.addListener(e => { if (e.matches) this.setBreakpoint('mobile'); });
+        if (mqDesktop.matches) this.setBreakpoint('desktop');
+        if (mqMobile.matches) this.setBreakpoint('mobile');
 
-        this.$store.dispatch('loadMenu', { menu: 'left' });
-        this.$store.dispatch('loadMenu', { menu: 'right' });
-        this.$store.dispatch('loadMenu', { menu: 'bottom' });
+        this.loadMenu({ menu: 'left' });
+        this.loadMenu({ menu: 'right' });
+        this.loadMenu({ menu: 'bottom' });
 
         window.addEventListener('popstate', this.historyHandler);
         this.historyHandler();
     },
 
     methods: {
+        ...mapMutations([
+            'setBreakpoint',
+            'openFooter',
+            'closeFooter',
+            'toggleFooter',
+        ]),
+
+        ...mapActions([
+            'loadMenu',
+        ]),
+
         historyHandler() {
             let urlHash = document.location.hash;
             this.$store.commit('updateHashNavigation', { path: urlHash });
         },
-        scrollScreen(v) { this.isOpenFooter = !!v; },
-        wheelHandler(e) {
-            if (e.deltaY > 0) this.isOpenFooter = true;
-            if (e.deltaY < 0) this.isOpenFooter = false;
+
+        scrollScreen(v) {
+            this.toggleFooter(!!v);
         },
+
+        wheelHandler(e) {
+            if (e.deltaY > 0) this.openFooter();
+            if (e.deltaY < 0) this.closeFooter();
+        },
+
         swipeHandler(direction) {
             if (this.isHomepage) {
-                if (direction === 'top') this.isOpenFooter = true;
-                if (direction === 'bottom') this.isOpenFooter = false;
+                if (direction === 'top') this.openFooter();
+                if (direction === 'bottom') this.closeFooter();
             }
         },
     },
@@ -127,25 +158,51 @@ export default {
 
 <template>
     <div id="app"
-        class="app"
+        class="App"
         :class="computedClasses"
         v-touch:swipe="swipeHandler"
         @wheel="wheelHandler"
     >
-        <AppNavbar class="app__navbar" v-if="isMobileDevice"/>
-        <div class="app__container">
-            <router-view class="app__main"/>
+
+        <AppNavbar class="App__navbar" v-if="isMobileDevice"/>
+
+        <div class="App__container">
+            <div class="App__sideLeft" v-if="isDesktopDevice">
+                <div class="App__sideContent AppSide">
+                    <div class="AppSide__top" v-if="!isHomepage">
+                        <AppLogo/>
+                    </div>
+                    <MainMenu class="AppSide__content"/>
+                </div>
+            </div>
+
+            <router-view class="App__main"/>
+
+            <div class="App__sideRight" v-if="isDesktopDevice">
+                <div class="App__sideContent AppSide">
+                    <div class="AppSide__top" v-if="showSearch">
+                        <SearchBox class=""/>
+                    </div>
+                    <div class="AppSide__content">
+                        <FilterButton class="AppSide__filter" v-if="showFilter"/>
+                        <UserMenu class="AppSide__usermenu"/>
+                    </div>
+                </div>
+            </div>
         </div>
-        <AppFooter class="app__footer" :class="footerClasses"/>
-        <AppSideLeft :is-homepage="isHomepage" v-if="isDesktopDevice"/>
-        <AppSideRight :is-homepage="isHomepage" v-if="isDesktopDevice"/>
-        <div class="overlay" v-if="isShowOverlay"></div>
-        <FilterPane v-if="filterOpen"/>
+
+        <AppFooter class="App__footer" :class="footerClasses"/>
+
+        <div class="overlay" v-if="isActiveOverlay"></div>
+
+        <FilterPane v-if="isOpenFilter"/>
+
         <FloatPanel/>
-        <MobileMenu v-if="mmOpen"/>
+
+        <MobileMenu v-if="isOpenMobileMenu"/>
 
         <transition name="fade-slide-right">
-            <CartNotify class="app__cart-notify"
+            <CartNotify class="App__cartNotify"
                 v-if="isShowCartNotify"
                 :goods="newCartItem"
             />

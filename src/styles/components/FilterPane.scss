@@ -65,11 +65,11 @@
   &__options {
     margin-top: rem(8px);
 
-    &_view_columns {
+    &.columns {
       column-count: 2;
     }
 
-    &_view_inline {
+    &.inline {
       display: flex;
       flex-wrap: wrap;
 

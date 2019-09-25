@@ -34,7 +34,7 @@ export default {
         pageData() {
             return this.url
                 ? this.page(this.url)
-                : '@@';
+                : null;
         },
     },
 
@@ -53,11 +53,15 @@ export default {
 </script>
 
 <template>
-    <div class="PageContent" v-if="pageData">
-        <h1 v-if="pageData.name">{{pageData.name}}</h1>
-        <div v-html="pageData.content"></div>
+    <div class="PageContent">
+        <div class="PageContent__content" v-if="pageData">
+            <h1 v-if="pageData.name">{{pageData.name}}</h1>
+            <div v-html="pageData.content"></div>
+        </div>
+        <div class="PageContent__loadingBox" v-else>
+            <LoadingIndicator/>
+        </div>
     </div>
-    <LoadingIndicator v-else/>
 </template>
 
 <style lang="scss" src="../styles/components/PageContent.scss"></style>

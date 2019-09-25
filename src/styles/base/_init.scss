@@ -20,6 +20,19 @@ body {
   background: #fff;
   font-size: rem($base-font-size);
   line-height: $base-line-height;
+
+  &.isLocked {
+    overflow: hidden;
+
+    .App__container,
+    .App__footer {
+      pointer-events: none;
+    }
+
+    .SidePopup {
+      pointer-events: all;
+    }
+  }
 }
 
 :focus {

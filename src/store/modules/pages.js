@@ -22,7 +22,7 @@ export default {
     },
 
     mutations: {
-        updatePageContent: (state, payload) => Vue.set(state.container, payload.page, payload.data),
+        setPageContent: (state, payload) => Vue.set(state.container, payload.page, payload.data),
     },
 
     actions: {
@@ -51,7 +51,7 @@ export default {
                     error  : response.data.errors[0],
                 };
             }
-            commit('updatePageContent', { page: payload.url, data });
+            commit('setPageContent', { page: payload.url, data });
             commit('setPageTitle', title);
         },
     },

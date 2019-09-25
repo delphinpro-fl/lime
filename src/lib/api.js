@@ -15,21 +15,56 @@ export const api = {
 
     /**
      * Запрос раздела каталога
-     *
-     * Формат запроса:
-     * {{protocol}}://{{host}}/api/section/{{name}}
+     * GET {{protocol}}://{{host}}/api/section/{{name}}
      */
     getCatalogSection(payload) {
         return Vue.axios.get(`/section/${encodeURIComponent(payload.id)}/`);
     },
 
+    /**
+     * Запрос набора фильтров
+     * GET {{protocol}}://{{host}}/api/section/filters/{id|code}
+     */
+    getFilter(payload) {
+        return Vue.axios.get(`/section/filters/${encodeURIComponent(payload.id || payload.code)}/`);
+    },
+
+    // == ЗАКАЗ
+    //== ======================================= ==//
+
+    /**
+     * Запрос списка городов
+     * GET {{protocol}}://{{host}}/api/city?query=моск
+     */
+    getCityList(payload) {
+        let query = payload.query ? `?query=${encodeURIComponent(payload.query)}` : '';
+        return Vue.axios.get(`/city${query}`);
+    },
+
+    /**
+     * Запрос списка магазинов города
+     * GET {{protocol}}://{{host}}/api/shop?city_id=1
+     */
+    getShopList(payload) {
+        return Vue.axios.get('/shop?city_id=' + encodeURIComponent(payload.cityId));
+    },
+
+    //== БЕЗОПАСНОСТЬ
+    //== ======================================= ==//
+
     //== СТРУКТУРА
     //== ======================================= ==//
 
     /**
+     * Запрос меню
+     * GET {{protocol}}://{{host}}/api/menu/{type}
+     */
+    getMenu(payload) {
+        return Vue.axios.get('/menu/' + payload.menu);
+    },
+
+    /**
      * Запрос содержимого статичной страницы
-     *
-     * Формат запроса:
      * GET {{protocol}}://{{host}}/api/page?url={url}
      */
     getPageContent(payload) {
@@ -37,24 +72,16 @@ export const api = {
     },
 
     /**
-     * Запрос списка городов
-     *
-     * Формат запроса:
-     * GET {{protocol}}://{{host}}/api/city?query=моск
+     * Запрос слайдов для главной
+     * GET {{protocol}}://{{host}}/api/banners/{main}
      */
-    async getCityList(payload) {
-        let response = await Vue.axios.get('/city/');
-        return response.data;
+    getBanners(payload) {
+        return Vue.axios.get('/banners/' + payload.banners);
     },
 
-    /**
-     * Запрос списка магазинов города
-     *
-     * Формат запроса:
-     * GET {{protocol}}://{{host}}/api/shop?city_id=1
-     */
-    async getShopList(payload) {
-        let response = await Vue.axios.get('/shop/?city_id=' + encodeURIComponent(payload.cityId));
-        return response.data;
-    },
+    //== ПЕРСОНАЛЬНЫЙ РАЗДЕЛ
+    //== ======================================= ==//
+
+    //== ИЗБРАННОЕ
+    //== ======================================= ==//
 };

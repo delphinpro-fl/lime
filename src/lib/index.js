@@ -62,5 +62,4 @@ export function makeSizesArray(skuList, restIndex = 0) {
             // sku,
         };
     });
-
 }

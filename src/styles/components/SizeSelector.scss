@@ -6,7 +6,7 @@ $SizeSelector-height: 32px;
 
 .SizeSelector {
   position: relative;
-  z-index: 100;
+  z-index: $z-dropdown;
   width: 100%;
   height: rem($SizeSelector-height);
   user-select: none;

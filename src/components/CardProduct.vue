@@ -10,14 +10,18 @@ import {
     mapActions,
     mapMutations,
 }                         from 'vuex';
-import SizeSelector       from '@/components/SizeSelector';
+import Availability       from '@/components/Availability';
+import CareComposition    from '@/components/CareComposition';
 import ColorSelector      from '@/components/ColorSelector';
-import { makeSizesArray } from '@/lib';
-import IconShare          from '@/components/Icons/IconShare';
 import IconCross          from '@/components/Icons/IconCross';
-import ShareIcons         from '@/components/ShareIcons';
 import IconDropdown       from '@/components/Icons/IconDropdown';
+import IconShare          from '@/components/Icons/IconShare';
 import IconStar           from '@/components/Icons/IconStar';
+import PageContent        from '@/components/PageContent';
+import ShareIcons         from '@/components/ShareIcons';
+import SidePopup          from '@/components/SidePopup';
+import SizeSelector       from '@/components/SizeSelector';
+import { makeSizesArray } from '@/lib';
 
 
 let tm;
@@ -26,12 +30,16 @@ export default {
     name: 'CardProduct',
 
     components: {
-        IconStar,
-        IconDropdown,
-        ShareIcons,
-        IconCross,
-        IconShare,
+        Availability,
+        CareComposition,
         ColorSelector,
+        IconCross,
+        IconDropdown,
+        IconShare,
+        IconStar,
+        PageContent,
+        ShareIcons,
+        SidePopup,
         SizeSelector,
     },
 
@@ -44,12 +52,26 @@ export default {
         indexVisibleMedia: 0,
 
         modelIndex: 0,
-        skuIndex  : 0,//-1,
+        skuIndex  : -1,
 
         openShare: false,
+
+        isOpenSizes       : false,
+        isOpenPayment     : false,
+        isOpenDelivery    : false,
+        isOpenCare        : false,
+        isOpenAvailability: false,
     }),
 
     computed: {
+        isOpenPopup() {
+            return this.isOpenSizes
+                || this.isOpenPayment
+                || this.isOpenDelivery
+                || this.isOpenCare
+                || this.isOpenAvailability;
+        },
+
         productName() {
             return this.card.name_custom || this.card.name;
         },
@@ -70,9 +92,7 @@ export default {
             return makeSizesArray(this.pickedModel.skus, 0);
         },
 
-        sku() {
-            return this.skuIndex >= 0 ? this.pickedModel.skus[this.skuIndex] : [];
-        },
+        sku() { return this.skuIndex >= 0 ? this.pickedModel.skus[this.skuIndex] : {}; },
 
         thumbs() {
             return this.medias.map(media => media.thumbs.find(item => item.width === 80));
@@ -83,27 +103,35 @@ export default {
         },
     },
 
+    watch: {
+        ['isOpenPopup']() {
+            this.toggleOverlay(this.isOpenPopup);
+        },
+    },
+
     mounted() {
-        this.updateCurrentSKU(this.sku);
-        this.updateCurrentProduct(this.card);
         this.$nextTick(() => {
             this.updateMediaElements();
             this.updateIndexVisibleMedia();
         });
+
+        window.addEventListener('keydown', this.keyDown);
+    },
+
+    beforeDestroy() {
+        window.removeEventListener('keydown', this.keyDown);
     },
 
     methods: {
-        ...mapActions([
-            'navigateByHash',
-            'toggleBookmark',
-            'toggleCart',
-        ]),
-
         ...mapMutations([
-            'updateCurrentSKU',
-            'updateCurrentProduct',
+            'toggleOverlay',
             'showCartNotify',
             'hideCartNotify',
+        ]),
+
+        ...mapActions([
+            'toggleBookmark',
+            'toggleCart',
         ]),
 
         scrollHandler() {
@@ -156,10 +184,6 @@ export default {
             }
         },
 
-        showSizes() {
-            this.navigateByHash({ path: '#sizes' });
-        },
-
         async clickCartHandler() {
             // todo: fake
             await this.toggleCart({
@@ -171,7 +195,7 @@ export default {
                     title   : this.productName,
                     article : this.card.article,
                     color   : this.pickedModel.color,
-                    size    : this.sku,
+                    size    : this.sku.size,
                     photo   : {
                         url: this.medias[0].url,
                     },
@@ -180,6 +204,25 @@ export default {
             });
             clearTimeout(tm);
             tm = setTimeout(() => this.hideCartNotify(), 3000);
+        },
+
+        toggleSizes() { this.isOpenSizes = !this.isOpenSizes; },
+        togglePayment() { this.isOpenPayment = !this.isOpenPayment; },
+        toggleDelivery() { this.isOpenDelivery = !this.isOpenDelivery; },
+        toggleCare() { this.isOpenCare = !this.isOpenCare; },
+        toggleAvailability() { this.isOpenAvailability = !this.isOpenAvailability; },
+        closePopup() {
+            this.isOpenSizes        = false;
+            this.isOpenPayment      = false;
+            this.isOpenDelivery     = false;
+            this.isOpenCare         = false;
+            this.isOpenAvailability = false;
+            this.toggleOverlay(false);
+        },
+        keyDown(e) {
+            if (e.which === 27) {
+                this.closePopup();
+            }
         },
     },
 };
@@ -220,7 +263,7 @@ export default {
                 <div class="product__sizes product-sizes">
                     <div class="product-sizes__header">
                         <span class="product-sizes__title">Размер</span>
-                        <span class="product-sizes__sizes-book" @click="showSizes">
+                        <span class="product-sizes__sizes-book" @click="toggleSizes">
                             <span>Руководство по размерам</span>
                             <IconDropdown/>
                         </span>
@@ -236,7 +279,10 @@ export default {
 
                 <div class="product__actions actions">
                     <div class="actions__cart">
-                        <button class="btn-cart" @click="clickCartHandler">Добавить в корзину</button>
+                        <button class="btn-cart"
+                            :disabled="!sku.price"
+                            @click="clickCartHandler"
+                        >Добавить в корзину</button>
                     </div>
                     <div class="actions__fav">
                         <button class="btn-fav">
@@ -270,14 +316,24 @@ export default {
                         </div>
                     </div>
                     <ul class="info-links__col">
-                        <li><a href="#availability" @click.prevent="navigateByHash({path:'#availability'})">Наличие в магазинах</a></li>
-                        <li><a href="#care" @click.prevent="navigateByHash({path:'#care'})">Состав и уход</a></li>
-                        <li><a href="#delivery" @click.prevent="navigateByHash({path:'#delivery'})">Доставка и возврат</a></li>
-                        <li><a href="#payment" @click.prevent="navigateByHash({path:'#payment'})">Оплата</a></li>
+                        <li><a @click.prevent="toggleAvailability">Наличие в магазинах</a></li>
+                        <li><a @click.prevent="toggleCare">Состав и уход</a></li>
+                        <li><a @click.prevent="toggleDelivery">Доставка и возврат</a></li>
+                        <li><a @click.prevent="togglePayment">Оплата</a></li>
                     </ul>
                 </div>
             </div>
         </div>
+        <SidePopup
+            :is-active="isOpenPopup"
+            @close="closePopup"
+        >
+            <PageContent class="popup-payment" url="/payment/" v-if="isOpenPayment"/>
+            <PageContent class="popup-delivery" url="/delivery/" v-if="isOpenDelivery"/>
+            <PageContent class="popup-sizes" url="/sizes/" v-if="isOpenSizes"/>
+            <CareComposition class="popup-care" :product="card" v-if="isOpenCare"/>
+            <Availability class="popup-availability" :sku="sku" v-if="isOpenAvailability"/>
+        </SidePopup>
     </div>
 </template>
 

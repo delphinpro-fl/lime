@@ -64,7 +64,7 @@ $search-box-height: 24px;
   //== Mobile layout
   //== ======================================= ==//
 
-  &_theme_inverse {
+  .isHomepage & {
     color: white;
   }
 

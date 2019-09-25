@@ -12,8 +12,8 @@ import {
 }                         from 'vuex';
 import Availability       from '@/components/Availability';
 import CareComposition    from '@/components/CareComposition';
+import CloseButton        from '@/components/CloseButton';
 import ColorSelector      from '@/components/ColorSelector';
-import IconCross          from '@/components/Icons/IconCross';
 import IconDropdown       from '@/components/Icons/IconDropdown';
 import IconShare          from '@/components/Icons/IconShare';
 import IconStar           from '@/components/Icons/IconStar';
@@ -32,8 +32,8 @@ export default {
     components: {
         Availability,
         CareComposition,
+        CloseButton,
         ColorSelector,
-        IconCross,
         IconDropdown,
         IconShare,
         IconStar,
@@ -309,9 +309,7 @@ export default {
                                     <ShareIcons class="share-block__social"/>
                                 </div>
 
-                                <button class="share-block__close" @click="openShare=false">
-                                    <IconCross/>
-                                </button>
+                                <CloseButton class="share-block__closer" @click="openShare=false"/>
                             </div>
                         </div>
                     </div>

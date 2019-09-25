@@ -31,13 +31,6 @@
   }
 
   &__closer {
-    @include size(rem(14px));
-    cursor: pointer;
-
-    svg {
-      @include size(rem(14px));
-      display: block;
-    }
   }
 
   &__main {

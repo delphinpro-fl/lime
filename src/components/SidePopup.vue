@@ -6,8 +6,15 @@
 -->
 
 <script>
+import CloseButton from '@/components/CloseButton';
+
+
 export default {
     name: 'SidePopup',
+
+    components: {
+        CloseButton,
+    },
 
     props: {
         isActive: Boolean,
@@ -27,7 +34,7 @@ export default {
             <div class="SidePopup__content add-scrollbar">
                 <slot></slot>
             </div>
-            <div class="SidePopup__close" @click="selfClose">&times;</div>
+            <CloseButton class="SidePopup__closer" @click="selfClose"/>
         </div>
     </transition>
 </template>

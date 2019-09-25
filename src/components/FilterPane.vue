@@ -9,16 +9,16 @@
 import {
     mapGetters,
     mapMutations,
-}                from 'vuex';
-import Checkbox  from '@/components/Checkbox';
-import IconCross from '@/components/Icons/IconCross';
+}                  from 'vuex';
+import Checkbox    from '@/components/Checkbox';
+import CloseButton from '@/components/CloseButton';
 
 
 export default {
     name: 'FilterPane',
 
     components: {
-        IconCross,
+        CloseButton,
         Checkbox,
     },
 
@@ -53,9 +53,7 @@ export default {
     <div class="filter">
         <div class="filter__header">
             <span class="filter__text">Фильтр</span>
-            <span class="filter__closer" @click="closeFilter">
-                <IconCross/>
-            </span>
+            <CloseButton class="filter__closer" @click="closeFilter"/>
         </div>
         <div class="filter__main">
             <div class="filter__group filter-group" v-for="(group, key) in filter">

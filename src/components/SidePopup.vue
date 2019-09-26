@@ -6,7 +6,8 @@
 -->
 
 <script>
-import IButton from '@/components/IButton';
+import { mapGetters } from 'vuex';
+import IButton        from '@/components/IButton';
 
 
 export default {
@@ -20,6 +21,12 @@ export default {
         isActive: Boolean,
     },
 
+    computed: {
+        ...mapGetters([
+            'isMobileDevice',
+        ]),
+    },
+
     methods: {
         selfClose() {
             this.$emit('close');
@@ -30,7 +37,7 @@ export default {
 
 <template>
     <transition name="fade-slide-right">
-        <div class="SidePopup" v-if="isActive">
+        <div class="SidePopup" :class="{isMobile:isMobileDevice}" v-if="isActive">
             <div class="SidePopup__content add-scrollbar">
                 <slot></slot>
             </div>

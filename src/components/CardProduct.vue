@@ -56,7 +56,7 @@ export default {
         indexVisibleMedia: 0,
 
         modelIndex: 0,
-        skuIndex  : -1,
+        skuIndex  : 0,//-1,
 
         isOpenShareBlock: false,
 
@@ -262,7 +262,9 @@ export default {
         },
 
         wheelHandler(e) {
+            //e.preventDefault();
             if (e.deltaY > 0) this.toggleDetailsViews(true);
+            // if (e.deltaY < 0) this.closeFooter();
         },
 
         toggleDetailsViews(state) {
@@ -273,100 +275,172 @@ export default {
 </script>
 
 <template>
-    <div class="CardProduct" v-scroll="scrollHandler" v-if="isDesktopDevice">
-        <div class="CardProduct__main">
-            <div class="CardProduct__thumbs">
-                <div class="sticky-thumbs">
-                    <div class="sticky-thumbs__item"
-                        :class="{active: index === indexVisibleMedia}"
-                        v-for="(thumb, index) in thumbs"
-                        @click="scrollToMedia(index)"
-                    >
-                        <img class="sticky-thumbs__image" :src="thumb.url" alt="">
+    <div>
+        <div class="CardProduct" v-scroll="scrollHandler" v-if="isDesktopDevice">
+            <div class="CardProduct__main">
+                <div class="CardProduct__thumbs">
+                    <div class="sticky-thumbs">
+                        <div class="sticky-thumbs__item"
+                            :class="{active: index === indexVisibleMedia}"
+                            v-for="(thumb, index) in thumbs"
+                            @click="scrollToMedia(index)"
+                        >
+                            <img class="sticky-thumbs__image" :src="thumb.url" alt="">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="CardProduct__media-tape media-tape" v-if="medias" ref="tape">
-                <div class="media-tape__item" v-for="item in medias">
-                    <img class="media-tape__object"
-                        :src="item.url"
-                        :alt="item.title"
-                        @click="toggleFullscreenView"
-                    >
+                <div class="CardProduct__media-tape media-tape" v-if="medias" ref="tape">
+                    <div class="media-tape__item" v-for="item in medias">
+                        <img class="media-tape__object"
+                            :src="item.url"
+                            :alt="item.title"
+                            @click="toggleFullscreenView"
+                        >
+                    </div>
                 </div>
-            </div>
-            <IButton icon="cross-thin"
-                class="IButtonClose CardProduct__closer"
-                @click="toggleFullscreenView"
-                v-if="isFullscreen"
-            />
-        </div>
-        <div class="CardProduct__side">
-            <div class="product">
-                <h1 class="product__title">{{productName}}</h1>
-                <div class="product__price" v-if="sku.price">{{sku.price}} ₽</div>
-                <div class="product__article" v-if="card.article">Арт. {{card.article}}</div>
-                <div class="product__description" v-html="card.description"></div>
-                <ColorSelector class="product__colors"
-                    v-if="colors.length"
-                    :colors="colors"
-                    :selected="modelIndex"
-                    @change="pickColor"
+                <IButton icon="cross-thin"
+                    class="IButtonClose CardProduct__closer"
+                    @click="toggleFullscreenView"
+                    v-if="isFullscreen"
                 />
-                <div class="product__sizes product-sizes">
-                    <div class="product-sizes__header">
-                        <span class="product-sizes__title">Размер</span>
-                        <span class="product-sizes__sizes-book" @click="toggleSizes">
-                            <span>Руководство по размерам</span>
-                            <SvgIcon name="dropdown"/>
-                        </span>
-                    </div>
-                    <div class="product-sizes__selector">
-                        <SizeSelector
-                            :options="sizes"
-                            :selected="skuIndex"
-                            @change="pickSize"
-                            @subscribe="showSubscribe"
-                        />
-                    </div>
-                </div>
-
-                <div class="product__actions actions">
-                    <div class="actions__cart">
-                        <button class="btn-cart"
-                            :disabled="!sku.price"
-                            @click="clickCartHandler"
-                        >Добавить в корзину</button>
-                    </div>
-                    <div class="actions__fav">
-                        <button class="btn-fav">
-                            <SvgIcon name="star"/>
-                            <span class="sr-only">Favorite</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="product__links info-links">
-                    <div class="info-links__col">
-                        <div class="ShareBlockWrapper">
-                            <div class="ShareBlockWrapper__link" @click.prevent="isOpenShareBlock=!isOpenShareBlock">
-                                <SvgIcon name="share"/>
-                                <a href="#" class="" @click.prevent>Поделиться</a>
-                            </div>
-                            <ShareBlock v-if="isOpenShareBlock"
-                                class="ShareBlockWrapper__pane"
-                                @close="isOpenShareBlock=false"
+            </div>
+            <div class="CardProduct__side">
+                <div class="product">
+                    <h1 class="product__title">{{productName}}</h1>
+                    <div class="product__price" v-if="sku.price">{{sku.price}} ₽</div>
+                    <div class="product__article" v-if="card.article">Арт. {{card.article}}</div>
+                    <div class="product__description" v-html="card.description"></div>
+                    <ColorSelector class="product__colors"
+                        v-if="colors.length"
+                        :colors="colors"
+                        :selected="modelIndex"
+                        @change="pickColor"
+                    />
+                    <div class="product__sizes product-sizes">
+                        <div class="product-sizes__header">
+                            <span class="product-sizes__title">Размер</span>
+                            <span class="product-sizes__sizes-book" @click="toggleSizes">
+                                <span>Руководство по размерам</span>
+                                <SvgIcon name="dropdown"/>
+                            </span>
+                        </div>
+                        <div class="product-sizes__selector">
+                            <SizeSelector
+                                :options="sizes"
+                                :selected="skuIndex"
+                                @change="pickSize"
+                                @subscribe="showSubscribe"
                             />
                         </div>
                     </div>
-                    <ul class="info-links__col">
-                        <li><a @click.prevent="toggleAvailability">Наличие в магазинах</a></li>
-                        <li><a @click.prevent="toggleCare">Состав и уход</a></li>
-                        <li><a @click.prevent="toggleDelivery">Доставка и возврат</a></li>
-                        <li><a @click.prevent="togglePayment">Оплата</a></li>
-                    </ul>
+
+                    <div class="product__actions actions">
+                        <div class="actions__cart">
+                            <button class="btn-cart"
+                                :disabled="!sku.price"
+                                @click="clickCartHandler"
+                            >Добавить в корзину</button>
+                        </div>
+                        <div class="actions__fav">
+                            <button class="btn-fav">
+                                <SvgIcon name="star"/>
+                                <span class="sr-only">Favorite</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product__links info-links">
+                        <div class="info-links__col">
+                            <div class="ShareBlockWrapper">
+                                <div class="ShareBlockWrapper__link"
+                                    @click.prevent="isOpenShareBlock=!isOpenShareBlock"
+                                >
+                                    <SvgIcon name="share"/>
+                                    <a href="#" class="" @click.prevent>Поделиться</a>
+                                </div>
+                                <ShareBlock v-if="isOpenShareBlock"
+                                    class="ShareBlockWrapper__pane"
+                                    @close="isOpenShareBlock=false"
+                                />
+                            </div>
+                        </div>
+                        <ul class="info-links__col">
+                            <li><a @click.prevent="toggleAvailability">Наличие в магазинах</a></li>
+                            <li><a @click.prevent="toggleCare">Состав и уход</a></li>
+                            <li><a @click.prevent="toggleDelivery">Доставка и возврат</a></li>
+                            <li><a @click.prevent="togglePayment">Оплата</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div v-else
+            class="MobileCard"
+            :class="{isDetails:isDetailsView, 'add-scrollbar':isDetailsView}"
+        >
+            <div class="MobileCard__photo">
+                <div class="MobileCard__medias" v-if="medias">
+                    <div class="__item" v-for="item in medias">
+                        <img class="__object"
+                            :src="item.url"
+                            :alt="item.title"
+                        >
+                    </div>
+                </div>
+                <IButton icon="arrow-back" class="MobileCard__back"/>
+                <IButton icon="star" class="MobileCard__favorite"/>
+            </div>
+            <div class="MobileCard__details" :class="{open:isDetailsView}">
+                <div class="MobileCard__handler" v-touch:swipe="swipeHandler">
+                    <SvgIcon name="chevron-up"/>
+                </div>
+                <div class="MobileCardDetails">
+                    <div class="MobileCardDetails__header" @wheel="wheelHandler" v-touch:swipe="swipeHandler">
+                        <div class="MobileCardDetails__title"><span>{{productName}}</span></div>
+                        <div class="MobileCardDetails__price" v-if="sku.price">{{sku.price}} ₽</div>
+                        <div class="MobileCardDetails__button">
+                            <IButton icon="cross-thin"
+                                class="IButtonClose"
+                                v-if="isDetailsView"
+                                @click="toggleDetailsViews"
+                            />
+                            <IButton icon="share" class="IButtonShare" v-else @click="isOpenShareBlock=true"/>
+                        </div>
+                        <div class="MobileCardDetails__buttons MobileCardButtons">
+                            <div class="MobileCardButtons__button">
+                                <button class="btn btn-block"
+                                    :disabled="!sku.price"
+                                    @click="clickCartHandler"
+                                >В корзину</button>
+                            </div>
+                            <div class="MobileCardButtons__button">
+                                <button class="btn btn-block">
+                                    Другие цвета
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="MobileCardDetails__content" v-if="isDetailsView">
+                        <div class="MobileCardDetails__description" v-html="card.description"></div>
+                        <div class="MobileCardDetails__article" v-if="card.article">Арт. {{card.article}}</div>
+                        <ul class="MobileCardDetails__infoLinks">
+                            <li><a @click.prevent="toggleAvailability">Наличие в магазинах</a></li>
+                            <li><a @click.prevent="toggleCare">Состав и уход</a></li>
+                            <li><a @click.prevent="toggleDelivery">Доставка и возврат</a></li>
+                            <li><a @click.prevent="togglePayment">Оплата</a></li>
+                        </ul>
+                    </div>
+                    <AppFooter class="App__footer0" v-if="isDetailsView"/>
+                </div>
+            </div>
+
+            <transition name="fade-slide-bottom">
+                <ShareBlock
+                    v-if="isOpenShareBlock"
+                    class="MobileCard__ShareBlock"
+                    @close="isOpenShareBlock=false"
+                />
+            </transition>
         </div>
         <SidePopup
             :is-active="isOpenPopup"
@@ -379,65 +453,6 @@ export default {
             <Availability class="popup-availability" :sku="sku" v-if="isOpenAvailability"/>
             <SubscribeSize class="popup-subscribe-size" v-if="isOpenSubscribe"/>
         </SidePopup>
-    </div>
-    <div v-else
-        class="MobileCard"
-        :class="{isDetails:isDetailsView, 'add-scrollbar':isDetailsView}"
-    >
-        <div class="MobileCard__photo">
-            <div class="MobileCard__medias" v-if="medias">
-                <div class="__item" v-for="item in medias">
-                    <img class="__object"
-                        :src="item.url"
-                        :alt="item.title"
-                    >
-                </div>
-            </div>
-            <IButton icon="arrow-back" class="MobileCard__back"/>
-            <IButton icon="star" class="MobileCard__favorite"/>
-        </div>
-        <div class="MobileCard__details" :class="{open:isDetailsView}">
-            <div class="MobileCard__handler" v-touch:swipe="swipeHandler">
-                <SvgIcon name="chevron-up"/>
-            </div>
-            <div class="MobileCardDetails">
-                <div class="MobileCardDetails__header" @wheel="wheelHandler" v-touch:swipe="swipeHandler">
-                    <div class="MobileCardDetails__title"><span>{{productName}}</span></div>
-                    <div class="MobileCardDetails__price" v-if="sku.price">{{sku.price}} ₽</div>
-                    <div class="MobileCardDetails__button">
-                        <IButton icon="cross-thin"
-                            class="IButtonClose"
-                            v-if="isDetailsView"
-                            @click="toggleDetailsViews"
-                        />
-                        <IButton icon="share" class="IButtonShare" v-else @click="isOpenShareBlock=true"/>
-                    </div>
-                    <div class="MobileCardDetails__buttons MobileCardButtons">
-                        <div class="MobileCardButtons__button">
-                            <button class="btn btn-block"
-                                :disabled="!sku.price"
-                            >В корзину</button>
-                        </div>
-                        <div class="MobileCardButtons__button">
-                            <button class="btn btn-block">
-                                Другие цвета
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="MobileCardDetails__content" v-if="isDetailsView">
-                </div>
-                <AppFooter class="App__footer0" v-if="isDetailsView"/>
-            </div>
-        </div>
-
-        <transition name="fade-slide-bottom">
-            <ShareBlock
-                v-if="isOpenShareBlock"
-                class="MobileCard__ShareBlock"
-                @close="isOpenShareBlock=false"
-            />
-        </transition>
     </div>
 </template>
 

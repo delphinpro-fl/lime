@@ -21,7 +21,7 @@
     padding: 20px;
 
     h1 {
-      padding-right: 40px;
+      padding-right: $float-button-size - 12px;
     }
   }
 
@@ -29,5 +29,10 @@
     position: fixed;
     top: 15px;
     right: 8px;
+  }
+
+  &.isMobile &__closer {
+    top: 0;
+    right: 0;
   }
 }

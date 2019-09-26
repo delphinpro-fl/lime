@@ -6,21 +6,21 @@
 -->
 
 <script>
-import IconCrossThin from '@/components/Icons/IconCrossThin';
+import SvgIcon from '@/components/SvgIcon';
 
 
 export default {
     name: 'CloseButton',
 
     components: {
-        IconCrossThin,
+        SvgIcon,
     },
 };
 </script>
 
 <template>
     <button class="CloseButton" @click="$emit('click', $event)">
-        <IconCrossThin/>
+        <SvgIcon name="cross-thin"/>
     </button>
 </template>
 

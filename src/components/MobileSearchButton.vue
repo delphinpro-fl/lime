@@ -7,14 +7,14 @@
 
 <script>
 import { mapMutations } from 'vuex';
-import IconSearch       from '@/components/Icons/IconSearch';
+import SvgIcon          from '@/components/SvgIcon';
 
 
 export default {
     name: 'MobileSearchButton',
 
     components: {
-        IconSearch,
+        SvgIcon,
     },
 
     methods: {
@@ -34,9 +34,9 @@ export default {
 </script>
 
 <template>
-    <button class="mobile-search-button" @click="toggleSearchBox">
-        <span class="mobile-search-button__icon">
-            <IconSearch/>
+    <button class="MobileSearchButton" @click="toggleSearchBox">
+        <span class="MobileSearchButton__iconBox">
+            <SvgIcon name="search" class="MobileSearchButton__icon"/>
         </span>
     </button>
 </template>

@@ -15,7 +15,6 @@ import Availability       from '@/components/Availability';
 import CareComposition    from '@/components/CareComposition';
 import CloseButton        from '@/components/CloseButton';
 import ColorSelector      from '@/components/ColorSelector';
-import IconDropdown       from '@/components/Icons/IconDropdown';
 import IconShare          from '@/components/Icons/IconShare';
 import IconStar           from '@/components/Icons/IconStar';
 import PageContent        from '@/components/PageContent';
@@ -24,6 +23,7 @@ import SidePopup          from '@/components/SidePopup';
 import SizeSelector       from '@/components/SizeSelector';
 import { makeSizesArray } from '@/lib';
 import SubscribeSize      from '@/components/SubscribeSize';
+import SvgIcon            from '@/components/SvgIcon';
 
 
 let tm;
@@ -33,11 +33,11 @@ export default {
 
     components: {
         SubscribeSize,
+        SvgIcon,
         Availability,
         CareComposition,
         CloseButton,
         ColorSelector,
-        IconDropdown,
         IconShare,
         IconStar,
         PageContent,
@@ -288,7 +288,7 @@ export default {
                         <span class="product-sizes__title">Размер</span>
                         <span class="product-sizes__sizes-book" @click="toggleSizes">
                             <span>Руководство по размерам</span>
-                            <IconDropdown/>
+                            <SvgIcon name="dropdown"/>
                         </span>
                     </div>
                     <div class="product-sizes__selector">
@@ -310,7 +310,7 @@ export default {
                     </div>
                     <div class="actions__fav">
                         <button class="btn-fav">
-                            <IconStar/>
+                            <SvgIcon name="star"/>
                             <span class="sr-only">Favorite</span>
                         </button>
                     </div>

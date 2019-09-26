@@ -9,8 +9,8 @@
 import {
     mapMutations,
     mapState,
-}                 from 'vuex';
-import IconSearch from '@/components/Icons/IconSearch';
+}              from 'vuex';
+import SvgIcon from '@/components/SvgIcon';
 
 
 const LAYOUT_MOBILE = 'mobile';
@@ -21,7 +21,7 @@ export default {
     name: 'SearchBox',
 
     components: {
-        IconSearch,
+        SvgIcon,
     },
 
     props: {
@@ -72,11 +72,11 @@ export default {
 </script>
 
 <template>
-    <div class="search-box" :class="computedClasses">
-        <button class="search-box__button">
-            <IconSearch/>
+    <div class="SearchBox" :class="computedClasses">
+        <button class="SearchBox__button">
+            <SvgIcon name="search" class="SearchBox__icon"/>
         </button>
-        <input class="search-box__input"
+        <input class="SearchBox__input"
             :class="{fill: isFill}"
             type="text"
             v-model="text"

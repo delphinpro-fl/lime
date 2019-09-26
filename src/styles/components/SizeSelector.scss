@@ -33,12 +33,12 @@ $SizeSelector-height: 32px;
   }
 
   &__arrow {
-    @include size(6px, 4px);
+    @include size(8px, 6px);
     position: absolute;
     right: 10px;
 
     svg {
-      @include size(6px, 4px);
+      @include size(100%);
       display: block;
     }
   }

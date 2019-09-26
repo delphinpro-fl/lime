@@ -2,7 +2,7 @@
 //== Component: MobileSearchButton.vue
 //== ======================================= ==//
 
-.mobile-search-button {
+.MobileSearchButton {
   @include size($navbar-height);
   position: relative;
   display: flex;
@@ -11,9 +11,13 @@
   border: none;
   background: none;
 
-  &__icon {
+  &__iconBox {
     @include size(percentage(18 / 50));
     flex-shrink: 0;
     margin: auto;
+  }
+
+  &__icon {
+    display: block;
   }
 }

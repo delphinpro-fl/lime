@@ -6,14 +6,14 @@
 -->
 
 <script>
-import IconDropdown from '@/components/Icons/IconDropdown';
+import SvgIcon from '@/components/SvgIcon';
 
 // TODO: Переделать на основе компонента DropdownList
 export default {
     name: 'SizeSelector',
 
     components: {
-        IconDropdown,
+        SvgIcon,
     },
 
     props: {
@@ -63,7 +63,7 @@ export default {
         >
             <div class="SizeSelector__selected">{{ selectedText }}</div>
             <div class="SizeSelector__arrow">
-                <IconDropdown/>
+                <SvgIcon name="dropdown"/>
             </div>
         </div>
         <div class="SizeSelector__pane" v-if="isOpen">

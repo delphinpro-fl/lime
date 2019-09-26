@@ -6,16 +6,14 @@
 -->
 
 <script>
-import IconAngleLeft  from '@/components/Icons/IconAngleLeft';
-import IconAngleRight from '@/components/Icons/IconAngleRight';
+import SvgIcon from '@/components/SvgIcon';
 
 
 export default {
     name: 'HomeSlider',
 
     components: {
-        IconAngleLeft,
-        IconAngleRight,
+        SvgIcon,
     },
 
     props: {
@@ -103,13 +101,13 @@ export default {
                 @click="slideToPrev"
                 :disabled="activeIndex===0"
             >
-                <IconAngleLeft class="slider__control-icon"/>
+                <SvgIcon name="angle-left" class="slider__control-icon"/>
             </button>
             <button class="slider__control slider__control_next"
                 @click="slideToNext"
                 :disabled="activeIndex>=slides.length-1"
             >
-                <IconAngleRight class="slider__control-icon"/>
+                <SvgIcon name="angle-right" class="slider__control-icon"/>
             </button>
         </div>
     </div>

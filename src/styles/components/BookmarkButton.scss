@@ -12,7 +12,7 @@
   border: none;
   background: none;
 
-  svg {
+  &__icon {
     @include size(100%);
     display: block;
   }

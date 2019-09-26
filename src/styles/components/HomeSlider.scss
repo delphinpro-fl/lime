@@ -36,6 +36,7 @@ $slider-control-width: 50px;
   &__control {
     @include size($slider-control-width);
     display: flex;
+    padding: 0;
     cursor: pointer;
     color: currentColor;
     border: none;
@@ -53,9 +54,8 @@ $slider-control-width: 50px;
   }
 
   &__control-icon {
+    @include size(38px);
     display: block;
-    width: 19px;
-    height: 38px;
     margin: auto;
   }
 

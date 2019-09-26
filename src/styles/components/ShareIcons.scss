@@ -2,7 +2,7 @@
 //== Component: ShareIcons.vue
 //== ======================================= ==//
 
-.share-icons {
+.ShareIcons {
   display: flex;
   justify-content: center;
 
@@ -22,11 +22,11 @@
     &:last-child {
       margin-right: 0;
     }
+  }
 
-    svg {
-      @include size(rem(20px));
-      display: block;
-    }
+  &__icon {
+    @include size(rem(20px));
+    display: block;
   }
 
   @include media-breakpoint-up(desktop) {

@@ -2,7 +2,7 @@
 //== Component: StoreIcons.vue
 //== ======================================= ==//
 
-.store-icons {
+.StoreIcons {
   &__title {
     margin-bottom: rem(20px);
     text-align: center;
@@ -18,7 +18,7 @@
 
   &__item {
     position: relative;
-    margin: 0 rem(15px);
+    margin: 0 rem(12px);
     text-decoration: none;
     color: inherit;
 
@@ -34,17 +34,17 @@
       margin-right: 0;
     }
 
-    svg {
-      @include size(rem(20px));
-      display: block;
-    }
-
     &_icon_goggle {
     }
 
     &_icon_apple {
       top: -3px;
     }
+  }
+
+  &__icon {
+    @include size(rem(20px));
+    display: block;
   }
 
   @include media-breakpoint-up(desktop) {
@@ -57,6 +57,7 @@
       margin-bottom: 0;
       text-transform: none;
     }
+
     &__links {
       justify-content: flex-end;
     }

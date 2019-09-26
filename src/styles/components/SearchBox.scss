@@ -4,7 +4,7 @@
 
 $search-box-height: 24px;
 
-.search-box {
+.SearchBox {
   $this: &;
   position: relative;
   height: rem($search-box-height);
@@ -52,12 +52,12 @@ $search-box-height: 24px;
     color: currentColor;
     border: none;
     background: none;
+  }
 
-    svg {
-      @include size(rem(17px));
-      display: block;
-      margin: auto;
-    }
+  &__icon {
+    @include size(rem(17px));
+    display: block;
+    margin: auto;
   }
 
   //==

@@ -6,14 +6,14 @@
 -->
 
 <script>
-import IconStar from '@/components/Icons/IconStar';
+import SvgIcon from '@/components/SvgIcon';
 
 
 export default {
     name: 'BookmarkButton',
 
     components: {
-        IconStar,
+        SvgIcon,
     },
 
     props: {
@@ -37,7 +37,7 @@ export default {
         :class="computedClasses"
         @click="$emit('click', $event)"
     >
-        <IconStar/>
+        <SvgIcon name="star" class="BookmarkButton__icon"/>
     </button>
 </template>
 

@@ -6,14 +6,14 @@
 -->
 
 <script>
-import IconDropdown from '@/components/Icons/IconDropdown';
+import SvgIcon from '@/components/SvgIcon';
 
 
 export default {
     name: 'DropdownList',
 
     components: {
-        IconDropdown,
+        SvgIcon,
     },
 
     props: {
@@ -63,7 +63,7 @@ export default {
         >
             <div class="DropdownList__selected">{{ selectedText }}</div>
             <div class="DropdownList__arrow">
-                <IconDropdown/>
+                <SvgIcon name="dropdown"/>
             </div>
         </div>
         <div class="DropdownList__pane add-scrollbar" v-if="isOpen">

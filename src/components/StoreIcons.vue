@@ -6,29 +6,27 @@
 -->
 
 <script>
-import IconApple  from '@/components/Icons/IconApple';
-import IconGoogle from '@/components/Icons/IconGoogle';
+import SvgIcon from '@/components/SvgIcon';
 
 
 export default {
     name: 'StoreIcons',
 
     components: {
-        IconApple,
-        IconGoogle,
+        SvgIcon,
     },
 };
 </script>
 
 <template>
-    <div class="store-icons">
-        <div class="store-icons__title">Скачай приложение</div>
-        <div class="store-icons__links">
-            <a class="store-icons__item store-icons__item_icon_google" href="#">
-                <IconGoogle/>
+    <div class="StoreIcons">
+        <div class="StoreIcons__title">Скачай приложение</div>
+        <div class="StoreIcons__links">
+            <a class="StoreIcons__item StoreIcons__item_icon_google" href="#">
+                <SvgIcon name="brand-google" class="StoreIcons__icon"/>
             </a>
-            <a class="store-icons__item store-icons__item_icon_apple" href="#">
-                <IconApple/>
+            <a class="StoreIcons__item StoreIcons__item_icon_apple" href="#">
+                <SvgIcon name="brand-apple" class="StoreIcons__icon"/>
             </a>
         </div>
     </div>

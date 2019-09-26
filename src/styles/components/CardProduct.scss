@@ -83,7 +83,6 @@ $thumb-width: 40px;
   }
 }
 
-
 .sticky-thumbs {
   position: sticky;
   bottom: rem(40px);
@@ -128,6 +127,7 @@ $thumb-width: 40px;
     cursor: pointer;
 
     svg {
+      @include size(8px, 6px);
       flex-shrink: 0;
       margin-left: 5px;
       transform: rotate(-90deg);

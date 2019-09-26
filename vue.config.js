@@ -35,6 +35,20 @@ module.exports = {
         devtool: NODE_ENV === 'development' ? 'cheap-module-eval-source-map' : false,
     }),
 
+    pluginOptions: {
+        svgSprite: {
+            dir: './src/assets/icons',
+            test: /\.(svg)(\?.*)?$/,
+            loaderOptions: {
+                extract: true,
+                spriteFilename: 'design/icons.[hash:8].svg',
+            },
+            pluginOptions: {
+                plainSprite: true,
+            },
+        },
+    },
+
     chainWebpack: config => {
         config
             .plugin('html')

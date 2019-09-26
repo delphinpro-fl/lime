@@ -43,9 +43,9 @@ export default {
 
         computedClasses() {
             return {
-                'search-box_layout_mobile': this.layout === LAYOUT_MOBILE,
-                'search-box_closed'       : !this.isOpenSearch,
-                'search-box_open'         : this.isOpenSearch,
+                'SearchBox_layout_mobile': this.layout === LAYOUT_MOBILE,
+                'SearchBox_closed'       : !this.isOpenSearch,
+                'SearchBox_open'         : this.isOpenSearch,
             };
         },
 

@@ -15,8 +15,6 @@ import Availability       from '@/components/Availability';
 import CareComposition    from '@/components/CareComposition';
 import CloseButton        from '@/components/CloseButton';
 import ColorSelector      from '@/components/ColorSelector';
-import IconShare          from '@/components/Icons/IconShare';
-import IconStar           from '@/components/Icons/IconStar';
 import PageContent        from '@/components/PageContent';
 import ShareIcons         from '@/components/ShareIcons';
 import SidePopup          from '@/components/SidePopup';
@@ -38,8 +36,6 @@ export default {
         CareComposition,
         CloseButton,
         ColorSelector,
-        IconShare,
-        IconStar,
         PageContent,
         ShareIcons,
         SidePopup,
@@ -320,7 +316,7 @@ export default {
                     <div class="info-links__col">
                         <div class="share-block">
                             <div class="share-block__link" @click.prevent="openShare=!openShare">
-                                <IconShare/>
+                                <SvgIcon name="share"/>
                                 <a href="#" class="" @click.prevent>Поделиться</a>
                             </div>
                             <div class="share-block__pane" v-if="openShare">

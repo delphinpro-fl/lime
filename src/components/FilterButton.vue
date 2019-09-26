@@ -9,15 +9,15 @@
 import {
     mapGetters,
     mapMutations,
-}                from 'vuex';
-import IconCross from '@/components/Icons/IconCross';
+}              from 'vuex';
+import SvgIcon from '@/components/SvgIcon';
 
 
 export default {
     name: 'FilterButton',
 
     components: {
-        IconCross,
+        SvgIcon,
     },
 
     computed: {
@@ -55,7 +55,7 @@ export default {
             Фильтры <span v-if="filterCountTotal">({{filterCountTotal}})</span>
         </span>
         <span class="filter-button__icon">
-            <IconCross/>
+            <SvgIcon name="cross"/>
         </span>
     </div>
 </template>

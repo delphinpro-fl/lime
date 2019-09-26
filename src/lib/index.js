@@ -35,6 +35,7 @@ export function makeSizesArray(skuList, restIndex = 0) {
         let store    = sku.rests[restIndex].store;
         let text     = null,
             url      = null,
+            event    = null,
             disabled = false;
         if (stock === STOCK_LAST_PRODUCT) {
             text = 'Последний';
@@ -42,6 +43,7 @@ export function makeSizesArray(skuList, restIndex = 0) {
         if (stock === STOCK_NOT_AVAILABLE) {
             text     = 'Подписка';
             url      = '#';
+            event    = 'subscribe';
             disabled = true;
             if (store) {
                 text = 'Есть в магазине';
@@ -58,6 +60,7 @@ export function makeSizesArray(skuList, restIndex = 0) {
             meta : {
                 url,
                 text,
+                event,
             },
             // sku,
         };

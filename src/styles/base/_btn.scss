@@ -2,7 +2,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 32px;
+  height: rem($button-height);
   cursor: pointer;
   text-align: center;
   text-transform: uppercase;

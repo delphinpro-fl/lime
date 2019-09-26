@@ -22,6 +22,7 @@ $thumb-width: 40px;
   &__side {
     position: relative;
     width: 35%;
+    padding-bottom: 120px;
   }
 
   &__media-tape {
@@ -224,5 +225,164 @@ $thumb-width: 40px;
         }
       }
     }
+  }
+}
+
+//==
+//== Mobile layout
+//== ======================================= ==//
+
+$float-button-size: 40px;
+$mobile-card-line-height: 18px;
+$mobile-card-padding-side: 20px;
+$mobile-card-padding-top: 20px;
+$mobile-card-padding-bottom: 17px;
+$mobile-card-price-margin: 6px;
+$mobile-card-buttons-margin: 15px;
+$mobile-card-bottom-height: $mobile-card-padding-top
+ + $mobile-card-line-height
+ + $mobile-card-price-margin
+ + $mobile-card-line-height
+ + $mobile-card-buttons-margin
+ + $button-height
+ + $mobile-card-padding-bottom;
+
+.MobileCard {
+  position: relative;
+  position: fixed;
+  top: ($navbar-height + 1);
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - #{$navbar-height + 1});
+  background: #eaeaea;
+
+  &__photo {
+    overflow: hidden;
+    width: 100%;
+    height: calc(100% - #{rem($mobile-card-bottom-height)});
+    transition: 0.4s ease;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  &__back {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    svg {
+      @include size(rem(24px));
+    }
+  }
+
+  &__favorite {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    svg {
+      @include size(rem(24px));
+    }
+  }
+
+  &__details {
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    height: rem($mobile-card-bottom-height);
+    background: white;
+  }
+
+  &__handler {
+    position: absolute;
+    z-index: 1;
+    top: -10px - 6px * 2;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 10px + 6px * 2;
+    padding: 6px;
+
+    svg {
+      display: block;
+      flex-shrink: 0;
+      width: 38px;
+      color: #fff;
+    }
+  }
+
+  //==
+  //== Details view
+  //== ======================================= ==//
+
+  &.isDetails {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  &.isDetails &__photo {
+    height: 0;
+  }
+}
+
+.MobileCardDetails {
+  position: relative;
+  padding: rem($mobile-card-padding-top) rem($mobile-card-padding-side) rem($mobile-card-padding-bottom);
+  background: #fff;
+
+  &__header {
+    position: relative;
+    font-size: rem(16px);
+    line-height: (18/16);
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    padding-right: rem($float-button-size - 14px);
+    text-transform: uppercase;
+    font-weight: bold;
+
+    > span {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__price {
+    margin-top: rem($mobile-card-price-margin);
+    text-transform: uppercase;
+  }
+
+  &__button {
+    position: absolute;
+    z-index: 1;
+    top: rem(-14px);
+    right: rem(-14px);
+  }
+
+  &__buttons {
+    margin-top: rem($mobile-card-buttons-margin);
+  }
+}
+
+.MobileCardButtons {
+  display: flex;
+  justify-content: space-between;
+
+  &__button {
+    width: calc(50% - 3px);
   }
 }

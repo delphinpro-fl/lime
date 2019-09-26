@@ -8,19 +8,21 @@
 <script>
 import {
     mapActions,
+    mapGetters,
     mapMutations,
     mapState,
 }                         from 'vuex';
+import AppFooter          from '@/components/AppFooter';
 import Availability       from '@/components/Availability';
 import CareComposition    from '@/components/CareComposition';
 import ColorSelector      from '@/components/ColorSelector';
+import IButton            from '@/components/IButton';
 import PageContent        from '@/components/PageContent';
 import ShareIcons         from '@/components/ShareIcons';
 import SidePopup          from '@/components/SidePopup';
 import SizeSelector       from '@/components/SizeSelector';
 import SubscribeSize      from '@/components/SubscribeSize';
 import SvgIcon            from '@/components/SvgIcon';
-import IButton            from '@/components/IButton';
 import { makeSizesArray } from '@/lib';
 
 
@@ -30,16 +32,17 @@ export default {
     name: 'CardProduct',
 
     components: {
-        SubscribeSize,
-        IButton,
-        SvgIcon,
+        AppFooter,
         Availability,
         CareComposition,
         ColorSelector,
+        IButton,
         PageContent,
         ShareIcons,
         SidePopup,
         SizeSelector,
+        SubscribeSize,
+        SvgIcon,
     },
 
     props: {
@@ -61,11 +64,17 @@ export default {
         isOpenCare        : false,
         isOpenAvailability: false,
         isOpenSubscribe   : false,
+
+        isDetailsView: false,
     }),
 
     computed: {
         ...mapState([
             'isFullscreen',
+        ]),
+
+        ...mapGetters([
+            'isDesktopDevice',
         ]),
 
         isOpenPopup() {
@@ -238,12 +247,31 @@ export default {
         toggleFullscreenView() {
             this.toggleFullscreen();
         },
+
+        //==
+        //== Mobile
+        //== ======================================= ==//
+
+        swipeHandler(direction) {
+            if (direction === 'top') {
+                console.log({ direction });
+                this.toggleDetailsViews(true);
+            }
+        },
+
+        wheelHandler(e) {
+            if (e.deltaY > 0) this.toggleDetailsViews(true);
+        },
+
+        toggleDetailsViews(state) {
+            this.isDetailsView = (typeof state === 'boolean') ? state : !this.isDetailsView;
+        },
     },
 };
 </script>
 
 <template>
-    <div class="CardProduct" v-scroll="scrollHandler">
+    <div class="CardProduct" v-scroll="scrollHandler" v-if="isDesktopDevice">
         <div class="CardProduct__main">
             <div class="CardProduct__thumbs">
                 <div class="sticky-thumbs">
@@ -359,6 +387,57 @@ export default {
             <Availability class="popup-availability" :sku="sku" v-if="isOpenAvailability"/>
             <SubscribeSize class="popup-subscribe-size" v-if="isOpenSubscribe"/>
         </SidePopup>
+    </div>
+    <div v-else
+        class="MobileCard"
+        :class="{isDetails:isDetailsView, 'add-scrollbar':isDetailsView}"
+    >
+        <div class="MobileCard__photo">
+            <div class="MobileCard__medias" v-if="medias">
+                <div class="__item" v-for="item in medias">
+                    <img class="__object"
+                        :src="item.url"
+                        :alt="item.title"
+                    >
+                </div>
+            </div>
+            <IButton icon="arrow-back" class="MobileCard__back"/>
+            <IButton icon="star" class="MobileCard__favorite"/>
+        </div>
+        <div class="MobileCard__details" :class="{open:isDetailsView}">
+            <div class="MobileCard__handler" v-touch:swipe="swipeHandler">
+                <SvgIcon name="chevron-up"/>
+            </div>
+            <div class="MobileCardDetails">
+                <div class="MobileCardDetails__header" @wheel="wheelHandler" v-touch:swipe="swipeHandler">
+                    <div class="MobileCardDetails__title"><span>{{productName}}</span></div>
+                    <div class="MobileCardDetails__price" v-if="sku.price">{{sku.price}} ₽</div>
+                    <div class="MobileCardDetails__button">
+                        <IButton icon="cross-thin"
+                            class="IButtonClose"
+                            v-if="isDetailsView"
+                            @click="toggleDetailsViews"
+                        />
+                        <IButton icon="share" class="IButtonShare" v-else/>
+                    </div>
+                    <div class="MobileCardDetails__buttons MobileCardButtons">
+                        <div class="MobileCardButtons__button">
+                            <button class="btn btn-block"
+                                :disabled="!sku.price"
+                            >В корзину</button>
+                        </div>
+                        <div class="MobileCardButtons__button">
+                            <button class="btn btn-block">
+                                Другие цвета
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="MobileCardDetails__content" v-if="isDetailsView">
+                </div>
+                <AppFooter class="App__footer0" v-if="isDetailsView"/>
+            </div>
+        </div>
     </div>
 </template>
 

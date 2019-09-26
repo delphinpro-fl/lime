@@ -100,6 +100,10 @@
         content: '';
         background: #fff;
       }
+
+      .MobileCard & {
+        display: none;
+      }
     }
   }
 

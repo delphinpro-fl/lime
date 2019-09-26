@@ -5,16 +5,15 @@
  * licensed under the MIT license
  */
 
-import Vue               from 'vue';
-import Router            from 'vue-router';
-import store             from '@/store';
-import ViewHome          from '@/views/ViewHome';
-import ViewStaticPage    from '@/views/ViewStaticPage';
-import ViewCatalog       from '@/views/ViewCatalog';
-import View404           from '@/views/View404';
-import ViewLookBook      from '@/views/ViewLookBook';
-import ViewCollaboration from '@/views/ViewCollaboration';
-import ViewProduct       from '@/views/ViewProduct';
+import Vue            from 'vue';
+import Router         from 'vue-router';
+import store          from '@/store';
+import ViewHome       from '@/views/ViewHome';
+import ViewStaticPage from '@/views/ViewStaticPage';
+import ViewCatalog    from '@/views/ViewCatalog';
+import View404        from '@/views/View404';
+import ViewLookBook   from '@/views/ViewLookBook';
+import ViewProduct    from '@/views/ViewProduct';
 
 
 Vue.use(Router);
@@ -63,7 +62,6 @@ let router = new Router({
         //== About menu
         //== ======================================= ==//
 
-
         {
             path     : '/about',
             name     : 'about',
@@ -110,6 +108,7 @@ let router = new Router({
 router.afterEach((to) => {
     store.commit('updateIsHomepage', to.name === 'home');
     store.commit('updateCountJumps', +1);
+    store.commit('setPage', to.name);
 });
 
 export default router;

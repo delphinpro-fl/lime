@@ -27,3 +27,8 @@
     @include size(rem(16px));
   }
 }
+.IButtonShare {
+  .IButtonIcon {
+    @include size(rem(16px));
+  }
+}

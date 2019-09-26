@@ -50,6 +50,7 @@ export default {
             'isOpenMobileMenu',
             'isOpenSearch',
             'isFullscreen',
+            'page',
         ]),
 
         ...mapState({
@@ -64,6 +65,7 @@ export default {
             'isOpenFooter',
             'isOpenFilter',
             'isActiveOverlay',
+            'isPageProduct',
         ]),
 
         showFilter() {
@@ -76,10 +78,11 @@ export default {
 
         computedClasses() {
             return {
-                isOpenSearch: this.isOpenSearch,
-                isHomepage  : this.isHomepage,
-                isMobile    : this.isMobileDevice,
-                isFullscreen: this.isFullscreen,
+                isOpenSearch         : this.isOpenSearch,
+                isHomepage           : this.isHomepage,
+                isMobile             : this.isMobileDevice,
+                isFullscreen         : this.isFullscreen,
+                ['page-' + this.page]: !!this.page,
             };
         },
 
@@ -89,6 +92,10 @@ export default {
                 isActive: this.isOpenFooter,
                 isMobile: this.isMobileDevice,
             };
+        },
+
+        isRenderFooter() {
+            return !(this.isPageProduct && this.isMobileDevice);
         },
 
         isLockedViewport() {
@@ -193,7 +200,7 @@ export default {
             </div>
         </div>
 
-        <AppFooter class="App__footer" :class="footerClasses"/>
+        <AppFooter class="App__footer" :class="footerClasses" v-if="isRenderFooter"/>
 
         <div class="overlay" v-if="isActiveOverlay"></div>
 

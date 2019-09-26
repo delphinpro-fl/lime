@@ -65,6 +65,10 @@ mutations.toggleOverlay = (state, value) => (typeof value === 'boolean')
     ? state.activeOverlay = value
     : state.activeOverlay = !state.activeOverlay;
 
+state.page            = null;
+getters.isPageProduct = state => state.page === 'product';
+mutations.setPage     = (state, value) => state.page = value;
+
 //==
 //== Fullscreen product view
 //== ======================================= ==//

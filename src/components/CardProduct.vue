@@ -18,6 +18,7 @@ import CareComposition    from '@/components/CareComposition';
 import ColorSelector      from '@/components/ColorSelector';
 import IButton            from '@/components/IButton';
 import PageContent        from '@/components/PageContent';
+import ShareBlock         from '@/components/ShareBlock';
 import ShareIcons         from '@/components/ShareIcons';
 import SidePopup          from '@/components/SidePopup';
 import SizeSelector       from '@/components/SizeSelector';
@@ -38,6 +39,7 @@ export default {
         ColorSelector,
         IButton,
         PageContent,
+        ShareBlock,
         ShareIcons,
         SidePopup,
         SizeSelector,
@@ -56,7 +58,7 @@ export default {
         modelIndex: 0,
         skuIndex  : -1,
 
-        openShare: false,
+        isOpenShareBlock: false,
 
         isOpenSizes       : false,
         isOpenPayment     : false,
@@ -111,15 +113,15 @@ export default {
         thumbs() {
             return this.medias.map(media => media.thumbs.find(item => item.width === 80));
         },
-
-        linkThisPage() {
-            return location.href;
-        },
     },
 
     watch: {
         ['isOpenPopup']() {
             this.toggleOverlay(this.isOpenPopup);
+        },
+
+        ['$store.state.breakpoint']() {
+            this.isOpenShareBlock = false;
         },
     },
 
@@ -346,25 +348,15 @@ export default {
 
                 <div class="product__links info-links">
                     <div class="info-links__col">
-                        <div class="share-block">
-                            <div class="share-block__link" @click.prevent="openShare=!openShare">
+                        <div class="ShareBlockWrapper">
+                            <div class="ShareBlockWrapper__link" @click.prevent="isOpenShareBlock=!isOpenShareBlock">
                                 <SvgIcon name="share"/>
                                 <a href="#" class="" @click.prevent>Поделиться</a>
                             </div>
-                            <div class="share-block__pane" v-if="openShare">
-                                <div class="share-block__title">скопировать ссылку</div>
-                                <div class="share-block__content">
-                                    <input type="text" :value="linkThisPage" @focus="$event.target.select()">
-                                </div>
-                                <div class="share-block__title">поделиться</div>
-                                <div class="share-block__content">
-                                    <ShareIcons class="share-block__social"/>
-                                </div>
-                                <IButton icon="cross-thin"
-                                    class="IButtonClose share-block__closer"
-                                    @click="openShare=false"
-                                />
-                            </div>
+                            <ShareBlock v-if="isOpenShareBlock"
+                                class="ShareBlockWrapper__pane"
+                                @close="isOpenShareBlock=false"
+                            />
                         </div>
                     </div>
                     <ul class="info-links__col">
@@ -418,7 +410,7 @@ export default {
                             v-if="isDetailsView"
                             @click="toggleDetailsViews"
                         />
-                        <IButton icon="share" class="IButtonShare" v-else/>
+                        <IButton icon="share" class="IButtonShare" v-else @click="isOpenShareBlock=true"/>
                     </div>
                     <div class="MobileCardDetails__buttons MobileCardButtons">
                         <div class="MobileCardButtons__button">
@@ -438,6 +430,14 @@ export default {
                 <AppFooter class="App__footer0" v-if="isDetailsView"/>
             </div>
         </div>
+
+        <transition name="fade-slide-bottom">
+            <ShareBlock
+                v-if="isOpenShareBlock"
+                class="MobileCard__ShareBlock"
+                @close="isOpenShareBlock=false"
+            />
+        </transition>
     </div>
 </template>
 

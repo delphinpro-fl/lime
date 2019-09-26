@@ -320,6 +320,14 @@ $mobile-card-bottom-height: $mobile-card-padding-top
     }
   }
 
+  &__ShareBlock {
+    position: absolute;
+    z-index: 1;
+    right: $mobile-card-padding-side;
+    bottom: $mobile-card-padding-bottom;
+    left: $mobile-card-padding-side;
+  }
+
   //==
   //== Details view
   //== ======================================= ==//

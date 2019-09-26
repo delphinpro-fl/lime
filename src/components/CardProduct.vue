@@ -13,15 +13,15 @@ import {
 }                         from 'vuex';
 import Availability       from '@/components/Availability';
 import CareComposition    from '@/components/CareComposition';
-import CloseButton        from '@/components/CloseButton';
 import ColorSelector      from '@/components/ColorSelector';
 import PageContent        from '@/components/PageContent';
 import ShareIcons         from '@/components/ShareIcons';
 import SidePopup          from '@/components/SidePopup';
 import SizeSelector       from '@/components/SizeSelector';
-import { makeSizesArray } from '@/lib';
 import SubscribeSize      from '@/components/SubscribeSize';
 import SvgIcon            from '@/components/SvgIcon';
+import IButton            from '@/components/IButton';
+import { makeSizesArray } from '@/lib';
 
 
 let tm;
@@ -31,10 +31,10 @@ export default {
 
     components: {
         SubscribeSize,
+        IButton,
         SvgIcon,
         Availability,
         CareComposition,
-        CloseButton,
         ColorSelector,
         PageContent,
         ShareIcons,
@@ -265,7 +265,11 @@ export default {
                     >
                 </div>
             </div>
-            <CloseButton class="CardProduct__closer" @click="toggleFullscreenView" v-if="isFullscreen"/>
+            <IButton icon="cross-thin"
+                class="IButtonClose CardProduct__closer"
+                @click="toggleFullscreenView"
+                v-if="isFullscreen"
+            />
         </div>
         <div class="CardProduct__side">
             <div class="product">
@@ -328,8 +332,10 @@ export default {
                                 <div class="share-block__content">
                                     <ShareIcons class="share-block__social"/>
                                 </div>
-
-                                <CloseButton class="share-block__closer" @click="openShare=false"/>
+                                <IButton icon="cross-thin"
+                                    class="IButtonClose share-block__closer"
+                                    @click="openShare=false"
+                                />
                             </div>
                         </div>
                     </div>

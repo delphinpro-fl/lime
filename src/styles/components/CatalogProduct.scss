@@ -33,8 +33,19 @@
 
   &__bookmark {
     position: absolute;
-    top: rem(10px);
-    right: rem(10px);
+    z-index: 1000000;
+    top: rem(4px);
+    right: rem(4px);
+    opacity: 0;
+    color: $color-gray;
+
+    &.isHover {
+      opacity: 0.5;
+    }
+
+    &.isActive {
+      opacity: 1;
+    }
   }
 
 

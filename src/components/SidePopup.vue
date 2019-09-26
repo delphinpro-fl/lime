@@ -6,14 +6,14 @@
 -->
 
 <script>
-import CloseButton from '@/components/CloseButton';
+import IButton from '@/components/IButton';
 
 
 export default {
     name: 'SidePopup',
 
     components: {
-        CloseButton,
+        IButton,
     },
 
     props: {
@@ -34,7 +34,7 @@ export default {
             <div class="SidePopup__content add-scrollbar">
                 <slot></slot>
             </div>
-            <CloseButton class="SidePopup__closer" @click="selfClose"/>
+            <IButton icon="cross-thin" class="IButtonClose SidePopup__closer" @click="selfClose"/>
         </div>
     </transition>
 </template>

@@ -9,14 +9,14 @@
 import {
     mapActions,
     mapMutations,
-}                     from 'vuex';
-import BookmarkButton from '@/components/BookmarkButton';
-import ColorSelector  from '@/components/ColorSelector';
-import SizeSelector   from '@/components/SizeSelector';
+}                    from 'vuex';
+import ColorSelector from '@/components/ColorSelector';
+import IButton       from '@/components/IButton';
+import SizeSelector  from '@/components/SizeSelector';
 import {
     makeSizesArray,
     splitByThree,
-}                     from '@/lib';
+}                    from '@/lib';
 
 
 let tm;
@@ -25,8 +25,8 @@ export default {
     name: 'CatalogProduct',
 
     components: {
-        BookmarkButton,
         ColorSelector,
+        IButton,
         SizeSelector,
     },
 
@@ -169,10 +169,13 @@ export default {
             <router-link class="CatalogProduct__image-link" :to="detailUrl">
                 <img class="CatalogProduct__image" :src="image" alt="" v-if="image">
             </router-link>
-            <BookmarkButton
+            <IButton
+                icon="star"
                 class="CatalogProduct__bookmark"
-                :active="isBookmarkActive"
-                :hover="isHoverMe"
+                :class="{
+                    isActive: isBookmarkActive,
+                    isHover: isHoverMe
+                }"
                 @click="toggleBookmarkHandler"
             />
         </div>

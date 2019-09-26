@@ -7,7 +7,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import CloseButton    from '@/components/CloseButton';
+import IButton        from '@/components/IButton';
 
 
 const hashRoutes = {};
@@ -16,7 +16,7 @@ export default {
     name: 'FloatPanel',
 
     components: {
-        CloseButton,
+        IButton,
     },
 
     computed: {
@@ -61,7 +61,7 @@ export default {
 
 <template>
     <div class="float-panel add-scrollbar" v-if="isActive">
-        <CloseButton class="float-panel__closer" @click="selfClose"/>
+        <IButton icon="cross-thin" class="IButtonClose float-panel__closer" @click="selfClose"/>
         <component
             v-if="componentData"
             :is="componentData.component"

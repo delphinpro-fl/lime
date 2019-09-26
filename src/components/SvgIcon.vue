@@ -10,22 +10,10 @@ export default {
     name: 'SvgIcon',
 
     props: {
-        name: {
-            type: String,
-            required: true,
-        },
-        color: {
-            type: String,
-            default: 'currentColor',
-        },
-        size: {
-            type: [String, Number],
-            default: null,
-        },
-        height: {
-            type: [String, Number],
-            default: null,
-        },
+        name  : { type: String, required: true },
+        color : { type: String, default: 'currentColor' },
+        size  : { type: [String, Number], default: null },
+        height: { type: [String, Number], default: null },
     },
 
     computed: {
@@ -52,8 +40,15 @@ export default {
         :class="className"
         :fill="color"
         :width="size"
-        :height="height || size">
+        :height="height || size"
+    >
         <!--suppress HtmlUnknownAttribute, XmlUnusedNamespaceDeclaration -->
         <use :xlink:href="iconPath" xmlns:xlink="http://www.w3.org/1999/xlink"/>
     </svg>
 </template>
+
+<style>
+    .SvgIcon {
+        fill: currentColor;
+    }
+</style>

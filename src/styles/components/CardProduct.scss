@@ -270,24 +270,23 @@ $mobile-card-bottom-height: $mobile-card-padding-top
     }
   }
 
-  &__back {
+  &__back,
+  &__favorite {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 8px;
+    color: $color-gray;
 
     svg {
       @include size(rem(24px));
     }
   }
 
-  &__favorite {
-    position: absolute;
-    top: 0;
-    right: 0;
+  &__back {
+    left: 8px;
+  }
 
-    svg {
-      @include size(rem(24px));
-    }
+  &__favorite {
+    right: 8px;
   }
 
   &__details {

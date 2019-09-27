@@ -27,7 +27,7 @@ export default {
                 <div class="CartNotify__param">Арт. {{goods.article}}</div>
                 <div class="CartNotify__param"><b>Цвет:</b> {{goods.color.name}}</div>
                 <div class="CartNotify__param">
-                    <div class="color-indicator" :style="{backgroundColor: `#${goods.color.hex}`}"></div>
+                    <div class="ColorIndicator" :style="{backgroundColor: `#${goods.color.hex}`}"></div>
                 </div>
                 <div class="CartNotify__param"><b>Размер:</b> {{goods.size.value}}</div>
                 <div class="CartNotify__param"><b>Количество:</b> {{goods.quantity}}</div>

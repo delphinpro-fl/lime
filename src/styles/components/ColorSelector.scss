@@ -2,7 +2,7 @@
 //== Component: ColorSelector.vue
 //== ======================================= ==//
 
-.color-indicator {
+.ColorIndicator {
   @include size(rem(16px));
   border: 1px solid transparent;
   background: none;
@@ -12,13 +12,13 @@
     outline: none;
   }
 
-  &_selected {
+  &.isSelected {
     border-width: 2px;
     border-color: #c4c4c4;
   }
 }
 
-.color-selector {
+.ColorSelector {
   &__title {
   }
 
@@ -29,5 +29,15 @@
   &__item {
     margin-right: 6px;
     cursor: pointer;
+  }
+
+  &__thumb {
+    //width: 110px;
+    height: 130px;
+    margin-right: 6px;
+    cursor: pointer;
+    background: #ececec;
+    object-position: 50% 0;
+    object-fit: contain;
   }
 }

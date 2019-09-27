@@ -12,6 +12,7 @@ export default {
     props: {
         colors  : { type: Array, default: () => [] },
         selected: { type: Number, default: -1 },
+        type    : { type: String, default: '' },
     },
 
     computed: {
@@ -20,31 +21,47 @@ export default {
                 return this.colors[this.selected];
             }
         },
+
         selectedName() {
             if (this.picked) {
                 return this.picked.name;
             }
             return 'Не выбран';
         },
+
+        isThumbs() {
+            return this.type === 'thumbs';
+        },
     },
 };
 </script>
 
 <template>
-    <div class="color-selector">
-        <div class="color-selector__title">
+    <div class="ColorSelector">
+        <div class="ColorSelector__title" v-if="!isThumbs">
             <strong>Цвет:</strong> {{ selectedName }}
         </div>
-        <div class="color-selector__items">
-            <button
-                v-for="(item, index) in colors"
-                :key="item.id"
-                class="color-selector__item color-indicator"
-                :class="{'color-indicator_selected': selected === index}"
-                type="button"
-                :style="{backgroundColor: `#${item.hex}`}"
-                @click="$emit('change', index)"
-            ></button>
+        <div class="ColorSelector__items">
+            <template v-for="(item, index) in colors">
+                <button
+                    :key="item.id"
+                    v-if="!isThumbs || !item.picture"
+                    class="ColorSelector__item ColorIndicator"
+                    :class="{isSelected: selected === index}"
+                    type="button"
+                    :style="{backgroundColor: `#${item.hex}`}"
+                    @click="$emit('change', index)"
+                ></button>
+                <img
+                    :key="item.id"
+                    v-if="item.picture && isThumbs"
+                    class="ColorSelector__thumb"
+                    :class="{isSelected: selected === index}"
+                    :src="item.picture"
+                    @click="$emit('change', index)"
+                    alt=""
+                >
+            </template>
         </div>
     </div>
 </template>

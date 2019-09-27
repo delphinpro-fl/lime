@@ -159,6 +159,7 @@ export default {
         pickColor(modelIndex) {
             this.skuIndex   = -1;
             this.modelIndex = modelIndex;
+            this.toggleDetailsViews(false);
         },
 
         pickSize(skuIndex) {
@@ -270,6 +271,14 @@ export default {
         toggleDetailsViews(state) {
             this.isDetailsView = (typeof state === 'boolean') ? state : !this.isDetailsView;
         },
+
+        gotoColorSelector() {
+            this.toggleDetailsViews(true);
+            setTimeout(() => {
+                // todo: transitionend instead timeout
+                this.$refs.mobileCard.scrollTop = this.$refs.mobileColors.offsetTop;
+            }, 300);
+        },
     },
 };
 </script>
@@ -377,6 +386,7 @@ export default {
         <div v-else
             class="MobileCard"
             :class="{isDetails:isDetailsView, 'add-scrollbar':isDetailsView}"
+            ref="mobileCard"
         >
             <div class="MobileCard__photo">
                 <div class="MobileCard__medias" v-if="medias">
@@ -414,9 +424,10 @@ export default {
                                 >В корзину</button>
                             </div>
                             <div class="MobileCardButtons__button">
-                                <button class="btn btn-block">
-                                    Другие цвета
-                                </button>
+                                <button class="btn btn-block"
+                                    v-if="!isDetailsView"
+                                    @click="gotoColorSelector"
+                                >Другие цвета</button>
                             </div>
                         </div>
                     </div>
@@ -429,8 +440,18 @@ export default {
                             <li><a @click.prevent="toggleDelivery">Доставка и возврат</a></li>
                             <li><a @click.prevent="togglePayment">Оплата</a></li>
                         </ul>
+                        <div class="MobileCardDetails__colors" ref="mobileColors">
+                            <p><strong>Все цвета</strong></p>
+                            <ColorSelector class=""
+                                v-if="colors.length"
+                                :colors="colors"
+                                :selected="modelIndex"
+                                type="thumbs"
+                                @change="pickColor"
+                            />
+                        </div>
                     </div>
-                    <AppFooter class="App__footer0" v-if="isDetailsView"/>
+                    <AppFooter class="MobileCardDetails__footer" v-if="isDetailsView"/>
                 </div>
             </div>
 

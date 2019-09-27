@@ -16,7 +16,7 @@
         "id": 1,
         "name": "Черный",
         "hex": "000000",
-        "picture": null,
+        "picture": "/images/1-thumb.jpg",
         "sort": 1
       },
       "medias": [
@@ -218,7 +218,7 @@
         "id": 2,
         "name": "Красный",
         "hex": "ff0000",
-        "picture": null,
+        "picture": "/images/4.jpg",
         "sort": 1
       },
       "medias": [

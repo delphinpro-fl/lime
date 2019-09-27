@@ -318,12 +318,28 @@ $mobile-card-bottom-height: $mobile-card-padding-top
     }
   }
 
-  &__ShareBlock {
+  &__ShareBlock,
+  &__SizeSelector {
     position: absolute;
     z-index: 1;
     right: $mobile-card-padding-side;
     bottom: $mobile-card-padding-bottom;
     left: $mobile-card-padding-side;
+  }
+
+  &__sizeInfoButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 32px;
+    text-align: center;
+    text-transform: uppercase;
+    border: 1px solid $color-gray;
+    border-top: none;
+    background: #fff;
+    font-weight: bold;
+    cursor: pointer;
   }
 
   //==

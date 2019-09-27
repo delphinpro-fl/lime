@@ -70,6 +70,8 @@ export default {
         isOpenAvailability: false,
         isOpenSubscribe   : false,
 
+        isOpenSizeSelectorMobile: false,
+
         isDetailsView: false,
     }),
 
@@ -124,7 +126,8 @@ export default {
         },
 
         ['$store.state.breakpoint']() {
-            this.isOpenShareBlock = false;
+            this.isOpenShareBlock         = false;
+            this.isOpenSizeSelectorMobile = false;
         },
     },
 
@@ -286,6 +289,12 @@ export default {
         returnToCatalog() {
             this.$router.push({ name: 'section', params: { section: this.$route.params.section } });
         },
+
+        pickSizeMobile(skuIndex){
+            this.pickSize(skuIndex);
+            this.clickCartHandler();
+            this.isOpenSizeSelectorMobile=false;
+        }
     },
 };
 </script>
@@ -425,7 +434,7 @@ export default {
                             <div class="MobileCardButtons__button">
                                 <button class="btn btn-block"
                                     :disabled="!sku.price"
-                                    @click="clickCartHandler"
+                                    @click="isOpenSizeSelectorMobile=true"
                                 >В корзину</button>
                             </div>
                             <div class="MobileCardButtons__button">
@@ -472,6 +481,21 @@ export default {
                     class="MobileCard__ShareBlock"
                     @close="isOpenShareBlock=false"
                 />
+            </transition>
+            <transition name="fade-slide-bottom">
+                <div class="MobileCard__SizeSelector" v-if="isOpenSizeSelectorMobile">
+                    <SizeSelector
+                        :is-mobile="true"
+                        :options="sizes"
+                        :selected="skuIndex"
+                        @change="pickSizeMobile"
+                        @subscribe="showSubscribe"
+                        @close="isOpenSizeSelectorMobile=false"
+                    />
+                    <div class="MobileCard__sizeInfoButton" @click="isOpenSizes=true">
+                        Руководство по размерам +
+                    </div>
+                </div>
             </transition>
         </div>
         <SidePopup

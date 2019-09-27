@@ -7,48 +7,54 @@
 
 <script>
 import SvgIcon from '@/components/SvgIcon';
+import IButton from '@/components/IButton';
 
-// TODO: Переделать на основе компонента DropdownList
+
 export default {
     name: 'SizeSelector',
 
     components: {
+        IButton,
         SvgIcon,
     },
 
     props: {
         options : { type: Array, default: null },
         selected: { type: Number, default: -1 },
+        isMobile: Boolean,
     },
 
     data: () => ({
-        isOpen: false,
+        isOpenState: false,
     }),
 
     computed: {
         selectedText() {
             return this.selected === -1 ? 'Выберите размер' : this.options[this.selected].title;
         },
+
+        isOpen() {
+            return this.isOpenState || this.isMobile;
+        },
     },
 
     methods: {
         toggle() {
-            this.isOpen = !this.isOpen;
+            this.isOpenState = !this.isOpenState;
         },
 
         pick(opt, index) {
             if (!opt.disabled) {
                 this.$emit('change', index);
-                this.isOpen = false;
+                this.isOpenState = false;
             }
         },
 
         onClick(e, opt) {
-            console.log('onClick: ', opt, e);
             if (opt.meta.event) {
                 e.preventDefault();
                 this.$emit(opt.meta.event);
-                this.isOpen = false;
+                this.isOpenState = false;
             }
         },
     },
@@ -56,8 +62,9 @@ export default {
 </script>
 
 <template>
-    <div class="SizeSelector">
+    <div class="SizeSelector" :class="{isMobile}">
         <div class="SizeSelector__header"
+            v-if="!isMobile"
             tabindex="0"
             @click="toggle"
         >
@@ -67,6 +74,10 @@ export default {
             </div>
         </div>
         <div class="SizeSelector__pane" v-if="isOpen">
+            <div class="SizeSelector__optionTitle" v-if="isMobile">
+                <span class="SizeSelector__title">Укажите размер</span>
+                <IButton icon="cross-thin" class="IButtonClose SizeSelector__close" @click="$emit('close')"/>
+            </div>
             <div class="SizeSelector__option"
                 :class="{disabled:opt.disabled, selected:index===selected}"
                 v-for="(opt, index) in options"

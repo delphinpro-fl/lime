@@ -80,9 +80,41 @@ $SizeSelector-height: 32px;
   &__info {
     a {
       &:hover {
-        color: $color-text;
         text-decoration: underline;
+        color: $color-text;
       }
     }
+  }
+
+  //==
+  //== Mobile
+  //== ======================================= ==//
+
+  &__optionTitle {
+    display: flex;
+    align-items: center;
+    height: rem(40px);
+    padding: 5px 15px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: rem(12px);
+    font-weight: bold;
+  }
+
+  &__close {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &.isMobile {
+    border: none;
+  }
+
+  &.isMobile &__pane {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
 }

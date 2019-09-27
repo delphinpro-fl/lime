@@ -10,14 +10,13 @@ export default {
     name: 'MobileCardMedia',
 
     props: {
-        items: Array,
+        items      : Array,
+        activeIndex: Number,
     },
 
     data: () => ({
-        tmpY: null,
-
-        activeIndex: 0,
-        visually   : null,
+        tmpY    : null,
+        visually: null,
     }),
 
     computed: {
@@ -43,8 +42,8 @@ export default {
     },
 
     methods: {
-        slideToPrev() { this.activeIndex = Math.max(this.activeIndex - 1, 0); },
-        slideToNext() { this.activeIndex = Math.min(this.activeIndex + 1, this.total - 1); },
+        slideToPrev() { this.$emit('change', Math.max(this.activeIndex - 1, 0)); },
+        slideToNext() { this.$emit('change', Math.min(this.activeIndex + 1, this.total - 1)); },
 
         swipeHandler(direction) {
             this.visually = null;
@@ -56,7 +55,6 @@ export default {
             this.tmpY = e.touches[0].clientY;
         },
         movedHandler(e) {
-            console.log(this.tmpY, e.touches[0].clientY, e.touches[0].clientY - this.tmpY);
             let dir = e.touches[0].clientY - this.tmpY;
             if (dir !== 0) {
                 this.visually = dir < 0 ? 'top' : 'bottom';

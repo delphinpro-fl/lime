@@ -57,6 +57,7 @@ export default {
         mediaElements    : [],
         indexVisibleMedia: 0,
 
+        mediaIndex: 0,
         modelIndex: 0,
         skuIndex  : 0,//-1,
 
@@ -161,6 +162,7 @@ export default {
         pickColor(modelIndex) {
             this.skuIndex   = -1;
             this.modelIndex = modelIndex;
+            this.mediaIndex = 0;
             this.toggleDetailsViews(false);
         },
 
@@ -259,7 +261,6 @@ export default {
 
         swipeHandler(direction) {
             if (direction === 'top') {
-                console.log({ direction });
                 this.toggleDetailsViews(true);
             }
         },
@@ -397,7 +398,9 @@ export default {
             <div class="MobileCard__photo">
                 <MobileCardMedia
                     v-if="medias"
+                    :active-index="mediaIndex"
                     :items="medias"
+                    @change="mediaIndex=$event"
                 />
                 <IButton icon="arrow-back" class="MobileCard__back" @click="returnToCatalog"/>
                 <IButton icon="star" class="MobileCard__favorite"/>

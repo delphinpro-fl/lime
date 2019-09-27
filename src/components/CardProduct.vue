@@ -279,6 +279,10 @@ export default {
                 this.$refs.mobileCard.scrollTop = this.$refs.mobileColors.offsetTop;
             }, 300);
         },
+
+        returnToCatalog() {
+            this.$router.push({ name: 'section', params: { section: this.$route.params.section } });
+        },
     },
 };
 </script>
@@ -397,7 +401,7 @@ export default {
                         >
                     </div>
                 </div>
-                <IButton icon="arrow-back" class="MobileCard__back"/>
+                <IButton icon="arrow-back" class="MobileCard__back" @click="returnToCatalog"/>
                 <IButton icon="star" class="MobileCard__favorite"/>
             </div>
             <div class="MobileCard__details" :class="{open:isDetailsView}">

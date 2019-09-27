@@ -71,6 +71,7 @@ export default {
         isOpenSubscribe   : false,
 
         isOpenSizeSelectorMobile: false,
+        isShowCartSuccess       : false,
 
         isDetailsView: false,
     }),
@@ -290,11 +291,20 @@ export default {
             this.$router.push({ name: 'section', params: { section: this.$route.params.section } });
         },
 
-        pickSizeMobile(skuIndex){
+        openSizeSelectorMobile() {
+            this.isDetailsView            = false;
+            this.isOpenSizeSelectorMobile = true;
+        },
+
+        pickSizeMobile(skuIndex) {
             this.pickSize(skuIndex);
-            this.clickCartHandler();
-            this.isOpenSizeSelectorMobile=false;
-        }
+            this.isOpenSizeSelectorMobile = false;
+            this.isShowCartSuccess        = true;
+
+            setTimeout(() => {
+                this.isShowCartSuccess = false;
+            }, 3000);
+        },
     },
 };
 </script>
@@ -434,7 +444,7 @@ export default {
                             <div class="MobileCardButtons__button">
                                 <button class="btn btn-block"
                                     :disabled="!sku.price"
-                                    @click="isOpenSizeSelectorMobile=true"
+                                    @click="openSizeSelectorMobile"
                                 >В корзину</button>
                             </div>
                             <div class="MobileCardButtons__button">
@@ -473,6 +483,14 @@ export default {
                     </div>
                     <AppFooter class="MobileCardDetails__footer" v-if="isDetailsView"/>
                 </div>
+
+                <transition name="fade-in-out">
+                    <div class="cart-success" v-if="isShowCartSuccess">
+                        <div class="cart-success__title">Товар добавлен в корзину</div>
+                        <div class="cart-success__link"><a href="#">Перейти</a></div>
+                    </div>
+                </transition>
+
             </div>
 
             <transition name="fade-slide-bottom">

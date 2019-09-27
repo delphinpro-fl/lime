@@ -404,8 +404,8 @@ export default {
                 <div class="MobileCard__handler" v-touch:swipe="swipeHandler">
                     <SvgIcon name="chevron-up"/>
                 </div>
-                <div class="MobileCardDetails">
-                    <div class="MobileCardDetails__header" @wheel="wheelHandler" v-touch:swipe="swipeHandler">
+                <div class="MobileCardDetails" @wheel="wheelHandler" v-touch:swipe="swipeHandler">
+                    <div class="MobileCardDetails__header">
                         <div class="MobileCardDetails__title"><span>{{productName}}</span></div>
                         <div class="MobileCardDetails__price" v-if="sku.price">{{sku.price}} ₽</div>
                         <div class="MobileCardDetails__button">
@@ -428,6 +428,12 @@ export default {
                                     v-if="!isDetailsView"
                                     @click="gotoColorSelector"
                                 >Другие цвета</button>
+                                <button class="btn-outline btn-no-border btn-block"
+                                    v-else
+                                    @click="isOpenShareBlock=!isOpenShareBlock"
+                                >
+                                    <SvgIcon name="share" class="btn-icon"/>
+                                    Поделиться</button>
                             </div>
                         </div>
                     </div>

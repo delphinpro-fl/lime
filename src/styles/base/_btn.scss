@@ -1,4 +1,4 @@
-.btn {
+%button-base {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -6,10 +6,34 @@
   cursor: pointer;
   text-align: center;
   text-transform: uppercase;
-  color: #fff;
   border: 1px solid #5a5a5a;
-  background: #5a5a5a;
   font-size: 12px;
+}
+
+.btn {
+  @extend %button-base;
+  color: #fff;
+  background: #5a5a5a;
+}
+
+.btn-outline {
+  @extend %button-base;
+  background: #fff;
+}
+
+.btn-icon {
+  @include size(15px);
+  flex-shrink: 0;
+  margin-right: 5px;
+
+  &.SvgIcon-share {
+    position: relative;
+    top: -2px;
+  }
+}
+
+.btn-no-border {
+  border-color: transparent;
 }
 
 .btn-block {

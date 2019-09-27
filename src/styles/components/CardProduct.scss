@@ -339,6 +339,10 @@ $mobile-card-bottom-height: $mobile-card-padding-top
   &.isDetails &__photo {
     height: 0;
   }
+
+  &.isDetails &__ShareBlock {
+    position: fixed;
+  }
 }
 
 .MobileCardDetails {

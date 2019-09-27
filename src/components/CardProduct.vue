@@ -25,6 +25,7 @@ import SizeSelector       from '@/components/SizeSelector';
 import SubscribeSize      from '@/components/SubscribeSize';
 import SvgIcon            from '@/components/SvgIcon';
 import { makeSizesArray } from '@/lib';
+import MobileCardMedia    from '@/components/MobileCardMedia';
 
 
 let tm;
@@ -33,6 +34,7 @@ export default {
     name: 'CardProduct',
 
     components: {
+        MobileCardMedia,
         AppFooter,
         Availability,
         CareComposition,
@@ -393,14 +395,10 @@ export default {
             ref="mobileCard"
         >
             <div class="MobileCard__photo">
-                <div class="MobileCard__medias" v-if="medias">
-                    <div class="__item" v-for="item in medias">
-                        <img class="__object"
-                            :src="item.url"
-                            :alt="item.title"
-                        >
-                    </div>
-                </div>
+                <MobileCardMedia
+                    v-if="medias"
+                    :items="medias"
+                />
                 <IButton icon="arrow-back" class="MobileCard__back" @click="returnToCatalog"/>
                 <IButton icon="star" class="MobileCard__favorite"/>
             </div>

@@ -8,6 +8,8 @@
  */
 
 $requestUri = $_SERVER['REQUEST_URI'];
+$IS_GET = strtoupper($_SERVER['REQUEST_METHOD']) === 'GET';
+$IS_POST = strtoupper($_SERVER['REQUEST_METHOD']) === 'POST';
 
 $parsedUrl = parse_url($requestUri);
 $urlPath = trim(str_replace('/api', '', $parsedUrl['path']), '/');
@@ -28,6 +30,13 @@ switch ($object) {
             $filename = 'page/'.$path.'.json';
         }
         break;
+    case 'cart':
+        if ($IS_GET) {
+            if (array_key_exists('full', $query)) {
+                $filename = $object.'-full.json';
+                break;
+            }
+        }
     default:
         if (count($segments)) {
             $path = str_replace(['\\', '.'], '', $urlPath);
@@ -37,8 +46,8 @@ switch ($object) {
         }
 }
 
-if($filename && $_SERVER['REQUEST_METHOD'] === 'POST'){
-   $filename = 'POST/'.$filename;
+if ($filename && $IS_POST) {
+    $filename = 'POST/'.$filename;
 }
 
 if ($filename && file_exists(__DIR__.'/'.$filename)) {

@@ -1,0 +1,131 @@
+{
+  "id": 31,
+  "cost": 2600,
+  "quantity": 23,
+  "items": [
+    {
+      "id": 3,
+      "quantity": 22,
+      "price": 100,
+      "sku": {
+        "id": 5,
+        "size": {
+          "id": 3,
+          "value": "S",
+          "unit": {
+            "id": 1,
+            "name": "Штук ",
+            "code": "pieces"
+          }
+        },
+        "prices": [
+          {
+            "id": 5,
+            "sku_id": 5,
+            "type_id": 1,
+            "value": 2090,
+            "guid": null,
+            "created_at": "2019-09-19 12:56:01",
+            "updated_at": "2019-09-19 12:56:01"
+          }
+        ],
+        "rests": [
+          {
+            "id": 5,
+            "value": 21,
+            "store": {
+              "id": 769,
+              "created_at": "2019-09-19 12:55:54",
+              "updated_at": "2019-09-19 12:55:54",
+              "name": "Склад в городе Шаховская №1",
+              "code": "sklad-v-gorode-shakhovskaya-1",
+              "shop_id": 382,
+              "sale": true,
+              "guid": null
+            }
+          }
+        ],
+        "model": {
+          "id": 17,
+          "color": {
+            "id": 36,
+            "hex": "a3ef72",
+            "name": "Матовый белый"
+          },
+          "product": {
+            "id": 2,
+            "name": "Продукт Потапов Егор Борисович",
+            "name_custom": "",
+            "article": "998|6108|727",
+            "code": "quo-omnis-commodi-aut-non-distinctio-expedita-repudiandae",
+            "description": "Описание 43",
+            "composition": "Состав 43",
+            "care": "Уход 43"
+          }
+        }
+      }
+    },
+    {
+      "id": 5,
+      "quantity": 1,
+      "price": 400,
+      "sku": {
+        "id": 4,
+        "size": {
+          "id": 1,
+          "value": "XL",
+          "unit": {
+            "id": 1,
+            "name": "Штук ",
+            "code": "pieces"
+          }
+        },
+        "prices": [
+          {
+            "id": 4,
+            "sku_id": 4,
+            "type_id": 1,
+            "value": 1888,
+            "guid": null,
+            "created_at": "2019-09-19 12:56:01",
+            "updated_at": "2019-09-19 12:56:01"
+          }
+        ],
+        "rests": [
+          {
+            "id": 4,
+            "value": 17,
+            "store": {
+              "id": 393,
+              "created_at": "2019-09-19 12:55:51",
+              "updated_at": "2019-09-19 12:55:51",
+              "name": "Склад в городе Клин №1",
+              "code": "sklad-v-gorode-klin-1",
+              "shop_id": 195,
+              "sale": true,
+              "guid": null
+            }
+          }
+        ],
+        "model": {
+          "id": 65,
+          "color": {
+            "id": 9,
+            "hex": "5e378e",
+            "name": "Морковный"
+          },
+          "product": {
+            "id": 10,
+            "name": "Продукт Ширяев Семён Владимирович",
+            "name_custom": "Продукт ",
+            "article": "448|4510|746",
+            "code": "ut-ex-magni-quidem-rerum",
+            "description": "Описание 45",
+            "composition": "Состав 45",
+            "care": "Уход 45"
+          }
+        }
+      }
+    }
+  ]
+}

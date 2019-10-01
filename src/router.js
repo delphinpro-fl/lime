@@ -8,13 +8,14 @@
 import Vue            from 'vue';
 import Router         from 'vue-router';
 import store          from '@/store';
+import ViewModal      from '@/views/ViewModal';
 import ViewHome       from '@/views/ViewHome';
 import ViewStaticPage from '@/views/ViewStaticPage';
 import ViewCatalog    from '@/views/ViewCatalog';
 import View404        from '@/views/View404';
 import ViewLookBook   from '@/views/ViewLookBook';
 import ViewProduct    from '@/views/ViewProduct';
-import ViewModal      from '@/views/ViewModal';
+import ViewCart       from '@/views/ViewCart';
 
 
 Vue.use(Router);
@@ -57,6 +58,12 @@ let router = new Router({
             path     : '/art-space',
             name     : 'look',
             component: ViewLookBook,
+        },
+
+        {
+            path     : '/cart',
+            name     : 'cart',
+            component: ViewCart,
         },
 
         //==

@@ -98,6 +98,8 @@ export default {
         isLockedViewport() {
             return this.isActiveOverlay;
         },
+
+        isCart() { return this.page === 'cart'; },
     },
 
     watch: {
@@ -170,14 +172,14 @@ export default {
                     <div class="AppSide__top" v-if="!isHomepage">
                         <AppLogo/>
                     </div>
-                    <MainMenu class="AppSide__content"/>
+                    <MainMenu class="AppSide__content" v-if="!isCart"/>
                 </div>
             </div>
 
             <router-view class="App__main"/>
 
             <div class="App__sideRight" v-if="isDesktopDevice">
-                <div class="App__sideContent AppSide">
+                <div class="App__sideContent AppSide" v-if="!isCart">
                     <div class="AppSide__top" v-if="showSearch">
                         <SearchBox class=""/>
                     </div>

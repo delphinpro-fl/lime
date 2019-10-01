@@ -1,0 +1,28 @@
+//==
+//== Component: ViewCart.vue
+//== ======================================= ==//
+
+.ViewCart {
+  padding-top: rem($navbar-height + 1 + 20px);
+  padding-right: rem(20px);
+  padding-left: rem(20px);
+
+  &__closer {
+    display: none;
+  }
+
+  @include media-breakpoint-up(desktop) {
+    padding-top: rem(105px);
+
+    &__closer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      display: flex;
+    }
+
+    h1 {
+      margin-left: 195px;
+    }
+  }
+}

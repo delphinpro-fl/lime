@@ -1,0 +1,44 @@
+//==
+//== Component: CustomerCart.vue
+//== ======================================= ==//
+
+.CustomerCart {
+}
+
+.CartTable {
+  display: table;
+  width: 100%;
+
+  &__row {
+    display: table-row;
+  }
+
+  &__cell {
+    display: table-cell;
+    vertical-align: top;
+  }
+
+  &__preview {
+    width: 195px;
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+  }
+
+  &__name {
+  }
+
+  &__color {
+  }
+
+  &__size {
+  }
+
+  &__quantity {
+  }
+
+  &__cost {
+  }
+}

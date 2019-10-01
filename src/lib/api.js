@@ -33,6 +33,20 @@ export const api = {
     //== ======================================= ==//
 
     /**
+     * Получение списка товаров в корзине
+     * GET {{protocol}}://{{host}}/api/cart
+     * Params
+     *      full Boolean (optional)
+     */
+    getCart(payload) {
+        let params = {};
+        if (payload && payload.full) {
+            params.full = '';
+        }
+        return Vue.axios.get(`/cart`, { params });
+    },
+
+    /**
      * Добавление / Изменение
      * POST {{protocol}}://{{host}}/api/cart
      * Body

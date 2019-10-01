@@ -2,7 +2,7 @@
 //== Component: FloatPanel.vue
 //== ======================================= ==//
 
-.float-panel {
+.FloatPanel {
   position: fixed;
   z-index: $z-float-panel;
   top: 0;
@@ -12,9 +12,12 @@
   overflow-y: auto;
   width: 575px;
   height: 100vh;
-  padding: 15px 20px;
+  padding: 30px;
   background: #fff;
 
   &__closer {
+    position: fixed;
+    right: 23px;
+    top: 21px;
   }
 }

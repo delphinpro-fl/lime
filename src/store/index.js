@@ -9,6 +9,7 @@ import Vue     from 'vue';
 import Vuex    from 'vuex';
 import pages   from '@/store/modules/pages';
 import catalog from '@/store/modules/catalog';
+import user    from '@/store/modules/user';
 import { api } from '@/lib/api';
 
 
@@ -143,6 +144,7 @@ export default new Vuex.Store({
     modules: {
         pages,
         catalog,
+        user,
     },
 
     state,

@@ -10,7 +10,14 @@ import { mapGetters } from 'vuex';
 import IButton        from '@/components/IButton';
 
 
-const hashRoutes = {};
+const Personal = () => import(/* webpackChunkName: "personal" */ '@/components/Personal');
+
+const hashRoutes = {
+    '#lk': {
+        component: Personal,
+        params   : {},
+    },
+};
 
 export default {
     name: 'FloatPanel',
@@ -60,8 +67,8 @@ export default {
 </script>
 
 <template>
-    <div class="float-panel add-scrollbar" v-if="isActive">
-        <IButton icon="cross-thin" class="IButtonClose float-panel__closer" @click="selfClose"/>
+    <div class="FloatPanel add-scrollbar" v-if="isActive">
+        <IButton icon="cross-thin" class="IButtonClose FloatPanel__closer" @click="selfClose"/>
         <component
             v-if="componentData"
             :is="componentData.component"

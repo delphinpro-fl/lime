@@ -11,8 +11,8 @@ import {
     mapMutations,
 } from 'vuex';
 
-import PersonalFormLogin          from '@/components/PersonalFormLogin';
-import PersonalFormChangePassword from '@/components/PersonalFormChangePassword';
+import FormChangePassword from '@/components/FormChangePassword';
+import FormLogin          from '@/components/FormLogin';
 
 import {
     PERSONAL_VIEW_CHANGE_PASSWORD,
@@ -24,8 +24,8 @@ export default {
     name: 'Personal',
 
     components: {
-        PersonalFormChangePassword,
-        PersonalFormLogin,
+        FormChangePassword,
+        FormLogin,
     },
 
     computed: {
@@ -35,7 +35,7 @@ export default {
         ]),
 
         showFormLogin() { return this.personalView === PERSONAL_VIEW_LOGIN; },
-        showFormChangePasssword() { return this.personalView === PERSONAL_VIEW_CHANGE_PASSWORD; },
+        showFormChangePassword() { return this.personalView === PERSONAL_VIEW_CHANGE_PASSWORD; },
     },
 
     mounted() {
@@ -54,8 +54,8 @@ export default {
     <div>
         <h1>Личный кабинет</h1>
 
-        <PersonalFormLogin v-if="showFormLogin"/>
-        <PersonalFormChangePassword v-if="showFormChangePasssword"/>
+        <FormLogin v-if="showFormLogin"/>
+        <FormChangePassword v-if="showFormChangePassword"/>
     </div>
 </template>
 

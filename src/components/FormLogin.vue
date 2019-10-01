@@ -1,6 +1,6 @@
 <!--
   Lime project
-  File: PersonalFormLogin.vue
+  File: FormLogin.vue
   (c) 2019 delphinpro <delphinpro@gmail.com>
   licensed under the MIT license
 -->
@@ -17,7 +17,7 @@ const ID_TYPE_PHONE = 1;
 const ID_TYPE_EMAIL = 2;
 
 export default {
-    name: 'PersonalFormLogin',
+    name: 'FormLogin',
 
     components: {
         Inputbox,
@@ -25,7 +25,7 @@ export default {
 
     data: () => ({
         loginForm: {
-            identifier: null,
+            identifier: '+79276559714',
             password  : null,
         },
     }),
@@ -84,6 +84,8 @@ export default {
                 </div>
             </template>
         </form>
+        <pre>identifierType: {{identifierType}}</pre>
+        <pre>loginForm: {{loginForm}}</pre>
     </div>
 </template>
 

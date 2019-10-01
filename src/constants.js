@@ -16,5 +16,6 @@ export const dangerConsole = 'color:#E33730';
 export const LS_KEY_TOKEN              = 'JWT';
 export const HTTP_HEADER_AUTHORIZATION = 'Authorization';
 
-export const PERSONAL_VIEW_LOGIN           = 'login';
-export const PERSONAL_VIEW_CHANGE_PASSWORD = 'change-password';
+export const PERSONAL_VIEW_LOGIN             = 'login';
+export const PERSONAL_VIEW_CHANGE_PASSWORD   = 'change-password';
+export const PERSONAL_VIEW_RECOVERY_PASSWORD = 'recovery-password';

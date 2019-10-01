@@ -1,6 +1,6 @@
 <!--
   Lime project
-  File: PersonalFormChangePassword.vue
+  File: FormChangePassword.vue
   (c) 2019 delphinpro <delphinpro@gmail.com>
   licensed under the MIT license
 -->
@@ -8,12 +8,13 @@
 <script>
 import { mapMutations } from 'vuex';
 
-import Inputbox                from '@/components/Inputbox';
+import Inputbox from '@/components/Inputbox';
+
 import { PERSONAL_VIEW_LOGIN } from '@/constants';
 
 
 export default {
-    name: 'PersonalFormChangePassword',
+    name: 'FormChangePassword',
 
     components: { Inputbox },
 

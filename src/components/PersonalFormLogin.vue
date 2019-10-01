@@ -6,7 +6,11 @@
 -->
 
 <script>
+import { mapMutations } from 'vuex';
+
 import Inputbox from '@/components/Inputbox';
+
+import { PERSONAL_VIEW_CHANGE_PASSWORD } from '@/constants';
 
 
 const ID_TYPE_PHONE = 1;
@@ -35,6 +39,12 @@ export default {
     },
 
     methods: {
+        ...mapMutations([
+            'setPersonalView',
+        ]),
+
+        switchToChangePassword() { this.setPersonalView(PERSONAL_VIEW_CHANGE_PASSWORD); },
+
         onSubmit() {
 
         },
@@ -58,6 +68,7 @@ export default {
                         type="password"
                         v-model="loginForm.password"
                     >
+                        <span slot="label"><a href="#" @click.prevent="switchToChangePassword">Забыли пароль?</a></span>
                     </Inputbox>
                 </div>
                 <div class="form-group form-group-submit">

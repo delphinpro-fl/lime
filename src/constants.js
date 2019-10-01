@@ -13,5 +13,8 @@ export const warnConsole   = 'background-color:#363005;color:#FDDF9D';
 export const infoConsole   = 'color:#3B85CE';
 export const dangerConsole = 'color:#E33730';
 
-export const LS_KEY_TOKEN = 'JWT';
+export const LS_KEY_TOKEN              = 'JWT';
 export const HTTP_HEADER_AUTHORIZATION = 'Authorization';
+
+export const PERSONAL_VIEW_LOGIN           = 'login';
+export const PERSONAL_VIEW_CHANGE_PASSWORD = 'change-password';

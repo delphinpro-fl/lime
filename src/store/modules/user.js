@@ -8,6 +8,7 @@
 import {
     HTTP_HEADER_AUTHORIZATION,
     LS_KEY_TOKEN,
+    PERSONAL_VIEW_LOGIN,
 } from '@/constants';
 
 import Vue from 'vue';
@@ -23,10 +24,12 @@ try {
 
 let state = {
     accessToken,
+    personalView: PERSONAL_VIEW_LOGIN,
 };
 
 let getters = {
-    isAuth: state => !!state.accessToken,
+    isAuth      : state => !!state.accessToken,
+    personalView: state => state.personalView,
 };
 
 let mutations = {
@@ -47,6 +50,8 @@ let mutations = {
         delete Vue.axios.defaults.headers.common[HTTP_HEADER_AUTHORIZATION];
         localStorage.removeItem(LS_KEY_TOKEN);
     },
+
+    setPersonalView: (state, view) => state.personalView = view,
 };
 
 let actions = {};

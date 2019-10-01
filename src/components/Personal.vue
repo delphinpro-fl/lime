@@ -6,20 +6,45 @@
 -->
 
 <script>
-import { mapGetters }    from 'vuex';
-import PersonalFormLogin from '@/components/PersonalFormLogin';
+import {
+    mapGetters,
+    mapMutations,
+} from 'vuex';
+
+import PersonalFormLogin          from '@/components/PersonalFormLogin';
+import PersonalFormChangePassword from '@/components/PersonalFormChangePassword';
+
+import {
+    PERSONAL_VIEW_CHANGE_PASSWORD,
+    PERSONAL_VIEW_LOGIN,
+} from '@/constants';
 
 
 export default {
     name: 'Personal',
 
     components: {
+        PersonalFormChangePassword,
         PersonalFormLogin,
     },
 
     computed: {
         ...mapGetters([
             'isAuth',
+            'personalView',
+        ]),
+
+        showFormLogin() { return this.personalView === PERSONAL_VIEW_LOGIN; },
+        showFormChangePasssword() { return this.personalView === PERSONAL_VIEW_CHANGE_PASSWORD; },
+    },
+
+    mounted() {
+        this.setPersonalView(PERSONAL_VIEW_LOGIN);
+    },
+
+    methods: {
+        ...mapMutations([
+            'setPersonalView',
         ]),
     },
 };
@@ -29,7 +54,8 @@ export default {
     <div>
         <h1>Личный кабинет</h1>
 
-        <PersonalFormLogin/>
+        <PersonalFormLogin v-if="showFormLogin"/>
+        <PersonalFormChangePassword v-if="showFormChangePasssword"/>
     </div>
 </template>
 

@@ -25,6 +25,7 @@ $inputbox-background-autofill: if($autofill-off, $inputbox-background, #f7f7f7);
   }
 
   &__label {
+    text-transform: uppercase;
   }
 
   &__main {

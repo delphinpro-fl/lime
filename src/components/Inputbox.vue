@@ -71,7 +71,7 @@ export default {
             <button class="Inputbox__passwordButton"
                 :class="{isActive:showPassword}"
                 :disabled="disabled"
-                v-if="type==='password'"
+                v-if="type==='password' && value"
                 @click="showPassword=!showPassword"
             >
                 <SvgIcon name="eye"/>

@@ -11,21 +11,23 @@ import {
     mapGetters,
     mapMutations,
     mapState,
-}                         from 'vuex';
-import AppFooter          from '@/components/AppFooter';
-import Availability       from '@/components/Availability';
-import CareComposition    from '@/components/CareComposition';
-import ColorSelector      from '@/components/ColorSelector';
-import IButton            from '@/components/IButton';
-import PageContent        from '@/components/PageContent';
-import ShareBlock         from '@/components/ShareBlock';
-import ShareIcons         from '@/components/ShareIcons';
-import SidePopup          from '@/components/SidePopup';
-import SizeSelector       from '@/components/SizeSelector';
-import SubscribeSize      from '@/components/SubscribeSize';
-import SvgIcon            from '@/components/SvgIcon';
+} from 'vuex';
+
+import AppFooter       from '@/components/AppFooter';
+import Availability    from '@/components/Availability';
+import CareComposition from '@/components/CareComposition';
+import ColorSelector   from '@/components/ColorSelector';
+import IButton         from '@/components/IButton';
+import PageContent     from '@/components/PageContent';
+import ShareBlock      from '@/components/ShareBlock';
+import ShareIcons      from '@/components/ShareIcons';
+import SidePopup       from '@/components/SidePopup';
+import SizeSelector    from '@/components/SizeSelector';
+import SubscribeSize   from '@/components/SubscribeSize';
+import SvgIcon         from '@/components/SvgIcon';
+import MobileCardMedia from '@/components/MobileCardMedia';
+
 import { makeSizesArray } from '@/lib';
-import MobileCardMedia    from '@/components/MobileCardMedia';
 
 
 let tm;
@@ -154,8 +156,8 @@ export default {
         ]),
 
         ...mapActions([
+            'postCart',
             'toggleBookmark',
-            'toggleCart',
         ]),
 
         scrollHandler() {
@@ -211,26 +213,27 @@ export default {
             }
         },
 
-        async clickCartHandler() {
-            // todo: fake
-            await this.toggleCart({
-                id : this.pickedModel.id,
-                add: true,
+        async addToCart() {
+            let response = await this.postCart({
+                skuId   : this.pickedModel.id,
+                quantity: 1,
             });
-            this.showCartNotify({
-                goods: {
-                    title   : this.productName,
-                    article : this.card.article,
-                    color   : this.pickedModel.color,
-                    size    : this.sku.size,
-                    photo   : {
-                        url: this.medias[0].url,
+            if (response) {
+                this.showCartNotify({
+                    goods: {
+                        title   : this.productName,
+                        article : this.card.article,
+                        color   : this.pickedModel.color,
+                        size    : this.sku.size,
+                        photo   : {
+                            url: this.medias[0].url,
+                        },
+                        quantity: response.quantity,
                     },
-                    quantity: 1,
-                },
-            });
-            clearTimeout(tm);
-            tm = setTimeout(() => this.hideCartNotify(), 3000);
+                });
+                clearTimeout(tm);
+                tm = setTimeout(() => this.hideCartNotify(), 3000);
+            }
         },
 
         toggleSizes() { this.isOpenSizes = !this.isOpenSizes; },
@@ -373,7 +376,7 @@ export default {
                         <div class="actions__cart">
                             <button class="btn-cart"
                                 :disabled="!sku.price"
-                                @click="clickCartHandler"
+                                @click="addToCart"
                             >Добавить в корзину</button>
                         </div>
                         <div class="actions__fav">

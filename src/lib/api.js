@@ -29,6 +29,23 @@ export const api = {
         return Vue.axios.get(`/section/filters/${encodeURIComponent(payload.id || payload.code)}/`);
     },
 
+    // == КОРЗИНА
+    //== ======================================= ==//
+
+    /**
+     * Добавление / Изменение
+     * POST {{protocol}}://{{host}}/api/cart
+     * Body
+     *      sku_id
+     *      quantity
+     */
+    postCart(payload) {
+        return Vue.axios.post(`/cart`, {
+            sku_id  : payload.skuId,
+            quantity: payload.quantity,
+        });
+    },
+
     // == ЗАКАЗ
     //== ======================================= ==//
 

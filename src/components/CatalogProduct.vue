@@ -57,6 +57,11 @@ export default {
             }
         },
 
+        sku() {
+            if (this.selectedSize === -1) return null;
+            return this.pickedModel.skus[this.selectedSize];
+        },
+
         pickedSize() {
             if (this.selectedSize === -1) return null;
             return this.pickedModel.skus[this.selectedSize].size;
@@ -110,6 +115,7 @@ export default {
 
     methods: {
         ...mapActions([
+            'postCart',
             'toggleBookmark',
             'toggleCart',
         ]),
@@ -136,24 +142,25 @@ export default {
             });
         },
 
-        async toggleCartHandler() {
-            // todo: fake
-            await this.toggleCart({
-                id : this.entity.id,
-                add: true,
+        async addToCart() {
+            let response = await this.postCart({
+                skuId   : this.sku.id,
+                quantity: 1,
             });
-            this.showCartNotify({
-                goods: {
-                    title   : this.title,
-                    article : this.entity.article,
-                    color   : this.pickedModel.color,
-                    size    : this.pickedSize,
-                    photo   : this.pickedModel.photo,
-                    quantity: 1,
-                },
-            });
-            clearTimeout(tm);
-            tm = setTimeout(() => this.hideCartNotify(), 3000);
+            if (response) {
+                this.showCartNotify({
+                    goods: {
+                        title   : this.title,
+                        article : this.entity.article,
+                        color   : this.pickedModel.color,
+                        size    : this.pickedSize,
+                        photo   : this.pickedModel.photo,
+                        quantity: response.quantity,
+                    },
+                });
+                clearTimeout(tm);
+                tm = setTimeout(() => this.hideCartNotify(), 3000);
+            }
         },
     },
 };
@@ -202,7 +209,7 @@ export default {
             />
             <button class="CatalogProduct__cartButton"
                 :disabled="selectedSize===-1"
-                @click="toggleCartHandler"
+                @click="addToCart"
             >В корзину</button>
         </div>
     </div>

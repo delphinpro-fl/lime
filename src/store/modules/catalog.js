@@ -48,7 +48,6 @@ let mutations = {
         }
     },
 
-
     showCartNotify: (state, payload) => {
         state.isShowCartNotify = true;
         state.newCartItem      = payload.goods;
@@ -77,9 +76,13 @@ let actions = {
         return Vue.axios.post('/favorites/', payload);
     },
 
-    // POST {{protocol}}://{{host}}/api/cart
-    toggleCart({}, payload) {
-        return Vue.axios.post('/cart/', payload);
+    async postCart({}, payload) {
+        let response = await api.postCart(payload);
+        if (response.status === 200) {
+            return response.data;
+        } else {
+            return null;
+        }
     },
 };
 

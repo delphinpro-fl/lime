@@ -37,6 +37,10 @@ switch ($object) {
         }
 }
 
+if($filename && $_SERVER['REQUEST_METHOD'] === 'POST'){
+   $filename = 'POST/'.$filename;
+}
+
 if ($filename && file_exists(__DIR__.'/'.$filename)) {
     readfile(__DIR__.'/'.$filename);
     die;

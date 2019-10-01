@@ -52,6 +52,7 @@ Vue.use(VueAxiosBridge, axios.create({
     validateStatus: status => status < 500,
 }));
 
+Vue.axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 Vue.axios.interceptors.request.use(requestSuccess, requestFailed);
 Vue.axios.interceptors.response.use(responseSuccess, responseSuccess);
 

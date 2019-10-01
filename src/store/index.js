@@ -7,6 +7,7 @@
 
 import Vue     from 'vue';
 import Vuex    from 'vuex';
+import router  from '@/router';
 import pages   from '@/store/modules/pages';
 import catalog from '@/store/modules/catalog';
 import user    from '@/store/modules/user';
@@ -28,6 +29,16 @@ let actions   = {};
 
 state.allowBackNavFromModal     = false;
 mutations.allowBackNavFromModal = state => state.allowBackNavFromModal = true;
+actions.closeModal              = ({ state }) => {
+    if (state.allowBackNavFromModal) {
+        router.back();
+    } else {
+        return router.push({
+            name  : router.currentRoute.name,
+            params: router.currentRoute.params,
+        });
+    }
+};
 
 state.isHomepage           = true;
 mutations.updateIsHomepage = (state, value) => state.isHomepage = !!value;

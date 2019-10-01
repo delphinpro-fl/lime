@@ -6,7 +6,8 @@
 -->
 
 <script>
-import IButton from '@/components/IButton';
+import { mapActions } from 'vuex';
+import IButton        from '@/components/IButton';
 
 
 const hashRoutes = {
@@ -31,16 +32,9 @@ export default {
     },
 
     methods: {
-        selfClose() {
-            if (this.$store.state.allowBackNavFromModal) {
-                this.$router.back();
-            } else {
-                this.$router.push({
-                    name  : this.$route.name,
-                    params: this.$route.params,
-                });
-            }
-        },
+        ...mapActions([
+            'closeModal',
+        ]),
     },
 };
 </script>
@@ -49,7 +43,7 @@ export default {
     <div>
         <div class="overlay"></div>
         <div class="ViewModal add-scrollbar">
-            <IButton icon="cross-thin" class="IButtonClose ViewModal__closer" @click="selfClose"/>
+            <IButton icon="cross-thin" class="IButtonClose ViewModal__closer" @click="closeModal"/>
             <component
                 v-if="modal"
                 :is="modal.component"

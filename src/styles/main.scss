@@ -9,3 +9,18 @@
 @import "base/pages";
 @import "base/btn";
 @import "base/misc";
+
+pre {
+  max-width: 100%;
+  margin: 0 0 5px;
+  padding: 0 0.2em;
+  text-transform: none;
+  color: #000;
+  border: 1px solid rgba(#000, 0.2);
+  background: rgba(#fff, 0.8);
+  font-size: 0.75em;
+
+  @media(max-width: 991px) {
+    overflow: hidden;
+  }
+}

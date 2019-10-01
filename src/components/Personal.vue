@@ -55,7 +55,7 @@ export default {
 </script>
 
 <template>
-    <div>
+    <div class="Personal">
         <h1>Личный кабинет</h1>
 
         <FormLogin v-if="showFormLogin"/>

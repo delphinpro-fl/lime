@@ -27,7 +27,7 @@ export default {
     },
 
     computed: {
-        viewComponent() {
+        cardComponent() {
             if (this.card && this.card.type && cardTypes.indexOf(this.card.type.toString()) !== -1) {
                 return `Catalog${ucfirst(this.card.type)}`;
             }
@@ -41,8 +41,8 @@ export default {
 
 <template>
     <component
-        v-if="viewComponent"
-        :is="viewComponent"
+        v-if="cardComponent"
+        :is="cardComponent"
         :is-mobile="isMobile"
         :card="card"
     />

@@ -10,7 +10,7 @@ import { mapMutations } from 'vuex';
 
 import Inputbox from '@/components/Inputbox';
 
-import { PERSONAL_VIEW_LOGIN } from '@/constants';
+import { PERSONAL_VIEW_PROFILE } from '@/constants';
 
 
 export default {
@@ -43,8 +43,8 @@ export default {
         onSubmit() {
         },
 
-        backToLoginForm() {
-            this.setPersonalView(PERSONAL_VIEW_LOGIN);
+        backToProfile() {
+            this.setPersonalView(PERSONAL_VIEW_PROFILE);
         },
     },
 };
@@ -81,7 +81,7 @@ export default {
             >Сохранить изменения</button>
         </div>
         <div class="form-group form-group-submit">
-            <button class="btn btn-block btn-outline" type="button" @click.prevent="backToLoginForm">Отменить</button>
+            <button class="btn btn-block btn-outline" type="button" @click.prevent="backToProfile">Отменить</button>
         </div>
     </form>
 </template>

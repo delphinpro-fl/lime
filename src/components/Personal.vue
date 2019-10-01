@@ -11,13 +11,15 @@ import {
     mapMutations,
 } from 'vuex';
 
-import FormChangePassword from '@/components/FormChangePassword';
-import FormLogin          from '@/components/FormLogin';
+import CustomerProfile      from '@/components/CustomerProfile';
+import FormChangePassword   from '@/components/FormChangePassword';
+import FormLogin            from '@/components/FormLogin';
 import FormRecoveryPassword from '@/components/FormRecoveryPassword';
 
 import {
     PERSONAL_VIEW_CHANGE_PASSWORD,
     PERSONAL_VIEW_LOGIN,
+    PERSONAL_VIEW_PROFILE,
     PERSONAL_VIEW_RECOVERY_PASSWORD,
 } from '@/constants';
 
@@ -26,6 +28,7 @@ export default {
     name: 'Personal',
 
     components: {
+        CustomerProfile,
         FormChangePassword,
         FormLogin,
         FormRecoveryPassword,
@@ -40,10 +43,11 @@ export default {
         showFormLogin() { return this.personalView === PERSONAL_VIEW_LOGIN; },
         showFormChangePassword() { return this.personalView === PERSONAL_VIEW_CHANGE_PASSWORD; },
         showFormRecoveryPassword() { return this.personalView === PERSONAL_VIEW_RECOVERY_PASSWORD; },
+        showProfile() { return this.personalView === PERSONAL_VIEW_PROFILE; },
     },
 
     mounted() {
-        this.setPersonalView(PERSONAL_VIEW_LOGIN);
+        this.setPersonalView(PERSONAL_VIEW_PROFILE);
     },
 
     methods: {
@@ -58,8 +62,9 @@ export default {
     <div class="Personal">
         <h1>Личный кабинет</h1>
 
-        <FormLogin v-if="showFormLogin"/>
+        <CustomerProfile v-if="showProfile"/>
         <FormChangePassword v-if="showFormChangePassword"/>
+        <FormLogin v-if="showFormLogin"/>
         <FormRecoveryPassword v-if="showFormRecoveryPassword"/>
     </div>
 </template>

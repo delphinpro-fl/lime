@@ -1,6 +1,6 @@
 <!--
   Lime project
-  File: FloatPanel.vue
+  File: ViewModal.vue
   (c) 2019 delphinpro <delphinpro@gmail.com>
   licensed under the MIT license
 -->
@@ -20,7 +20,7 @@ const hashRoutes = {
 };
 
 export default {
-    name: 'FloatPanel',
+    name: 'ViewModal',
 
     components: {
         IButton,
@@ -67,8 +67,8 @@ export default {
 </script>
 
 <template>
-    <div class="FloatPanel add-scrollbar" v-if="isActive">
-        <IButton icon="cross-thin" class="IButtonClose FloatPanel__closer" @click="selfClose"/>
+    <div class="ViewModal add-scrollbar" v-if="isActive">
+        <IButton icon="cross-thin" class="IButtonClose ViewModal__closer" @click="selfClose"/>
         <component
             v-if="componentData"
             :is="componentData.component"
@@ -77,4 +77,4 @@ export default {
     </div>
 </template>
 
-<style lang="scss" src="../styles/components/FloatPanel.scss"></style>
+<style lang="scss" src="../styles/views/ViewModal.scss"></style>

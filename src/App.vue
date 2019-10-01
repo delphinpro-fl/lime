@@ -19,7 +19,7 @@ import AppNavbar    from '@/components/AppNavbar';
 import CartNotify   from '@/components/CartNotify';
 import FilterButton from '@/components/FilterButton';
 import FilterPane   from '@/components/FilterPane';
-import FloatPanel   from '@/components/FloatPanel';
+import ViewModal    from '@/views/ViewModal';
 import MainMenu     from '@/components/MainMenu';
 import MobileMenu   from '@/components/MobileMenu';
 import SearchBox    from '@/components/SearchBox';
@@ -36,7 +36,7 @@ export default {
         CartNotify,
         FilterButton,
         FilterPane,
-        FloatPanel,
+        ViewModal,
         MainMenu,
         MobileMenu,
         SearchBox,
@@ -206,7 +206,7 @@ export default {
 
         <FilterPane v-if="isOpenFilter"/>
 
-        <FloatPanel/>
+        <ViewModal/>
 
         <MobileMenu v-if="isOpenMobileMenu"/>
 

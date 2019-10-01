@@ -19,7 +19,7 @@ const strict = process.env.NODE_ENV !== 'production';
 
 let state = {
     hashNav   : '',
-    countJumps: 0, // Счетчик внутренних переходов, для корректной работы попапов (см. FloatPanel.vue)
+    countJumps: 0, // Счетчик внутренних переходов, для корректной работы попапов (см. ViewModal.vue)
 };
 
 let getters = {

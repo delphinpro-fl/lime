@@ -51,7 +51,8 @@ export default {
     <div class="Inputbox">
         <div class="Inputbox__header">
             <span class="Inputbox__prompt">{{prompt}}</span>
-            <span class="Inputbox__label" v-if="$slots.label">
+            <span class="Inputbox__label" v-if="$slots.label || label">
+                <span v-if="!$slots.label">{{label}}</span>
                 <slot name="label"></slot>
             </span>
         </div>

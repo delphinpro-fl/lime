@@ -36,6 +36,13 @@ export default {
             if (/.+@.+\..+/i.test(this.loginForm.identifier)) return ID_TYPE_EMAIL;
             return null;
         },
+        identifierPrompt() {
+            return this.identifierType ? null : 'Для входа в аккаунт введите e-mail или телефон';
+        },
+        identifierLabel(){
+            if (this.identifierType===ID_TYPE_PHONE) return 'Номер телефона';
+            if (this.identifierType===ID_TYPE_EMAIL) return 'E-mail';
+        }
     },
 
     methods: {
@@ -57,7 +64,8 @@ export default {
         <form @submit.prevent="onSubmit">
             <div class="form-group">
                 <Inputbox
-                    prompt="Для входа в аккаунт введите e-mail или телефон"
+                    :prompt="identifierPrompt"
+                    :label="identifierLabel"
                     v-model="loginForm.identifier"
                 />
             </div>

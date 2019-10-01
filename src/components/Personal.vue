@@ -13,10 +13,12 @@ import {
 
 import FormChangePassword from '@/components/FormChangePassword';
 import FormLogin          from '@/components/FormLogin';
+import FormRecoveryPassword from '@/components/FormRecoveryPassword';
 
 import {
     PERSONAL_VIEW_CHANGE_PASSWORD,
     PERSONAL_VIEW_LOGIN,
+    PERSONAL_VIEW_RECOVERY_PASSWORD,
 } from '@/constants';
 
 
@@ -26,6 +28,7 @@ export default {
     components: {
         FormChangePassword,
         FormLogin,
+        FormRecoveryPassword,
     },
 
     computed: {
@@ -36,6 +39,7 @@ export default {
 
         showFormLogin() { return this.personalView === PERSONAL_VIEW_LOGIN; },
         showFormChangePassword() { return this.personalView === PERSONAL_VIEW_CHANGE_PASSWORD; },
+        showFormRecoveryPassword() { return this.personalView === PERSONAL_VIEW_RECOVERY_PASSWORD; },
     },
 
     mounted() {
@@ -56,6 +60,7 @@ export default {
 
         <FormLogin v-if="showFormLogin"/>
         <FormChangePassword v-if="showFormChangePassword"/>
+        <FormRecoveryPassword v-if="showFormRecoveryPassword"/>
     </div>
 </template>
 

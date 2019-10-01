@@ -10,7 +10,7 @@ import { mapMutations } from 'vuex';
 
 import Inputbox from '@/components/Inputbox';
 
-import { PERSONAL_VIEW_CHANGE_PASSWORD } from '@/constants';
+import { PERSONAL_VIEW_RECOVERY_PASSWORD } from '@/constants';
 
 
 const ID_TYPE_PHONE = 1;
@@ -39,10 +39,10 @@ export default {
         identifierPrompt() {
             return this.identifierType ? null : 'Для входа в аккаунт введите e-mail или телефон';
         },
-        identifierLabel(){
-            if (this.identifierType===ID_TYPE_PHONE) return 'Номер телефона';
-            if (this.identifierType===ID_TYPE_EMAIL) return 'E-mail';
-        }
+        identifierLabel() {
+            if (this.identifierType === ID_TYPE_PHONE) return 'Номер телефона';
+            if (this.identifierType === ID_TYPE_EMAIL) return 'E-mail';
+        },
     },
 
     methods: {
@@ -50,7 +50,7 @@ export default {
             'setPersonalView',
         ]),
 
-        switchToChangePassword() { this.setPersonalView(PERSONAL_VIEW_CHANGE_PASSWORD); },
+        switchToRecoveryPassword() { this.setPersonalView(PERSONAL_VIEW_RECOVERY_PASSWORD); },
 
         onSubmit() {
 
@@ -76,7 +76,9 @@ export default {
                         type="password"
                         v-model="loginForm.password"
                     >
-                        <span slot="label"><a href="#" @click.prevent="switchToChangePassword">Забыли пароль?</a></span>
+                        <span slot="label">
+                            <a href="#" @click.prevent="switchToRecoveryPassword">Забыли пароль?</a>
+                        </span>
                     </Inputbox>
                 </div>
                 <div class="form-group form-group-submit">

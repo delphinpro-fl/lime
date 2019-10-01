@@ -17,31 +17,17 @@ Vue.use(Vuex);
 
 const strict = process.env.NODE_ENV !== 'production';
 
-let state = {
-    hashNav   : '',
-    countJumps: 0, // Счетчик внутренних переходов, для корректной работы попапов (см. ViewModal.vue)
-};
-
-let getters = {
-    hashNav   : state => state.hashNav,
-    countJumps: state => state.countJumps,
-};
-
-let mutations = {
-    updateHashNavigation: (state, payload) => state.hashNav = payload.path === '#' ? '' : payload.path,
-    updateCountJumps    : (state, payload) => state.countJumps += payload,
-};
-
-let actions = {
-    navigateByHash({ commit }, payload) {
-        commit('updateHashNavigation', payload);
-        window.history.pushState(payload, payload.title, payload.path);
-    },
-};
+let state     = {};
+let getters   = {};
+let mutations = {};
+let actions   = {};
 
 //==
 //== Global
 //== ======================================= ==//
+
+state.allowBackNavFromModal     = false;
+mutations.allowBackNavFromModal = state => state.allowBackNavFromModal = true;
 
 state.isHomepage           = true;
 mutations.updateIsHomepage = (state, value) => state.isHomepage = !!value;
@@ -61,7 +47,7 @@ getters.isDesktopDevice = state => state.breakpoint === 'desktop';
 mutations.setBreakpoint = (state, value) => state.breakpoint = value;
 
 state.activeOverlay     = false;
-getters.isActiveOverlay = state => state.activeOverlay || (state.hashNav !== '' && state.hashNav !== '#');
+getters.isActiveOverlay = state => state.activeOverlay;
 mutations.toggleOverlay = (state, value) => (typeof value === 'boolean')
     ? state.activeOverlay = value
     : state.activeOverlay = !state.activeOverlay;

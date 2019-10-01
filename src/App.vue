@@ -19,7 +19,6 @@ import AppNavbar    from '@/components/AppNavbar';
 import CartNotify   from '@/components/CartNotify';
 import FilterButton from '@/components/FilterButton';
 import FilterPane   from '@/components/FilterPane';
-import ViewModal    from '@/views/ViewModal';
 import MainMenu     from '@/components/MainMenu';
 import MobileMenu   from '@/components/MobileMenu';
 import SearchBox    from '@/components/SearchBox';
@@ -36,7 +35,6 @@ export default {
         CartNotify,
         FilterButton,
         FilterPane,
-        ViewModal,
         MainMenu,
         MobileMenu,
         SearchBox,
@@ -61,7 +59,6 @@ export default {
         ...mapGetters([
             'isMobileDevice',
             'isDesktopDevice',
-            'hashNav',
             'isOpenFooter',
             'isOpenFilter',
             'isActiveOverlay',
@@ -124,9 +121,6 @@ export default {
         this.loadMenu({ menu: 'left' });
         this.loadMenu({ menu: 'right' });
         this.loadMenu({ menu: 'bottom' });
-
-        window.addEventListener('popstate', this.historyHandler);
-        this.historyHandler();
     },
 
     methods: {
@@ -140,11 +134,6 @@ export default {
         ...mapActions([
             'loadMenu',
         ]),
-
-        historyHandler() {
-            let urlHash = document.location.hash;
-            this.$store.commit('updateHashNavigation', { path: urlHash });
-        },
 
         scrollScreen(v) {
             this.toggleFooter(!!v);
@@ -206,7 +195,7 @@ export default {
 
         <FilterPane v-if="isOpenFilter"/>
 
-        <ViewModal/>
+        <router-view name="modal"/>
 
         <MobileMenu v-if="isOpenMobileMenu"/>
 

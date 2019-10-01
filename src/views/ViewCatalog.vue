@@ -55,8 +55,10 @@ export default {
 
     beforeRouteUpdate(to, from, next) {
         next();
-        this.loadItems(to);
-        this.loadFilter();
+        if (!to.hash && !from.hash) {
+            this.loadItems(to);
+            this.loadFilter();
+        }
     },
 
     methods: {

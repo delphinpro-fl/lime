@@ -6,15 +6,12 @@
 -->
 
 <script>
-import { mapGetters } from 'vuex';
-import IButton        from '@/components/IButton';
+import IButton from '@/components/IButton';
 
-
-const Personal = () => import(/* webpackChunkName: "personal" */ '@/components/Personal');
 
 const hashRoutes = {
     '#lk': {
-        component: Personal,
+        component: () => import(/* webpackChunkName: "personal" */ '@/components/Personal'),
         params   : {},
     },
 };
@@ -27,53 +24,38 @@ export default {
     },
 
     computed: {
-        ...mapGetters([
-            'hashNav',
-            'countJumps',
-        ]),
-
-        isActive() {
-            return this.hashNav !== '';
-        },
-
-        componentData() {
-            if (this.hashNav in hashRoutes) return hashRoutes[this.hashNav];
+        modal() {
+            if (this.$route.hash in hashRoutes) return hashRoutes[this.$route.hash];
             return undefined;
         },
     },
 
     methods: {
         selfClose() {
-            if (history.length === 1) {
-                this.replaceRoute();
+            if (this.$store.state.allowBackNavFromModal) {
+                this.$router.back();
             } else {
-                if (this.countJumps < 2) {
-                    this.replaceRoute();
-                } else {
-                    this.$router.back();
-                }
+                this.$router.push({
+                    name  : this.$route.name,
+                    params: this.$route.params,
+                });
             }
-        },
-
-        replaceRoute() {
-            this.$router.replace({
-                name  : this.$route.name,
-                params: this.$route.params,
-            });
-            this.$store.commit('updateHashNavigation', { path: document.location.hash });
         },
     },
 };
 </script>
 
 <template>
-    <div class="ViewModal add-scrollbar" v-if="isActive">
-        <IButton icon="cross-thin" class="IButtonClose ViewModal__closer" @click="selfClose"/>
-        <component
-            v-if="componentData"
-            :is="componentData.component"
-            v-bind="componentData.params"
-        />
+    <div>
+        <div class="overlay"></div>
+        <div class="ViewModal add-scrollbar">
+            <IButton icon="cross-thin" class="IButtonClose ViewModal__closer" @click="selfClose"/>
+            <component
+                v-if="modal"
+                :is="modal.component"
+                v-bind="modal.params"
+            />
+        </div>
     </div>
 </template>
 

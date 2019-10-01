@@ -14,6 +14,7 @@ import ViewCatalog    from '@/views/ViewCatalog';
 import View404        from '@/views/View404';
 import ViewLookBook   from '@/views/ViewLookBook';
 import ViewProduct    from '@/views/ViewProduct';
+import ViewModal      from '@/views/ViewModal';
 
 
 Vue.use(Router);
@@ -105,9 +106,18 @@ let router = new Router({
     ],
 });
 
+router.beforeEach((to, from, next) => {
+    if (to.hash.length > 2) {
+        to.matched[0].components.modal = ViewModal;
+    } else {
+        to.matched[0].components.modal = null;
+        store.commit('allowBackNavFromModal');
+    }
+    next();
+});
+
 router.afterEach((to) => {
     store.commit('updateIsHomepage', to.name === 'home');
-    store.commit('updateCountJumps', +1);
     store.commit('setPage', to.name);
 });
 

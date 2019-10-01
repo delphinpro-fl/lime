@@ -6,7 +6,10 @@
 -->
 
 <script>
-import { mapActions }      from 'vuex';
+import {
+    mapActions,
+    mapGetters,
+}                          from 'vuex';
 import LoadingIndicator    from '@/components/LoadingIndicator';
 import DropdownList        from '@/components/DropdownList';
 import { telephoneAsLink } from '@/lib';
@@ -36,6 +39,10 @@ export default {
     }),
 
     computed: {
+        ...mapGetters([
+            'isMobileDevice',
+        ]),
+
         selectedCity() {
             if (this.cityIndex in this.cities) return this.cities[this.cityIndex];
             return null;
@@ -101,7 +108,7 @@ export default {
 </script>
 
 <template>
-    <div class="Availability" v-if="citiesReady">
+    <div class="Availability" :class="{isMobile:isMobileDevice}" v-if="citiesReady">
         <h1>Наличие в магазинах</h1>
         <p><strong>Этот товар вы сможете приобрести в магазинах LIMÉ:</strong></p>
         <div class="Availability__citySelector" v-if="cities.length">

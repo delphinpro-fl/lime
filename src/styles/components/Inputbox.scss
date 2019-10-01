@@ -2,24 +2,77 @@
 //== Component: Inputbox.vue
 //== ======================================= ==//
 
+$autofill-off: true;
+
+$inputbox-height: 32px;
+$inputbox-color: #000;
+$inputbox-border: #000;
+$inputbox-background: #fff;
+$inputbox-border-autofill: if($autofill-off, $inputbox-border, #777);
+$inputbox-background-autofill: if($autofill-off, $inputbox-background, #f7f7f7);
+
 .Inputbox {
+  position: relative;
+
   &__header {
     display: flex;
     justify-content: space-between;
   }
 
   &__prompt {
+    text-transform: uppercase;
     font-weight: bold;
   }
 
   &__label {
   }
 
+  &__main {
+    position: relative;
+    width: 100%;
+  }
+
   &__input {
     width: 100%;
-    height: 32px;
-    background: #fff;
-    border: 1px solid black;
-    color: #000;
+    height: $inputbox-height;
+    padding: 0 15px;
+    color: $inputbox-color;
+    border: 1px solid $inputbox-border;
+    background: $inputbox-background;
+
+    &:-webkit-autofill {
+      color: $inputbox-color !important;
+      border-color: $inputbox-border-autofill;
+      -webkit-box-shadow: inset 0 0 0 50px $inputbox-background-autofill !important;
+      -webkit-text-fill-color: $inputbox-color !important;
+    }
+  }
+
+  &__passwordButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    width: 20px + 12px * 2;
+    height: $inputbox-height;
+    cursor: pointer;
+    color: #c4c4c4;
+    border: none;
+    background: none;
+
+    &:hover {
+      color: #9b9b9b;
+    }
+
+    .SvgIcon {
+      @include size(20px);
+      flex-shrink: 0;
+      margin: auto;
+    }
+
+    &.isActive {
+      color: #000;
+    }
   }
 }

@@ -6,9 +6,10 @@
 -->
 
 <script>
-import CustomerCart from '@/components/CustomerCart';
-import IButton      from '@/components/IButton';
-import AppLogo      from '@/components/AppLogo';
+import { mapGetters } from 'vuex';
+import CustomerCart   from '@/components/CustomerCart';
+import IButton        from '@/components/IButton';
+import AppLogo        from '@/components/AppLogo';
 
 
 export default {
@@ -18,6 +19,12 @@ export default {
         AppLogo,
         CustomerCart,
         IButton,
+    },
+
+    computed: {
+        ...mapGetters([
+            'isDesktopDevice',
+        ]),
     },
 
     methods: {
@@ -34,7 +41,7 @@ export default {
 
 <template>
     <div class="ViewCart">
-        <div class="ViewCart__top">
+        <div class="ViewCart__top" v-if="isDesktopDevice">
             <div class="ViewCart__logoBox">
                 <AppLogo/>
             </div>
@@ -45,7 +52,12 @@ export default {
                 <CustomerCart/>
             </div>
         </div>
-        <IButton icon="cross-thin" class="IButtonClose ViewCart__closer" @click="goBack"/>
+        <IButton
+            v-if="isDesktopDevice"
+            icon="cross-thin"
+            class="IButtonClose ViewCart__closer"
+            @click="goBack"
+        />
     </div>
 </template>
 

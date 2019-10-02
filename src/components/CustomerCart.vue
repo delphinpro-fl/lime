@@ -8,12 +8,13 @@
 <script>
 import ColorSelector from '@/components/ColorSelector';
 
-import { api }            from '@/lib/api';
+import { mapGetters }     from 'vuex';
 import IButton            from '@/components/IButton';
 import Inputbox           from '@/components/Inputbox';
 import SpinControl        from '@/components/SpinControl';
 import SizeSelector       from '@/components/SizeSelector';
 import { makeSizesArray } from '@/lib';
+import { api }            from '@/lib/api';
 
 
 export default {
@@ -32,6 +33,10 @@ export default {
     }),
 
     computed: {
+        ...mapGetters([
+            'isDesktopDevice',
+        ]),
+
         notEmpty() {
             return this.cart && this.cart.items && this.cart.items.length;
         },
@@ -74,19 +79,25 @@ export default {
                         />
                     </div>
                     <div class="CartTable__cell CartTable__size">
-                        <p><b>Размер</b></p>
+                        <b>Размер: </b>
                         <SizeSelector
+                            v-if="isDesktopDevice"
                             :options="sizes(item)"
                             :selected="0"
                         />
+                        <span v-else>{{item.sku.size.value}}</span>
                     </div>
                     <div class="CartTable__cell CartTable__quantity">
-                        <b>Количество</b>
-                        <SpinControl v-model="item.quantity"/>
+                        <b>Количество: </b>
+                        <SpinControl v-model="item.quantity" v-if="isDesktopDevice"/>
+                        <span v-else>{{item.quantity}}</span>
                     </div>
                     <div class="CartTable__cell CartTable__cost">
                         <span>3 565 ₽</span>
-                        <IButton icon="cross-thin" class="IButtonClose CartTable__removeItem"/>
+                        <IButton icon="cross-thin" class="IButtonClose CartTable__removeItem" v-if="isDesktopDevice"/>
+                    </div>
+                    <div class="CartTable__cell CartTable__removeButton" v-if="!isDesktopDevice">
+                        <button>Удалить из корзины</button>
                     </div>
                 </div>
             </div>

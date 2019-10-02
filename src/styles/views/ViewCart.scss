@@ -3,16 +3,14 @@
 //== ======================================= ==//
 
 .ViewCart {
-  //padding-top: rem($navbar-height + 1 + 20px);
-  //padding-right: rem(20px);
-  //padding-left: rem(20px);
+  padding: 30px 20px;
 
   &__closer {
     display: none;
   }
 
   @include media-breakpoint-up(desktop) {
-    //padding-top: rem(105px);
+    padding: 0;
 
     &__closer {
       position: fixed;

@@ -3,39 +3,37 @@
 //== ======================================= ==//
 
 .CustomerCart {
-  display: flex;
+  @include media-breakpoint-up(desktop) {
+    display: flex;
 
-  &__main {
-    width: percentage(6.5 / 9);
-    padding-right: 20px;
-  }
+    &__main {
+      width: percentage(6.5 / 9);
+      padding-right: 20px;
+    }
 
-  &__side {
-    width: percentage(2.5 / 9);
-    padding-top: 30px;
-    padding-left: 20px;
+    &__side {
+      width: percentage(2.5 / 9);
+      padding-top: 30px;
+      padding-left: 20px;
+    }
   }
 }
 
 .CartTable {
-  display: table;
   width: 100%;
   text-transform: uppercase;
   font-size: rem(12px);
   line-height: rem(25px);
 
   &__row {
-    display: table-row;
   }
 
   &__cell {
-    display: table-cell;
     padding: 30px 20px;
-    vertical-align: top;
   }
 
   &__preview {
-    width: percentage(195px / 1410px);
+    //width: percentage(195px / 1410px);
     padding: 0 0 60px;
 
     img {
@@ -71,15 +69,95 @@
   }
 
   &__removeItem {
-    position: absolute;
-    top: 20px;
-    left: 100%;
-    margin-left: -10px;
-    opacity: 0;
   }
 
-  &__row:hover &__removeItem {
-    opacity: 1;
+  @include media-breakpoint-down(xs) {
+    p {
+      margin: 0;
+    }
+    &__row {
+      display: grid;
+      margin-bottom: 30px;
+      grid-auto-columns: percentage(116/330) auto percentage(70/330);
+      grid-template-rows: auto auto auto auto 1fr;
+      grid-template-areas: "preview name cost" "preview color cost" "preview size cost" "preview quantity cost" "preview remove cost";
+    }
+
+    &__cell {
+      min-width: 0;
+      padding: 0 15px;
+      //border: 1px solid red;
+    }
+
+    &__preview {
+      padding: 0;
+      grid-area: preview;
+    }
+    &__name {
+      grid-area: name;
+    }
+    &__color {
+      grid-area: color;
+    }
+    &__size {
+      grid-area: size;
+    }
+    &__quantity {
+      grid-area: quantity;
+    }
+    &__cost {
+      text-align: right;
+      grid-area: cost;
+    }
+
+    &__removeButton {
+      grid-area: remove;
+
+      button {
+        padding: 0;
+        cursor: pointer;
+        white-space: nowrap;
+        text-transform: uppercase;
+        color: $color-gray;
+        border: none;
+        background: none;
+        font-size: 10px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(desktop) {
+    display: table;
+
+    &__row {
+      display: table-row;
+    }
+
+    &__cell {
+      display: table-cell;
+      vertical-align: top;
+    }
+
+    &__preview {
+      width: percentage(195px / 1410px);
+
+      img {
+        min-width: rem(90px);
+      }
+    }
+
+    &__removeItem {
+      position: absolute;
+      top: 20px;
+      left: 100%;
+      margin-left: -10px;
+      opacity: 0;
+    }
+
+    &__row:hover &__removeItem {
+      opacity: 1;
+    }
   }
 }
 

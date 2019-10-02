@@ -8,12 +8,14 @@
 <script>
 import CustomerCart from '@/components/CustomerCart';
 import IButton      from '@/components/IButton';
+import AppLogo      from '@/components/AppLogo';
 
 
 export default {
     name: 'ViewCart',
 
     components: {
+        AppLogo,
         CustomerCart,
         IButton,
     },
@@ -32,9 +34,17 @@ export default {
 
 <template>
     <div class="ViewCart">
-        <h1>Корзина</h1>
-        <CustomerCart/>
-
+        <div class="ViewCart__top">
+            <div class="ViewCart__logoBox">
+                <AppLogo/>
+            </div>
+        </div>
+        <div class="ViewCart__main">
+            <div class="ViewCart__container">
+                <h1>Корзина</h1>
+                <CustomerCart/>
+            </div>
+        </div>
         <IButton icon="cross-thin" class="IButtonClose ViewCart__closer" @click="goBack"/>
     </div>
 </template>

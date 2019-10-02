@@ -1,0 +1,46 @@
+//==
+//== Component: SpinControl.vue
+//== ======================================= ==//
+
+.SpinControl {
+  display: inline-flex;
+  height: 18px;
+
+  &__input,
+  &__button {
+    padding: 0;
+    text-align: center;
+    border: none;
+    background: none;
+  }
+
+  &__input {
+    flex-shrink: 1;
+    min-width: 0;
+
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+
+    &[type="number"] {
+      -moz-appearance: textfield;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    justify-content: center;
+    width: 18px;
+    cursor: pointer;
+  }
+
+  &__decrease {
+  }
+
+  &__increase {
+  }
+}

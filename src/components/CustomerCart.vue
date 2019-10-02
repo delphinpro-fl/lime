@@ -8,13 +8,22 @@
 <script>
 import ColorSelector from '@/components/ColorSelector';
 
-import { api } from '@/lib/api';
+import { api }            from '@/lib/api';
+import IButton            from '@/components/IButton';
+import Inputbox           from '@/components/Inputbox';
+import SpinControl        from '@/components/SpinControl';
+import SizeSelector       from '@/components/SizeSelector';
+import { makeSizesArray } from '@/lib';
 
 
 export default {
     name: 'CustomerCart',
 
     components: {
+        SizeSelector,
+        SpinControl,
+        Inputbox,
+        IButton,
         ColorSelector,
     },
 
@@ -34,34 +43,74 @@ export default {
             this.cart = response.data;
         }
     },
+
+    methods: {
+        colors(item) {
+            return [item.sku.model.color];
+        },
+        sizes(item) {
+            return makeSizesArray([item.sku], 0);
+        },
+    },
 };
 </script>
 
 <template>
     <div class="CustomerCart">
-
-        <div class="CartTable" v-if="notEmpty">
-            <div class="CartTable__row" v-for="item in cart.items" :key="item.id">
-                <div class="CartTable__cell CartTable__preview">
-                    <img class="" src="/images/1.jpg" alt="">
-                </div>
-                <div class="CartTable__cell CartTable__name">
-                    <p>{{item.sku.model.product.name_custom ||item.sku.model.product.name}}</p>
-                    <p>Арт: {{item.sku.model.product.article}}</p>
-                </div>
-                <div class="CartTable__cell CartTable__color">
-                    <ColorSelector/>
-                </div>
-                <div class="CartTable__cell CartTable__size">
-                    <p><b>Размер</b></p>
-                </div>
-                <div class="CartTable__cell CartTable__quantity">
-                    <b>Количество</b> {{item.quantity}}
-                </div>
-                <div class="CartTable__cell CartTable__cost">
-                    3 565 ₽
+        <div class="CustomerCart__main">
+            <div class="CartTable" v-if="notEmpty">
+                <div class="CartTable__row" v-for="item in cart.items" :key="item.id">
+                    <div class="CartTable__cell CartTable__preview">
+                        <img class="" src="/images/1.jpg" alt="">
+                    </div>
+                    <div class="CartTable__cell CartTable__name">
+                        <p><strong>{{item.sku.model.product.name_custom ||item.sku.model.product.name}}</strong></p>
+                        <p>Арт: {{item.sku.model.product.article}}</p>
+                    </div>
+                    <div class="CartTable__cell CartTable__color">
+                        <ColorSelector
+                            :colors="colors(item)"
+                            :selected="0"
+                        />
+                    </div>
+                    <div class="CartTable__cell CartTable__size">
+                        <p><b>Размер</b></p>
+                        <SizeSelector
+                            :options="sizes(item)"
+                            :selected="0"
+                        />
+                    </div>
+                    <div class="CartTable__cell CartTable__quantity">
+                        <b>Количество</b>
+                        <SpinControl v-model="item.quantity"/>
+                    </div>
+                    <div class="CartTable__cell CartTable__cost">
+                        <span>3 565 ₽</span>
+                        <IButton icon="cross-thin" class="IButtonClose CartTable__removeItem"/>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="CustomerCart__side">
+            <div class="CustomerCartSummary">
+                <b>общая стоимость товаров:</b> 32 391 ₽ <br>
+                <b>количество:</b> 3 <br>
+                <b class="hl">скидка по промокоду:</b> 1000 ₽ <br>
+                <b>Доставка:</b> 0 ₽ <br>
+                <b>Итого:</b> 32 391 ₽ <br>
+            </div>
+
+            <div class="PromoCodeBox">
+                <div class="PromoCodeBox__label">Промокод</div>
+                <div class="PromoCodeBox__form">
+                    <Inputbox class="PromoCodeBox__input"/>
+                    <button class="PromoCodeBox__button btn-outline" type="button" disabled>Применить</button>
+                </div>
+            </div>
+
+            <Inputbox class=""
+                prompt="введите e-mail или телефон"
+            />
         </div>
     </div>
 </template>

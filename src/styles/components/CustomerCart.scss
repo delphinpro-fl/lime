@@ -3,11 +3,26 @@
 //== ======================================= ==//
 
 .CustomerCart {
+  display: flex;
+
+  &__main {
+    width: percentage(6.5 / 9);
+    padding-right: 20px;
+  }
+
+  &__side {
+    width: percentage(2.5 / 9);
+    padding-top: 30px;
+    padding-left: 20px;
+  }
 }
 
 .CartTable {
   display: table;
   width: 100%;
+  text-transform: uppercase;
+  font-size: rem(12px);
+  line-height: rem(25px);
 
   &__row {
     display: table-row;
@@ -15,11 +30,13 @@
 
   &__cell {
     display: table-cell;
+    padding: 30px 20px;
     vertical-align: top;
   }
 
   &__preview {
-    width: 195px;
+    width: percentage(195px / 1410px);
+    padding: 0 0 60px;
 
     img {
       display: block;
@@ -34,11 +51,72 @@
   }
 
   &__size {
+    .SizeSelector {
+      min-width: 80px;
+    }
   }
 
   &__quantity {
+    .SpinControl {
+      width: 60px;
+    }
   }
 
   &__cost {
+    position: relative;
+    padding-top: 28px;
+    white-space: nowrap;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  &__removeItem {
+    position: absolute;
+    top: 20px;
+    left: 100%;
+    margin-left: -10px;
+    opacity: 0;
+  }
+
+  &__row:hover &__removeItem {
+    opacity: 1;
+  }
+}
+
+.CustomerCartSummary {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 1.7;
+
+  @media (min-width: 1600px) {
+    font-size: 16px;
+  }
+}
+
+.PromoCodeBox {
+  margin: 10px 0;
+
+  &__label {
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  &__form {
+    display: flex;
+
+  }
+
+  &__input {
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  &__button {
+    flex-shrink: 0;
+    margin-left: 4px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }

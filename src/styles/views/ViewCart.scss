@@ -3,16 +3,16 @@
 //== ======================================= ==//
 
 .ViewCart {
-  padding-top: rem($navbar-height + 1 + 20px);
-  padding-right: rem(20px);
-  padding-left: rem(20px);
+  //padding-top: rem($navbar-height + 1 + 20px);
+  //padding-right: rem(20px);
+  //padding-left: rem(20px);
 
   &__closer {
     display: none;
   }
 
   @include media-breakpoint-up(desktop) {
-    padding-top: rem(105px);
+    //padding-top: rem(105px);
 
     &__closer {
       position: fixed;
@@ -21,8 +21,39 @@
       display: flex;
     }
 
-    h1 {
-      margin-left: 195px;
+    &__top {
+      padding-top: rem(25px);
+    }
+
+    &__logoBox {
+      @include make-column-side-left();
+      display: flex;
+      align-items: center;
+      height: rem($logo-height);
+      margin-bottom: rem(30px);
+
+      > * {
+        width: 100%;
+      }
+    }
+
+    &__main {
+      display: flex;
+      padding-right: rem($grid-left-side-padding);
+      padding-left: rem($grid-left-side-padding);
+    }
+
+    &__container {
+      flex-grow: 1;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    &__main {
+      &::before {
+        @include make-column-side-left();
+        content: '';
+      }
     }
   }
 }

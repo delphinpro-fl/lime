@@ -167,19 +167,19 @@ export default {
         <AppNavbar class="App__navbar" v-if="isMobileDevice"/>
 
         <div class="App__container">
-            <div class="App__sideLeft" v-if="isDesktopDevice">
+            <div class="App__sideLeft" v-if="isDesktopDevice && !isCart">
                 <div class="App__sideContent AppSide">
                     <div class="AppSide__top" v-if="!isHomepage">
                         <AppLogo/>
                     </div>
-                    <MainMenu class="AppSide__content" v-if="!isCart"/>
+                    <MainMenu class="AppSide__content"/>
                 </div>
             </div>
 
             <router-view class="App__main"/>
 
-            <div class="App__sideRight" v-if="isDesktopDevice">
-                <div class="App__sideContent AppSide" v-if="!isCart">
+            <div class="App__sideRight" v-if="isDesktopDevice && !isCart">
+                <div class="App__sideContent AppSide">
                     <div class="AppSide__top" v-if="showSearch">
                         <SearchBox class=""/>
                     </div>

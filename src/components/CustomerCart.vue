@@ -15,12 +15,14 @@ import SpinControl        from '@/components/SpinControl';
 import SizeSelector       from '@/components/SizeSelector';
 import { makeSizesArray } from '@/lib';
 import { api }            from '@/lib/api';
+import FormLogin          from '@/components/FormLogin';
 
 
 export default {
     name: 'CustomerCart',
 
     components: {
+        FormLogin,
         SizeSelector,
         SpinControl,
         Inputbox,
@@ -119,9 +121,7 @@ export default {
                 </div>
             </div>
 
-            <Inputbox class=""
-                prompt="введите e-mail или телефон"
-            />
+            <FormLogin/>
         </div>
     </div>
 </template>

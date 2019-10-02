@@ -25,7 +25,7 @@ export default {
 
     data: () => ({
         loginForm: {
-            identifier: '+79276559714',
+            identifier: null,
             password  : null,
         },
     }),
@@ -37,7 +37,7 @@ export default {
             return null;
         },
         identifierPrompt() {
-            return this.identifierType ? null : 'Для входа в аккаунт введите e-mail или телефон';
+            return this.identifierType ? null : 'Введите e-mail или телефон';
         },
         identifierLabel() {
             if (this.identifierType === ID_TYPE_PHONE) return 'Номер телефона';
@@ -86,8 +86,6 @@ export default {
                 </div>
             </template>
         </form>
-        <pre>identifierType: {{identifierType}}</pre>
-        <pre>loginForm: {{loginForm}}</pre>
     </div>
 </template>
 

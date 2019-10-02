@@ -16,12 +16,14 @@ import SizeSelector       from '@/components/SizeSelector';
 import { makeSizesArray } from '@/lib';
 import { api }            from '@/lib/api';
 import FormLogin          from '@/components/FormLogin';
+import FormRegistration   from '@/components/FormRegistration';
 
 
 export default {
     name: 'CustomerCart',
 
     components: {
+        FormRegistration,
         FormLogin,
         SizeSelector,
         SpinControl,
@@ -121,7 +123,8 @@ export default {
                 </div>
             </div>
 
-            <FormLogin/>
+<!--            <FormLogin/>-->
+            <FormRegistration/>
         </div>
     </div>
 </template>

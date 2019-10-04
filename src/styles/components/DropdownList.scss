@@ -10,8 +10,12 @@ $DropdownList-height: 32px;
   width: 100%;
   height: rem($DropdownList-height);
   user-select: none;
-  border: 1px solid #5a5a5a;
+  border: 1px solid #000;
   background: #fff;
+
+  &.isOpen {
+    z-index: $z-dropdown-open;
+  }
 
   &__header {
     position: relative;
@@ -28,8 +32,11 @@ $DropdownList-height: 32px;
   }
 
   &__selected {
+    position: relative;
+    top: 1px;
     padding-left: 15px;
-    font-size: 10px;
+    text-transform: uppercase;
+    //font-size: 10px;
   }
 
   &__arrow {

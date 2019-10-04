@@ -56,7 +56,7 @@ export default {
 </script>
 
 <template>
-    <div class="DropdownList">
+    <div class="DropdownList" :class="{ isOpen }">
         <div class="DropdownList__header"
             tabindex="0"
             @click="toggle"

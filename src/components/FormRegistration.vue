@@ -8,8 +8,9 @@
 <script>
 import { mapMutations } from 'vuex';
 
-import Inputbox from '@/components/Inputbox';
-import Checkbox from '@/components/Checkbox';
+import Inputbox  from '@/components/Inputbox';
+import Checkbox  from '@/components/Checkbox';
+import FormGroup from '@/components/FormGroup';
 
 
 const ID_TYPE_PHONE = 1;
@@ -19,6 +20,7 @@ export default {
     name: 'FormRegistration',
 
     components: {
+        FormGroup,
         Checkbox,
         Inputbox,
     },
@@ -46,53 +48,49 @@ export default {
 </script>
 
 <template>
-    <div>
+    <div class="Form FormRegistration">
         <form @submit.prevent="onSubmit">
-            <div class="form-group">
+
+            <div class="FormTitle">Заполните поля</div>
+
+            <FormGroup label="E-mail" label-on-right>
                 <Inputbox
-                    prompt="Заполните поля"
-                    label="E-mail"
+                    type="email"
                     v-model="form.email"
                 />
-            </div>
-            <div class="form-group form-group-submit">
+            </FormGroup>
+            <FormGroup>
                 <Checkbox
                     v-model="form.newsletter"
                 >Я ХОЧУ ПОЛУЧАТЬ НОВОСТНУЮ РАССЫЛКУ
                 </Checkbox>
-            </div>
-            <div class="form-group">
+            </FormGroup>
+            <FormGroup label="Ваше имя" label-on-right>
                 <Inputbox
-                    prompt="Ваше имя"
                     type="text"
                     v-model="form.name"
-                >
-                </Inputbox>
-            </div>
-            <div class="form-group">
+                />
+            </FormGroup>
+            <FormGroup label="Придумайте пароль" label-on-right>
                 <Inputbox
-                    prompt="Придумайте пароль"
                     type="password"
                     v-model="form.password"
                     autocomplete="new-password"
-                >
-                </Inputbox>
-            </div>
-            <div class="form-group">
+                />
+            </FormGroup>
+            <FormGroup label="Повторите пароль" label-on-right>
                 <Inputbox
-                    prompt="Повторите пароль"
                     type="password"
                     v-model="form.passwordConfirm"
                     autocomplete="new-password"
-                >
-                </Inputbox>
-            </div>
-            <div class="form-group form-group-submit">
+                />
+            </FormGroup>
+            <FormGroup class="FormGroupSubmit">
                 <button class="btn btn-block" type="submit">Зарегистрироваться</button>
-            </div>
-            <div class="form-group form-group-submit">
+            </FormGroup>
+            <FormGroup class="FormGroupSubmit">
                 Я СОГЛАШАЮСЬ <b><a href="#">С УСЛОВИЯМИ</a></b>
-            </div>
+            </FormGroup>
         </form>
     </div>
 </template>

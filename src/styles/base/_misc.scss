@@ -112,3 +112,18 @@
 .hl {
   color: #ff2626;
 }
+
+.Form {
+
+}
+
+.FormTitle {
+  text-transform: uppercase;
+  font-size: rem(12px);
+  font-weight: bold;
+  line-height: 1.6;
+
+  + .FormGroup {
+    margin-top: rem(12px * -1.6);
+  }
+}

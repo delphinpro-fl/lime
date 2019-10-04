@@ -8,7 +8,8 @@
 <script>
 import { mapMutations } from 'vuex';
 
-import Inputbox from '@/components/Inputbox';
+import FormGroup from '@/components/FormGroup';
+import Inputbox  from '@/components/Inputbox';
 
 import { PERSONAL_VIEW_RECOVERY_PASSWORD } from '@/constants';
 
@@ -20,28 +21,36 @@ export default {
     name: 'FormLogin',
 
     components: {
+        FormGroup,
         Inputbox,
     },
 
+    props: {
+        formTitle: { type: String, default: 'Введите e-mail или телефон' },
+    },
+
     data: () => ({
-        loginForm: {
-            identifier: null,
+        form: {
+            identifier: '+79276559714',
             password  : null,
         },
     }),
 
     computed: {
         identifierType() {
-            if (/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/.test(this.loginForm.identifier)) return ID_TYPE_PHONE;
-            if (/.+@.+\..+/i.test(this.loginForm.identifier)) return ID_TYPE_EMAIL;
+            if (/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/.test(this.form.identifier)) return ID_TYPE_PHONE;
+            if (/.+@.+\..+/i.test(this.form.identifier)) return ID_TYPE_EMAIL;
             return null;
         },
-        identifierPrompt() {
-            return this.identifierType ? null : 'Введите e-mail или телефон';
-        },
+
         identifierLabel() {
-            if (this.identifierType === ID_TYPE_PHONE) return 'Номер телефона';
+            if (this.identifierType === ID_TYPE_PHONE) return 'Телефон';
             if (this.identifierType === ID_TYPE_EMAIL) return 'E-mail';
+            return '&nbsp;';
+        },
+
+        formHeading() {
+            return this.identifierType ? '&nbsp;' : this.formTitle;
         },
     },
 
@@ -53,37 +62,33 @@ export default {
         switchToRecoveryPassword() { this.setPersonalView(PERSONAL_VIEW_RECOVERY_PASSWORD); },
 
         onSubmit() {
-
         },
     },
 };
 </script>
 
 <template>
-    <div>
+    <div class="Form FormLogin">
         <form @submit.prevent="onSubmit">
-            <div class="form-group">
-                <Inputbox
-                    :prompt="identifierPrompt"
-                    :label="identifierLabel"
-                    v-model="loginForm.identifier"
-                />
-            </div>
+
+            <div class="FormTitle" v-html="formHeading"></div>
+
+            <FormGroup :label="identifierLabel" label-on-right>
+                <Inputbox v-model="form.identifier"/>
+            </FormGroup>
+
             <template v-if="identifierType">
-                <div class="form-group">
+                <FormGroup label-on-right>
+                    <span slot="label"><a href="#" @click.prevent="switchToRecoveryPassword">Забыли пароль?</a></span>
                     <Inputbox
-                        prompt="Введите пароль"
                         type="password"
-                        v-model="loginForm.password"
+                        v-model="form.password"
                     >
-                        <span slot="label">
-                            <a href="#" @click.prevent="switchToRecoveryPassword">Забыли пароль?</a>
-                        </span>
                     </Inputbox>
-                </div>
-                <div class="form-group form-group-submit">
+                </FormGroup>
+                <FormGroup class="FormGroupSubmit">
                     <button class="btn btn-block" type="submit">Войти</button>
-                </div>
+                </FormGroup>
             </template>
         </form>
     </div>

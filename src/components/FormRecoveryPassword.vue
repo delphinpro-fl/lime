@@ -6,6 +6,7 @@
 -->
 
 <script>
+import FormGroup        from '@/components/FormGroup';
 import Inputbox         from '@/components/Inputbox';
 import LoadingIndicator from '@/components/LoadingIndicator';
 
@@ -13,12 +14,17 @@ import LoadingIndicator from '@/components/LoadingIndicator';
 export default {
     name: 'FormRecoveryPassword',
 
-    components: { LoadingIndicator, Inputbox },
+    components: {
+        FormGroup,
+        Inputbox,
+        LoadingIndicator,
+    },
 
     data: () => ({
         alreadySent: false,
         busy       : false,
-        form       : {
+
+        form: {
             email: null,
         },
     }),
@@ -46,38 +52,39 @@ export default {
 </script>
 
 <template>
-    <form @submit.prevent="onSubmit" v-if="!alreadySent">
-        <div class="form-group">
-            <Inputbox
-                type="email"
-                autocomplete="current-password"
-                prompt="Восстановление пароля"
-                label="Введите E-mail"
-                :disabled="busy"
-                v-model="form.email"
-            />
-        </div>
-        <div class="form-group">
-            <p>Мы пришлем Вам инструкции по восстановлению пароля</p>
-        </div>
-        <div class="form-group form-group-submit">
-            <button
-                class="btn btn-block"
-                type="submit"
-                :disabled="disabledSubmit"
-            >Отправить</button>
-        </div>
-        <LoadingIndicator v-if="busy"/>
-    </form>
-    <div v-else>
-        <p><strong>Мы получили Ваш запрос</strong></p>
-        <p>В ближайшее время на вашу почту придет сообщение с инструкциями по завершению процесса</p>
-        <div class="form-group form-group-submit">
-            <button
-                class="btn btn-block"
-                type="button"
-                @click="complete"
-            >Ok</button>
+    <div class="Form FormRecoveryPassword">
+        <form @submit.prevent="onSubmit" v-if="!alreadySent">
+            <div class="FormTitle">Восстановление пароля</div>
+            <FormGroup label="Введите E-mail" label-on-right>
+                <Inputbox
+                    type="email"
+                    autocomplete="current-password"
+                    :disabled="busy"
+                    v-model="form.email"
+                />
+            </FormGroup>
+            <FormGroup>
+                <p>Мы пришлем Вам инструкции по восстановлению пароля</p>
+            </FormGroup>
+            <FormGroup class="FormGroupSubmit">
+                <button
+                    class="btn btn-block"
+                    type="submit"
+                    :disabled="disabledSubmit"
+                >Отправить</button>
+            </FormGroup>
+            <LoadingIndicator v-if="busy"/>
+        </form>
+        <div v-else>
+            <p><strong>Мы получили Ваш запрос</strong></p>
+            <p>В ближайшее время на вашу почту придет сообщение с инструкциями по завершению процесса</p>
+            <FormGroup class="FormGroupSubmit">
+                <button
+                    class="btn btn-block"
+                    type="button"
+                    @click="complete"
+                >Ok</button>
+            </FormGroup>
         </div>
     </div>
 </template>

@@ -8,8 +8,9 @@
 <script>
 import { mapMutations } from 'vuex';
 
-import Inputbox from '@/components/Inputbox';
-import Checkbox from '@/components/Checkbox';
+import Checkbox  from '@/components/Checkbox';
+import FormGroup from '@/components/FormGroup';
+import Inputbox  from '@/components/Inputbox';
 
 import { PERSONAL_VIEW_CHANGE_PASSWORD } from '@/constants';
 
@@ -18,6 +19,7 @@ export default {
     name: 'CustomerProfile',
 
     components: {
+        FormGroup,
         Checkbox,
         Inputbox,
     },
@@ -42,42 +44,51 @@ export default {
 
         onSubmit() {
         },
+
+        logout() {
+        },
     },
 };
 </script>
 
 <template>
-    <div class="CustomerProfile">
+    <div class="Form CustomerProfile">
         <form @submit.prevent="onSubmit">
-            <div class="form-group">
+
+            <div class="FormTitle">Личные данные</div>
+
+            <FormGroup label="Ваше имя" label-on-right>
                 <Inputbox
-                    prompt="Личные данные"
-                    label="Ваше имя"
                     type="text"
                     v-model="form.name"
                 />
-            </div>
-            <div class="form-group">
+            </FormGroup>
+            <FormGroup label="E-mail" label-on-right>
                 <Inputbox
-                    label="E-mail"
                     type="email"
                     v-model="form.email"
                 />
-            </div>
-            <div class="form-group">
+            </FormGroup>
+            <FormGroup label="Телефон" label-on-right>
                 <Inputbox
-                    label="Телефон"
                     type="tel"
                     v-model="form.phone"
                 />
-            </div>
-            <div class="form-group form-group-submit">
-                <button class="btn btn-block" type="button" @click="switchToChangePassword">Изменить пароль</button>
-            </div>
-            <div class="form-group form-group-submit">
-                <button class="btn btn-block btn-outline" type="submit">Сохранить изменения</button>
-            </div>
-            <div class="form-group form-group-submit">
+            </FormGroup>
+            <FormGroup class="FormGroupSubmit">
+                <button
+                    class="btn btn-block"
+                    type="button"
+                    @click="switchToChangePassword"
+                >Изменить пароль</button>
+            </FormGroup>
+            <FormGroup class="FormGroupSubmit">
+                <button
+                    class="btn btn-block btn-outline"
+                    type="submit"
+                >Сохранить изменения</button>
+            </FormGroup>
+            <FormGroup class="FormGroupSubmit">
                 <Checkbox
                     v-model="form.newsletter"
                 >Я хочу получать новостную рассылку
@@ -86,12 +97,16 @@ export default {
                     v-model="form.remember"
                 >Оставаться в системе
                 </Checkbox>
-            </div>
+            </FormGroup>
         </form>
 
-        <div class="form-group form-group-submit">
-            <button class="btn btn-block" type="button">Выйти</button>
-        </div>
+        <FormGroup class="FormGroupSubmit">
+            <button
+                class="btn btn-block"
+                type="button"
+                @click="logout"
+            >Выйти</button>
+        </FormGroup>
     </div>
 </template>
 

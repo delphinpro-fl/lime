@@ -40,8 +40,8 @@ export default {
             'personalView',
         ]),
 
-        showFormLogin() { return this.personalView === PERSONAL_VIEW_LOGIN; },
         showFormChangePassword() { return this.personalView === PERSONAL_VIEW_CHANGE_PASSWORD; },
+        showFormLogin() { return this.personalView === PERSONAL_VIEW_LOGIN; },
         showFormRecoveryPassword() { return this.personalView === PERSONAL_VIEW_RECOVERY_PASSWORD; },
         showProfile() { return this.personalView === PERSONAL_VIEW_PROFILE; },
     },
@@ -64,7 +64,7 @@ export default {
 
         <CustomerProfile v-if="showProfile"/>
         <FormChangePassword v-if="showFormChangePassword"/>
-        <FormLogin v-if="showFormLogin"/>
+        <FormLogin v-if="showFormLogin" form-title="Для входа в аккаунт введите E-mail или телефон"/>
         <FormRecoveryPassword v-if="showFormRecoveryPassword"/>
     </div>
 </template>

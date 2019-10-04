@@ -8,7 +8,8 @@
 <script>
 import { mapMutations } from 'vuex';
 
-import Inputbox from '@/components/Inputbox';
+import FormGroup from '@/components/FormGroup';
+import Inputbox  from '@/components/Inputbox';
 
 import { PERSONAL_VIEW_PROFILE } from '@/constants';
 
@@ -16,7 +17,10 @@ import { PERSONAL_VIEW_PROFILE } from '@/constants';
 export default {
     name: 'FormChangePassword',
 
-    components: { Inputbox },
+    components: {
+        FormGroup,
+        Inputbox,
+    },
 
     data: () => ({
         form: {
@@ -51,39 +55,49 @@ export default {
 </script>
 
 <template>
-    <form @submit.prevent="onSubmit">
-        <div class="form-group">
-            <Inputbox
-                type="password"
-                autocomplete="current-password"
-                v-model="form.current"
-            ><span slot="label">Текущий пароль</span></Inputbox>
-        </div>
-        <div class="form-group">
-            <Inputbox
-                type="password"
-                autocomplete="new-password"
-                v-model="form.password"
-            ><span slot="label">Новый пароль</span></Inputbox>
-        </div>
-        <div class="form-group">
-            <Inputbox
-                type="password"
-                autocomplete="new-password"
-                v-model="form.confirm"
-            ><span slot="label">Повторите пароль</span></Inputbox>
-        </div>
-        <div class="form-group form-group-submit">
-            <button
-                class="btn btn-block"
-                type="submit"
-                :disabled="disabledSubmit"
-            >Сохранить изменения</button>
-        </div>
-        <div class="form-group form-group-submit">
-            <button class="btn btn-block btn-outline" type="button" @click.prevent="backToProfile">Отменить</button>
-        </div>
-    </form>
+    <div class="Form FormChangePassword">
+        <form @submit.prevent="onSubmit">
+
+            <div class="FormTitle">Смена пароля</div>
+
+            <FormGroup label="Текущий пароль" label-on-right>
+                <Inputbox
+                    type="password"
+                    autocomplete="current-password"
+                    v-model="form.current"
+                />
+            </FormGroup>
+            <FormGroup label="Новый пароль" label-on-right>
+                <Inputbox
+                    type="password"
+                    autocomplete="new-password"
+                    v-model="form.password"
+                />
+            </FormGroup>
+            <FormGroup label="Повторите пароль" label-on-right>
+                <Inputbox
+                    type="password"
+                    autocomplete="new-password"
+                    v-model="form.confirm"
+                />
+            </FormGroup>
+
+            <FormGroup class="FormGroupSubmit">
+                <button
+                    class="btn btn-block"
+                    type="submit"
+                    :disabled="disabledSubmit"
+                >Сохранить изменения</button>
+            </FormGroup>
+            <FormGroup class="FormGroupSubmit">
+                <button
+                    class="btn btn-block btn-outline"
+                    type="button"
+                    @click.prevent="backToProfile"
+                >Отменить</button>
+            </FormGroup>
+        </form>
+    </div>
 </template>
 
 <style lang="scss"></style>

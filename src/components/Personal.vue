@@ -15,12 +15,14 @@ import CustomerProfile      from '@/components/CustomerProfile';
 import FormChangePassword   from '@/components/FormChangePassword';
 import FormLogin            from '@/components/FormLogin';
 import FormRecoveryPassword from '@/components/FormRecoveryPassword';
+import FormRegistration     from '@/components/FormRegistration';
 
 import {
     PERSONAL_VIEW_CHANGE_PASSWORD,
     PERSONAL_VIEW_LOGIN,
     PERSONAL_VIEW_PROFILE,
     PERSONAL_VIEW_RECOVERY_PASSWORD,
+    PERSONAL_VIEW_REGISTRATION,
 } from '@/constants';
 
 
@@ -32,6 +34,7 @@ export default {
         FormChangePassword,
         FormLogin,
         FormRecoveryPassword,
+        FormRegistration,
     },
 
     computed: {
@@ -43,6 +46,7 @@ export default {
         showFormChangePassword() { return this.personalView === PERSONAL_VIEW_CHANGE_PASSWORD; },
         showFormLogin() { return this.personalView === PERSONAL_VIEW_LOGIN; },
         showFormRecoveryPassword() { return this.personalView === PERSONAL_VIEW_RECOVERY_PASSWORD; },
+        showFormRegistration() { return this.personalView === PERSONAL_VIEW_REGISTRATION; },
         showProfile() { return this.personalView === PERSONAL_VIEW_PROFILE; },
     },
 
@@ -66,6 +70,7 @@ export default {
         <FormChangePassword v-if="showFormChangePassword"/>
         <FormLogin v-if="showFormLogin" form-title="Для входа в аккаунт введите E-mail или телефон"/>
         <FormRecoveryPassword v-if="showFormRecoveryPassword"/>
+        <FormRegistration v-if="showFormRegistration" label-on-right/>
     </div>
 </template>
 

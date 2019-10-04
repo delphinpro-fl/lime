@@ -25,6 +25,10 @@ export default {
         Inputbox,
     },
 
+    props: {
+        labelOnRight: { type: Boolean, default: false },
+    },
+
     data: () => ({
         form: {
             email          : null,
@@ -65,20 +69,20 @@ export default {
                 >Я ХОЧУ ПОЛУЧАТЬ НОВОСТНУЮ РАССЫЛКУ
                 </Checkbox>
             </FormGroup>
-            <FormGroup label="Ваше имя" label-on-right>
+            <FormGroup label="Ваше имя" :label-on-right="labelOnRight">
                 <Inputbox
                     type="text"
                     v-model="form.name"
                 />
             </FormGroup>
-            <FormGroup label="Придумайте пароль" label-on-right>
+            <FormGroup label="Придумайте пароль" :label-on-right="labelOnRight">
                 <Inputbox
                     type="password"
                     v-model="form.password"
                     autocomplete="new-password"
                 />
             </FormGroup>
-            <FormGroup label="Повторите пароль" label-on-right>
+            <FormGroup label="Повторите пароль" :label-on-right="labelOnRight">
                 <Inputbox
                     type="password"
                     v-model="form.passwordConfirm"

@@ -13,25 +13,7 @@ $inputbox-background-autofill: if($autofill-off, $inputbox-background, #f7f7f7);
 
 .Inputbox {
   position: relative;
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__prompt {
-    text-transform: uppercase;
-    font-weight: bold;
-  }
-
-  &__label {
-    text-transform: uppercase;
-  }
-
-  &__main {
-    position: relative;
-    width: 100%;
-  }
+  width: 100%;
 
   &__input {
     width: 100%;

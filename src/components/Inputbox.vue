@@ -16,10 +16,7 @@ export default {
     components: { SvgIcon },
 
     props: {
-        prompt: String,
-        label : String,
-        value : [String, Number],
-
+        value      : [String, Number],
         type       : { type: String, default: 'text' },
         id         : { type: String, default: null },
         name       : { type: String, default: null },
@@ -49,35 +46,24 @@ export default {
 
 <template>
     <div class="Inputbox">
-        <div class="Inputbox__header">
-            <span class="Inputbox__prompt">{{prompt}}</span>
-            <span class="Inputbox__label" v-if="$slots.label || label">
-                <span v-if="!$slots.label">{{label}}</span>
-                <slot name="label"></slot>
-            </span>
-        </div>
-        <div class="Inputbox__main">
-            <input
-                class="Inputbox__input"
-                v-bind="$attrs"
-                :id="cid"
-                :name="name"
-                :value="value"
-                :type="cType"
-                :placeholder="placeholder"
-                :disabled="disabled"
-                :readonly="readonly"
-                @input="onInput"
-            >
-            <button class="Inputbox__passwordButton"
-                :class="{isActive:showPassword}"
-                :disabled="disabled"
-                v-if="type==='password' && value"
-                @click="showPassword=!showPassword"
-            >
-                <SvgIcon name="eye"/>
-            </button>
-        </div>
+        <input
+            class="Inputbox__input"
+            v-bind="$attrs"
+            :id="cid"
+            :name="name"
+            :value="value"
+            :type="cType"
+            :placeholder="placeholder"
+            :disabled="disabled"
+            :readonly="readonly"
+            @input="onInput"
+        >
+        <button class="Inputbox__passwordButton"
+            :class="{isActive:showPassword}"
+            :disabled="disabled"
+            v-if="type==='password' && value"
+            @click="showPassword=!showPassword"
+        ><SvgIcon name="eye"/></button>
     </div>
 </template>
 

@@ -66,6 +66,7 @@ export default {
             'updateCatalogItem',
         ]),
         ...mapActions([
+            'getLookbook',
             'getCatalogSection',
             'getFilter',
         ]),
@@ -73,7 +74,12 @@ export default {
         async loadItems(route) {
             this.isReady    = false;
             this.isNotFound = false;
-            let response    = await this.getCatalogSection({ id: route.params.section });
+            let response;
+            if (this.$route.name === 'lookbook') {
+                response = await this.getLookbook();
+            } else {
+                response = await this.getCatalogSection({ id: route.params.section });
+            }
             if (response.status === 404) {
                 this.isNotFound = true;
             }

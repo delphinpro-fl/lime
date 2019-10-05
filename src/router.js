@@ -17,6 +17,7 @@ import ViewLookBook   from '@/views/ViewLookBook';
 import ViewProduct    from '@/views/ViewProduct';
 import ViewCart       from '@/views/ViewCart';
 import ViewFavorites  from '@/views/ViewFavorites';
+import ViewLook       from '@/views/ViewLook';
 
 
 Vue.use(Router);
@@ -57,8 +58,16 @@ let router = new Router({
 
         {
             path     : '/art-space',
+            name     : 'lookbook',
+            component: ViewCatalog,
+        },
+        {
+            path     : '/art-space/:id',
             name     : 'look',
-            component: ViewLookBook,
+            component: ViewLook,
+            meta     : {
+                showSearch: false,
+            },
         },
 
         {

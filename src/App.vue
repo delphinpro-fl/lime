@@ -105,6 +105,7 @@ export default {
         },
 
         isCart() { return this.page === 'cart'; },
+        isLook() { return this.page === 'look'; },
     },
 
     watch: {
@@ -188,7 +189,7 @@ export default {
 
             <router-view class="App__main"/>
 
-            <div class="App__sideRight" v-if="isDesktopDevice && !isCart">
+            <div class="App__sideRight" v-if="isDesktopDevice && !isCart && !isLook">
                 <div class="App__sideContent AppSide">
                     <div class="AppSide__top" v-if="showSearch">
                         <SearchBox class=""/>

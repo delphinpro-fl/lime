@@ -71,6 +71,18 @@ let actions = {
         return response;
     },
 
+    async getLookbook({ commit, state }, payload) {
+        let response = await api.getLookbook(payload);
+        if (response.status === 200) {
+            commit('setPageTitle', response.data.name);
+            commit('updateCatalogSection', response.data);
+        } else {
+            commit('setPageTitle', response.data.errors[0].text);
+            commit('updateCatalogSection', null);
+        }
+        return response;
+    },
+
     // POST {{protocol}}://{{host}}/api/favorites
     toggleBookmark({}, payload) {
         return Vue.axios.post('/favorites/', payload);

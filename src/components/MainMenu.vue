@@ -71,7 +71,7 @@ export default {
             </li>
         </ul>
         <div class="mainmenu__lookbook lookbook">
-            <router-link class="lookbook__link" :to="{name: 'look'}">Lookbook</router-link>
+            <router-link class="lookbook__link" :to="{name: 'lookbook'}">Lookbook</router-link>
         </div>
     </nav>
 </template>

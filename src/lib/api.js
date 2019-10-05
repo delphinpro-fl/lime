@@ -22,6 +22,22 @@ export const api = {
     },
 
     /**
+     * Запрос lookbook
+     * GET {{protocol}}://{{host}}/api/lookbook
+     */
+    getLookbook() {
+        return Vue.axios.get(`/lookbook/`);
+    },
+
+    /**
+     * Запрос look
+     * GET {{protocol}}://{{host}}/api/look/:id
+     */
+    getLook(payload) {
+        return Vue.axios.get(`/look/${encodeURIComponent(payload.id)}/`);
+    },
+
+    /**
      * Запрос набора фильтров
      * GET {{protocol}}://{{host}}/api/section/filters/{id|code}
      */

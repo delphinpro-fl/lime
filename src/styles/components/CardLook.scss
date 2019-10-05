@@ -1,0 +1,73 @@
+//==
+//== Component: CardLook.vue
+//== ======================================= ==//
+
+.CardLook {
+  //@include outline();
+  display: flex;
+  margin-left: rem(65px);
+
+  @media (min-width: 1600px) {
+    margin-left: percentage(1/12);
+  }
+
+  &__main {
+    position: relative;
+    display: flex;
+    width: 60%;
+  }
+
+  &__side {
+    position: relative;
+    width: 40%;
+    padding-bottom: 120px;
+  }
+
+  &__media-tape {
+    width: 100%;
+  }
+
+  &__thumbs {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 0;
+    background: white;
+  }
+
+  &__closer {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    background: none !important;
+  }
+
+  .isFullscreen & {
+    margin-left: 0;
+
+    &__main {
+      width: 100%;
+    }
+
+    &__side {
+      overflow: hidden;
+      width: 0;
+    }
+
+    .sticky-thumbs {
+      bottom: 0;
+      margin-left: 0;
+    }
+  }
+
+  &__items {
+
+  }
+
+  &__item {
+    &:nth-child(n + 2) {
+      margin-top: 45px;
+    }
+  }
+}

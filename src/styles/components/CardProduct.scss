@@ -247,15 +247,16 @@ $mobile-card-bottom-height: $mobile-card-padding-top
  + $mobile-card-padding-bottom;
 
 .MobileCard {
-  position: relative;
   position: fixed;
-  top: ($navbar-height + 1);
+  top: 0;
   right: 0;
   left: 0;
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: calc(100vh - #{$navbar-height + 1});
+  height: 100%;
+  padding-top: ($navbar-height + 1);
+  transition: 1s ease;
   background: #eaeaea;
 
   &__photo {

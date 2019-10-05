@@ -16,6 +16,7 @@ import View404        from '@/views/View404';
 import ViewLookBook   from '@/views/ViewLookBook';
 import ViewProduct    from '@/views/ViewProduct';
 import ViewCart       from '@/views/ViewCart';
+import ViewFavorites  from '@/views/ViewFavorites';
 
 
 Vue.use(Router);
@@ -66,6 +67,12 @@ let router = new Router({
             component: ViewCart,
         },
 
+        {
+            path     : '/favorites',
+            name     : 'favorites',
+            component: ViewFavorites,
+        },
+
         //==
         //== About menu
         //== ======================================= ==//
@@ -114,6 +121,16 @@ let router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
+
+    // Если панель избранного еще не открыта на десктопе
+    if (to.name === 'favorites' && !store.state.isOpenFavorites && store.getters.isDesktopDevice) {
+        store.commit('toggleFavorites');
+        next(false);
+        return;
+    } else {
+        store.commit('toggleFavorites', false);
+    }
+
     if (to.hash.length > 2) {
         to.matched[0].components.modal = ViewModal;
     } else {
@@ -121,6 +138,7 @@ router.beforeEach((to, from, next) => {
         store.commit('allowBackNavFromModal');
     }
     next();
+
 });
 
 router.afterEach((to) => {

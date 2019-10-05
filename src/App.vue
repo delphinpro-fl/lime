@@ -14,21 +14,25 @@ import {
     mapState,
 }                   from 'vuex';
 import AppFooter    from '@/components/AppFooter';
-import AppLogo      from '@/components/AppLogo';
-import AppNavbar    from '@/components/AppNavbar';
-import CartNotify   from '@/components/CartNotify';
-import FilterButton from '@/components/FilterButton';
-import FilterPane   from '@/components/FilterPane';
-import MainMenu     from '@/components/MainMenu';
-import MobileMenu   from '@/components/MobileMenu';
-import SearchBox    from '@/components/SearchBox';
-import UserMenu     from '@/components/UserMenu';
+import AppLogo        from '@/components/AppLogo';
+import AppNavbar      from '@/components/AppNavbar';
+import CartNotify     from '@/components/CartNotify';
+import FilterButton   from '@/components/FilterButton';
+import FilterPane     from '@/components/FilterPane';
+import MainMenu       from '@/components/MainMenu';
+import MobileMenu     from '@/components/MobileMenu';
+import SearchBox      from '@/components/SearchBox';
+import UserMenu       from '@/components/UserMenu';
+import SidePopup      from '@/components/SidePopup';
+import FavoritesModal from '@/components/FavoritesModal';
 
 
 export default {
     name: 'App',
 
     components: {
+        FavoritesModal,
+        SidePopup,
         AppFooter,
         AppLogo,
         AppNavbar,
@@ -63,6 +67,7 @@ export default {
             'isOpenFilter',
             'isActiveOverlay',
             'isPageProduct',
+            'isOpenFavorites',
         ]),
 
         showFilter() {
@@ -131,6 +136,7 @@ export default {
             'openFooter',
             'closeFooter',
             'toggleFooter',
+            'toggleFavorites',
         ]),
 
         ...mapActions([
@@ -152,6 +158,10 @@ export default {
                 if (direction === 'bottom') this.closeFooter();
             }
         },
+
+        closeFavorites(){
+            this.toggleFavorites(false);
+        }
     },
 };
 </script>
@@ -198,6 +208,10 @@ export default {
         <FilterPane v-if="isOpenFilter"/>
 
         <router-view name="modal"/>
+        <SidePopup :is-active="isOpenFavorites" @close="closeFavorites">
+            <FavoritesModal/>
+        </SidePopup>
+
 
         <MobileMenu v-if="isOpenMobileMenu"/>
 

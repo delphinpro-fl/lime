@@ -49,6 +49,9 @@ export default {
             if (this.card && this.card.entity) {
                 return this.card.entity;
             }
+            if (this.card && this.card.item) { // TODO: Хорошо бы все схемы привести к одному формату
+                return this.card.item;
+            }
         },
 
         pickedModel() {

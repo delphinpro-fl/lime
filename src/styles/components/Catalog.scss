@@ -14,4 +14,10 @@
     width: 50%;
     padding: 0 3px 3px;
   }
+
+  @include media-breakpoint-up(desktop) {
+    &__item {
+      width: 25%;
+    }
+  }
 }

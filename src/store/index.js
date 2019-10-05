@@ -58,7 +58,7 @@ getters.isDesktopDevice = state => state.breakpoint === 'desktop';
 mutations.setBreakpoint = (state, value) => state.breakpoint = value;
 
 state.activeOverlay     = false;
-getters.isActiveOverlay = state => state.activeOverlay;
+getters.isActiveOverlay = (state, getters) => state.activeOverlay || getters.isOpenFavorites;
 mutations.toggleOverlay = (state, value) => (typeof value === 'boolean')
     ? state.activeOverlay = value
     : state.activeOverlay = !state.activeOverlay;
@@ -66,6 +66,12 @@ mutations.toggleOverlay = (state, value) => (typeof value === 'boolean')
 state.page            = null;
 getters.isPageProduct = state => state.page === 'product';
 mutations.setPage     = (state, value) => state.page = value;
+
+state.isOpenFavorites   = false;
+getters.isOpenFavorites = (state, getters) => state.isOpenFavorites && getters.isDesktopDevice;
+mutations.toggleFavorites = (state, value) => (typeof value === 'boolean')
+    ? state.isOpenFavorites = value
+    : state.isOpenFavorites = !state.isOpenFavorites;
 
 //==
 //== Fullscreen product view

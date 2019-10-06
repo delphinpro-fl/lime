@@ -382,7 +382,9 @@ $mobile-card-bottom-height: $mobile-card-padding-top
     font-weight: bold;
 
     > span {
+      display: block;
       overflow: hidden;
+      width: 100%;
       white-space: nowrap;
       text-overflow: ellipsis;
     }

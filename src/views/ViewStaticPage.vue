@@ -12,12 +12,14 @@ import {
     mapGetters,
 }                       from 'vuex';
 import LoadingIndicator from '@/components/LoadingIndicator';
+import ViewPartners     from '@/views/ViewPartners';
 
 
 export default {
     name: 'ViewStaticPage',
 
     components: {
+        ViewPartners,
         LoadingIndicator,
     },
 
@@ -36,6 +38,14 @@ export default {
 
         pageContent() {
             if (this.pageData && this.pageData.content) return this.pageData.content;
+        },
+
+        isPartnersPage() {
+            return this.$route.name === 'partners';
+        },
+
+        isSimpleStaticPage() {
+            return !this.isPartnersPage;
         },
     },
 
@@ -67,7 +77,11 @@ export default {
     <div class="text-content page-text">
         <template v-if="isReady">
             <h1>{{pageData.name}}</h1>
-            <div v-if="pageContent" v-html="pageContent"></div>
+            <div v-if="isSimpleStaticPage" v-html="pageContent"></div>
+            <ViewPartners
+                v-if="isPartnersPage"
+                :content="pageContent"
+            />
         </template>
         <LoadingIndicator v-else/>
     </div>

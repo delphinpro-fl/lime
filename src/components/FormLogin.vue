@@ -31,7 +31,7 @@ export default {
 
     data: () => ({
         form: {
-            identifier: '+79276559714',
+            identifier: null,
             password  : null,
         },
     }),

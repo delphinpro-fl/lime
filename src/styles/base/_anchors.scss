@@ -1,0 +1,23 @@
+.anchors {
+  > a {
+    position: relative;
+    display: block;
+    margin: 10px 0;
+    padding: 6px 15px;
+    border: 1px solid currentColor;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 15px;
+      display: flex;
+      align-items: center;
+      height: 32px;
+      content: '+';
+    }
+  }
+}

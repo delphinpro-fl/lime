@@ -13,12 +13,14 @@ import {
 }                       from 'vuex';
 import LoadingIndicator from '@/components/LoadingIndicator';
 import ViewPartners     from '@/views/ViewPartners';
+import ViewHelp         from '@/views/ViewHelp';
 
 
 export default {
     name: 'ViewStaticPage',
 
     components: {
+        ViewHelp,
         ViewPartners,
         LoadingIndicator,
     },
@@ -44,8 +46,14 @@ export default {
             return this.$route.name === 'partners';
         },
 
+        isHelpPage() {
+            return this.$route.name === 'help';
+        },
+
         isSimpleStaticPage() {
-            return !this.isPartnersPage;
+            return !this.isPartnersPage
+                && !this.isHelpPage
+                ;
         },
     },
 
@@ -80,6 +88,10 @@ export default {
             <div v-if="isSimpleStaticPage" v-html="pageContent"></div>
             <ViewPartners
                 v-if="isPartnersPage"
+                :content="pageContent"
+            />
+            <ViewHelp
+                v-if="isHelpPage"
                 :content="pageContent"
             />
         </template>

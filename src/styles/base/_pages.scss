@@ -27,4 +27,28 @@
       font-weight: bold;
     }
   }
+
+  ul {
+    padding: 0;
+    list-style: none;
+
+    > li {
+      margin: 8px 0;
+
+      &::before {
+        display: inline-block;
+        width: 15px;
+        height: 1px;
+        margin-right: 0.5em;
+        margin-left: calc(-15px - 0.5em);
+        content: '';
+        vertical-align: middle;
+        background: currentColor;
+      }
+    }
+
+    @include media-breakpoint-down(xs) {
+      padding-left: calc(15px + 0.5em);
+    }
+  }
 }

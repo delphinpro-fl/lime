@@ -10,7 +10,6 @@ import {
     mapActions,
     mapGetters,
     mapMutations,
-    mapState,
 } from 'vuex';
 
 import AppFooter       from '@/components/AppFooter';
@@ -27,6 +26,7 @@ import SidePopup       from '@/components/SidePopup';
 import SizeSelector    from '@/components/SizeSelector';
 import SubscribeSize   from '@/components/SubscribeSize';
 import SvgIcon         from '@/components/SvgIcon';
+import UserMenu        from '@/components/UserMenu';
 
 import { makeSizesArray } from '@/lib';
 
@@ -51,6 +51,7 @@ export default {
         SizeSelector,
         SubscribeSize,
         SvgIcon,
+        UserMenu,
     },
 
     props: {
@@ -80,6 +81,7 @@ export default {
     computed: {
         ...mapGetters([
             'isDesktopDevice',
+            'getMenuItems',
         ]),
 
         isOpenPopup() {
@@ -333,6 +335,9 @@ export default {
                         </ul>
                     </div>
                 </div>
+            </div>
+            <div class="CardProduct__menu">
+                <UserMenu :items="getMenuItems('right2')"/>
             </div>
         </div>
         <div v-else

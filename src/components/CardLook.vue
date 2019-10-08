@@ -6,11 +6,15 @@
 -->
 
 <script>
-import { mapGetters } from 'vuex';
+import {
+    mapActions,
+    mapGetters,
+} from 'vuex';
 
 import CardLookItem from '@/components/CardLookItem';
 import IButton      from '@/components/IButton';
 import MediaTape    from '@/components/MediaTape';
+import UserMenu     from '@/components/UserMenu';
 
 
 export default {
@@ -20,14 +24,20 @@ export default {
         CardLookItem,
         IButton,
         MediaTape,
+        UserMenu,
     },
 
+
+    props: {
+        card: { type: Object, default: null },
+    },
 
     data: () => ({}),
 
     computed: {
         ...mapGetters([
             'isDesktopDevice',
+            'getMenuItems',
         ]),
 
         medias() {
@@ -42,22 +52,26 @@ export default {
         },
     },
 
-    props: {
-        card: { type: Object, default: null },
+    mounted() {
+        this.loadMenu({ menu: 'right2' });
     },
 
-    methods: {},
+    methods: {
+        ...mapActions([
+            'loadMenu',
+        ]),
+    },
 };
 </script>
 
 <template>
     <div class="CardProduct CardLook" v-if="card">
         <MediaTape
-            class="CardProduct__main CardLook__main"
+            class="CardProduct__main"
             :thumbs="thumbs"
             :medias="medias"
         />
-        <div class="CardProduct__side CardLook__side">
+        <div class="CardProduct__side">
             <div class="product">
                 <h1>{{card.name}}</h1>
 
@@ -70,6 +84,9 @@ export default {
                     />
                 </div>
             </div>
+        </div>
+        <div class="CardProduct__menu">
+            <UserMenu :items="getMenuItems('right2')"/>
         </div>
     </div>
 </template>

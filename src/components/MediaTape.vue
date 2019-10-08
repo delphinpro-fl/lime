@@ -96,7 +96,6 @@ export default {
         },
 
         scrollHandler() {
-            console.log('scroll');
             this.updateMediaElements();
             this.updateIndexVisibleMedia();
         },

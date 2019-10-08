@@ -20,12 +20,24 @@
   &__side {
     position: relative;
     width: 35%;
+    min-width: 320px;
     padding-bottom: 120px;
+  }
+
+  &__menu {
+    flex-shrink: 0;
+    width: 160px;
+    padding-top: 25px;
+    padding-right: 15px;
+
+    .usermenu {
+      position: sticky;
+      top: 25px;
+    }
   }
 
   .App.isFullscreen & {
     margin-left: 0;
-
   }
 }
 

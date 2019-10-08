@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Личный кабинет",
+      "url": "#lk",
+      "items": null
+    },
+    {
+      "id": 3,
+      "name": "Корзина",
+      "url": "/cart/",
+      "items": null
+    }
+  ]
+}

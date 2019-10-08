@@ -11,7 +11,9 @@ import router  from '@/router';
 import pages   from '@/store/modules/pages';
 import catalog from '@/store/modules/catalog';
 import user    from '@/store/modules/user';
-import { api } from '@/lib/api';
+
+import { toggleValue } from '@/lib';
+import { api }         from '@/lib/api';
 
 
 Vue.use(Vuex);
@@ -59,19 +61,15 @@ mutations.setBreakpoint = (state, value) => state.breakpoint = value;
 
 state.activeOverlay     = false;
 getters.isActiveOverlay = (state, getters) => state.activeOverlay || getters.isOpenFavorites;
-mutations.toggleOverlay = (state, value) => (typeof value === 'boolean')
-    ? state.activeOverlay = value
-    : state.activeOverlay = !state.activeOverlay;
+mutations.toggleOverlay = (state, value) => state.activeOverlay = toggleValue(state.activeOverlay, value);
 
 state.page            = null;
 getters.isPageProduct = state => state.page === 'product';
 mutations.setPage     = (state, value) => state.page = value;
 
-state.isOpenFavorites   = false;
-getters.isOpenFavorites = (state, getters) => state.isOpenFavorites && getters.isDesktopDevice;
-mutations.toggleFavorites = (state, value) => (typeof value === 'boolean')
-    ? state.isOpenFavorites = value
-    : state.isOpenFavorites = !state.isOpenFavorites;
+state.isOpenFavorites     = false;
+getters.isOpenFavorites   = (state, getters) => state.isOpenFavorites && getters.isDesktopDevice;
+mutations.toggleFavorites = (state, value) => state.isOpenFavorites = toggleValue(state.isOpenFavorites, value);
 
 //==
 //== Fullscreen product view
@@ -108,9 +106,7 @@ mutations.toggleMobileMenu = (state, value) => state.isOpenMobileMenu = value;
 state.isOpenSearch           = false;
 mutations.updateIsOpenSearch = (state, value) => state.isOpenSearch = !!value;
 mutations.closeSearch        = state => state.isOpenSearch = false;
-mutations.toggleSearch       = (state, value) => (typeof value === 'boolean')
-    ? state.isOpenSearch = value
-    : state.isOpenSearch = !state.isOpenSearch;
+mutations.toggleSearch       = (state, value) => state.isOpenSearch = toggleValue(state.isOpenSearch, value);
 
 //==
 //== Slider on homepage

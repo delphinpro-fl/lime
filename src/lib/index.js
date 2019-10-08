@@ -23,6 +23,10 @@ export function splitByThree(str) {
     return str.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1\u202f');
 }
 
+export function toggleValue(current, newValue) {
+    return (typeof newValue === 'boolean') ? newValue : !current;
+}
+
 export function telephoneAsLink(str) {
     if (typeof str !== 'string') return str;
     let plus = str.length && str[0] === '+' ? '+' : '';

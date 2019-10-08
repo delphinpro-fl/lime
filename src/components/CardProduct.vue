@@ -63,8 +63,6 @@ export default {
         modelIndex: 0,
         skuIndex  : 0,//-1,
 
-        isOpenShareBlock: false,
-
         isOpenSizes       : false,
         isOpenPayment     : false,
         isOpenDelivery    : false,
@@ -126,7 +124,6 @@ export default {
         },
 
         ['$store.state.breakpoint']() {
-            this.isOpenShareBlock         = false;
             this.isOpenSizeSelectorMobile = false;
         },
     },
@@ -314,18 +311,10 @@ export default {
 
                     <div class="product__links info-links">
                         <div class="info-links__col">
-                            <div class="ShareBlockWrapper">
-                                <div class="ShareBlockWrapper__link"
-                                    @click.prevent="isOpenShareBlock=!isOpenShareBlock"
-                                >
-                                    <SvgIcon name="share"/>
-                                    <a href="#" class="" @click.prevent>Поделиться</a>
-                                </div>
-                                <ShareBlock v-if="isOpenShareBlock"
-                                    class="ShareBlockWrapper__pane"
-                                    @close="isOpenShareBlock=false"
-                                />
-                            </div>
+                            <ShareBlock
+                                text="Поделиться"
+                                transition="fade-in-out"
+                            />
                         </div>
                         <ul class="info-links__col">
                             <li><a @click.prevent="toggleAvailability">Наличие в магазинах</a></li>
@@ -369,7 +358,11 @@ export default {
                                 v-if="isDetailsView"
                                 @click="toggleDetailsViews"
                             />
-                            <IButton icon="share" class="IButtonShare" v-else @click="isOpenShareBlock=true"/>
+                            <ShareBlock
+                                v-else
+                                at-bottom
+                                transition="fade-slide-bottom"
+                            />
                         </div>
                         <div class="MobileCardDetails__buttons MobileCardButtons">
                             <div class="MobileCardButtons__button">
@@ -383,12 +376,13 @@ export default {
                                     v-if="!isDetailsView"
                                     @click="gotoColorSelector"
                                 >Другие цвета</button>
-                                <button class="btn-outline btn-no-border btn-block"
+                                <ShareBlock
                                     v-else
-                                    @click="isOpenShareBlock=!isOpenShareBlock"
-                                >
-                                    <SvgIcon name="share" class="btn-icon"/>
-                                    Поделиться</button>
+                                    class="btn-outline btn-no-border btn-block"
+                                    text="Поделиться"
+                                    at-bottom
+                                    transition="fade-slide-bottom"
+                                />
                             </div>
                         </div>
                     </div>
@@ -424,13 +418,6 @@ export default {
 
             </div>
 
-            <transition name="fade-slide-bottom">
-                <ShareBlock
-                    v-if="isOpenShareBlock"
-                    class="MobileCard__ShareBlock"
-                    @close="isOpenShareBlock=false"
-                />
-            </transition>
             <transition name="fade-slide-bottom">
                 <div class="MobileCard__SizeSelector" v-if="isOpenSizeSelectorMobile">
                     <SizeSelector

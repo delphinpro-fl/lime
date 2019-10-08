@@ -4,6 +4,7 @@
 
 .ShareBlock {
   padding: 35px 25px;
+  text-align: left;
   border: 1px solid #5a5a5a;
   background: #fff;
 
@@ -33,9 +34,9 @@
   }
 
   &__social {
-    color: #5a5a5a;
     justify-content: flex-start;
     margin-top: 15px;
+    color: #5a5a5a;
   }
 
   &__closer {
@@ -44,10 +45,20 @@
     right: 0;
     opacity: 0.7;
   }
+
+  &.atBottom {
+    position: fixed;
+    top: auto;
+    right: 20px;
+    bottom: rem($mobile-card-padding-bottom);
+    left: 20px;
+    padding: 35px 25px;
+  }
 }
 
 .ShareBlockWrapper {
   position: relative;
+  z-index: $z-dropdown;
 
   &__link {
     display: flex;
@@ -68,10 +79,20 @@
         text-decoration: underline;
       }
     }
+
+    &.noText {
+      @include size(40px);
+
+      svg {
+        top: 0;
+        margin: auto;
+      }
+    }
   }
 
   &__pane {
     position: absolute;
+    z-index: $z-dropdown-open;
     top: 100%;
     left: 0;
     min-width: 260px;

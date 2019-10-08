@@ -35,6 +35,20 @@ $button-height: 32px;
 $navbar-height: 55px;
 $navbar-border-color: #c4c4c4;
 
+$mobile-card-line-height: 18px;
+$mobile-card-padding-side: 20px;
+$mobile-card-padding-top: 20px;
+$mobile-card-padding-bottom: 17px;
+$mobile-card-price-margin: 6px;
+$mobile-card-buttons-margin: 15px;
+$mobile-card-bottom-height: $mobile-card-padding-top
+ + $mobile-card-line-height
+ + $mobile-card-price-margin
+ + $mobile-card-line-height
+ + $mobile-card-buttons-margin
+ + $button-height
+ + $mobile-card-padding-bottom;
+
 // @formatter:off
 $z-sidebars             : 1;
 $z-dropdown             : 100;

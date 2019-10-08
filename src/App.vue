@@ -12,7 +12,8 @@ import {
     mapGetters,
     mapMutations,
     mapState,
-}                   from 'vuex';
+} from 'vuex';
+
 import AppFooter    from '@/components/AppFooter';
 import AppLogo        from '@/components/AppLogo';
 import AppNavbar      from '@/components/AppNavbar';
@@ -68,6 +69,7 @@ export default {
             'isActiveOverlay',
             'isPageProduct',
             'isOpenFavorites',
+            'getMenuItems',
         ]),
 
         showFilter() {
@@ -196,7 +198,7 @@ export default {
                     </div>
                     <div class="AppSide__content">
                         <FilterButton class="AppSide__filter" v-if="showFilter"/>
-                        <UserMenu class="AppSide__usermenu"/>
+                        <UserMenu class="AppSide__usermenu" :items="getMenuItems('right')"/>
                     </div>
                 </div>
             </div>

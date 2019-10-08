@@ -130,6 +130,7 @@ export default {
     },
 
     mounted() {
+        this.loadMenu({ menu: 'right2' });
         window.addEventListener('keydown', this.keyDown);
     },
 
@@ -145,6 +146,7 @@ export default {
         ]),
 
         ...mapActions([
+            'loadMenu',
             'postCart',
             'toggleBookmark',
         ]),

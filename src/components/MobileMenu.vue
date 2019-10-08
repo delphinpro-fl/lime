@@ -6,9 +6,13 @@
 -->
 
 <script>
-import { mapMutations } from 'vuex';
-import MainMenu         from '@/components/MainMenu';
-import UserMenu         from '@/components/UserMenu';
+import {
+    mapGetters,
+    mapMutations,
+} from 'vuex';
+
+import MainMenu from '@/components/MainMenu';
+import UserMenu from '@/components/UserMenu';
 
 
 export default {
@@ -17,6 +21,12 @@ export default {
     components: {
         MainMenu,
         UserMenu,
+    },
+
+    computed: {
+        ...mapGetters([
+            'getMenuItems',
+        ]),
     },
 
     methods: {
@@ -37,7 +47,7 @@ export default {
     <div class="mobile-menu">
         <div class="mobile-menu__container" @click="selfClose">
             <MainMenu class="mobile-menu__main"/>
-            <UserMenu class="mobile-menu__user"/>
+            <UserMenu class="mobile-menu__user" :items="getMenuItems('right')"/>
         </div>
     </div>
 </template>

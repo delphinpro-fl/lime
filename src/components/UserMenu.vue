@@ -12,21 +12,15 @@ import { mapGetters } from 'vuex';
 export default {
     name: 'UserMenu',
 
-    computed: {
-        ...mapGetters([
-            'getMenuItems',
-        ]),
-
-        items() {
-            return this.getMenuItems('right');
-        },
+    props: {
+        items: Array,
     },
 };
 </script>
 
 <template>
     <div class="usermenu">
-        <ul class="usermenu__list" v-if="items.length">
+        <ul class="usermenu__list" v-if="Array.isArray(items) && items.length">
             <li class="usermenu__item" v-for="item in items">
                 <router-link class="usermenu__link" :to="{path:item.url}">{{item.name}}</router-link>
             </li>

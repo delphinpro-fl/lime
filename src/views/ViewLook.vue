@@ -31,6 +31,7 @@ export default {
             let response = await api.getLook({ id: this.$route.params.id });
             if (response.status === 200) {
                 this.look = response.data;
+                this.$store.commit('setPageTitle', this.look.name_custom || this.look.name);
             }
         },
     },

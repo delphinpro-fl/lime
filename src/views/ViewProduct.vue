@@ -26,6 +26,7 @@ export default {
         let productUrl = `/product/${this.$route.params.code}`;
         let response   = await this.axios.get(productUrl);
         this.product   = response.data;
+        this.$store.commit('setPageTitle', this.product.name_custom || this.product.name);
     },
 };
 </script>

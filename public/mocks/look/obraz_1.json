@@ -32,7 +32,15 @@
               "slot": 1,
               "heigth": 1500,
               "width": 1000,
-              "type": 1
+              "type": 1,
+              "thumbs": [
+                {
+                  "target": 1,
+                  "width": 80,
+                  "height": 120,
+                  "url": "/images/1-thumb.jpg"
+                }
+              ]
             },
             "skus": [
               {
@@ -95,14 +103,22 @@
               "name": "Мышьяковый"
             },
             "photo": {
-              "id": 1,
+              "id": 2,
               "active": true,
               "title": "Вид спереди",
               "url": "/images/2.jpg",
               "slot": 1,
               "heigth": 1500,
               "width": 1000,
-              "type": 1
+              "type": 1,
+              "thumbs": [
+                {
+                  "target": 1,
+                  "width": 80,
+                  "height": 120,
+                  "url": "/images/2-thumb.jpg"
+                }
+              ]
             },
             "skus": [
               {
@@ -132,14 +148,22 @@
               "name": "Миндаль Крайола"
             },
             "photo": {
-              "id": 1,
+              "id": 5,
               "active": true,
               "title": "Вид спереди",
               "url": "/images/3.jpg",
               "slot": 1,
               "heigth": 1500,
               "width": 1000,
-              "type": 1
+              "type": 1,
+              "thumbs": [
+                {
+                  "target": 1,
+                  "width": 80,
+                  "height": 120,
+                  "url": "/images/3-thumb.jpg"
+                }
+              ]
             },
             "skus": [
               {

@@ -1,0 +1,81 @@
+//==
+//== Component: MediaTape.vue
+//== ======================================= ==//
+
+$thumb-width: 40px;
+
+.MediaTape {
+  display: flex;
+  background: #fff;
+
+  &__tape {
+    width: 100%;
+  }
+
+  &__thumbs {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 0;
+    background: white;
+  }
+
+  &__item {
+    width: 100%;
+    margin-bottom: 4px;
+    text-align: center;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__object {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+    vertical-align: top;
+
+    .App.isFullscreen & {
+      width: auto;
+      cursor: default;
+    }
+  }
+
+  &__closer {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    background: none !important;
+  }
+}
+
+.StickyThumbs {
+  position: sticky;
+  bottom: rem(40px);
+  width: rem($thumb-width);
+  margin-left: (rem(40px + 25px) / -1);
+
+  &__item {
+    width: 100%;
+    cursor: pointer;
+    opacity: 0.5;
+    border: 1px solid black;
+
+    &:nth-child(n + 2) {
+      margin-top: rem(5px);
+    }
+
+    &.active {
+      cursor: default;
+      opacity: 1;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+  }
+}

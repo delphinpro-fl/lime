@@ -2,8 +2,6 @@
 //== Component: CardProduct.vue
 //== ======================================= ==//
 
-$thumb-width: 40px;
-
 .CardProduct {
   //@include outline();
   display: flex;
@@ -25,90 +23,9 @@ $thumb-width: 40px;
     padding-bottom: 120px;
   }
 
-  &__media-tape {
-    width: 100%;
-  }
-
-  &__thumbs {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    width: 0;
-    background: white;
-  }
-
-  &__closer {
-    position: fixed;
-    top: 12px;
-    right: 12px;
-    background: none !important;
-  }
-
-  .isFullscreen & {
+  .App.isFullscreen & {
     margin-left: 0;
 
-    &__main {
-      width: 100%;
-    }
-
-    &__side {
-      overflow: hidden;
-      width: 0;
-    }
-
-    .sticky-thumbs {
-      bottom: 0;
-      margin-left: 0;
-    }
-  }
-}
-
-.media-tape {
-  width: 100%;
-
-  &__item {
-    width: 100%;
-    margin-bottom: 4px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  &__object {
-    display: block;
-    width: 100%;
-    height: auto;
-    cursor: pointer;
-  }
-}
-
-.sticky-thumbs {
-  position: sticky;
-  bottom: rem(40px);
-  width: rem($thumb-width);
-  margin-left: (rem(40px + 25px) / -1);
-
-  &__item {
-    width: 100%;
-    cursor: pointer;
-    opacity: 0.5;
-    border: 1px solid black;
-
-    &:nth-child(n + 2) {
-      margin-top: rem(5px);
-    }
-
-    &.active {
-      cursor: default;
-      opacity: 1;
-    }
-  }
-
-  &__image {
-    display: block;
-    width: 100%;
   }
 }
 

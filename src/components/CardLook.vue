@@ -6,34 +6,26 @@
 -->
 
 <script>
-import {
-    mapGetters,
-    mapMutations,
-    mapState,
-} from 'vuex';
+import { mapGetters } from 'vuex';
 
 import CardLookItem from '@/components/CardLookItem';
 import IButton      from '@/components/IButton';
+import MediaTape    from '@/components/MediaTape';
 
 
 export default {
     name: 'CardLook',
 
     components: {
-        IButton,
         CardLookItem,
+        IButton,
+        MediaTape,
     },
 
-    data: () => ({
-        mediaElements    : [],
-        indexVisibleMedia: 0,
-    }),
+
+    data: () => ({}),
 
     computed: {
-        ...mapState([
-            'isFullscreen',
-        ]),
-
         ...mapGetters([
             'isDesktopDevice',
         ]),
@@ -54,90 +46,18 @@ export default {
         card: { type: Object, default: null },
     },
 
-    methods: {
-        ...mapMutations([
-            'toggleFullscreen',
-        ]),
-
-        scrollHandler() {
-            this.updateMediaElements();
-            this.updateIndexVisibleMedia();
-        },
-
-        scrollToMedia(indexMedia) {
-            this.updateMediaElements();
-            this.updateIndexVisibleMedia();
-            if (indexMedia in this.mediaElements) {
-                let rect = this.mediaElements[indexMedia].getBoundingClientRect();
-                window.scrollTo({
-                    top     : rect.top + window.scrollY,
-                    behavior: 'smooth',
-                });
-            }
-        },
-
-        updateMediaElements() {
-            if (this.$refs.tape) {
-                this.mediaElements = Array.prototype.map.call(
-                    this.$refs.tape.querySelectorAll('.media-tape__item'),
-                    item => item,
-                );
-            }
-        },
-
-        updateIndexVisibleMedia() {
-            if (!this.mediaElements.length) {
-                console.warn('Media not ready');
-                return;
-            }
-
-            let v = []; // Видимые площади картинок
-            this.mediaElements.forEach((el, index) => {
-                let rect = el.getBoundingClientRect();
-                v.push({ index, value: Math.max(0, Math.min(innerHeight, rect.bottom) - Math.max(rect.top, 0)) });
-            });
-
-            let maxVisible = v.reduce((acc, item) => (item.value > acc.value) ? item : acc, { index: -1, value: 0 });
-            if (maxVisible.index >= 0) this.indexVisibleMedia = maxVisible.index;
-        },
-
-        toggleFullscreenView() {
-            this.toggleFullscreen();
-        },
-    },
+    methods: {},
 };
 </script>
 
 <template>
-    <div class="CardLook" v-scroll="scrollHandler" v-if="card">
-        <div class="CardLook__main">
-            <div class="CardLook__thumbs">
-                <div class="sticky-thumbs">
-                    <div class="sticky-thumbs__item"
-                        :class="{active: index === indexVisibleMedia}"
-                        v-for="(thumb, index) in thumbs"
-                        @click="scrollToMedia(index)"
-                    >
-                        <img class="sticky-thumbs__image" :src="thumb.url" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="CardLook__media-tape media-tape" v-if="medias" ref="tape">
-                <div class="media-tape__item" v-for="item in medias">
-                    <img class="media-tape__object"
-                        :src="item.url"
-                        :alt="item.title"
-                        @click="toggleFullscreenView"
-                    >
-                </div>
-            </div>
-            <IButton icon="cross-thin"
-                class="IButtonClose CardLook__closer"
-                @click="toggleFullscreenView"
-                v-if="isFullscreen"
-            />
-        </div>
-        <div class="CardLook__side">
+    <div class="CardProduct CardLook" v-if="card">
+        <MediaTape
+            class="CardProduct__main CardLook__main"
+            :thumbs="thumbs"
+            :medias="medias"
+        />
+        <div class="CardProduct__side CardLook__side">
             <div class="product">
                 <h1>{{card.name}}</h1>
 

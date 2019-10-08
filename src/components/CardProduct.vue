@@ -18,6 +18,8 @@ import Availability    from '@/components/Availability';
 import CareComposition from '@/components/CareComposition';
 import ColorSelector   from '@/components/ColorSelector';
 import IButton         from '@/components/IButton';
+import MediaTape       from '@/components/MediaTape';
+import MobileCardMedia from '@/components/MobileCardMedia';
 import PageContent     from '@/components/PageContent';
 import ShareBlock      from '@/components/ShareBlock';
 import ShareIcons      from '@/components/ShareIcons';
@@ -25,7 +27,6 @@ import SidePopup       from '@/components/SidePopup';
 import SizeSelector    from '@/components/SizeSelector';
 import SubscribeSize   from '@/components/SubscribeSize';
 import SvgIcon         from '@/components/SvgIcon';
-import MobileCardMedia from '@/components/MobileCardMedia';
 
 import { makeSizesArray } from '@/lib';
 
@@ -36,12 +37,13 @@ export default {
     name: 'CardProduct',
 
     components: {
-        MobileCardMedia,
         AppFooter,
         Availability,
         CareComposition,
         ColorSelector,
         IButton,
+        MediaTape,
+        MobileCardMedia,
         PageContent,
         ShareBlock,
         ShareIcons,
@@ -56,9 +58,6 @@ export default {
     },
 
     data: () => ({
-        mediaElements    : [],
-        indexVisibleMedia: 0,
-
         mediaIndex: 0,
         modelIndex: 0,
         skuIndex  : 0,//-1,
@@ -79,10 +78,6 @@ export default {
     }),
 
     computed: {
-        ...mapState([
-            'isFullscreen',
-        ]),
-
         ...mapGetters([
             'isDesktopDevice',
         ]),
@@ -135,11 +130,6 @@ export default {
     },
 
     mounted() {
-        this.$nextTick(() => {
-            this.updateMediaElements();
-            this.updateIndexVisibleMedia();
-        });
-
         window.addEventListener('keydown', this.keyDown);
     },
 
@@ -150,7 +140,6 @@ export default {
     methods: {
         ...mapMutations([
             'toggleOverlay',
-            'toggleFullscreen',
             'showCartNotify',
             'hideCartNotify',
         ]),
@@ -159,11 +148,6 @@ export default {
             'postCart',
             'toggleBookmark',
         ]),
-
-        scrollHandler() {
-            this.updateMediaElements();
-            this.updateIndexVisibleMedia();
-        },
 
         pickColor(modelIndex) {
             this.skuIndex   = -1;
@@ -174,43 +158,6 @@ export default {
 
         pickSize(skuIndex) {
             this.skuIndex = skuIndex;
-        },
-
-        updateMediaElements() {
-            if (this.$refs.tape) {
-                this.mediaElements = Array.prototype.map.call(
-                    this.$refs.tape.querySelectorAll('.media-tape__item'),
-                    item => item,
-                );
-            }
-        },
-
-        updateIndexVisibleMedia() {
-            if (!this.mediaElements.length) {
-                console.warn('Media not ready');
-                return;
-            }
-
-            let v = []; // Видимые площади картинок
-            this.mediaElements.forEach((el, index) => {
-                let rect = el.getBoundingClientRect();
-                v.push({ index, value: Math.max(0, Math.min(innerHeight, rect.bottom) - Math.max(rect.top, 0)) });
-            });
-
-            let maxVisible = v.reduce((acc, item) => (item.value > acc.value) ? item : acc, { index: -1, value: 0 });
-            if (maxVisible.index >= 0) this.indexVisibleMedia = maxVisible.index;
-        },
-
-        scrollToMedia(indexMedia) {
-            this.updateMediaElements();
-            this.updateIndexVisibleMedia();
-            if (indexMedia in this.mediaElements) {
-                let rect = this.mediaElements[indexMedia].getBoundingClientRect();
-                window.scrollTo({
-                    top     : rect.top + window.scrollY,
-                    behavior: 'smooth',
-                });
-            }
         },
 
         async addToCart() {
@@ -256,10 +203,6 @@ export default {
             if (e.which === 27) {
                 this.closePopup();
             }
-        },
-
-        toggleFullscreenView() {
-            this.toggleFullscreen();
         },
 
         //==
@@ -314,34 +257,12 @@ export default {
 
 <template>
     <div>
-        <div class="CardProduct" v-scroll="scrollHandler" v-if="isDesktopDevice">
-            <div class="CardProduct__main">
-                <div class="CardProduct__thumbs">
-                    <div class="sticky-thumbs">
-                        <div class="sticky-thumbs__item"
-                            :class="{active: index === indexVisibleMedia}"
-                            v-for="(thumb, index) in thumbs"
-                            @click="scrollToMedia(index)"
-                        >
-                            <img class="sticky-thumbs__image" :src="thumb.url" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="CardProduct__media-tape media-tape" v-if="medias" ref="tape">
-                    <div class="media-tape__item" v-for="item in medias">
-                        <img class="media-tape__object"
-                            :src="item.url"
-                            :alt="item.title"
-                            @click="toggleFullscreenView"
-                        >
-                    </div>
-                </div>
-                <IButton icon="cross-thin"
-                    class="IButtonClose CardProduct__closer"
-                    @click="toggleFullscreenView"
-                    v-if="isFullscreen"
-                />
-            </div>
+        <div class="CardProduct" v-if="isDesktopDevice">
+            <MediaTape
+                class="CardProduct__main"
+                :thumbs="thumbs"
+                :medias="medias"
+            />
             <div class="CardProduct__side">
                 <div class="product">
                     <h1 class="product__title">{{productName}}</h1>

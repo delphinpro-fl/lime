@@ -76,7 +76,7 @@ mutations.toggleFavorites = (state, value) => state.isOpenFavorites = toggleValu
 //== ======================================= ==//
 
 state.isFullscreen         = false;
-mutations.toggleFullscreen = state => state.isFullscreen = !state.isFullscreen;
+mutations.toggleFullscreen = (state, val) => state.isFullscreen = toggleValue(state.isFullscreen, val);
 
 //==
 //== Navigation

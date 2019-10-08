@@ -73,19 +73,25 @@
     right: 12px;
   }
 
-  &.isFullscreen {
-    .App {
-      &__sideLeft,
-      &__sideRight {
-        overflow: hidden;
-        width: 0;
-        min-width: 0;
-        padding: 0;
-      }
+  //==
+  //== Полноэкранный просмотр
+  //== изображения товара
+  //== ======================================= ==//
 
-      &__footer {
-        display: none;
-      }
+  &.isFullscreen {
+    .App__sideLeft,
+    .App__sideRight,
+    .App__footer,
+    .CardProduct__side {
+      display: none !important;
+    }
+    .CardProduct__main {
+      width: 100%;
+    }
+
+    .StickyThumbs {
+      bottom: 0;
+      margin-left: 0;
     }
   }
 }

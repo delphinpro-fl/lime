@@ -7,19 +7,24 @@
 
 import 'normalize.css/normalize.css';
 import '@/styles/main.scss';
+
 import Vue             from 'vue';
 import Vue2TouchEvents from 'vue2-touch-events';
 import axios           from 'axios';
-import App             from '@/App.vue';
-import router          from '@/router';
-import store           from '@/store';
-import VueAxiosBridge  from '@/lib/vue-axios';
+
+import App            from '@/App.vue';
+import router         from '@/router';
+import store          from '@/store';
+import VueAxiosBridge from '@/lib/vue-axios';
+
 import {
     requestFailed,
     requestSuccess,
     responseSuccess,
-}                      from '@/lib/axios-interceptors';
-import vScroll         from '@/lib/directives/v-scroll';
+} from '@/lib/axios-interceptors';
+
+import vScroll       from '@/lib/directives/v-scroll';
+import vClickOutside from '@/lib/directives/v-click-outside';
 
 
 Vue.config.productionTip = false;
@@ -61,6 +66,7 @@ Vue.axios.interceptors.response.use(responseSuccess, responseSuccess);
 //== ======================================= ==//
 
 Vue.directive('scroll', vScroll);
+Vue.directive('click-outside', vClickOutside);
 
 //==
 //== Main app

@@ -14,7 +14,7 @@ import {
 export function requestSuccess(config) {
     if (process.env.NODE_ENV === 'development') {
 
-        console.log(`%c<Interceptor> Request [${config.baseURL + config.url}]`, warnConsole);
+        // console.log(`%c<Interceptor> Request [${config.baseURL + config.url}]`, warnConsole);
 
     }
     return config;
@@ -24,7 +24,7 @@ export function requestFailed(error) {
     if (process.env.NODE_ENV === 'development') {
 
         // Todo: Do something with request error
-        console.log('<Interceptor> Request Error: ', error);
+        // console.log('<Interceptor> Request Error: ', error);
 
     }
     return Promise.reject(error);
@@ -32,7 +32,7 @@ export function requestFailed(error) {
 
 export function responseSuccess(response) {
 
-    console.log('%c<Interceptor> Response:', infoConsole, response.data);
+    // console.log('%c<Interceptor> Response:', infoConsole, response.data);
 
     return response;
 }
@@ -43,7 +43,7 @@ export function responseFailed(error) {
 
     if (process.env.NODE_ENV === 'development') {
 
-        console.log(`%c<Interceptor> Response Error ${httpStatusCode} with message: ${error.response.data.message}`, warnConsole);
+        // console.log(`%c<Interceptor> Response Error ${httpStatusCode} with message: ${error.response.data.message}`, warnConsole);
 
     }
 

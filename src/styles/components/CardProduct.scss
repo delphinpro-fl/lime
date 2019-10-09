@@ -162,30 +162,6 @@
 //== ======================================= ==//
 
 .MobileCard {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  padding-top: ($navbar-height + 1);
-  transition: 1s ease;
-  background: #eaeaea;
-
-  &__photo {
-    overflow: hidden;
-    width: 100%;
-    height: calc(100% - #{rem($mobile-card-bottom-height)});
-    transition: 0.4s ease;
-
-    img {
-      display: block;
-      width: 100%;
-    }
-  }
-
   &__back,
   &__favorite {
     position: absolute;
@@ -203,35 +179,6 @@
 
   &__favorite {
     right: 8px;
-  }
-
-  &__details {
-    position: relative;
-    flex-shrink: 0;
-    width: 100%;
-    height: rem($mobile-card-bottom-height);
-    background: white;
-  }
-
-  &__handler {
-    position: absolute;
-    z-index: 1;
-    top: -10px - 6px * 2;
-    right: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 10px + 6px * 2;
-    padding: 6px;
-
-    svg {
-      display: block;
-      flex-shrink: 0;
-      width: 38px;
-      color: #fff;
-    }
   }
 
   &__ShareBlock,
@@ -277,48 +224,11 @@
 }
 
 .MobileCardDetails {
-  position: relative;
-  padding: rem($mobile-card-padding-top) rem($mobile-card-padding-side) rem($mobile-card-padding-bottom);
-  background: #fff;
 
   &__header {
-    position: relative;
-    font-size: rem(16px);
-    line-height: (18/16);
-  }
-
-  &__title {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    min-width: 0;
-    padding-right: rem($float-button-size - 14px);
-    text-transform: uppercase;
-    font-weight: bold;
-
-    > span {
-      display: block;
-      overflow: hidden;
-      width: 100%;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-  }
-
-  &__price {
-    margin-top: rem($mobile-card-price-margin);
-    text-transform: uppercase;
   }
 
   &__button {
-    position: absolute;
-    z-index: 1;
-    top: rem(-14px);
-    right: rem(-14px);
-  }
-
-  &__buttons {
-    margin-top: rem($mobile-card-buttons-margin);
   }
 
   &__content {
@@ -359,9 +269,33 @@
   }
 }
 
+.MobileCardTitle {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  padding-right: rem($float-button-size - 14px);
+  text-transform: uppercase;
+  font-weight: bold;
+
+  > span {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.MobileCardPrice {
+  margin-top: rem($mobile-card-price-margin);
+  text-transform: uppercase;
+}
+
 .MobileCardButtons {
   display: flex;
   justify-content: space-between;
+  margin-top: rem($mobile-card-buttons-margin);
 
   &__button {
     width: calc(50% - 3px);

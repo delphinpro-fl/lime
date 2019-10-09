@@ -99,7 +99,9 @@ export default {
         },
 
         isRenderFooter() {
-            return !(this.isPageProduct && this.isMobileDevice);
+            return !((
+                this.isProduct || this.isLook
+            ) && this.isMobileDevice);
         },
 
         isLockedViewport() {
@@ -108,6 +110,7 @@ export default {
 
         isCart() { return this.page === 'cart'; },
         isLook() { return this.page === 'look'; },
+        isProduct() { return this.page === 'product'; },
     },
 
     watch: {

@@ -1,0 +1,73 @@
+//==
+//== Component: MobileCard.vue
+//== ======================================= ==//
+
+.MobileCard {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding-top: ($navbar-height + 1);
+  transition: 1s ease;
+  background: #ddd;
+
+  &__photo {
+    overflow: hidden;
+    width: 100%;
+    height: calc(100% - #{rem($mobile-card-bottom-height)});
+    transition: 0.4s ease;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  &__details {
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    height: rem($mobile-card-bottom-height);
+    background: white;
+  }
+
+  &__handler {
+    position: absolute;
+    z-index: 1;
+    top: -10px - 6px * 2;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 10px + 6px * 2;
+    padding: 6px;
+
+    svg {
+      display: block;
+      flex-shrink: 0;
+      width: 38px;
+      color: #fff;
+    }
+  }
+
+  &__header {
+    position: relative;
+    padding: rem($mobile-card-padding-top) rem($mobile-card-padding-side) rem($mobile-card-padding-bottom);
+    background: #fff;
+    font-size: rem(16px);
+    line-height: (18/16);
+  }
+
+  &__closer {
+    position: absolute;
+    z-index: 1;
+    top: rem(7px);
+    right: 0; //rem(-14px);
+  }
+}

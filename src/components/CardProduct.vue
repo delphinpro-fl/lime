@@ -12,23 +12,27 @@ import {
     mapMutations,
 } from 'vuex';
 
-import AppFooter       from '@/components/AppFooter';
-import Availability    from '@/components/Availability';
-import CareComposition from '@/components/CareComposition';
-import ColorSelector   from '@/components/ColorSelector';
-import IButton         from '@/components/IButton';
-import MediaTape       from '@/components/MediaTape';
-import MobileCardMedia from '@/components/MobileCardMedia';
-import PageContent     from '@/components/PageContent';
-import ShareBlock      from '@/components/ShareBlock';
-import ShareIcons      from '@/components/ShareIcons';
-import SidePopup       from '@/components/SidePopup';
-import SizeSelector    from '@/components/SizeSelector';
-import SubscribeSize   from '@/components/SubscribeSize';
-import SvgIcon         from '@/components/SvgIcon';
-import UserMenu        from '@/components/UserMenu';
+import AppFooter         from '@/components/AppFooter';
+import Availability      from '@/components/Availability';
+import CareComposition   from '@/components/CareComposition';
+import ColorSelector     from '@/components/ColorSelector';
+import IButton           from '@/components/IButton';
+import MediaTape         from '@/components/MediaTape';
+import MobileCard        from '@/components/MobileCard';
+import MobileCardButtons from '@/components/MobileCardButtons';
+import MobileCardMedia   from '@/components/MobileCardMedia';
+import PageContent       from '@/components/PageContent';
+import ShareBlock        from '@/components/ShareBlock';
+import ShareIcons        from '@/components/ShareIcons';
+import SidePopup         from '@/components/SidePopup';
+import SizeSelector      from '@/components/SizeSelector';
+import SubscribeSize     from '@/components/SubscribeSize';
+import SvgIcon           from '@/components/SvgIcon';
+import UserMenu          from '@/components/UserMenu';
 
 import { makeSizesArray } from '@/lib';
+import CardCommon         from '@/lib/CardCommon';
+import ProductAdapter     from '@/lib/ProductAdapter';
 
 
 let tm;
@@ -43,6 +47,8 @@ export default {
         ColorSelector,
         IButton,
         MediaTape,
+        MobileCard,
+        MobileCardButtons,
         MobileCardMedia,
         PageContent,
         ShareBlock,
@@ -53,6 +59,11 @@ export default {
         SvgIcon,
         UserMenu,
     },
+
+    mixins: [
+        CardCommon,
+        ProductAdapter,
+    ],
 
     props: {
         card: { type: Object, default: null },
@@ -72,8 +83,6 @@ export default {
 
         isOpenSizeSelectorMobile: false,
         isShowCartSuccess       : false,
-
-        isDetailsView: false,
     }),
 
     computed: {
@@ -91,10 +100,6 @@ export default {
                 || this.isOpenSubscribe;
         },
 
-        productName() {
-            return this.card.name_custom || this.card.name;
-        },
-
         colors() {
             return this.card.models.map(model => model.color);
         },
@@ -103,19 +108,11 @@ export default {
             return this.card.models[this.modelIndex];
         },
 
-        medias() {
-            return this.pickedModel.medias.map(media => media);
-        },
-
         sizes() {
             return makeSizesArray(this.pickedModel.skus, 0);
         },
 
         sku() { return this.skuIndex >= 0 ? this.pickedModel.skus[this.skuIndex] : {}; },
-
-        thumbs() {
-            return this.medias.map(media => media.thumbs.find(item => item.width === 80));
-        },
     },
 
     watch: {
@@ -203,28 +200,13 @@ export default {
         keyDown(e) {
             if (e.which === 27) {
                 this.closePopup();
+                this.$store.state.isFullscreen && this.$store.commit('toggleFullscreen', false);
             }
         },
 
         //==
         //== Mobile
         //== ======================================= ==//
-
-        swipeHandler(direction) {
-            if (direction === 'top') {
-                this.toggleDetailsViews(true);
-            }
-        },
-
-        wheelHandler(e) {
-            //e.preventDefault();
-            if (e.deltaY > 0) this.toggleDetailsViews(true);
-            // if (e.deltaY < 0) this.closeFooter();
-        },
-
-        toggleDetailsViews(state) {
-            this.isDetailsView = (typeof state === 'boolean') ? state : !this.isDetailsView;
-        },
 
         gotoColorSelector() {
             this.toggleDetailsViews(true);
@@ -258,6 +240,9 @@ export default {
 
 <template>
     <div>
+
+        <!-- Desktop Card -->
+
         <div class="CardProduct" v-if="isDesktopDevice">
             <MediaTape
                 class="CardProduct__main"
@@ -329,111 +314,28 @@ export default {
                 <UserMenu :items="getMenuItems('right2')"/>
             </div>
         </div>
-        <div v-else
-            class="MobileCard"
-            :class="{isDetails:isDetailsView, 'add-scrollbar':isDetailsView}"
-            ref="mobileCard"
-        >
-            <div class="MobileCard__photo">
+
+        <!-- Mobile Card -->
+
+        <MobileCard v-else show-buttons>
+            <template v-slot:photo>
                 <MobileCardMedia
                     v-if="medias"
                     :active-index="mediaIndex"
                     :items="medias"
                     @change="mediaIndex=$event"
                 />
-                <IButton icon="arrow-back" class="MobileCard__back" @click="returnToCatalog"/>
-                <IButton icon="star" class="MobileCard__favorite"/>
-            </div>
-            <div class="MobileCard__details" :class="{open:isDetailsView}">
-                <div class="MobileCard__handler" v-touch:swipe="swipeHandler">
-                    <SvgIcon name="chevron-up"/>
-                </div>
-                <div class="MobileCardDetails" @wheel="wheelHandler" v-touch:swipe="swipeHandler">
-                    <div class="MobileCardDetails__header">
-                        <div class="MobileCardDetails__title"><span>{{productName}}</span></div>
-                        <div class="MobileCardDetails__price" v-if="sku.price">{{sku.price}} ₽</div>
-                        <div class="MobileCardDetails__button">
-                            <IButton icon="cross-thin"
-                                class="IButtonClose"
-                                v-if="isDetailsView"
-                                @click="toggleDetailsViews"
-                            />
-                            <ShareBlock
-                                v-else
-                                at-bottom
-                                transition="fade-slide-bottom"
-                            />
-                        </div>
-                        <div class="MobileCardDetails__buttons MobileCardButtons">
-                            <div class="MobileCardButtons__button">
-                                <button class="btn btn-block"
-                                    :disabled="!sku.price"
-                                    @click="openSizeSelectorMobile"
-                                >В корзину</button>
-                            </div>
-                            <div class="MobileCardButtons__button">
-                                <button class="btn btn-block"
-                                    v-if="!isDetailsView"
-                                    @click="gotoColorSelector"
-                                >Другие цвета</button>
-                                <ShareBlock
-                                    v-else
-                                    class="btn-outline btn-no-border btn-block"
-                                    text="Поделиться"
-                                    at-bottom
-                                    transition="fade-slide-bottom"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="MobileCardDetails__content" v-if="isDetailsView">
-                        <div class="MobileCardDetails__description" v-html="card.description"></div>
-                        <div class="MobileCardDetails__article" v-if="card.article">Арт. {{card.article}}</div>
-                        <ul class="MobileCardDetails__infoLinks">
-                            <li><a @click.prevent="toggleAvailability">Наличие в магазинах</a></li>
-                            <li><a @click.prevent="toggleCare">Состав и уход</a></li>
-                            <li><a @click.prevent="toggleDelivery">Доставка и возврат</a></li>
-                            <li><a @click.prevent="togglePayment">Оплата</a></li>
-                        </ul>
-                        <div class="MobileCardDetails__colors" ref="mobileColors">
-                            <p><strong>Все цвета</strong></p>
-                            <ColorSelector class=""
-                                v-if="colors.length"
-                                :colors="colors"
-                                :selected="modelIndex"
-                                type="thumbs"
-                                @change="pickColor"
-                            />
-                        </div>
-                    </div>
-                    <AppFooter class="MobileCardDetails__footer" v-if="isDetailsView"/>
-                </div>
+            </template>
 
-                <transition name="fade-in-out">
-                    <div class="cart-success" v-if="isShowCartSuccess">
-                        <div class="cart-success__title">Товар добавлен в корзину</div>
-                        <div class="cart-success__link"><a href="#">Перейти</a></div>
-                    </div>
-                </transition>
+            <template v-slot:right>
+                <ShareBlock at-bottom transition="fade-slide-bottom"/>
+            </template>
 
-            </div>
-
-            <transition name="fade-slide-bottom">
-                <div class="MobileCard__SizeSelector" v-if="isOpenSizeSelectorMobile">
-                    <SizeSelector
-                        :is-mobile="true"
-                        :options="sizes"
-                        :selected="skuIndex"
-                        @change="pickSizeMobile"
-                        @subscribe="showSubscribe"
-                        @close="isOpenSizeSelectorMobile=false"
-                    />
-                    <div class="MobileCard__sizeInfoButton" @click="isOpenSizes=true">
-                        Руководство по размерам +
-                    </div>
-                </div>
-            </transition>
-        </div>
+            <template v-slot:header="slotHeader">
+                <div class="MobileCardTitle"><span>{{productName}}</span></div>
+                <div class="MobileCardPrice" v-if="sku.price">{{sku.price}} ₽</div>
+            </template>
+        </MobileCard>
         <SidePopup
             :is-active="isOpenPopup"
             @close="closePopup"

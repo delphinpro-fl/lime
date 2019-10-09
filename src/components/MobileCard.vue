@@ -6,6 +6,8 @@
 -->
 
 <script>
+import AppFooter         from '@/components/AppFooter';
+import ColorSelector     from '@/components/ColorSelector';
 import IButton           from '@/components/IButton';
 import MobileCardButtons from '@/components/MobileCardButtons';
 import ShareBlock        from '@/components/ShareBlock';
@@ -16,6 +18,8 @@ export default {
     name: 'MobileCard',
 
     components: {
+        AppFooter,
+        ColorSelector,
         IButton,
         MobileCardButtons,
         ShareBlock,
@@ -24,6 +28,8 @@ export default {
 
     props: {
         showButtons: { type: Boolean, default: false },
+        colors     : { type: Array, default: null },
+        colorIndex : Number,
     },
 
     data: () => ({
@@ -37,11 +43,25 @@ export default {
 
         swipeHandler(direction) {
             if (direction === 'top') this.toggleDetailsViews(true);
+            // if (direction === 'bottom') this.toggleDetailsViews(false);
         },
 
         wheelHandler(e) {
             if (e.deltaY > 0) this.toggleDetailsViews(true);
-            if (e.deltaY < 0) this.toggleDetailsViews(false);
+            // if (e.deltaY < 0) this.toggleDetailsViews(false);
+        },
+
+        gotoColorSelector() {
+            this.toggleDetailsViews(true);
+            setTimeout(() => {
+                // todo: transitionend instead timeout
+                this.$refs.mobileCard.scrollTop = this.$refs.mobileColors.offsetTop;
+            }, 300);
+        },
+
+        pickColor(e) {
+            this.toggleDetailsViews(false);
+            this.$emit('change-color', e);
         },
     },
 };
@@ -49,7 +69,7 @@ export default {
 
 <template>
     <div
-        class="MobileCard"
+        class="MobileCard" ref="mobileCard"
         :class="{isDetails:isDetailsView, 'add-scrollbar':isDetailsView}"
     >
         <div class="MobileCard__photo">
@@ -61,7 +81,12 @@ export default {
             </div>
             <div class="MobileCard__header" @wheel="wheelHandler" v-touch:swipe="swipeHandler">
                 <slot name="header" v-bind:isDetailsView="isDetailsView"></slot>
-                <MobileCardButtons v-if="showButtons" :display-share-button="isDetailsView"/>
+                <MobileCardButtons
+                    v-if="showButtons"
+                    :display-share-button="isDetailsView"
+                    @in-cart="$emit('in-cart')"
+                    @open-details="gotoColorSelector"
+                />
                 <div class="MobileCard__closer">
                     <IButton icon="cross-thin"
                         class="IButtonClose"
@@ -71,6 +96,20 @@ export default {
                     <slot name="right" v-else></slot>
                 </div>
             </div>
+            <div class="MobileCard__content" v-if="isDetailsView">
+                <slot name="content">CONTENT</slot>
+                <div class="MobileCard__colors" v-if="colors" ref="mobileColors">
+                    <p><strong>Все цвета</strong></p>
+                    <ColorSelector class=""
+                        v-if="colors.length"
+                        :colors="colors"
+                        :selected="colorIndex"
+                        type="thumbs"
+                        @change="pickColor"
+                    />
+                </div>
+            </div>
+            <AppFooter class="MobileCard__footer" v-if="isDetailsView"/>
         </div>
     </div>
 </template>

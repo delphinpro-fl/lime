@@ -13,10 +13,10 @@ export default {
     name: 'MobileCardButtons',
 
     components: {
-        ShareBlock
+        ShareBlock,
     },
 
-    props       : {
+    props: {
         displayShareButton: Boolean,
     },
 
@@ -31,11 +31,12 @@ export default {
 <template>
     <div class="MobileCardButtons">
         <div class="MobileCardButtons__button">
-            <button class="btn btn-block">В корзину</button>
+            <button class="btn btn-block" @click="$emit('in-cart')">В корзину</button>
         </div>
         <div class="MobileCardButtons__button">
             <button v-if="!displayShareButton"
                 class="btn btn-block"
+                @click="$emit('open-details')"
             >Другие цвета</button>
             <ShareBlock v-else
                 class="btn-outline btn-no-border btn-block"

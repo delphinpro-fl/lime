@@ -162,25 +162,6 @@
 //== ======================================= ==//
 
 .MobileCard {
-  &__back,
-  &__favorite {
-    position: absolute;
-    top: 8px;
-    color: $color-gray;
-
-    svg {
-      @include size(rem(24px));
-    }
-  }
-
-  &__back {
-    left: 8px;
-  }
-
-  &__favorite {
-    right: 8px;
-  }
-
   &__ShareBlock,
   &__SizeSelector {
     position: absolute;
@@ -231,38 +212,8 @@
   &__button {
   }
 
-  &__content {
-    text-transform: uppercase;
-  }
 
-  &__description {
-    margin-top: 18px;
-  }
 
-  &__article {
-    font-weight: bold;
-  }
-
-  &__infoLinks {
-    margin: 32px 0;
-    padding: 0;
-    list-style: none;
-
-    > li {
-      margin: 9px 0;
-
-      &::after {
-        content: ' +';
-      }
-
-      a {
-        cursor: pointer;
-      }
-    }
-  }
-
-  &__colors {
-  }
 
   &__footer {
     margin-top: 2rem;
@@ -299,6 +250,33 @@
 
   &__button {
     width: calc(50% - 3px);
+  }
+}
+
+.MobileProduct {
+  &__description {
+  }
+
+  &__article {
+    font-weight: bold;
+  }
+
+  &__infoLinks {
+    margin: 32px 0;
+    padding: 0;
+    list-style: none;
+
+    > li {
+      margin: 9px 0;
+
+      &::after {
+        content: ' +';
+      }
+
+      a {
+        cursor: pointer;
+      }
+    }
   }
 }
 

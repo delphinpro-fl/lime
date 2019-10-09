@@ -151,7 +151,6 @@ export default {
             this.skuIndex   = -1;
             this.modelIndex = modelIndex;
             this.mediaIndex = 0;
-            this.toggleDetailsViews(false);
         },
 
         pickSize(skuIndex) {
@@ -208,14 +207,6 @@ export default {
         //== Mobile
         //== ======================================= ==//
 
-        gotoColorSelector() {
-            this.toggleDetailsViews(true);
-            setTimeout(() => {
-                // todo: transitionend instead timeout
-                this.$refs.mobileCard.scrollTop = this.$refs.mobileColors.offsetTop;
-            }, 300);
-        },
-
         returnToCatalog() {
             this.$router.push({ name: 'section', params: { section: this.$route.params.section } });
         },
@@ -234,6 +225,9 @@ export default {
                 this.isShowCartSuccess = false;
             }, 3000);
         },
+
+        onInCart() {
+        },
     },
 };
 </script>
@@ -244,8 +238,7 @@ export default {
         <!-- Desktop Card -->
 
         <div class="CardProduct" v-if="isDesktopDevice">
-            <MediaTape
-                class="CardProduct__main"
+            <MediaTape class="CardProduct__main"
                 :thumbs="thumbs"
                 :medias="medias"
             />
@@ -317,7 +310,13 @@ export default {
 
         <!-- Mobile Card -->
 
-        <MobileCard v-else show-buttons>
+        <MobileCard v-else
+            show-buttons
+            :colors="colors"
+            :color-index="modelIndex"
+            @change-color="pickColor"
+            @in-cart="onInCart"
+        >
             <template v-slot:photo>
                 <MobileCardMedia
                     v-if="medias"
@@ -325,6 +324,8 @@ export default {
                     :items="medias"
                     @change="mediaIndex=$event"
                 />
+                <IButton icon="arrow-back" class="MobileCard__back" @click="returnToCatalog"/>
+                <IButton icon="star" class="MobileCard__favorite"/>
             </template>
 
             <template v-slot:right>
@@ -334,6 +335,19 @@ export default {
             <template v-slot:header="slotHeader">
                 <div class="MobileCardTitle"><span>{{productName}}</span></div>
                 <div class="MobileCardPrice" v-if="sku.price">{{sku.price}} ₽</div>
+            </template>
+
+            <template v-slot:content>
+                <div class="MobileProduct">
+                    <div class="MobileProduct__description" v-html="card.description"></div>
+                    <div class="MobileProduct__article" v-if="card.article">Арт. {{card.article}}</div>
+                    <ul class="MobileProduct__infoLinks">
+                        <li><a @click.prevent="toggleAvailability">Наличие в магазинах</a></li>
+                        <li><a @click.prevent="toggleCare">Состав и уход</a></li>
+                        <li><a @click.prevent="toggleDelivery">Доставка и возврат</a></li>
+                        <li><a @click.prevent="togglePayment">Оплата</a></li>
+                    </ul>
+                </div>
             </template>
         </MobileCard>
         <SidePopup

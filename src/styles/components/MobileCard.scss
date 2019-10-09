@@ -70,4 +70,32 @@
     top: rem(7px);
     right: 0; //rem(-14px);
   }
+
+  &__back,
+  &__favorite {
+    position: absolute;
+    top: $navbar-height + 8px;
+    color: $color-gray;
+
+    svg {
+      @include size(rem(24px));
+    }
+  }
+
+  &__back {
+    left: 8px;
+  }
+
+  &__favorite {
+    right: 8px;
+  }
+
+  &__content {
+    background: #fff;
+    text-transform: uppercase;
+    padding: 1px 20px;
+  }
+
+  &__footer {
+  }
 }

@@ -4,3 +4,39 @@
 
 .CardLook {
 }
+
+.CardLookItems {
+  margin-top: 2rem;
+  margin-right: -100px;
+
+  &__item {
+    padding-bottom: 2rem;
+  }
+}
+
+.MobileLookShareDetails {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+
+  > .btn-block {
+    width: auto;
+  }
+}
+
+.CardLookItemsMobile {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -3px;
+  margin-left: -3px;
+
+  &__item {
+    width: 50%;
+    padding-right: 3px;
+    padding-left: 3px;
+
+    &:nth-child(n + 3) {
+      margin-top: 2rem;
+    }
+  }
+}

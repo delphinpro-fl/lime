@@ -3,13 +3,14 @@
 //== ======================================= ==//
 
 .CardLookItem {
+  $this: &;
   display: flex;
 
   &__preview {
-    flex-shrink: 0;
-    //width: percentage(220/450);
-    width: percentage(180/450);
     position: relative;
+    //width: percentage(220/450);
+    flex-shrink: 0;
+    width: percentage(180/450);
   }
 
   &__main {
@@ -27,8 +28,8 @@
 
   &__favorite {
     position: absolute;
-    right: 0;
     top: 0;
+    right: 0;
     opacity: 0;
 
     &.isHover {
@@ -61,5 +62,46 @@
 
   &:hover &__hoverMe {
     opacity: 1;
+  }
+
+  //==
+  //== Mobile view
+  //== ======================================= ==//
+
+  &.isMobile {
+    display: block;
+
+    #{$this} {
+      &__preview {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+
+        &::before {
+          display: block;
+          width: 100%;
+          height: 0;
+          padding-bottom: percentage(250/185);
+          content: '';
+        }
+      }
+
+      &__img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 100%;
+      }
+
+      &__favorite {
+        opacity: 0.5;
+      }
+
+      &__main {
+        padding-right: 0;
+        padding-left: 0;
+      }
+    }
   }
 }

@@ -23,12 +23,13 @@ export default {
     },
 
     props: {
-        item: { type: Object, default: null },
+        item  : { type: Object, default: null },
+        mobile: { type: Boolean, default: false },
     },
 
     data: () => ({
         modelIndex: 0,
-        skuIndex  : -1,
+        skuIndex  : 0,
         isHoverMe : false,
     }),
 
@@ -59,6 +60,7 @@ export default {
 <template>
     <div>
         <div class="CardLookItem"
+            :class="{isMobile:mobile}"
             @mouseenter="isHoverMe=true"
             @mouseleave="isHoverMe=false"
         >
@@ -74,7 +76,7 @@ export default {
                 <div class="CardLookItem__name">{{modelName}}</div>
                 <div class="CardLookItem__price" v-if="sku">{{sku.price}} ₽</div>
 
-                <div class="CardLookItem__hoverMe">
+                <div class="CardLookItem__hoverMe" v-if="!mobile">
                     <ColorSelector
                         class="CardLookItem__ColorSelector"
                         :colors="colors"
@@ -93,7 +95,6 @@ export default {
                 </div>
             </div>
         </div>
-        <!--        <pre>{{model}}</pre>-->
     </div>
 </template>
 

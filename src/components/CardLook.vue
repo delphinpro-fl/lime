@@ -86,8 +86,7 @@ export default {
         <!-- Desktop Card -->
 
         <div class="CardProduct CardLook" v-if="isDesktopDevice">
-            <MediaTape
-                class="CardProduct__main"
+            <MediaTape class="CardProduct__main"
                 :thumbs="thumbs"
                 :medias="medias"
             />
@@ -98,9 +97,9 @@ export default {
 
                     <ShareBlock text="Поделиться"/>
 
-                    <div class="CardLook__items">
+                    <div class="CardLookItems">
                         <CardLookItem
-                            class="CardLook__item"
+                            class="CardLookItems__item"
                             v-for="(item, index) in card.items"
                             :key="item.id"
                             :item="item"
@@ -124,17 +123,37 @@ export default {
                     :items="medias"
                     @change="mediaIndex=$event"
                 />
+                <IButton icon="star" class="MobileCard__favorite"/>
             </template>
 
             <template v-slot:right>
                 <ShareBlock at-bottom transition="fade-slide-bottom"/>
             </template>
 
-            <template v-slot:header>
+            <template v-slot:header="slotHeader">
                 <div class="MobileCardTitle"><span>{{productName}}</span></div>
                 <div class="MobileCardPrice" v-if="totalPrice">{{totalPrice}} ₽</div>
+                <div class="MobileLookShareDetails" v-if="slotHeader.isDetailsView">
+                    <ShareBlock
+                        class="btn-outline btn-no-border btn-block"
+                        text="Поделиться"
+                        at-bottom
+                        transition="fade-slide-bottom"
+                    />
+                </div>
             </template>
 
+            <template v-slot:content>
+                <div class="CardLookItemsMobile">
+                    <CardLookItem
+                        class="CardLookItemsMobile__item"
+                        v-for="(item, index) in card.items"
+                        :key="item.id"
+                        :item="item"
+                        :mobile="true"
+                    />
+                </div>
+            </template>
         </MobileCard>
 
     </div>

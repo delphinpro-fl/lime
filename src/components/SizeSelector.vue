@@ -62,7 +62,7 @@ export default {
 </script>
 
 <template>
-    <div class="SizeSelector" :class="{isMobile}">
+    <div class="SizeSelector" :class="{isMobile, isOpenState}">
         <div class="SizeSelector__header"
             v-if="!isMobile"
             tabindex="0"

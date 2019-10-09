@@ -60,6 +60,10 @@
   position: relative;
   z-index: $z-dropdown;
 
+  &.isOpen {
+    z-index: $z-open-component;
+  }
+
   &__link {
     display: flex;
     align-items: center;

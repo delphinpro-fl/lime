@@ -13,6 +13,10 @@ $SizeSelector-height: 32px;
   border: 1px solid #5a5a5a;
   background: #fff;
 
+  &.isOpenState {
+    z-index: $z-open-component;
+  }
+
   &__header {
     position: relative;
     display: flex;

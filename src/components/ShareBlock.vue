@@ -51,7 +51,7 @@ export default {
 </script>
 
 <template>
-    <div class="ShareBlockWrapper" v-click-outside="selfClose">
+    <div class="ShareBlockWrapper" :class="{isOpen}" v-click-outside="selfClose">
         <div
             class="ShareBlockWrapper__link"
             :class="{noText:!text}"

@@ -21,3 +21,5 @@ export const PERSONAL_VIEW_LOGIN             = 'login';
 export const PERSONAL_VIEW_PROFILE           = 'profile';
 export const PERSONAL_VIEW_RECOVERY_PASSWORD = 'recovery-password';
 export const PERSONAL_VIEW_REGISTRATION      = 'registration';
+
+export const THUMB_FOR_TAPE = 1;

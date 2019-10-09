@@ -191,7 +191,7 @@ export default {
 
             <router-view class="App__main"/>
 
-            <div class="App__sideRight" v-if="isDesktopDevice && !isCart && !isLook">
+            <div class="App__sideRight" v-if="isDesktopDevice && !isCart && !isLook && !isProduct">
                 <div class="App__sideContent AppSide">
                     <div class="AppSide__top" v-if="showSearch">
                         <SearchBox class=""/>

@@ -30,7 +30,9 @@ export default {
 
     computed: {
         selectedText() {
-            return this.selected === -1 ? 'Выберите размер' : this.options[this.selected].title;
+            return (this.selected === -1 || !this.options.length)
+                ? 'Выберите размер'
+                : this.options[this.selected].title;
         },
 
         isOpen() {

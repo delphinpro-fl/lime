@@ -1,0 +1,67 @@
+//==
+//== Component: OrderComplete.vue
+//== ======================================= ==//
+
+.OrderComplete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  text-transform: uppercase;
+
+  &__container {
+    padding: 50px 0;
+  }
+
+  &__logo {
+    margin: auto;
+  }
+
+  &__message {
+    margin-top: 110px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &__note {
+    margin-top: 30px;
+
+    a {
+      font-weight: bold;
+    }
+  }
+
+  &__button {
+    margin-top: 90px;
+
+    .btn {
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+  }
+
+  @include media-breakpoint-down(xs) {
+    min-height: calc(100vh - #{$navbar-height + 30 * 2});
+    &__container {
+      max-width: 270px;
+    }
+    &__logo {
+      width: 110px;
+    }
+    &__message {
+      margin-top: 45px;
+      font-size: 12px;
+
+      span {
+        display: block;
+      }
+    }
+    &__note {
+      margin-top: 10px;
+    }
+    &__button {
+      margin-top: 26px;
+    }
+  }
+}

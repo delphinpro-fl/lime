@@ -10,16 +10,22 @@ import { mapGetters } from 'vuex';
 import CustomerCart   from '@/components/CustomerCart';
 import IButton        from '@/components/IButton';
 import AppLogo        from '@/components/AppLogo';
+import OrderComplete  from '@/components/OrderComplete';
 
 
 export default {
     name: 'ViewCart',
 
     components: {
+        OrderComplete,
         AppLogo,
         CustomerCart,
         IButton,
     },
+
+    data: () => ({
+        isComplete: true,
+    }),
 
     computed: {
         ...mapGetters([
@@ -41,23 +47,26 @@ export default {
 
 <template>
     <div class="ViewCart">
-        <div class="ViewCart__top" v-if="isDesktopDevice">
-            <div class="ViewCart__logoBox">
-                <AppLogo/>
+        <template v-if="!isComplete">
+            <div class="ViewCart__top" v-if="isDesktopDevice">
+                <div class="ViewCart__logoBox">
+                    <AppLogo/>
+                </div>
             </div>
-        </div>
-        <div class="ViewCart__main">
-            <div class="ViewCart__container">
-                <h1>Корзина</h1>
-                <CustomerCart/>
+            <div class="ViewCart__main">
+                <div class="ViewCart__container">
+                    <h1>Корзина</h1>
+                    <CustomerCart/>
+                </div>
             </div>
-        </div>
-        <IButton
-            v-if="isDesktopDevice"
-            icon="cross-thin"
-            class="IButtonClose ViewCart__closer"
-            @click="goBack"
-        />
+            <IButton
+                v-if="isDesktopDevice"
+                icon="cross-thin"
+                class="IButtonClose ViewCart__closer"
+                @click="goBack"
+            />
+        </template>
+        <OrderComplete v-else/>
     </div>
 </template>
 

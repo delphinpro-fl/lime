@@ -8,20 +8,27 @@
 <script>
 import { mapMutations } from 'vuex';
 
-import Checkbox  from '@/components/Checkbox';
-import FormGroup from '@/components/FormGroup';
-import Inputbox  from '@/components/Inputbox';
+import Checkbox     from '@/components/Checkbox';
+import FormGroup    from '@/components/FormGroup';
+import Inputbox     from '@/components/Inputbox';
+import PreviewGoods from '@/components/PreviewGoods';
 
 import { PERSONAL_VIEW_CHANGE_PASSWORD } from '@/constants';
+import { api }                           from '@/lib/api';
 
+
+const statuses = {
+    1: 'В обработке',
+};
 
 export default {
     name: 'CustomerProfile',
 
     components: {
-        FormGroup,
         Checkbox,
+        FormGroup,
         Inputbox,
+        PreviewGoods,
     },
 
     data: () => ({
@@ -33,7 +40,24 @@ export default {
             newsletter: true,
             remember  : false,
         },
+
+        orders: null,
     }),
+
+    computed: {
+        items() {
+            if (!this.orders || !this.orders.items) return [];
+
+            return this.orders.items.filter(item => item.cart);
+        },
+    },
+
+    async mounted() {
+        let response = await api.getOrders({ full: true });
+        if (response.status === 200) {
+            this.orders = response.data;
+        }
+    },
 
     methods: {
         ...mapMutations([
@@ -41,6 +65,10 @@ export default {
         ]),
 
         switchToChangePassword() { this.setPersonalView(PERSONAL_VIEW_CHANGE_PASSWORD); },
+
+        localDateString(date) { return (new Date(date)).toLocaleDateString('ru-RU'); },
+
+        statusString(statusId) { return statuses[statusId]; },
 
         onSubmit() {
         },
@@ -100,6 +128,20 @@ export default {
             </FormGroup>
         </form>
 
+        <div class="ProfileOrdersPreview" v-if="items.length">
+            <p><strong>МОИ ЗАКАЗЫ</strong></p>
+            <div class="ProfileOrdersPreview__item" v-for="item in items">
+                <PreviewGoods
+                    link="/order/"
+                    :items="item.cart.items"
+                />
+                <div>
+                    №{{item.id}} от {{localDateString(item.updated_at)}},
+                    на сумму {{item.sum}} ₽ <strong>{{statusString(item.status_id)}}</strong>
+                </div>
+            </div>
+        </div>
+
         <FormGroup class="FormGroupSubmit">
             <button
                 class="btn btn-block"
@@ -110,4 +152,4 @@ export default {
     </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss" src="../styles/components/CustomerProfile.scss"></style>

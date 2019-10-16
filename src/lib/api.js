@@ -96,6 +96,20 @@ export const api = {
         return Vue.axios.get('/shop?city_id=' + encodeURIComponent(payload.cityId));
     },
 
+    /**
+     * Получение списка заказов
+     * GET {{protocol}}://{{host}}/api/order
+     * Params
+     *      full Boolean (optional)
+     */
+    getOrders(payload) {
+        let params = {};
+        if (payload && payload.full) {
+            params.full = '';
+        }
+        return Vue.axios.get(`/order`, { params });
+    },
+
     //== БЕЗОПАСНОСТЬ
     //== ======================================= ==//
 

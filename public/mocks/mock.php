@@ -31,6 +31,8 @@ switch ($object) {
         }
         break;
     case 'cart':
+    /** @noinspection PhpMissingBreakStatementInspection */
+    case 'order':
         if ($IS_GET) {
             if (array_key_exists('full', $query)) {
                 $filename = $object.'-full.json';

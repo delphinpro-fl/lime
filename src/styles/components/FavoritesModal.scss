@@ -7,13 +7,29 @@
   align-items: stretch;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
+  width: 546px;
+  max-width: 100%;
   height: 100%;
+  padding: 15px;
 
   &__main {
   }
 
   &__bottom {
     margin-top: 20px;
+  }
+}
+
+.Favorites {
+  &:nth-child(n + 2) {
+    margin-top: 2rem;
+  }
+
+  &__category {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  &__items {
   }
 }

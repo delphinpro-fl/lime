@@ -147,11 +147,22 @@ export const api = {
     //== ======================================= ==//
 
     /**
-     * Запрос списка избранного
+     * Получение списка избранного
      * GET {{protocol}}://{{host}}/api/favorite
      */
     getFavorites() {
-        return Vue.axios.get('/favorite/');
+        return Vue.axios.get('/favorite');
+    },
+
+    /**
+     * Добавить в избранное
+     * PUT {{protocol}}://{{host}}/api/favorite
+     * Body
+     *      product_id
+     *      model_id
+     */
+    putFavorites(payload = {}) {
+        return Vue.axios.put('/favorite', payload);
     },
 
     //== ДРУГОЕ

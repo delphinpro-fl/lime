@@ -3468,6 +3468,254 @@
               "price": 1499,
               "old_price": null
             }
+          },
+          {
+            "id": 62,
+            "price": 1499,
+            "quantity": 1,
+            "sku": {
+              "id": 112,
+              "size": {
+                "id": 3,
+                "unit": "INT",
+                "value": "27"
+              },
+              "model": {
+                "id": 23,
+                "new": false,
+                "sale": true,
+                "style": null,
+                "silhouette": null,
+                "model": null,
+                "category": "Джинсы",
+                "subcategory": "",
+                "quality_type": "Джинсы-мом с потертостями",
+                "property_length_mini": false,
+                "property_length_below_knee": false,
+                "property_length_normal": false,
+                "property_length_midi": false,
+                "property_length_above_knee": false,
+                "property_length_short": false,
+                "property_length_middle": false,
+                "property_length_maxi": false,
+                "color": {
+                  "id": 23,
+                  "hex": "ffffff",
+                  "name": "белый"
+                },
+                "medias": [
+                  {
+                    "id": 136,
+                    "created_at": "2019-09-29 18:04:34",
+                    "updated_at": "2019-09-29 18:04:34",
+                    "active": true,
+                    "title": "",
+                    "model_id": 23,
+                    "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/66eeb33539c311e9a2bc00155de9e407.jpeg",
+                    "slot": 1,
+                    "width": 1920,
+                    "height": 2562,
+                    "type": 1
+                  },
+                  {
+                    "id": 137,
+                    "created_at": "2019-09-29 18:04:34",
+                    "updated_at": "2019-09-29 18:04:34",
+                    "active": true,
+                    "title": "",
+                    "model_id": 23,
+                    "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/66eeb33739c311e9a2bc00155de9e407.jpeg",
+                    "slot": 3,
+                    "width": 1920,
+                    "height": 2562,
+                    "type": 1
+                  },
+                  {
+                    "id": 138,
+                    "created_at": "2019-09-29 18:04:34",
+                    "updated_at": "2019-09-29 18:04:34",
+                    "active": true,
+                    "title": "",
+                    "model_id": 23,
+                    "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/66eeb33639c311e9a2bc00155de9e407.jpeg",
+                    "slot": 4,
+                    "width": 1920,
+                    "height": 2562,
+                    "type": 1
+                  },
+                  {
+                    "id": 139,
+                    "created_at": "2019-09-29 18:04:34",
+                    "updated_at": "2019-09-29 18:04:34",
+                    "active": true,
+                    "title": "",
+                    "model_id": 23,
+                    "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/66eeb33839c311e9a2bc00155de9e407.jpeg",
+                    "slot": 5,
+                    "width": 1920,
+                    "height": 2562,
+                    "type": 1
+                  },
+                  {
+                    "id": 140,
+                    "created_at": "2019-09-29 18:04:34",
+                    "updated_at": "2019-09-29 18:04:34",
+                    "active": true,
+                    "title": "",
+                    "model_id": 23,
+                    "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/d19042b6708f11e99d1500155d011401.jpeg",
+                    "slot": 6,
+                    "width": 1920,
+                    "height": 2562,
+                    "type": 1
+                  },
+                  {
+                    "id": 141,
+                    "created_at": "2019-09-29 18:04:34",
+                    "updated_at": "2019-09-29 18:04:34",
+                    "active": true,
+                    "title": "",
+                    "model_id": 23,
+                    "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/d19042b7708f11e99d1500155d011401.jpeg",
+                    "slot": 7,
+                    "width": 1920,
+                    "height": 2562,
+                    "type": 1
+                  }
+                ],
+                "product": {
+                  "id": 12,
+                  "name": "Джинсы-мом с потертостями",
+                  "name_custom": null,
+                  "article": "340|5916|300",
+                  "code": "dzhinsy_mom_s_potertostyami",
+                  "description": "<P>Укороченные джинсы - мом с высокой посадкой, 5 карманов. Отрезной пояс с шлёвками. Спереди изделия потертости. Застёжка на металлическую молнию, скрытую планкой, и пуговицу-болт.</P>\n<P>&nbsp;</P>\n<P>Рост модели: 175 см;<BR>Размер на модели: 26.</P>",
+                  "composition": "Основная ткань: 100% ХЛОПОК",
+                  "care": "Машинная стирка 30 °С; мягкий режим. Не отбеливать. Сушка в машине запрещена. Холодный утюг до 110 °С. Профессиональная сухая чистка в углеводородах, мягкий режим. Не замачивать. Нельзя выкручивать. Стирать с вещами такой же окраски"
+                },
+                "photo": {
+                  "id": 136,
+                  "created_at": "2019-09-29 18:04:34",
+                  "updated_at": "2019-09-29 18:04:34",
+                  "active": true,
+                  "title": "",
+                  "model_id": 23,
+                  "url": "/images/mocks/66eeb33539c311e9a2bc00155de9e407.jpeg",
+                  "slot": 1,
+                  "width": 1920,
+                  "height": 2562,
+                  "type": 1
+                },
+                "skus": [
+                  {
+                    "id": 110,
+                    "size": {
+                      "id": 1,
+                      "unit": "INT",
+                      "value": "25"
+                    },
+                    "rests": [
+                      {
+                        "id": 4777,
+                        "store": 1,
+                        "stock": 0,
+                        "sku_id": 110
+                      },
+                      {
+                        "id": 4778,
+                        "store": 3,
+                        "stock": 1,
+                        "sku_id": 110
+                      }
+                    ],
+                    "price": 1499,
+                    "old_price": null
+                  },
+                  {
+                    "id": 111,
+                    "size": {
+                      "id": 2,
+                      "unit": "INT",
+                      "value": "26"
+                    },
+                    "rests": [
+                      {
+                        "id": 4779,
+                        "store": 1,
+                        "stock": 0,
+                        "sku_id": 111
+                      }
+                    ],
+                    "price": 1499,
+                    "old_price": null
+                  },
+                  {
+                    "id": 112,
+                    "size": {
+                      "id": 3,
+                      "unit": "INT",
+                      "value": "27"
+                    },
+                    "rests": [
+                      {
+                        "id": 4780,
+                        "store": 1,
+                        "stock": 1,
+                        "sku_id": 112
+                      }
+                    ],
+                    "price": 1499,
+                    "old_price": null
+                  },
+                  {
+                    "id": 113,
+                    "size": {
+                      "id": 4,
+                      "unit": "INT",
+                      "value": "28"
+                    },
+                    "rests": [
+                      {
+                        "id": 4781,
+                        "store": 1,
+                        "stock": 2,
+                        "sku_id": 113
+                      }
+                    ],
+                    "price": 1499,
+                    "old_price": null
+                  },
+                  {
+                    "id": 114,
+                    "size": {
+                      "id": 5,
+                      "unit": "INT",
+                      "value": "29"
+                    },
+                    "rests": [
+                      {
+                        "id": 4782,
+                        "store": 1,
+                        "stock": 4,
+                        "sku_id": 114
+                      }
+                    ],
+                    "price": 1499,
+                    "old_price": null
+                  }
+                ]
+              },
+              "rests": [
+                {
+                  "id": 4780,
+                  "store": 1,
+                  "stock": 1,
+                  "sku_id": 112
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            }
           }
         ]
       },

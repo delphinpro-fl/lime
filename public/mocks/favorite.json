@@ -250,5 +250,1517 @@
         }
       ]
     }
+  },
+  {
+    "id": 4,
+    "type": "product",
+    "item": {
+      "id": 1,
+      "name": "Джинсы с разрывами и потертостями",
+      "name_custom": null,
+      "article": "340|6994|591",
+      "code": "dzhinsy_s_razryvami_i_potertostyami",
+      "description": "<P>Джинсы укороченные приталенного силуэта зауженные книзу с низкой посадкой. Демейдж по изделию. Отрезной пояс с шлёвками. 5 карманов. Кокетка сзади. Застёжка на металлическую молнию, скрытую планкой, и пуговицу-болт.</P>\n<P><BR>Рост модели 175 см.</P>\n<P>Размер на модели S.</P>",
+      "composition": "Основная ткань: 100% ХЛОПОК",
+      "care": "Машинная стирка 30 °С; мягкий режим. Не отбеливать. Сушка в машине запрещена. Холодный утюг до 110 °С. Профессиональная сухая чистка в углеводородах, мягкий режим",
+      "models": [
+        {
+          "id": 1,
+          "new": false,
+          "sale": true,
+          "style": null,
+          "silhouette": null,
+          "model": null,
+          "category": "Джинсы",
+          "subcategory": "",
+          "quality_type": "Джинсы с разрывами и потертостями",
+          "property_length_mini": false,
+          "property_length_below_knee": false,
+          "property_length_normal": false,
+          "property_length_midi": false,
+          "property_length_above_knee": false,
+          "property_length_short": false,
+          "property_length_middle": false,
+          "property_length_maxi": false,
+          "color": {
+            "id": 1,
+            "hex": "87cefa",
+            "name": "светло-синий"
+          },
+          "medias": [
+            {
+              "id": 1,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d240335011e9a2bc00155de9e407_3.jpeg",
+              "slot": 1,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 2,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d242335011e9a2bc00155de9e407_2.jpeg",
+              "slot": 3,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 3,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d241335011e9a2bc00155de9e407_2.jpeg",
+              "slot": 4,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 4,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d243335011e9a2bc00155de9e407_2.jpeg",
+              "slot": 5,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 5,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/3e33bdd23b2511e9a2bc00155de9e407.jpeg",
+              "slot": 6,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 6,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/3e33bdd33b2511e9a2bc00155de9e407.jpeg",
+              "slot": 7,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            }
+          ],
+          "photo": {
+            "id": 1,
+            "created_at": "2019-09-29 18:03:12",
+            "updated_at": "2019-09-29 18:03:12",
+            "active": true,
+            "title": "",
+            "model_id": 1,
+            "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d240335011e9a2bc00155de9e407_3.jpeg",
+            "slot": 1,
+            "width": 1920,
+            "height": 2562,
+            "type": 1
+          },
+          "skus": [
+            {
+              "id": 1,
+              "size": {
+                "id": 1,
+                "unit": "INT",
+                "value": "25"
+              },
+              "rests": [
+                {
+                  "id": 1,
+                  "store": 1,
+                  "stock": 0
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 2,
+              "size": {
+                "id": 2,
+                "unit": "INT",
+                "value": "26"
+              },
+              "rests": [
+                {
+                  "id": 2,
+                  "store": 1,
+                  "stock": 2
+                },
+                {
+                  "id": 3,
+                  "store": 2,
+                  "stock": 1
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 3,
+              "size": {
+                "id": 3,
+                "unit": "INT",
+                "value": "27"
+              },
+              "rests": [
+                {
+                  "id": 4,
+                  "store": 1,
+                  "stock": 0
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 4,
+              "size": {
+                "id": 4,
+                "unit": "INT",
+                "value": "28"
+              },
+              "rests": [
+                {
+                  "id": 5,
+                  "store": 1,
+                  "stock": 0
+                },
+                {
+                  "id": 6,
+                  "store": 3,
+                  "stock": 1
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 5,
+              "size": {
+                "id": 5,
+                "unit": "INT",
+                "value": "29"
+              },
+              "rests": [
+                {
+                  "id": 7,
+                  "store": 1,
+                  "stock": 1
+                },
+                {
+                  "id": 8,
+                  "store": 3,
+                  "stock": 1
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 6,
+              "size": {
+                "id": 6,
+                "unit": "INT",
+                "value": "30"
+              },
+              "rests": [
+                {
+                  "id": 9,
+                  "store": 1,
+                  "stock": 0
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "type": "product",
+    "item": {
+      "id": 1,
+      "name": "Джинсы с разрывами и потертостями",
+      "name_custom": null,
+      "article": "340|6994|591",
+      "code": "dzhinsy_s_razryvami_i_potertostyami",
+      "description": "<P>Джинсы укороченные приталенного силуэта зауженные книзу с низкой посадкой. Демейдж по изделию. Отрезной пояс с шлёвками. 5 карманов. Кокетка сзади. Застёжка на металлическую молнию, скрытую планкой, и пуговицу-болт.</P>\n<P><BR>Рост модели 175 см.</P>\n<P>Размер на модели S.</P>",
+      "composition": "Основная ткань: 100% ХЛОПОК",
+      "care": "Машинная стирка 30 °С; мягкий режим. Не отбеливать. Сушка в машине запрещена. Холодный утюг до 110 °С. Профессиональная сухая чистка в углеводородах, мягкий режим",
+      "models": [
+        {
+          "id": 1,
+          "new": false,
+          "sale": true,
+          "style": null,
+          "silhouette": null,
+          "model": null,
+          "category": "Джинсы",
+          "subcategory": "",
+          "quality_type": "Джинсы с разрывами и потертостями",
+          "property_length_mini": false,
+          "property_length_below_knee": false,
+          "property_length_normal": false,
+          "property_length_midi": false,
+          "property_length_above_knee": false,
+          "property_length_short": false,
+          "property_length_middle": false,
+          "property_length_maxi": false,
+          "color": {
+            "id": 1,
+            "hex": "87cefa",
+            "name": "светло-синий"
+          },
+          "medias": [
+            {
+              "id": 1,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d240335011e9a2bc00155de9e407_3.jpeg",
+              "slot": 1,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 2,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d242335011e9a2bc00155de9e407_2.jpeg",
+              "slot": 3,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 3,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d241335011e9a2bc00155de9e407_2.jpeg",
+              "slot": 4,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 4,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d243335011e9a2bc00155de9e407_2.jpeg",
+              "slot": 5,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 5,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/3e33bdd23b2511e9a2bc00155de9e407.jpeg",
+              "slot": 6,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 6,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/3e33bdd33b2511e9a2bc00155de9e407.jpeg",
+              "slot": 7,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            }
+          ],
+          "photo": {
+            "id": 1,
+            "created_at": "2019-09-29 18:03:12",
+            "updated_at": "2019-09-29 18:03:12",
+            "active": true,
+            "title": "",
+            "model_id": 1,
+            "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d240335011e9a2bc00155de9e407_3.jpeg",
+            "slot": 1,
+            "width": 1920,
+            "height": 2562,
+            "type": 1
+          },
+          "skus": [
+            {
+              "id": 1,
+              "size": {
+                "id": 1,
+                "unit": "INT",
+                "value": "25"
+              },
+              "rests": [
+                {
+                  "id": 1,
+                  "store": 1,
+                  "stock": 0
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 2,
+              "size": {
+                "id": 2,
+                "unit": "INT",
+                "value": "26"
+              },
+              "rests": [
+                {
+                  "id": 2,
+                  "store": 1,
+                  "stock": 2
+                },
+                {
+                  "id": 3,
+                  "store": 2,
+                  "stock": 1
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 3,
+              "size": {
+                "id": 3,
+                "unit": "INT",
+                "value": "27"
+              },
+              "rests": [
+                {
+                  "id": 4,
+                  "store": 1,
+                  "stock": 0
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 4,
+              "size": {
+                "id": 4,
+                "unit": "INT",
+                "value": "28"
+              },
+              "rests": [
+                {
+                  "id": 5,
+                  "store": 1,
+                  "stock": 0
+                },
+                {
+                  "id": 6,
+                  "store": 3,
+                  "stock": 1
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 5,
+              "size": {
+                "id": 5,
+                "unit": "INT",
+                "value": "29"
+              },
+              "rests": [
+                {
+                  "id": 7,
+                  "store": 1,
+                  "stock": 1
+                },
+                {
+                  "id": 8,
+                  "store": 3,
+                  "stock": 1
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 6,
+              "size": {
+                "id": 6,
+                "unit": "INT",
+                "value": "30"
+              },
+              "rests": [
+                {
+                  "id": 9,
+                  "store": 1,
+                  "stock": 0
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "type": "product",
+    "item": {
+      "id": 1,
+      "name": "Джинсы с разрывами и потертостями",
+      "name_custom": null,
+      "article": "340|6994|591",
+      "code": "dzhinsy_s_razryvami_i_potertostyami",
+      "description": "<P>Джинсы укороченные приталенного силуэта зауженные книзу с низкой посадкой. Демейдж по изделию. Отрезной пояс с шлёвками. 5 карманов. Кокетка сзади. Застёжка на металлическую молнию, скрытую планкой, и пуговицу-болт.</P>\n<P><BR>Рост модели 175 см.</P>\n<P>Размер на модели S.</P>",
+      "composition": "Основная ткань: 100% ХЛОПОК",
+      "care": "Машинная стирка 30 °С; мягкий режим. Не отбеливать. Сушка в машине запрещена. Холодный утюг до 110 °С. Профессиональная сухая чистка в углеводородах, мягкий режим",
+      "models": [
+        {
+          "id": 1,
+          "new": false,
+          "sale": true,
+          "style": null,
+          "silhouette": null,
+          "model": null,
+          "category": "Джинсы",
+          "subcategory": "",
+          "quality_type": "Джинсы с разрывами и потертостями",
+          "property_length_mini": false,
+          "property_length_below_knee": false,
+          "property_length_normal": false,
+          "property_length_midi": false,
+          "property_length_above_knee": false,
+          "property_length_short": false,
+          "property_length_middle": false,
+          "property_length_maxi": false,
+          "color": {
+            "id": 1,
+            "hex": "87cefa",
+            "name": "светло-синий"
+          },
+          "medias": [
+            {
+              "id": 1,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d240335011e9a2bc00155de9e407_3.jpeg",
+              "slot": 1,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 2,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d242335011e9a2bc00155de9e407_2.jpeg",
+              "slot": 3,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 3,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d241335011e9a2bc00155de9e407_2.jpeg",
+              "slot": 4,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 4,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d243335011e9a2bc00155de9e407_2.jpeg",
+              "slot": 5,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 5,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/3e33bdd23b2511e9a2bc00155de9e407.jpeg",
+              "slot": 6,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 6,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/3e33bdd33b2511e9a2bc00155de9e407.jpeg",
+              "slot": 7,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            }
+          ],
+          "photo": {
+            "id": 1,
+            "created_at": "2019-09-29 18:03:12",
+            "updated_at": "2019-09-29 18:03:12",
+            "active": true,
+            "title": "",
+            "model_id": 1,
+            "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d240335011e9a2bc00155de9e407_3.jpeg",
+            "slot": 1,
+            "width": 1920,
+            "height": 2562,
+            "type": 1
+          },
+          "skus": [
+            {
+              "id": 1,
+              "size": {
+                "id": 1,
+                "unit": "INT",
+                "value": "25"
+              },
+              "rests": [
+                {
+                  "id": 1,
+                  "store": 1,
+                  "stock": 0
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 2,
+              "size": {
+                "id": 2,
+                "unit": "INT",
+                "value": "26"
+              },
+              "rests": [
+                {
+                  "id": 2,
+                  "store": 1,
+                  "stock": 2
+                },
+                {
+                  "id": 3,
+                  "store": 2,
+                  "stock": 1
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 3,
+              "size": {
+                "id": 3,
+                "unit": "INT",
+                "value": "27"
+              },
+              "rests": [
+                {
+                  "id": 4,
+                  "store": 1,
+                  "stock": 0
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 4,
+              "size": {
+                "id": 4,
+                "unit": "INT",
+                "value": "28"
+              },
+              "rests": [
+                {
+                  "id": 5,
+                  "store": 1,
+                  "stock": 0
+                },
+                {
+                  "id": 6,
+                  "store": 3,
+                  "stock": 1
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 5,
+              "size": {
+                "id": 5,
+                "unit": "INT",
+                "value": "29"
+              },
+              "rests": [
+                {
+                  "id": 7,
+                  "store": 1,
+                  "stock": 1
+                },
+                {
+                  "id": 8,
+                  "store": 3,
+                  "stock": 1
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 6,
+              "size": {
+                "id": 6,
+                "unit": "INT",
+                "value": "30"
+              },
+              "rests": [
+                {
+                  "id": 9,
+                  "store": 1,
+                  "stock": 0
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "type": "product",
+    "item": {
+      "id": 1,
+      "name": "Джинсы с разрывами и потертостями",
+      "name_custom": null,
+      "article": "340|6994|591",
+      "code": "dzhinsy_s_razryvami_i_potertostyami",
+      "description": "<P>Джинсы укороченные приталенного силуэта зауженные книзу с низкой посадкой. Демейдж по изделию. Отрезной пояс с шлёвками. 5 карманов. Кокетка сзади. Застёжка на металлическую молнию, скрытую планкой, и пуговицу-болт.</P>\n<P><BR>Рост модели 175 см.</P>\n<P>Размер на модели S.</P>",
+      "composition": "Основная ткань: 100% ХЛОПОК",
+      "care": "Машинная стирка 30 °С; мягкий режим. Не отбеливать. Сушка в машине запрещена. Холодный утюг до 110 °С. Профессиональная сухая чистка в углеводородах, мягкий режим",
+      "models": [
+        {
+          "id": 1,
+          "new": false,
+          "sale": true,
+          "style": null,
+          "silhouette": null,
+          "model": null,
+          "category": "Джинсы",
+          "subcategory": "",
+          "quality_type": "Джинсы с разрывами и потертостями",
+          "property_length_mini": false,
+          "property_length_below_knee": false,
+          "property_length_normal": false,
+          "property_length_midi": false,
+          "property_length_above_knee": false,
+          "property_length_short": false,
+          "property_length_middle": false,
+          "property_length_maxi": false,
+          "color": {
+            "id": 1,
+            "hex": "87cefa",
+            "name": "светло-синий"
+          },
+          "medias": [
+            {
+              "id": 1,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d240335011e9a2bc00155de9e407_3.jpeg",
+              "slot": 1,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 2,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d242335011e9a2bc00155de9e407_2.jpeg",
+              "slot": 3,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 3,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d241335011e9a2bc00155de9e407_2.jpeg",
+              "slot": 4,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 4,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d243335011e9a2bc00155de9e407_2.jpeg",
+              "slot": 5,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 5,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/3e33bdd23b2511e9a2bc00155de9e407.jpeg",
+              "slot": 6,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 6,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/3e33bdd33b2511e9a2bc00155de9e407.jpeg",
+              "slot": 7,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            }
+          ],
+          "photo": {
+            "id": 1,
+            "created_at": "2019-09-29 18:03:12",
+            "updated_at": "2019-09-29 18:03:12",
+            "active": true,
+            "title": "",
+            "model_id": 1,
+            "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d240335011e9a2bc00155de9e407_3.jpeg",
+            "slot": 1,
+            "width": 1920,
+            "height": 2562,
+            "type": 1
+          },
+          "skus": [
+            {
+              "id": 1,
+              "size": {
+                "id": 1,
+                "unit": "INT",
+                "value": "25"
+              },
+              "rests": [
+                {
+                  "id": 1,
+                  "store": 1,
+                  "stock": 0
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 2,
+              "size": {
+                "id": 2,
+                "unit": "INT",
+                "value": "26"
+              },
+              "rests": [
+                {
+                  "id": 2,
+                  "store": 1,
+                  "stock": 2
+                },
+                {
+                  "id": 3,
+                  "store": 2,
+                  "stock": 1
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 3,
+              "size": {
+                "id": 3,
+                "unit": "INT",
+                "value": "27"
+              },
+              "rests": [
+                {
+                  "id": 4,
+                  "store": 1,
+                  "stock": 0
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 4,
+              "size": {
+                "id": 4,
+                "unit": "INT",
+                "value": "28"
+              },
+              "rests": [
+                {
+                  "id": 5,
+                  "store": 1,
+                  "stock": 0
+                },
+                {
+                  "id": 6,
+                  "store": 3,
+                  "stock": 1
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 5,
+              "size": {
+                "id": 5,
+                "unit": "INT",
+                "value": "29"
+              },
+              "rests": [
+                {
+                  "id": 7,
+                  "store": 1,
+                  "stock": 1
+                },
+                {
+                  "id": 8,
+                  "store": 3,
+                  "stock": 1
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 6,
+              "size": {
+                "id": 6,
+                "unit": "INT",
+                "value": "30"
+              },
+              "rests": [
+                {
+                  "id": 9,
+                  "store": 1,
+                  "stock": 0
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "type": "product",
+    "item": {
+      "id": 1,
+      "name": "Джинсы с разрывами и потертостями",
+      "name_custom": null,
+      "article": "340|6994|591",
+      "code": "dzhinsy_s_razryvami_i_potertostyami",
+      "description": "<P>Джинсы укороченные приталенного силуэта зауженные книзу с низкой посадкой. Демейдж по изделию. Отрезной пояс с шлёвками. 5 карманов. Кокетка сзади. Застёжка на металлическую молнию, скрытую планкой, и пуговицу-болт.</P>\n<P><BR>Рост модели 175 см.</P>\n<P>Размер на модели S.</P>",
+      "composition": "Основная ткань: 100% ХЛОПОК",
+      "care": "Машинная стирка 30 °С; мягкий режим. Не отбеливать. Сушка в машине запрещена. Холодный утюг до 110 °С. Профессиональная сухая чистка в углеводородах, мягкий режим",
+      "models": [
+        {
+          "id": 1,
+          "new": false,
+          "sale": true,
+          "style": null,
+          "silhouette": null,
+          "model": null,
+          "category": "Джинсы",
+          "subcategory": "",
+          "quality_type": "Джинсы с разрывами и потертостями",
+          "property_length_mini": false,
+          "property_length_below_knee": false,
+          "property_length_normal": false,
+          "property_length_midi": false,
+          "property_length_above_knee": false,
+          "property_length_short": false,
+          "property_length_middle": false,
+          "property_length_maxi": false,
+          "color": {
+            "id": 1,
+            "hex": "87cefa",
+            "name": "светло-синий"
+          },
+          "medias": [
+            {
+              "id": 1,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d240335011e9a2bc00155de9e407_3.jpeg",
+              "slot": 1,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 2,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d242335011e9a2bc00155de9e407_2.jpeg",
+              "slot": 3,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 3,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d241335011e9a2bc00155de9e407_2.jpeg",
+              "slot": 4,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 4,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d243335011e9a2bc00155de9e407_2.jpeg",
+              "slot": 5,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 5,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/3e33bdd23b2511e9a2bc00155de9e407.jpeg",
+              "slot": 6,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 6,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/3e33bdd33b2511e9a2bc00155de9e407.jpeg",
+              "slot": 7,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            }
+          ],
+          "photo": {
+            "id": 1,
+            "created_at": "2019-09-29 18:03:12",
+            "updated_at": "2019-09-29 18:03:12",
+            "active": true,
+            "title": "",
+            "model_id": 1,
+            "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d240335011e9a2bc00155de9e407_3.jpeg",
+            "slot": 1,
+            "width": 1920,
+            "height": 2562,
+            "type": 1
+          },
+          "skus": [
+            {
+              "id": 1,
+              "size": {
+                "id": 1,
+                "unit": "INT",
+                "value": "25"
+              },
+              "rests": [
+                {
+                  "id": 1,
+                  "store": 1,
+                  "stock": 0
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 2,
+              "size": {
+                "id": 2,
+                "unit": "INT",
+                "value": "26"
+              },
+              "rests": [
+                {
+                  "id": 2,
+                  "store": 1,
+                  "stock": 2
+                },
+                {
+                  "id": 3,
+                  "store": 2,
+                  "stock": 1
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 3,
+              "size": {
+                "id": 3,
+                "unit": "INT",
+                "value": "27"
+              },
+              "rests": [
+                {
+                  "id": 4,
+                  "store": 1,
+                  "stock": 0
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 4,
+              "size": {
+                "id": 4,
+                "unit": "INT",
+                "value": "28"
+              },
+              "rests": [
+                {
+                  "id": 5,
+                  "store": 1,
+                  "stock": 0
+                },
+                {
+                  "id": 6,
+                  "store": 3,
+                  "stock": 1
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 5,
+              "size": {
+                "id": 5,
+                "unit": "INT",
+                "value": "29"
+              },
+              "rests": [
+                {
+                  "id": 7,
+                  "store": 1,
+                  "stock": 1
+                },
+                {
+                  "id": 8,
+                  "store": 3,
+                  "stock": 1
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 6,
+              "size": {
+                "id": 6,
+                "unit": "INT",
+                "value": "30"
+              },
+              "rests": [
+                {
+                  "id": 9,
+                  "store": 1,
+                  "stock": 0
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "type": "product",
+    "item": {
+      "id": 1,
+      "name": "Джинсы с разрывами и потертостями",
+      "name_custom": null,
+      "article": "340|6994|591",
+      "code": "dzhinsy_s_razryvami_i_potertostyami",
+      "description": "<P>Джинсы укороченные приталенного силуэта зауженные книзу с низкой посадкой. Демейдж по изделию. Отрезной пояс с шлёвками. 5 карманов. Кокетка сзади. Застёжка на металлическую молнию, скрытую планкой, и пуговицу-болт.</P>\n<P><BR>Рост модели 175 см.</P>\n<P>Размер на модели S.</P>",
+      "composition": "Основная ткань: 100% ХЛОПОК",
+      "care": "Машинная стирка 30 °С; мягкий режим. Не отбеливать. Сушка в машине запрещена. Холодный утюг до 110 °С. Профессиональная сухая чистка в углеводородах, мягкий режим",
+      "models": [
+        {
+          "id": 1,
+          "new": false,
+          "sale": true,
+          "style": null,
+          "silhouette": null,
+          "model": null,
+          "category": "Платья",
+          "subcategory": "",
+          "quality_type": "Джинсы с разрывами и потертостями",
+          "property_length_mini": false,
+          "property_length_below_knee": false,
+          "property_length_normal": false,
+          "property_length_midi": false,
+          "property_length_above_knee": false,
+          "property_length_short": false,
+          "property_length_middle": false,
+          "property_length_maxi": false,
+          "color": {
+            "id": 1,
+            "hex": "87cefa",
+            "name": "светло-синий"
+          },
+          "medias": [
+            {
+              "id": 1,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d240335011e9a2bc00155de9e407_3.jpeg",
+              "slot": 1,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 2,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d242335011e9a2bc00155de9e407_2.jpeg",
+              "slot": 3,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 3,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d241335011e9a2bc00155de9e407_2.jpeg",
+              "slot": 4,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 4,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d243335011e9a2bc00155de9e407_2.jpeg",
+              "slot": 5,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 5,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/3e33bdd23b2511e9a2bc00155de9e407.jpeg",
+              "slot": 6,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            },
+            {
+              "id": 6,
+              "created_at": "2019-09-29 18:03:12",
+              "updated_at": "2019-09-29 18:03:12",
+              "active": true,
+              "title": "",
+              "model_id": 1,
+              "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/3e33bdd33b2511e9a2bc00155de9e407.jpeg",
+              "slot": 7,
+              "width": 1920,
+              "height": 2562,
+              "type": 1
+            }
+          ],
+          "photo": {
+            "id": 1,
+            "created_at": "2019-09-29 18:03:12",
+            "updated_at": "2019-09-29 18:03:12",
+            "active": true,
+            "title": "",
+            "model_id": 1,
+            "url": "https://cache-limeshop.cdnvideo.ru/limeshop/aa/6703d240335011e9a2bc00155de9e407_3.jpeg",
+            "slot": 1,
+            "width": 1920,
+            "height": 2562,
+            "type": 1
+          },
+          "skus": [
+            {
+              "id": 1,
+              "size": {
+                "id": 1,
+                "unit": "INT",
+                "value": "25"
+              },
+              "rests": [
+                {
+                  "id": 1,
+                  "store": 1,
+                  "stock": 0
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 2,
+              "size": {
+                "id": 2,
+                "unit": "INT",
+                "value": "26"
+              },
+              "rests": [
+                {
+                  "id": 2,
+                  "store": 1,
+                  "stock": 2
+                },
+                {
+                  "id": 3,
+                  "store": 2,
+                  "stock": 1
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 3,
+              "size": {
+                "id": 3,
+                "unit": "INT",
+                "value": "27"
+              },
+              "rests": [
+                {
+                  "id": 4,
+                  "store": 1,
+                  "stock": 0
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 4,
+              "size": {
+                "id": 4,
+                "unit": "INT",
+                "value": "28"
+              },
+              "rests": [
+                {
+                  "id": 5,
+                  "store": 1,
+                  "stock": 0
+                },
+                {
+                  "id": 6,
+                  "store": 3,
+                  "stock": 1
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 5,
+              "size": {
+                "id": 5,
+                "unit": "INT",
+                "value": "29"
+              },
+              "rests": [
+                {
+                  "id": 7,
+                  "store": 1,
+                  "stock": 1
+                },
+                {
+                  "id": 8,
+                  "store": 3,
+                  "stock": 1
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            },
+            {
+              "id": 6,
+              "size": {
+                "id": 6,
+                "unit": "INT",
+                "value": "30"
+              },
+              "rests": [
+                {
+                  "id": 9,
+                  "store": 1,
+                  "stock": 0
+                }
+              ],
+              "price": 1499,
+              "old_price": null
+            }
+          ]
+        }
+      ]
+    }
   }
 ]

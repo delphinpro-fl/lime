@@ -10,12 +10,14 @@ import AppLogo            from '@/components/AppLogo';
 import MobileMenuButton   from '@/components/MobileMenuButton';
 import MobileSearchButton from '@/components/MobileSearchButton';
 import SearchBox          from '@/components/SearchBox';
+import MobileCartButton   from '@/components/MobileCartButton';
 
 
 export default {
     name: 'AppNavbar',
 
     components: {
+        MobileCartButton,
         AppLogo,
         MobileMenuButton,
         MobileSearchButton,
@@ -35,6 +37,7 @@ export default {
             </div>
             <div class="navbar__actions">
                 <MobileSearchButton class="navbar__search-button"/>
+                <MobileCartButton class="navbar__cart-button"/>
             </div>
         </div>
         <SearchBox class="navbar__search-box" layout="mobile"/>

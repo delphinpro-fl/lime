@@ -1,0 +1,64 @@
+//==
+//== Component: OrderList.vue
+//== ======================================= ==//
+
+.OrderList {
+  text-transform: uppercase;
+
+  &__buttons {
+    max-width: 400px;
+
+    > div + div {
+      margin-top: 1rem;
+    }
+  }
+
+  .CartTable {
+    margin-top: 40px;
+  }
+}
+
+.CancelDialogBack {
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(#000, 0.5);
+}
+
+.CancelDialog {
+  position: fixed;
+  z-index: 200;
+  top: 50%;
+  left: 50%;
+  width: 450px;
+  max-width: 96%;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  color: #000;
+  background: #fff;
+
+  &__closer {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__header {
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  &__text {
+    text-align: center;
+  }
+
+  &__form {
+    margin-top: 40px;
+  }
+}

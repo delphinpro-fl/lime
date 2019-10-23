@@ -18,6 +18,7 @@ import ViewProduct    from '@/views/ViewProduct';
 import ViewCart       from '@/views/ViewCart';
 import ViewFavorites  from '@/views/ViewFavorites';
 import ViewLook       from '@/views/ViewLook';
+import ViewOrder      from '@/views/ViewOrder';
 
 
 Vue.use(Router);
@@ -74,6 +75,12 @@ let router = new Router({
             path     : '/cart',
             name     : 'cart',
             component: ViewCart,
+        },
+
+        {
+            path     : '/order',
+            name     : 'order',
+            component: ViewOrder,
         },
 
         {

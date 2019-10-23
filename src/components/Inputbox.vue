@@ -46,7 +46,19 @@ export default {
 
 <template>
     <div class="Inputbox">
+        <textarea
+            v-if="cType === 'textarea'"
+            class="Inputbox__textarea"
+            v-bind="$attrs"
+            :id="cid"
+            :name="name"
+            :placeholder="placeholder"
+            :disabled="disabled"
+            :readonly="readonly"
+            @input="onInput"
+        >{{value}}</textarea>
         <input
+            v-else
             class="Inputbox__input"
             v-bind="$attrs"
             :id="cid"

@@ -84,6 +84,7 @@ export default {
             return {
                 isOpenSearch         : this.isOpenSearch,
                 isHomepage           : this.isHomepage,
+                isOrderPage          : this.isOrder,
                 isMobile             : this.isMobileDevice,
                 isFullscreen         : this.isFullscreen,
                 ['page-' + this.page]: !!this.page,
@@ -109,6 +110,7 @@ export default {
         },
 
         isCart() { return this.page === 'cart'; },
+        isOrder() { return this.page === 'order'; },
         isLook() { return this.page === 'look'; },
         isProduct() { return this.page === 'product'; },
     },
